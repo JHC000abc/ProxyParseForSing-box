@@ -79,6 +79,12 @@ class ParseBookUrl:
                         "inbound": [
                             "mixed-in"
                         ],
+                        "outbound": "PROXY"
+                    },
+                    {
+                        "inbound": [
+                            "mixed-in"
+                        ],
                         "geosite": "cn",
                         "outbound": "direct-out"
                     },
@@ -88,12 +94,6 @@ class ParseBookUrl:
                         ],
                         "geoip": "cn",
                         "outbound": "direct-out"
-                    },
-                    {
-                        "inbound": [
-                            "mixed-in"
-                        ],
-                        "outbound": "PROXY"
                     }
                 ]
             }
@@ -286,5 +286,5 @@ class ParseBookUrl:
 if __name__ == '__main__':
     url = "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt"
     pbu = ParseBookUrl(url)
-    pbu.process()
-    # print(pbu.get_download_url())
+    # pbu.process()
+    print(pbu.get_download_url())
