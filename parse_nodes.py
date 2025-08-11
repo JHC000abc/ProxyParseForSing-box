@@ -13,6 +13,9 @@ class ParseBookUrl:
 
     def __init__(self, url):
         self.url = url
+        self.un_used_list = ["108.181.5.132", "108.181.5.130"]
+        # ["44.248.19.137", "test.hdcloud.link", "51.158.218.2", "13.115.222.211", "13.231.157.171", "52.63.97.82",
+        #  "129.153.52.235", "192.18.150.167"]
 
     def get_main_json(self):
         """
@@ -130,7 +133,9 @@ class ParseBookUrl:
         }
 
         if scheme in scheme_map.keys():
-            self.outbounds.append(scheme_map.get(scheme)(url_data))
+            outbound = scheme_map.get(scheme)(url_data)
+            if outbound:
+                self.outbounds.append(outbound)
 
     def parse_shadowsocks(self, data):
         """
@@ -140,6 +145,9 @@ class ParseBookUrl:
         server, server_port = ip_port.split(":")
         server_port = server_port.split(",")[0]
         query = data.query.split("&")
+
+        if server in self.un_used_list:
+            return
 
         q_map = {}
         for q in query:
@@ -171,6 +179,9 @@ class ParseBookUrl:
         server, server_port = ip_port.split(":")
         server_port = server_port.split(",")[0]
         query = data.query.split("&")
+
+        if server in self.un_used_list:
+            return
 
         q_map = {}
         for q in query:
@@ -207,6 +218,9 @@ class ParseBookUrl:
         server, server_port = ip_port.split(":")
         query = data.query.split("&")
 
+        if server in self.un_used_list:
+            return
+
         q_map = {}
         for q in query:
             k, *v = q.split("=")
@@ -233,7 +247,7 @@ class ParseBookUrl:
 
         return result
 
-    def get_download_url(self, user_name="JHC000abc", warehouse="DockerForPycharmProFreeForever"):
+    def get_download_url(self, user_name="JHC000abc", warehouse="ProxyParseForSing-box"):
         """
 
         """
@@ -242,7 +256,7 @@ class ParseBookUrl:
             "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
         }
 
-        url = f"https://api.github.com/repos/{user_name}/{warehouse}/commits/main"
+        url = f"https://api.github.com/repos/{user_name}/{warehouse}/commits/master"
         response = requests.get(url, headers=headers)
 
         contents_url = response.json()["files"][0]["contents_url"]
