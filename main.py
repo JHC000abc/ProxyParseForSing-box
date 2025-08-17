@@ -15,19 +15,19 @@ from parse_node_sharkDoor import ParseNodesharkDoor
 if __name__ == '__main__':
     p1 = ParseNodeSnakem982()
     p1.process()
-    print(len(p1.outbounds))
+    print("从 Snakem982 中解析节点：", len(p1.outbounds))
     p2 = ParseNodesharkDoor()
     p2.process()
-    print(len(p2.outbounds))
+    print("从 sharkDoor 中解析节点：", len(p2.outbounds))
 
     stand_json = {
         "inbounds": p1.get_inbounds(),
         "outbounds": p1.get_outbounds() + p2.outbounds + p1.outbounds,
         "route": p1.get_route()
     }
-
-    with open(f"config_{datetime.now().strftime("%Y%m%d")}.json", "w", encoding="utf-8") as f:
+    save_file = f"config_{datetime.now().strftime("%Y%m%d")}.json"
+    with open(save_file, "w", encoding="utf-8") as f:
         f.write(json.dumps(stand_json, indent=4, ensure_ascii=False))
+    print(f"成功保存节点到:{save_file}")
 
-    print(p1.get_download_url())
-
+    # print(p1.get_download_url())
