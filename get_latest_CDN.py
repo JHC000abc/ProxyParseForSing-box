@@ -13,7 +13,7 @@ from base_build_json import BuildJson
 
 class GetLatestCDN(BuildJson):
     def __init__(self, port=10809):
-        super().__init__(10809)
+        super().__init__(port)
 
     def process(self):
         print("仓库中最新上传的文件CDN:", self.get_download_url())

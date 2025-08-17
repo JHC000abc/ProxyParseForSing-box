@@ -9,6 +9,7 @@
 """
 from abc import ABC, abstractmethod
 from curl_cffi import requests
+import requests
 from base64 import b64decode
 
 
@@ -33,6 +34,7 @@ class BuildJson(ABC):
             "http": "http://172.17.0.1:10808",
             "https": "http://172.17.0.1:10808"
         }
+        # self.proxies = None
 
     def get_outbounds(self):
         """

@@ -20,9 +20,10 @@ if __name__ == '__main__':
     p2.process()
     print("从 sharkDoor 中解析节点：", len(p2.outbounds))
 
+
     stand_json = {
         "inbounds": p1.get_inbounds(),
-        "outbounds": p1.get_outbounds() + p2.outbounds + p1.outbounds,
+        "outbounds": p1.get_outbounds() + p1.outbounds + p2.outbounds,
         "route": p1.get_route()
     }
     save_file = f"config_{datetime.now().strftime("%Y%m%d")}.json"
