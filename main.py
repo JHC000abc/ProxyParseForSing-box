@@ -29,5 +29,3 @@ if __name__ == '__main__':
     with open(save_file, "w", encoding="utf-8") as f:
         f.write(json.dumps(stand_json, indent=4, ensure_ascii=False))
     print(f"成功保存节点到:{save_file}")
-
-    # print(p1.get_download_url())
