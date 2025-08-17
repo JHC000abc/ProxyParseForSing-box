@@ -28,3 +28,6 @@ if __name__ == '__main__':
 
     with open(f"config_{datetime.now().strftime("%Y%m%d")}.json", "w", encoding="utf-8") as f:
         f.write(json.dumps(stand_json, indent=4, ensure_ascii=False))
+
+    print(p1.get_download_url())
+

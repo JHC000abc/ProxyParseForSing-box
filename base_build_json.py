@@ -232,6 +232,22 @@ class BuildJson(ABC):
         for node in b64decode(data).decode("utf-8").split("\n"):
             yield node
 
+    def get_download_url(self, user_name="JHC000abc", warehouse="ProxyParseForSing-box"):
+        """
+
+        """
+        headers = {
+            "referer": "https://www.jsdelivr.com/",
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+        }
+
+        url = f"https://api.github.com/repos/{user_name}/{warehouse}/commits/master"
+        response = self.get_html(url, headers=headers)
+
+        contents_url = response.json()["files"][0]["contents_url"]
+        response = self.get_html(url=contents_url, headers=headers)
+        return response.json()["download_url"]
+
     @abstractmethod
     def process(self):
         """
