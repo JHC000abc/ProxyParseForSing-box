@@ -21,7 +21,7 @@ class BuildJson(ABC):
     def __init__(self, port=10809):
         super().__init__()
         self.port = port
-        self.un_used_list = []
+        self.un_used_list = ["hsfg.huasuan666.top"]
         self.tags = []
         self.tags_american = []
         self.outbounds = []
@@ -92,12 +92,6 @@ class BuildJson(ABC):
                     "inbound": [
                         "mixed-in"
                     ],
-                    "outbound": "PROXY"
-                },
-                {
-                    "inbound": [
-                        "mixed-in"
-                    ],
                     "geosite": "cn",
                     "outbound": "direct-out"
                 },
@@ -107,6 +101,12 @@ class BuildJson(ABC):
                     ],
                     "geoip": "cn",
                     "outbound": "direct-out"
+                },
+                {
+                    "inbound": [
+                        "mixed-in"
+                    ],
+                    "outbound": "PROXY"
                 }
             ]
         }
@@ -189,6 +189,8 @@ class BuildJson(ABC):
         :return:
         """
         parse_result = self.parse_proxy_url(data)
+        if not parse_result:
+            return None
         return {
             "type": "hysteria2",
             "tag": parse_result.get("fragment"),

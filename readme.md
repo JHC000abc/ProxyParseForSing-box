@@ -10,10 +10,7 @@ proxy.list:订阅地址文件（所有订阅地址均来自于github 开源项�
 
 加载命令：切换到 sing-box.tar 所在文件夹中 cmd运行 docker load -i sing-box.tar
 
-启动命令：sudo docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh"
-sing-box-v1.8.8-rule:
-latest "https://raw.githubusercontent.com/JHC000abc/ProxyParseForSing-box/9623f7b11c5a40edffe5f95896dcf5c3c09ec496/config_20250811.json" "
-1080"
+启动命令：sudo docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh" sing-box-v1.8.8-rule:latest "https://raw.githubusercontent.com/JHC000abc/ProxyParseForSing-box/92883207bafd5b6a8c6d92daa04a9653488f29c8/config_20250817.json" "1080"
 
 Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置到环境变量中，启动前关闭所有chrome浏览器窗口）：chrome.exe
 --user-data-dir="xxx" --proxy-server="socks5://127.0.0.1:10808"  https://limestart.cn/
