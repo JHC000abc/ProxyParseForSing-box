@@ -35,9 +35,14 @@ or 远程仓库拉取
 ```
 
 启动命令：
-
+docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh" jhc0000abc/sing-box-v1.8.8-rule:latest "CDN链接" "1080" "下载CDN链接的代理（curl 用的）"
+## 使用代理下载CDN
 ```bash
-  docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh" jhc0000abc/sing-box-v1.8.8-rule:latest "CDN链接" "1080"
+  docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh" jhc0000abc/sing-box-v1.8.8-rule:latest "CDN链接" "1080" "192.168.2.109:10809  
+```
+## 不使用代理下载CDN
+```bash
+  docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh" jhc0000abc/sing-box-v1.8.8-rule:latest "CDN链接" "1080" 
 ```
 
 Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置到环境变量中，启动前关闭所有chrome浏览器窗口）：
