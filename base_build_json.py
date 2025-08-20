@@ -21,7 +21,7 @@ class BuildJson(ABC):
     def __init__(self, port=10809):
         super().__init__()
         self.port = port
-        self.un_used_list = ["hsfg.huasuan666.top"]
+        self.un_used_list = ["hsfg.huasuan666.top", "b9c3912b-t07z40-t1l1nh-d6ar.la.shifen.uk"]
         self.tags = []
         self.tags_american = []
         self.outbounds = []

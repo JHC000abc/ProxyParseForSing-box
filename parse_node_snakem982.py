@@ -12,7 +12,10 @@ from base_build_json import BuildJson
 
 
 class ParseNodeSnakem982(BuildJson):
-    def __init__(self,port=10809):
+    """
+
+    """
+    def __init__(self, port=10809):
         super().__init__(port)
 
     def process(self):
