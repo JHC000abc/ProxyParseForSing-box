@@ -11,6 +11,7 @@ from abc import ABC, abstractmethod
 from curl_cffi import requests
 import requests
 from base64 import b64decode
+import uuid
 
 
 class BuildJson(ABC):
@@ -21,7 +22,8 @@ class BuildJson(ABC):
     def __init__(self, port=10809):
         super().__init__()
         self.port = port
-        self.un_used_list = ["hsfg.huasuan666.top", "b9c3912b-t07z40-t1l1nh-d6ar.la.shifen.uk"]
+        self.un_used_list = ["hsfg.huasuan666.top", "b9c3912b-t07z40-t1l1nh-d6ar.la.shifen.uk", "hsdg.huasuan666.top",
+                             "47.242.195.121"]
         self.tags = []
         self.tags_american = []
         self.outbounds = []
@@ -31,8 +33,8 @@ class BuildJson(ABC):
             "hysteria2": self.build_hysteria2,
         }
         self.proxies = {
-            "http": "http://172.17.0.1:10808",
-            "https": "http://172.17.0.1:10808"
+            "http": "http://172.17.0.1:10809",
+            "https": "http://172.17.0.1:10809"
         }
         # self.proxies = None
 
@@ -126,6 +128,17 @@ class BuildJson(ABC):
             }
         ]
 
+    def forbidden_rules(self, fragment):
+        """
+
+        :param fragment:
+        :return:
+        """
+        forbidden_list = ["香港", "台湾", "中国"]
+        if any(i for i in forbidden_list if i in fragment):
+            return False
+        return True
+
     def parse_proxy_url(self, proxy_url):
         """
 
@@ -143,14 +156,16 @@ class BuildJson(ABC):
         q_map = {}
         for q in query:
             k, *v = q.split("=")
-
             q_map[k] = "=".join(v)
         fragment = proxy_url.fragment
 
-        self.tags.append(fragment)
+        if not self.forbidden_rules(fragment):
+            return
 
+        self.tags.append(fragment)
         if "美国" in fragment:
             self.tags_american.append(fragment)
+
         res = {
             "password": password,
             "ip_port": ip_port,
@@ -169,18 +184,19 @@ class BuildJson(ABC):
         :return:
         """
         parse_result = self.parse_proxy_url(data)
-        return {
-            "type": "trojan",
-            "tag": parse_result.get("fragment"),
-            "server": parse_result.get("server"),
-            "server_port": parse_result.get("server_port"),
-            "password": parse_result.get("password"),
-            "tls": {
-                "enabled": True,
-                "insecure": True,
-                "server_name": parse_result.get("sni")
+        if parse_result:
+            return {
+                "type": "trojan",
+                "tag": parse_result.get("fragment"),
+                "server": parse_result.get("server"),
+                "server_port": parse_result.get("server_port"),
+                "password": parse_result.get("password"),
+                "tls": {
+                    "enabled": True,
+                    "insecure": True,
+                    "server_name": parse_result.get("sni")
+                }
             }
-        }
 
     def build_hysteria2(self, data):
         """
