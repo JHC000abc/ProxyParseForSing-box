@@ -11,7 +11,6 @@ from abc import ABC, abstractmethod
 from curl_cffi import requests
 import requests
 from base64 import b64decode
-import uuid
 
 
 class BuildJson(ABC):
@@ -22,8 +21,7 @@ class BuildJson(ABC):
     def __init__(self, port=10809):
         super().__init__()
         self.port = port
-        self.un_used_list = ["hsfg.huasuan666.top", "b9c3912b-t07z40-t1l1nh-d6ar.la.shifen.uk", "hsdg.huasuan666.top",
-                             "47.242.195.121"]
+        self.un_used_list = self.get_un_used_list()
         self.tags = []
         self.tags_american = []
         self.outbounds = []
@@ -33,10 +31,23 @@ class BuildJson(ABC):
             "hysteria2": self.build_hysteria2,
         }
         self.proxies = {
-            "http": "http://172.17.0.1:10809",
-            "https": "http://172.17.0.1:10809"
+            "http": "http://172.17.0.1:10808",
+            "https": "http://172.17.0.1:10808"
         }
         # self.proxies = None
+
+    def get_un_used_list(self, file="un_used_proxy.list"):
+        """
+
+        :param file:
+        :return:
+        """
+        lis = []
+        with open(file, "r", encoding="utf-8") as f:
+            for i in f:
+                line = i.strip()
+                lis.append(line)
+        return lis
 
     def get_outbounds(self):
         """
