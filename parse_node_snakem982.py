@@ -15,8 +15,13 @@ class ParseNodeSnakem982(BuildJson):
     """
 
     """
+
     def __init__(self, port=10809):
         super().__init__(port)
+        self.url_list = [
+            "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
+            "https://a.nodeshare.xyz/uploads/2025/7/20250720.txt"
+        ]
 
     def process(self):
         """
@@ -24,7 +29,7 @@ class ParseNodeSnakem982(BuildJson):
         :return:
         """
 
-        url = "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt"
-        for node in self.base64_decode(self.get_html(url).text):
-            proxy_url = parse.urlparse(parse.unquote(node))
-            self.check_scheme(proxy_url)
+        for url in self.url_list:
+            for node in self.base64_decode(self.get_html(url).text):
+                proxy_url = parse.urlparse(parse.unquote(node))
+                self.check_scheme(proxy_url)
