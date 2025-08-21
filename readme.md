@@ -118,7 +118,7 @@ uv run main.py
 * https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/
 
 
-
+# [第一次录制的视频 有点low 仅供参考](https://www.youtube.com/watch?v=yRuacjm3zt4)
 
 
 
