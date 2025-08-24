@@ -64,14 +64,4 @@ class ParseNodesharkDoor(Base):
             self.success_list.append(node_parse_result)
         return self.success_list
 
-            # if node_parse_result:
-            #     status, res = await self.test_speed.test_speed(node_parse_result)
-            #     if status:
-            #         print("测速成功")
-            #         self.success_map.update(res)
-            #     else:
-            #         print("测速失败")
-        # print(f"{self.__class__.__name__} {detail_url} 中解析到可用节点:{len(self.success_map)}")
-        # return self.success_map
-
 
