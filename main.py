@@ -13,7 +13,6 @@ from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from test_speed import TestSpeed
 
 
-
 async def filter(file="./un_used_proxy.list"):
     """
 
@@ -59,7 +58,7 @@ async def main():
     outbounds = []
     tags = []
 
-    # Process the results
+    repeat_map_recode = {}
     for i, result in enumerate(results):
         if isinstance(result, Exception):
             # Handle potential exceptions from the tasks (e.g., timeouts)
@@ -72,17 +71,17 @@ async def main():
             scheme = info["type"]
 
             if status:
-                speed_map[tag] = [speed, scheme, info]
-                outbounds.append(info)
-                tags.append(tag)
+                if repeat_map_recode.get(tag) is None:
+                    speed_map[tag] = [speed, scheme, info]
+                    outbounds.append(info)
+                    tags.append(tag)
+                    repeat_map_recode[tag] = 1
 
     for tag, (speed_res, scheme, info) in speed_map.items():
-        speed = [v["speed"] for k,v in speed_res.items()][0]
+        speed = [v["speed"] for k, v in speed_res.items()][0]
         print(f"协议: {scheme}\t节点: {tag}\t速度: {speed} ms")
 
     await p1.save_result_json(tags, outbounds, tags)
-
-
 
 
 if __name__ == '__main__':

@@ -24,7 +24,7 @@ class ParseNodesharkDoor(Base):
         super().__init__()
         self.search_url = f"https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/{datetime.now().strftime('%Y-%m')}"
 
-    def parse_search(self, html):
+    async def parse_search(self, html):
         """
 
         :param html:
@@ -32,16 +32,16 @@ class ParseNodesharkDoor(Base):
         """
         res = re.findall('<script type="application/json" data-target="react-app.embeddedData">(.*?)</script>', html)[0]
         for item in json.loads(res)["payload"]["tree"]["items"]:
-            pass
-        return item
+            yield item
 
-    def parse_detail(self, html):
+    async def parse_detail(self, html):
         """
 
         :param html:
         :return:
         """
-        res = re.findall('<script type="application/json" data-target="react-app.embeddedData">(.*?)</script>', html)[0]
+        res = re.findall('<script type="application/json" data-target="react-app.embeddedData">(.*?)</script>', html)
+        res = res[0]
         data = json.loads(res)["payload"]["blob"]["richText"]
         tree = etree.HTML(data)
         lis = tree.xpath("//tr/td[last()]//text()")
@@ -54,14 +54,16 @@ class ParseNodesharkDoor(Base):
         :return:
         """
         search_html = await self.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
-        search_result = self.parse_search(search_html)
-        detail_url = f'{self.search_url}/{search_result["name"]}'
-        detail_html = await self.fetch_url_get(url=detail_url, headers=self.headers, proxy=True)
+        async for search_result in self.parse_search(search_html):
+            day = f"{datetime.now().strftime('%d')}日"
+            name = search_result["name"]
+            if not name.startswith(day):
+                continue
+            detail_url = f'{self.search_url}/{name}'
+            detail_html = await self.fetch_url_get(url=detail_url, headers=self.headers, proxy=True)
 
-        for node in self.parse_detail(detail_html):
-            node = parse.urlparse(parse.unquote(node.strip()))
-            node_parse_result = await self.build(node)
-            self.success_list.append(node_parse_result)
+            async for node in self.parse_detail(detail_html):
+                node = parse.urlparse(parse.unquote(node.strip()))
+                node_parse_result = await self.build(node)
+                self.success_list.append(node_parse_result)
         return self.success_list
-
-

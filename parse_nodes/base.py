@@ -1,4 +1,7 @@
 import os
+import time
+import random
+import traceback
 from abc import ABC, abstractmethod
 from datetime import datetime
 import aiohttp
@@ -6,21 +9,26 @@ from settings import PROXIES_ASYNC, OUT_LISTEN_PORT
 from test_speed import TestSpeed
 from parse_schem import *
 from functools import wraps
+import asyncio
 
 
 def retry(func):
     @wraps(func)
-    def wrapper(*args, **kwargs):
+    async def wrapper(*args, **kwargs):
         flag = False
-        retry_times = 3
+        retry_times = 5
         while not flag and retry_times > 0:
             try:
-                res = func(*args, **kwargs)
+                res = await func(*args, **kwargs)
                 flag = True
                 return res
             except Exception as e:
-                print(f"剩余重试次数:{retry_times}")
+                print(traceback.format_exc())
+            finally:
                 retry_times -= 1
+                await asyncio.sleep(random.randint(1, 3))
+
+        raise Exception(f"函数 '{func.__name__}' 在 5 次尝试后仍失败。")
 
     return wrapper
 
