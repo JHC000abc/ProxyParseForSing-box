@@ -7,7 +7,7 @@
 @desc: 
 
 """
-from base import Base
+from parse_nodes.base import Base
 
 
 class ParseNodeSnakem982(Base):

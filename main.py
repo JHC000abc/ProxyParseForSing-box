@@ -8,8 +8,8 @@
 
 """
 import asyncio
-from parse_node_snakem982 import ParseNodeSnakem982
-from parse_node_sharkDoor import ParseNodesharkDoor
+from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
+from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from test_speed import TestSpeed
 
 

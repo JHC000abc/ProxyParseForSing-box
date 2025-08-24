@@ -8,7 +8,7 @@
 
 """
 import asyncio
-from base import Base
+from parse_nodes.base import Base
 
 
 class GetLatestCDN(Base):

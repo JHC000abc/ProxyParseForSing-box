@@ -12,7 +12,7 @@ from datetime import datetime
 import re
 import json
 from lxml import etree
-from base import Base
+from parse_nodes.base import Base
 
 
 class ParseNodesharkDoor(Base):
