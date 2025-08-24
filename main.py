@@ -27,21 +27,25 @@ async def filter(file="./un_used_proxy.list"):
 
 
 async def main():
+    """
+
+    :return:
+    """
     p1 = ParseNodeSnakem982()
     lis1 = await p1.process()
     p2 = ParseNodesharkDoor()
     lis2 = await p2.process()
     test_speed_instance = TestSpeed()
 
-    # Combine the lists of nodes
+    # 合并不同订阅上的节点
     all_nodes = lis1 + lis2
 
+    # 获取文件中配置的不可用节点列表
     un_used_tag_map = await filter()
 
-    # Create a list of coroutines (tasks) to be run concurrently.
-    # We only create tasks for nodes that are not in the 'un_used' list.
     tasks = []
     nodes_to_test = []
+    # 设置个测试起始端口 每个依次+1,避免端口冲突
     start_listen_port = 10900
     for info in all_nodes:
         tag = info["tag"]
@@ -61,7 +65,6 @@ async def main():
     repeat_map_recode = {}
     for i, result in enumerate(results):
         if isinstance(result, Exception):
-            # Handle potential exceptions from the tasks (e.g., timeouts)
             print(f"节点测试失败: {nodes_to_test[i]['tag']} - {result}")
             continue
         if result:
@@ -71,6 +74,7 @@ async def main():
             scheme = info["type"]
 
             if status:
+                # 过滤调重复的
                 if repeat_map_recode.get(tag) is None:
                     speed_map[tag] = [speed, scheme, info]
                     outbounds.append(info)
@@ -81,6 +85,7 @@ async def main():
         speed = [v["speed"] for k, v in speed_res.items()][0]
         print(f"协议: {scheme}\t节点: {tag}\t速度: {speed} ms")
 
+    # 保存结果
     await p1.save_result_json(tags, outbounds, tags)
 
 
