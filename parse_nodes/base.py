@@ -234,7 +234,8 @@ class Base(ABC):
 
                 cmd = f"{TELEGRAM_TOOLS_FILE} -m '{url}' "
                 print(cmd)
-                os.system(cmd)
+                async for msg, proc in self.cmd.run_cmd_async(cmd):
+                    print("msg2", msg)
 
 
     @abstractmethod
