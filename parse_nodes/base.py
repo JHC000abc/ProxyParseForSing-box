@@ -5,7 +5,7 @@ import traceback
 from abc import ABC, abstractmethod
 from datetime import datetime
 import aiohttp
-from settings import PROXIES_ASYNC, OUT_LISTEN_PORT
+from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE
 from test_speed import TestSpeed
 from parse_schem import *
 from functools import wraps
@@ -242,7 +242,7 @@ class Base(ABC):
         :param file:
         :return:
         """
-        cmd = f"./plugins/upload -i {file}"
+        cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
         os.system(cmd)
 
     @abstractmethod

@@ -12,6 +12,9 @@ from parse_nodes.base import Base
 
 
 class GetLatestCDN(Base):
+    """
+
+    """
     def __init__(self):
         super().__init__()
 

@@ -3,7 +3,7 @@ import re
 import os
 import asyncio
 import hashlib
-from settings import TEST_LISTEN_PORT
+from settings import TEST_LISTEN_PORT, SING_BOX_PATH
 
 try:
     from settings import SPEED_LIMIT
@@ -70,7 +70,6 @@ class TestSpeed:
         :return:
         """
         config = await self.get_test_conf(node_conf, listen_port)
-        SING_BOX_PATH = "./sing-box"
         tmp_file_path = f"tmp_{await self.make_md5(node_conf['tag'])}"
         try:
             with open(tmp_file_path, "w", encoding="utf-8") as f:
