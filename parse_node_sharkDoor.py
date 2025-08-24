@@ -12,18 +12,17 @@ from datetime import datetime
 import re
 import json
 from lxml import etree
-from base_build_json import BuildJson
+from base import Base
 
 
-class ParseNodesharkDoor(BuildJson):
+class ParseNodesharkDoor(Base):
     """
 
     """
 
-    def __init__(self, port=10809):
-        super().__init__(port)
-        self.base_url = f"https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/"
-        self.search_url = f"{self.base_url}{datetime.now().strftime('%Y-%m')}"
+    def __init__(self):
+        super().__init__()
+        self.search_url = f"https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/{datetime.now().strftime('%Y-%m')}"
 
     def parse_search(self, html):
         """
@@ -49,15 +48,30 @@ class ParseNodesharkDoor(BuildJson):
         for li in lis:
             yield li
 
-    def process(self):
+    async def process(self):
         """
 
         :return:
         """
-        search_response = self.get_html(url=self.search_url)
-        search_result = self.parse_search(search_response.text)
+        search_html = await self.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
+        search_result = self.parse_search(search_html)
         detail_url = f'{self.search_url}/{search_result["name"]}'
-        detail_response = self.get_html(url=detail_url)
-        for node in self.parse_detail(detail_response.text):
-            proxy_url = parse.urlparse(parse.unquote(node))
-            self.check_scheme(proxy_url)
+        detail_html = await self.fetch_url_get(url=detail_url, headers=self.headers, proxy=True)
+
+        for node in self.parse_detail(detail_html):
+            node = parse.urlparse(parse.unquote(node.strip()))
+            node_parse_result = await self.build(node)
+            self.success_list.append(node_parse_result)
+        return self.success_list
+
+            # if node_parse_result:
+            #     status, res = await self.test_speed.test_speed(node_parse_result)
+            #     if status:
+            #         print("测速成功")
+            #         self.success_map.update(res)
+            #     else:
+            #         print("测速失败")
+        # print(f"{self.__class__.__name__} {detail_url} 中解析到可用节点:{len(self.success_map)}")
+        # return self.success_map
+
+

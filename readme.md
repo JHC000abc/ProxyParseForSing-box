@@ -98,7 +98,7 @@ uv run main.py
 ## 5. 获取新上传json 文件对应的CDN链接
 
 ```bash
-    uv run get_latest_CDN.py
+    uv run gen_latest_CDN.py
 ```
 
 

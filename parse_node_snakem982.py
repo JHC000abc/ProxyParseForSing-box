@@ -7,29 +7,48 @@
 @desc: 
 
 """
-from urllib import parse
-from base_build_json import BuildJson
+from base import Base
 
 
-class ParseNodeSnakem982(BuildJson):
+class ParseNodeSnakem982(Base):
     """
 
     """
 
-    def __init__(self, port=10809):
-        super().__init__(port)
-        self.url_list = [
-            "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
-            "https://a.nodeshare.xyz/uploads/2025/7/20250720.txt"
+    def __init__(self):
+        super().__init__()
+        self.infos = [
+            {
+                "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
+                "proxy": True
+            },
+            {
+
+                "url": "https://a.nodeshare.xyz/uploads/2025/7/20250720.txt",
+                "proxy": False
+            }
         ]
 
-    def process(self):
+    async def process(self):
         """
 
         :return:
         """
-
-        for url in self.url_list:
-            for node in self.base64_decode(self.get_html(url).text):
-                proxy_url = parse.urlparse(parse.unquote(node))
-                self.check_scheme(proxy_url)
+        for info in self.infos:
+            url = info["url"]
+            proxy = info["proxy"]
+            res = await self.fetch_url_get(url, headers=self.headers, proxy=proxy)
+            async for node in self.parse_node_base64(res):
+                node_parse_result = await self.build(node)
+                if node_parse_result:
+                    self.success_list.append(node_parse_result)
+        return self.success_list
+        #             status, res = await self.test_speed.test_speed(node_parse_result)
+        #             if status:
+        #                 print("测速成功")
+        #                 self.success_map.update(res)
+        #             else:
+        #                 print("测速失败")
+        #     print(f"{self.__class__.__name__} {url} 中解析到可用节点:{len(self.success_map)}")
+        #
+        # return self.success_map
