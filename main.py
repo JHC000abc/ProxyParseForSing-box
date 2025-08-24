@@ -10,7 +10,7 @@
 import asyncio
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
-from test_speed import TestSpeed
+from utils.utils_test_speed import TestSpeed
 
 
 async def filter(file="./un_used_proxy.list"):

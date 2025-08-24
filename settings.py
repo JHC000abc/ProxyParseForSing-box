@@ -6,7 +6,7 @@ PROXIES_ASYNC = f"http://{PROXY_HOST}:{PROXY_PORT}"
 PROXIES_ASYNC = None
 
 
-SING_BOX_PATH = "./sing-box"
+SING_BOX_PATH = "plugins/sing-box"
 UPLOAD_TOOLS_FILE = "plugins/upload"
 
 # 最后输出的订阅节点默认的测试端口

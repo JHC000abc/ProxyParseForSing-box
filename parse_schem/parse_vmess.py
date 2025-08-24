@@ -15,9 +15,9 @@ class ParseVmess(BaseParse):
         """
         print(parse_url)
         if not parse_url.path:
-            netloc = self.parse_base64(parse_url.netloc if parse_url.netloc.endswith("=") else parse_url.netloc + "=")
+            netloc = await self.encrypt.base64_decode(parse_url.netloc if parse_url.netloc.endswith("=") else parse_url.netloc + "=")
         else:
-            netloc = self.parse_base64(parse_url.netloc + parse_url.path if parse_url.netloc.endswith(
+            netloc = await self.encrypt.base64_decode(parse_url.netloc + parse_url.path if parse_url.netloc.endswith(
                 "=") else parse_url.netloc + parse_url.path + "=")
         if not netloc.endswith('}'):
             netloc += '"}'

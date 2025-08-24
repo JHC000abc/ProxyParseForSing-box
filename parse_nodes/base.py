@@ -1,36 +1,14 @@
 import os
-import time
-import random
-import traceback
+import re
 from abc import ABC, abstractmethod
 from datetime import datetime
 import aiohttp
 from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE
-from test_speed import TestSpeed
+from utils.utils_test_speed import TestSpeed
 from parse_schem import *
-from functools import wraps
-import asyncio
-
-
-def retry(func):
-    @wraps(func)
-    async def wrapper(*args, **kwargs):
-        flag = False
-        retry_times = 5
-        while not flag and retry_times > 0:
-            try:
-                res = await func(*args, **kwargs)
-                flag = True
-                return res
-            except Exception as e:
-                print(traceback.format_exc())
-            finally:
-                retry_times -= 1
-                await asyncio.sleep(random.randint(1, 3))
-
-        raise Exception(f"函数 '{func.__name__}' 在 5 次尝试后仍失败。")
-
-    return wrapper
+from utils.utils_retry import retry
+from utils.utils_encrypt import AsyncEncrypt
+from utils.utils_cmd import AsyncCMD
 
 
 class Base(ABC):
@@ -54,6 +32,8 @@ class Base(ABC):
             "vmess": ParseVmess().build_vmess,
             "ss": ParseShadowSocks().build_shadowsocks,
         }
+        self.encrypt = AsyncEncrypt()
+        self.cmd = AsyncCMD()
         self.port = OUT_LISTEN_PORT
         self.test_speed = TestSpeed()
         self.success_map = {}
@@ -188,7 +168,8 @@ class Base(ABC):
         :param data:
         :return:
         """
-        for node in b64decode(data).decode("utf-8").split("\n"):
+        base64_decode_result = await self.encrypt.base64_decode(data)
+        for node in base64_decode_result.split("\n"):
             if node.strip():
                 yield parse.urlparse(parse.unquote(node.strip()))
 
@@ -243,6 +224,13 @@ class Base(ABC):
         :return:
         """
         cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
+
+        async for msg, proc in self.cmd.run_cmd_async(cmd):
+            match = re.match("https://(.*?).json", msg)
+            if match:
+                url = f"https://{match.group(1)}.json"
+                print(f" [CDN] :{url}")
+
         os.system(cmd)
 
     @abstractmethod

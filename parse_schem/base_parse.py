@@ -1,16 +1,10 @@
-from base64 import b64decode
 from urllib import parse
-
+from utils.utils_encrypt import AsyncEncrypt
 
 class BaseParse:
     """
 
     """
+    def __init__(self):
+        self.encrypt = AsyncEncrypt()
 
-    def parse_base64(self, data):
-        """
-
-        :param data:
-        :return:
-        """
-        return b64decode(data).decode("utf-8").strip()
