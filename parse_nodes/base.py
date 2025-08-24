@@ -223,7 +223,7 @@ class Base(ABC):
         :param file:
         :return:
         """
-        cmd = f"{os.path.abspath(UPLOAD_TOOLS_FILE)} -i {file}"
+        cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
         print(cmd)
         async for msg, proc in self.cmd.run_cmd_async(cmd):
             print("msg",msg)
@@ -232,7 +232,7 @@ class Base(ABC):
                 url = f"https://{match.group(1)}.json"
                 print(f" [CDN] :{url}")
 
-                cmd = f"{os.path.abspath(TELEGRAM_TOOLS_FILE)} -m '{url}' "
+                cmd = f"{TELEGRAM_TOOLS_FILE} -m '{url}' "
                 print(cmd)
                 os.system(cmd)
 
