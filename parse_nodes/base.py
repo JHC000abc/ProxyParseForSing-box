@@ -202,10 +202,12 @@ class Base(ABC):
 
         folder = "./configs"
         os.makedirs(folder, exist_ok=True)
-        file = os.path.join(folder, file_name)
+        file = os.path.abspath(os.path.join(folder, file_name))
         with open(file, "w", encoding="utf-8") as f:
             f.write(json.dumps(config_result, indent=4, ensure_ascii=False))
-        print(f"成功将 {len(outbounds)} 个节点保存到:{os.path.abspath(file)}")
+
+        print(f"成功将 {len(outbounds)} 个节点保存到:{file}")
+        await self.get_cdn_url_by_bos(file)
 
     async def get_cdn_url(self, user_name="JHC000abc", warehouse="ProxyParseForSing-box"):
         """
@@ -225,6 +227,15 @@ class Base(ABC):
         contents_url = json.loads(response)["files"][0]["contents_url"]
         response = await self.fetch_url_get(url=contents_url, headers=headers)
         return json.loads(response)["download_url"]
+
+    async def get_cdn_url_by_bos(self, file):
+        """
+
+        :param file:
+        :return:
+        """
+        cmd = f"./plugins/upload -i {file}"
+        os.system(cmd)
 
     @abstractmethod
     async def process(self):
