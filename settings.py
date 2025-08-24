@@ -8,6 +8,7 @@ PROXIES_ASYNC = None
 
 SING_BOX_PATH = "plugins/sing-box"
 UPLOAD_TOOLS_FILE = "plugins/upload"
+TELEGRAM_TOOLS_FILE = "plugins/telegram"
 
 # 最后输出的订阅节点默认的测试端口
 OUT_LISTEN_PORT = 1080

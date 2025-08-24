@@ -3,7 +3,7 @@ import re
 from abc import ABC, abstractmethod
 from datetime import datetime
 import aiohttp
-from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE
+from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE
 from utils.utils_test_speed import TestSpeed
 from parse_schem import *
 from utils.utils_retry import retry
@@ -223,15 +223,16 @@ class Base(ABC):
         :param file:
         :return:
         """
-        cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
-
+        cmd = f"{os.path.abspath(UPLOAD_TOOLS_FILE)} -i {file}"
         async for msg, proc in self.cmd.run_cmd_async(cmd):
-            match = re.match("https://(.*?).json", msg)
+            match = re.match("https://(.*?).json", msg, re.DOTALL)
             if match:
                 url = f"https://{match.group(1)}.json"
                 print(f" [CDN] :{url}")
 
-        os.system(cmd)
+                cmd = f"{os.path.abspath(TELEGRAM_TOOLS_FILE)} -m {url}"
+                os.system(cmd)
+
 
     @abstractmethod
     async def process(self):
