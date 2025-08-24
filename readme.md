@@ -66,8 +66,8 @@ Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置�
 
 ```json lines
     proxies = {
-    "http": "http://127.0.0.1:10808",
-    "https": "http://127.0.0.1:10808",
+  "http": "http://127.0.0.1:10808",
+  "https": "http://127.0.0.1:10808",
 }
 ```
 
@@ -136,7 +136,14 @@ uv run main.py
 5. 先统一获取订阅内容，再统一异步多线程测速
 6. 增加默认节点上传位置为BOS，避免CDN有时无法访问问题(uv run main.py 最后输出的url就是，可以替代CDN链接使用)
 7. ParseNodesharkDoor 默认处理今天所有的节点信息
-8. 
+
+2025.08.24
+
+1. 增加Telegram
+   机器人自动向用户推送节点信息[自行通过BotFather 创建机器人，获取Token ,以及id](https://longnight.github.io/2018/12/12/Telegram-Bot-notifications)
+2. 增加GitHub Actions 每天 8-19 点 每小时推送一次最新抓取的节点信息到指定id下
+3. 解决 GitHub Actions 上无法运行 plugins/telegram plugins/upload 问题 (原因：本机和GitHub
+   Actions的Ubuntu版本不一致，解决：在Docker里打包个版本一致的可执行文件)
 
 
 
