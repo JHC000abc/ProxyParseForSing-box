@@ -3,7 +3,7 @@ PROXY_PORT = 10808
 
 # aiohttp 使用的代理(主要用于请求github等地址使用 程序中通过配置 self.infos 中的 proxy 确定是否启用)
 PROXIES_ASYNC = f"http://{PROXY_HOST}:{PROXY_PORT}"
-# PROXIES_ASYNC = None
+PROXIES_ASYNC = None
 
 
 SING_BOX_PATH = "plugins/sing-box"
