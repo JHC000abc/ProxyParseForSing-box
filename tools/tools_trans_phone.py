@@ -136,10 +136,8 @@ class AsyncToolsTransPhone:
         :param file:
         :return:
         """
-        print(f"输入file:{file}")
         data = await self.read_origin(file)
         tags, outbounds, node_nums = await self.parse_data(data)
-        print("node_nums", node_nums)
         if node_nums <= 0:
             return
         main_json = await self.build_main_json(tags, outbounds)
