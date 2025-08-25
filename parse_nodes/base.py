@@ -1,8 +1,6 @@
-import asyncio
 import os
 import re
 from abc import ABC, abstractmethod
-from datetime import datetime
 import aiohttp
 from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE
 from utils.utils_test_speed import TestSpeed
@@ -10,6 +8,7 @@ from parse_schem import *
 from utils.utils_retry import retry
 from utils.utils_encrypt import AsyncEncrypt
 from utils.utils_cmd import AsyncCMD
+from utils.utils_times import UtilsTimes
 
 
 class Base(ABC):
@@ -175,7 +174,7 @@ class Base(ABC):
                 yield parse.urlparse(parse.unquote(node.strip()))
 
     async def save_result_json(self, tags, outbounds, tags_speed,
-                               file_name=f"config_{datetime.now().strftime('%Y%m%d')}.json"):
+                               file_name=f"config_{UtilsTimes.get_format_utc_8('%Y%m%d')}.json"):
         """
 
         :param tags:
@@ -241,17 +240,9 @@ class Base(ABC):
                     print("msg3", msg)
 
 
-    # @abstractmethod
+    @abstractmethod
     async def process(self):
         """
 
         :return:
         """
-
-async def main():
-    file=r"/home/jhc/Projects/Python/proxy_sing-box/configs/config_20250825.json"
-    await Base().get_cdn_url_by_bos(file,30)
-
-if __name__ == '__main__':
-
-    asyncio.run(main())

@@ -7,12 +7,12 @@
 @desc:
 
 """
-from urllib import parse
-from datetime import datetime
 import re
 import json
 from lxml import etree
 from parse_nodes.base import Base
+from urllib import parse
+from utils.utils_times import UtilsTimes
 
 
 class ParseNodesharkDoor(Base):
@@ -22,7 +22,7 @@ class ParseNodesharkDoor(Base):
 
     def __init__(self):
         super().__init__()
-        self.search_url = f"https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/{datetime.now().strftime('%Y-%m')}"
+        self.search_url = f"https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/{UtilsTimes.get_format_utc_8('%Y-%m')}"
 
     async def parse_search(self, html):
         """
@@ -58,7 +58,7 @@ class ParseNodesharkDoor(Base):
         except:
             return self.success_list
         async for search_result in self.parse_search(search_html):
-            day = f"{datetime.now().strftime('%d')}日"
+            day = f"{UtilsTimes.get_format_utc_8('%d')}日"
             name = search_result["name"]
             if not name.startswith(day):
                 continue
