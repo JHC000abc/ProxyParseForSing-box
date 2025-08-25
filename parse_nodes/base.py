@@ -235,7 +235,7 @@ class Base(ABC):
                 url = f"https://{match.group(1)}.json"
                 print(f" [CDN] :{url}")
 
-                cmd = f"{TELEGRAM_TOOLS_FILE} -m '[本次成功解析节点数量:{node_nums}]{url}' "
+                cmd = f"{TELEGRAM_TOOLS_FILE} -m '<本次成功解析节点数量:{node_nums}>{url}' "
                 print(cmd)
                 async for msg, proc in self.cmd.run_cmd_async(cmd):
                     print("msg2", msg)
