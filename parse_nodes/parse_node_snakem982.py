@@ -37,9 +37,12 @@ class ParseNodeSnakem982(Base):
         for info in self.infos:
             url = info["url"]
             proxy = info["proxy"]
-            res = await self.fetch_url_get(url, headers=self.headers, proxy=proxy)
-            async for node in self.parse_node_base64(res):
-                node_parse_result = await self.build(node)
-                if node_parse_result:
-                    self.success_list.append(node_parse_result)
+            try:
+                res = await self.fetch_url_get(url, headers=self.headers, proxy=proxy)
+                async for node in self.parse_node_base64(res):
+                    node_parse_result = await self.build(node)
+                    if node_parse_result:
+                        self.success_list.append(node_parse_result)
+            except:
+                pass
         return self.success_list

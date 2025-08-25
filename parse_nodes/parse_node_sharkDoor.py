@@ -53,17 +53,23 @@ class ParseNodesharkDoor(Base):
 
         :return:
         """
-        search_html = await self.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
+        try:
+            search_html = await self.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
+        except:
+            return self.success_list
         async for search_result in self.parse_search(search_html):
             day = f"{datetime.now().strftime('%d')}日"
             name = search_result["name"]
             if not name.startswith(day):
                 continue
             detail_url = f'{self.search_url}/{name}'
-            detail_html = await self.fetch_url_get(url=detail_url, headers=self.headers, proxy=True)
+            try:
+                detail_html = await self.fetch_url_get(url=detail_url, headers=self.headers, proxy=True)
 
-            async for node in self.parse_detail(detail_html):
-                node = parse.urlparse(parse.unquote(node.strip()))
-                node_parse_result = await self.build(node)
-                self.success_list.append(node_parse_result)
+                async for node in self.parse_detail(detail_html):
+                    node = parse.urlparse(parse.unquote(node.strip()))
+                    node_parse_result = await self.build(node)
+                    self.success_list.append(node_parse_result)
+            except:
+                pass
         return self.success_list
