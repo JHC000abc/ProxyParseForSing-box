@@ -194,9 +194,9 @@ class Base(ABC):
         file = os.path.abspath(os.path.join(folder, file_name))
         with open(file, "w", encoding="utf-8") as f:
             f.write(json.dumps(config_result, indent=4, ensure_ascii=False))
-
-        print(f"成功将 {len(outbounds)} 个节点保存到:{file}")
-        await self.get_cdn_url_by_bos(file)
+        node_nums = len(outbounds)
+        print(f"成功将 {node_nums} 个节点保存到:{file}")
+        await self.get_cdn_url_by_bos(file, node_nums)
 
     async def get_cdn_url(self, user_name="JHC000abc", warehouse="ProxyParseForSing-box"):
         """
@@ -217,26 +217,28 @@ class Base(ABC):
         response = await self.fetch_url_get(url=contents_url, headers=headers)
         return json.loads(response)["download_url"]
 
-    async def get_cdn_url_by_bos(self, file):
+    async def get_cdn_url_by_bos(self, file, node_nums):
         """
 
         :param file:
+        :param node_nums:
         :return:
         """
+        if node_nums <= 0:
+            return
         cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
         print(cmd)
         async for msg, proc in self.cmd.run_cmd_async(cmd):
-            print("msg",msg)
+            print("msg", msg)
             match = re.match("https://(.*?).json", msg)
             if match:
                 url = f"https://{match.group(1)}.json"
                 print(f" [CDN] :{url}")
 
-                cmd = f"{TELEGRAM_TOOLS_FILE} -m '{url}' "
+                cmd = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析节点数量:{node_nums}\n{url}' "
                 print(cmd)
                 async for msg, proc in self.cmd.run_cmd_async(cmd):
                     print("msg2", msg)
-
 
     @abstractmethod
     async def process(self):

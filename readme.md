@@ -99,6 +99,12 @@ Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置�
 uv run main.py
 ```
 
+## 4. 项目整体打包成可执行文件
+```bash
+     pyarmor gen -r --pack FC main.py && cp dist/main ./ && rm -rf dist/ .pyarmor/ main.spec
+```
+
+
 ## 4. git push 提交 新生成的json文件 到github仓库
 
 ## 5. 获取新上传json 文件对应的CDN链接
@@ -141,9 +147,10 @@ uv run main.py
 
 1. 增加Telegram
    机器人自动向用户推送节点信息[自行通过BotFather 创建机器人，获取Token ,以及id](https://longnight.github.io/2018/12/12/Telegram-Bot-notifications)
-2. 增加GitHub Actions 每天 8-19 点 每小时推送一次最新抓取的节点信息到指定id下
+2. 增加 GitHub Actions 每天 8-19 点 每小时推送一次最新抓取的节点信息到指定id下
 3. 解决 GitHub Actions 上无法运行 plugins/telegram plugins/upload 问题 (原因：本机和GitHub
    Actions的Ubuntu版本不一致，解决：在Docker里打包个版本一致的可执行文件)
+4. 增加项目打包,简化 GitHub Actions 构建过程 直接执行可知性文件即可 
 
 
 
