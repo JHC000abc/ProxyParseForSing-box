@@ -1,14 +1,15 @@
 import os
 import re
-from abc import ABC, abstractmethod
 import aiohttp
-from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT
+from abc import ABC, abstractmethod
 from utils.utils_test_speed import TestSpeed
 from parse_schem import *
 from utils.utils_retry import retry
 from utils.utils_encrypt import AsyncEncrypt
 from utils.utils_cmd import AsyncCMD
 from utils.utils_times import UtilsTimes
+from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT, \
+    TRANS_PHONE_TOOLS_FILE
 
 
 class Base(ABC):
@@ -234,10 +235,13 @@ class Base(ABC):
                 url = f"https://{match.group(1)}.json"
                 cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' "
                 cmd3 = f"{TELEGRAM_TOOLS_FILE} -m '{url}'"
+                cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
                 async for msg, proc in self.cmd.run_cmd_async(cmd2):
                     print("msg2", msg)
                 async for msg, proc in self.cmd.run_cmd_async(cmd3):
                     print("msg3", msg)
+                async for msg, proc in self.cmd.run_cmd_async(cmd4):
+                    print("msg4", msg)
 
     @abstractmethod
     async def process(self):
