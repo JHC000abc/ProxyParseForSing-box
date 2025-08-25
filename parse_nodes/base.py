@@ -233,7 +233,7 @@ class Base(ABC):
             match = re.match("https://(.*?).json", msg)
             if match:
                 url = f"https://{match.group(1)}.json"
-                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '<本次成功解析节点数量:{node_nums}>' "
+                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析节点数量:{node_nums}' "
                 cmd3 = f"{TELEGRAM_TOOLS_FILE} -m '{url}'"
                 async for msg, proc in self.cmd.run_cmd_async(cmd2):
                     print("msg2", msg)
