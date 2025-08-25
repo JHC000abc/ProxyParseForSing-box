@@ -66,8 +66,8 @@ Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置�
 
 ```json lines
 proxies = {
-  "http": "http://127.0.0.1:10808",
-  "https": "http://127.0.0.1:10808",
+    "http": "http://127.0.0.1:10808",
+    "https": "http://127.0.0.1:10808",
 }
 ```
 
@@ -112,6 +112,7 @@ uv run main.py
 ```
 
 ## 6. 打包转手机订阅链接插件
+
 ```bash
     pyarmor gen -r --pack FC tools/tools_trans_phone.py && mv dist/tools_trans_phone plugins/trans_phone && rm -rf dist/ .pyarmor/ trans_phone.spec
 ```
@@ -161,7 +162,8 @@ uv run main.py
 2. 增加 GitHub Actions 每天 8-19 点 每小时推送一次最新抓取的节点信息到指定id下
 3. 解决 GitHub Actions 上无法运行 plugins/telegram plugins/upload 问题 (原因：本机和GitHub
    Actions的Ubuntu版本不一致，解决：在Docker里打包个版本一致的可执行文件)
-4. 增加项目打包,简化 GitHub Actions 构建过程 直接执行可知性文件即可 
+4. 增加项目打包,简化 GitHub Actions 构建过程 直接执行可知性文件即可
+5. 增加节点转手机 sing-box 专用订阅工具 (手机端无法使用规则，只能直连)
 
 
 
