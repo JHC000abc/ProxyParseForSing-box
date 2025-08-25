@@ -108,7 +108,7 @@ uv run main.py
 ## 5. 打包telegram 工具(自行添加代码中的 token 和 id )
 
 ```bash
-  pyarmor gen -r --pack FC utils/utils_telegram.py && cp dist/utils_telegram plugins/telegram && rm -rf dist/ .pyarmor/ utils_telegram.spec
+  pyarmor gen -r --pack FC utils/utils_telegram.py && mv dist/utils_telegram plugins/telegram && rm -rf dist/ .pyarmor/ utils_telegram.spec
 ```
 
 ## 4. git push 提交 新生成的json文件 到github仓库
