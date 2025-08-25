@@ -2,7 +2,7 @@ import os
 import re
 from abc import ABC, abstractmethod
 import aiohttp
-from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE
+from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT
 from utils.utils_test_speed import TestSpeed
 from parse_schem import *
 from utils.utils_retry import retry
@@ -232,13 +232,12 @@ class Base(ABC):
             match = re.match("https://(.*?).json", msg)
             if match:
                 url = f"https://{match.group(1)}.json"
-                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析节点数量:{node_nums}' "
+                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于 {SPEED_LIMIT} 的节点数量: {node_nums} ' "
                 cmd3 = f"{TELEGRAM_TOOLS_FILE} -m '{url}'"
                 async for msg, proc in self.cmd.run_cmd_async(cmd2):
                     print("msg2", msg)
                 async for msg, proc in self.cmd.run_cmd_async(cmd3):
                     print("msg3", msg)
-
 
     @abstractmethod
     async def process(self):
