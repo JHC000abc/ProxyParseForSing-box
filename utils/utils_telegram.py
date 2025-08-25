@@ -17,6 +17,8 @@ class AsyncTelegram:
         """
 
         :param message:
+        :param chat_id:
+        :param token:
         :return:
         """
         cmd = f"curl -k --data chat_id='{chat_id}' --data 'text=[{datetime.now().strftime('%Y/%m/%d %H/%M/%S')}]({message})' 'https://api.telegram.org/bot{token}/sendMessage' "

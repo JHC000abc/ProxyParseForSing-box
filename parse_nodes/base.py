@@ -1,3 +1,4 @@
+import asyncio
 import os
 import re
 from abc import ABC, abstractmethod
@@ -227,22 +228,26 @@ class Base(ABC):
         if node_nums <= 0:
             return
         cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
-        print(cmd)
         async for msg, proc in self.cmd.run_cmd_async(cmd):
             print("msg", msg)
             match = re.match("https://(.*?).json", msg)
             if match:
                 url = f"https://{match.group(1)}.json"
-                print(f" [CDN] :{url}")
-
-                cmd = f"{TELEGRAM_TOOLS_FILE} -m '<本次成功解析节点数量:{node_nums}>' '{url}' "
-                print(cmd)
+                cmd = f"{TELEGRAM_TOOLS_FILE} -m '{url}' '<本次成功解析节点数量:{node_nums}>' "
                 async for msg, proc in self.cmd.run_cmd_async(cmd):
                     print("msg2", msg)
 
-    @abstractmethod
+    # @abstractmethod
     async def process(self):
         """
 
         :return:
         """
+
+async def main():
+    file=r"/home/jhc/Projects/Python/proxy_sing-box/configs/config_20250825.json"
+    await Base().get_cdn_url_by_bos(file,30)
+
+if __name__ == '__main__':
+
+    asyncio.run(main())
