@@ -54,6 +54,12 @@ jhc0000abc/sing-box-v1.8.8-rule:latest "CDN链接" "1080" "下载CDN链接的代
   docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh" jhc0000abc/sing-box-v1.8.8-rule:latest "CDN链接" "1080" 
 ```
 
+## V2 版本的 不需要启动参数 使用 limestart 里的便签存储 url (只要 limestart token 不过期 重启后获取的就是 Github Action 每两小时生成的最新链接，稳定不稳定再说吧，自己没服务器，白嫖一下别人的)
+
+```bash
+  docker run -itd --name=sing-box -p 10808:1080 --restart=always --entrypoint="/etc/sing-box/restart.sh" jhc0000abc/sing-box-1.8.8-v2:latest
+```
+
 Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置到环境变量中，启动前关闭所有chrome浏览器窗口）：
 
 ```bash
@@ -66,8 +72,8 @@ Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置�
 
 ```json lines
 proxies = {
-    "http": "http://127.0.0.1:10808",
-    "https": "http://127.0.0.1:10808",
+  "http": "http://127.0.0.1:10808",
+  "https": "http://127.0.0.1:10808",
 }
 ```
 
@@ -118,31 +124,38 @@ uv run main.py
 ```
 
 ## 7. 打包 limestart 存储工具
+
 ```bash
     pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/limestart && rm -rf dist/ .pyarmor/ tools_limestart.spec
 ```
 
 ## 8. 打包 limestart 存储工具 获取最新url
+
 ```bash
     pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/get_latest_url && rm -rf dist/ .pyarmor/ tools_limestart.spec
 ```
 
-## 4. git push 提交 新生成的json文件 到github仓库
-
-## 5. 获取新上传json 文件对应的CDN链接
+## 8. 打包 CDN 获取 工具 获取最新 提交的文件对应的 CDN 链接
 
 ```bash
-    uv run gen_latest_CDN.py
+    pyarmor gen -r --pack FC tools/tools_gen_latest_CDN.py && mv dist/tools_gen_latest_CDN plugins/gen_latest_CDN && rm -rf dist/ .pyarmor/ tools_gen_latest_CDN.spec
+```
+
+## 9. git push 提交 新生成的json文件 到github仓库
+
+## 10. 获取新上传json 文件对应的CDN链接
+
+```bash
+    ./plugins/gen_latest_CDN
 ```
 
 # 错误提示
-1. 找不到项目中的文件夹：在项目根路径下执行 
+
+1. 找不到项目中的文件夹：在项目根路径下执行
+
 ```bash
   export PYTHONPATH=$PYTHONPATH:$PWD 
 ```
-
-
-
 
 # 目前支持解析的协议：
 
@@ -184,5 +197,11 @@ uv run main.py
 4. 增加项目打包,简化 GitHub Actions 构建过程 直接执行可知性文件即可
 5. 增加节点转手机 sing-box 专用订阅工具 (手机端无法使用规则，只能直连)
 
+2025.08.25
+
+1. 增加 limestart 存储工具，获取最新url
+2. 增加 V2.0 版本镜像 jhc0000abc/sing-box-1.8.8-v2:latest 使用 limestart 存储工具
+3. 优化项目结构,把网络请求部分单独提出来到 utils/ 下
+4. 打包 gen_latest_CDN 为可执行工具
 
 

@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 """
 @author: JHC000abc@gmail.com
-@file: gen_latest_CDN.py
+@file: tools_gen_latest_CDN.py
 @time: 2025/8/17 16:11 
 @desc: 
 
