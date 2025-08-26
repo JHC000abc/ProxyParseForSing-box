@@ -54,7 +54,7 @@ class ParseNodesharkDoor(Base):
         :return:
         """
         try:
-            search_html = await self.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
+            search_html = await self.net.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
         except:
             return self.success_list
         async for search_result in self.parse_search(search_html):
@@ -64,7 +64,7 @@ class ParseNodesharkDoor(Base):
                 continue
             detail_url = f'{self.search_url}/{name}'
             try:
-                detail_html = await self.fetch_url_get(url=detail_url, headers=self.headers, proxy=True)
+                detail_html = await self.net.fetch_url_get(url=detail_url, headers=self.headers, proxy=True)
 
                 async for node in self.parse_detail(detail_html):
                     node = parse.urlparse(parse.unquote(node.strip()))

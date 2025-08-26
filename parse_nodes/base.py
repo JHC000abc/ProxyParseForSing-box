@@ -1,15 +1,14 @@
 import os
 import re
-import aiohttp
 from abc import ABC, abstractmethod
 from utils.utils_test_speed import TestSpeed
 from parse_schem import *
-from utils.utils_retry import retry
 from utils.utils_encrypt import AsyncEncrypt
 from utils.utils_cmd import AsyncCMD
 from utils.utils_times import UtilsTimes
-from settings import PROXIES_ASYNC, OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT, \
-    TRANS_PHONE_TOOLS_FILE
+from settings import OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT, \
+    TRANS_PHONE_TOOLS_FILE, LIMESTART_TOOLS_FILE
+from utils.utils_network import UtilsNetwork
 
 
 class Base(ABC):
@@ -18,6 +17,7 @@ class Base(ABC):
     """
 
     def __init__(self):
+        self.net = UtilsNetwork()
         self.headers = {
             "DNT": "1",
             "Upgrade-Insecure-Requests": "1",
@@ -142,27 +142,6 @@ class Base(ABC):
             }
         ]
 
-    @retry
-    async def fetch_url_get(self, url, headers=None, cookies=None, proxy=None):
-        """
-
-        :param url:
-        :param headers:
-        :param cookies:
-        :param proxy:
-        :return:
-        """
-        if proxy:
-            proxy = PROXIES_ASYNC
-        else:
-            proxy = None
-        async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)
-                                         ) as session:
-            async with session.get(url, proxy=proxy, headers=headers, cookies=cookies) as response:
-                response.raise_for_status()
-                html_content = await response.text()
-                return html_content
-
     async def parse_node_base64(self, data):
         """
 
@@ -212,10 +191,10 @@ class Base(ABC):
         }
 
         url = f"https://api.github.com/repos/{user_name}/{warehouse}/commits/master"
-        response = await self.fetch_url_get(url, headers=headers)
+        response = await self.net.fetch_url_get(url, headers=headers)
 
         contents_url = json.loads(response)["files"][0]["contents_url"]
-        response = await self.fetch_url_get(url=contents_url, headers=headers)
+        response = await self.net.fetch_url_get(url=contents_url, headers=headers)
         return json.loads(response)["download_url"]
 
     async def get_cdn_url_by_bos(self, file, node_nums):
@@ -236,15 +215,18 @@ class Base(ABC):
                 cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' "
                 cmd3 = f"{TELEGRAM_TOOLS_FILE} -m '{url}'"
                 cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
+                cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
                 async for msg, proc in self.cmd.run_cmd_async(cmd2):
                     print("msg2", msg)
                 async for msg, proc in self.cmd.run_cmd_async(cmd3):
                     print("msg3", msg)
                 async for msg, proc in self.cmd.run_cmd_async(cmd4):
                     print("msg4", msg)
+                async for msg, proc in self.cmd.run_cmd_async(cmd5):
+                    print("cmd5", msg)
 
     @abstractmethod
-    async def process(self):
+    async def process(self, *args, **kwargs):
         """
 
         :return:

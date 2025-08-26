@@ -114,7 +114,17 @@ uv run main.py
 ## 6. 打包转手机订阅链接插件
 
 ```bash
-    pyarmor gen -r --pack FC tools/tools_trans_phone.py && mv dist/tools_trans_phone plugins/trans_phone && rm -rf dist/ .pyarmor/ trans_phone.spec
+    pyarmor gen -r --pack FC tools/tools_trans_phone.py && mv dist/tools_trans_phone plugins/trans_phone && rm -rf dist/ .pyarmor/ tools_trans_phone.spec
+```
+
+## 7. 打包 limestart 存储工具
+```bash
+    pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/limestart && rm -rf dist/ .pyarmor/ tools_limestart.spec
+```
+
+## 8. 打包 limestart 存储工具 获取最新url
+```bash
+    pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/get_latest_url && rm -rf dist/ .pyarmor/ tools_limestart.spec
 ```
 
 ## 4. git push 提交 新生成的json文件 到github仓库
@@ -124,6 +134,15 @@ uv run main.py
 ```bash
     uv run gen_latest_CDN.py
 ```
+
+# 错误提示
+1. 找不到项目中的文件夹：在项目根路径下执行 
+```bash
+  export PYTHONPATH=$PYTHONPATH:$PWD 
+```
+
+
+
 
 # 目前支持解析的协议：
 
