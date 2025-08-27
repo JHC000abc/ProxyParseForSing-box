@@ -18,7 +18,10 @@ class ParseHysteria2(BaseParse):
         server, port = server_port.split(":")
         query = {k: v[0] for k, v in parse.parse_qs(parse_url.query).items()}
         fragment = parse_url.fragment
+        fragment += f"_{await self.encrypt.make_md5(data=str(server))}"
+
         insecure = True if query.get("insecure") == "1" else False
+
         out = {
             "type": "hysteria2",
             "tag": fragment,

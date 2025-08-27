@@ -20,6 +20,6 @@ def retry(func):
                 retry_times -= 1
                 await asyncio.sleep(random.randint(1, 3))
 
-        raise Exception(f"函数 '{func.__name__}' 在 5 次尝试后仍失败。")
+        raise Exception(f"函数 '{func.__name__}' 在 5 次尝试后仍失败。", args, kwargs)
 
     return wrapper

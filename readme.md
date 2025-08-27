@@ -72,8 +72,8 @@ Windows系统 Chrome 浏览器启动命令（需要先把chrome.exe目录配置�
 
 ```json lines
 proxies = {
-  "http": "http://127.0.0.1:10808",
-  "https": "http://127.0.0.1:10808",
+    "http": "http://127.0.0.1:10808",
+    "https": "http://127.0.0.1:10808",
 }
 ```
 
@@ -135,15 +135,21 @@ uv run main.py
     pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/get_latest_url && rm -rf dist/ .pyarmor/ tools_limestart.spec
 ```
 
-## 8. 打包 CDN 获取 工具 获取最新 提交的文件对应的 CDN 链接
+## 9. 打包 limestart 清理工具 获取最新url
+
+```bash
+    pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/clear_old_url && rm -rf dist/ .pyarmor/ tools_limestart.spec
+```
+
+## 10. 打包 CDN 获取 工具 获取最新 提交的文件对应的 CDN 链接
 
 ```bash
     pyarmor gen -r --pack FC tools/tools_gen_latest_CDN.py && mv dist/tools_gen_latest_CDN plugins/gen_latest_CDN && rm -rf dist/ .pyarmor/ tools_gen_latest_CDN.spec
 ```
 
-## 9. git push 提交 新生成的json文件 到github仓库
+## 11. git push 提交 新生成的json文件 到github仓库
 
-## 10. 获取新上传json 文件对应的CDN链接
+## 12. 获取新上传json 文件对应的CDN链接
 
 ```bash
     ./plugins/gen_latest_CDN
@@ -165,15 +171,34 @@ uv run main.py
 * vmess
 * shadowsocks
 
-# 内置节点订阅：
+# 致谢
 
-## （所有节点均来自 github，开源的，不对安全性作任何保证，慎用，具体哪来的我也忘记了，但是在此鸣谢各位大佬）
+## 内置节点订阅：
+
+### 所有节点均来自 github，开源的，不对安全性作任何保证，慎用，
+
+### 具体哪来的我也忘记了，但是在此鸣谢各位大佬
 
 * https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt
 * https://a.nodeshare.xyz/uploads/2025/7/20250720.txt
 * https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/
+* https://github.com/vpnmianfei/vpnmianfei.github.io 或者 https://github.com/pcfreevpn/pcfreevpn.github.io
+* https://github.com/Barabama/FreeNodes
 
-# [第一次录制的视频 有点low 仅供参考](https://www.youtube.com/watch?v=yRuacjm3zt4)
+# [第一次录制的参考视频 用的1.0版本 仅供参考](https://www.youtube.com/watch?v=yRuacjm3zt4)
+
+## 白嫖的大佬写的便签接口用来存储 url 特此致谢
+
+[青柠起始页](https://www.limestart.cn/) 这项目相当不错,很好用,标签页,便签,空投快传 都很好用 感兴趣的可以注册个账号试一下
+
+# 环境说明
+
+1. 本项目运行在Docker环境中
+2. 基础镜像使用的是官方的 ubuntu:22.04 最新版本的镜像
+3. 内置了 sing-box 1.8.8 版本
+4. Python 版本 >=3.9.9
+5. 使用GitHub Actions 每两小时抓取并推送最新节点数据
+6.
 
 # 更新记录
 
@@ -187,7 +212,7 @@ uv run main.py
 6. 增加默认节点上传位置为BOS，避免CDN有时无法访问问题(uv run main.py 最后输出的url就是，可以替代CDN链接使用)
 7. ParseNodesharkDoor 默认处理今天所有的节点信息
 
-2025.08.24
+2025.08.25
 
 1. 增加Telegram
    机器人自动向用户推送节点信息[自行通过BotFather 创建机器人，获取Token ,以及id](https://longnight.github.io/2018/12/12/Telegram-Bot-notifications)
@@ -197,11 +222,21 @@ uv run main.py
 4. 增加项目打包,简化 GitHub Actions 构建过程 直接执行可知性文件即可
 5. 增加节点转手机 sing-box 专用订阅工具 (手机端无法使用规则，只能直连)
 
-2025.08.25
+2025.08.26
 
 1. 增加 limestart 存储工具，获取最新url
 2. 增加 V2.0 版本镜像 jhc0000abc/sing-box-1.8.8-v2:latest 使用 limestart 存储工具
 3. 优化项目结构,把网络请求部分单独提出来到 utils/ 下
 4. 打包 gen_latest_CDN 为可执行工具
 
+2025.08.27
 
+1. 增加删除 limestart 存储记录工具,只保留最新一条
+2. 添加手机端sing-box配置文件模板
+3. 增加节点订阅源
+4. 优化节点解析规则
+4. 优化并发测速,限制并发量
+5. 增加不解析的国家/区域 forbidden_areas.list
+
+
+2025.08.28

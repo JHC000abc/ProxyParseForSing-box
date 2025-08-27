@@ -9,9 +9,7 @@
 """
 import aiohttp
 from utils.utils_retry import retry
-from settings import PROXIES_ASYNC
-
-
+from settings import PROXIES_ASYNC, TIMEOUT
 
 
 class UtilsNetwork:
@@ -36,7 +34,8 @@ class UtilsNetwork:
             proxy = None
         async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)
                                          ) as session:
-            async with session.get(url, params=params, proxy=proxy, headers=headers, cookies=cookies) as response:
+            async with session.get(url, params=params, proxy=proxy, headers=headers, cookies=cookies,
+                                   timeout=TIMEOUT) as response:
                 response.raise_for_status()
                 html_content = await response.text()
                 return html_content
@@ -58,7 +57,31 @@ class UtilsNetwork:
             proxy = None
         async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)
                                          ) as session:
-            async with session.post(url, proxy=proxy, headers=headers, cookies=cookies, json=data) as response:
+            async with session.post(url, proxy=proxy, headers=headers, cookies=cookies, json=data,
+                                    timeout=TIMEOUT) as response:
+                response.raise_for_status()
+                html_content = await response.text()
+                return html_content
+
+    @retry
+    async def fetch_url_delete(self, url, params=None, headers=None, cookies=None, proxy=None):
+        """
+
+        :param url:
+        :param params:
+        :param headers:
+        :param cookies:
+        :param proxy:
+        :return:
+        """
+        if proxy:
+            proxy = PROXIES_ASYNC
+        else:
+            proxy = None
+        async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)
+                                         ) as session:
+            async with session.delete(url, params=params, proxy=proxy, headers=headers, cookies=cookies,
+                                      timeout=TIMEOUT) as response:
                 response.raise_for_status()
                 html_content = await response.text()
                 return html_content

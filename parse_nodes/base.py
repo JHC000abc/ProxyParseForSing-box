@@ -148,7 +148,7 @@ class Base(ABC):
         :param data:
         :return:
         """
-        base64_decode_result = await self.encrypt.base64_decode(data)
+        base64_decode_result = await self.encrypt.base64_decode(data.split("# ")[0])
         for node in base64_decode_result.split("\n"):
             if node.strip():
                 yield parse.urlparse(parse.unquote(node.strip()))
@@ -224,6 +224,21 @@ class Base(ABC):
                     print("msg4", msg)
                 async for msg, proc in self.cmd.run_cmd_async(cmd5):
                     print("cmd5", msg)
+
+    async def get_data_from_github(self, url):
+        """
+
+        从 github 页面接口获取数据 readme 接口
+        :return:
+        """
+        headers = {
+            "accept": "application/json",
+            "accept-language": "zh,zh-CN;q=0.9",
+            "content-type": "application/json",
+            "referer": "https://github.com/Barabama/FreeNodes?tab=readme-ov-file",
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+        }
+        return await self.net.fetch_url_get(url, headers=headers, proxy=True)
 
     @abstractmethod
     async def process(self, *args, **kwargs):

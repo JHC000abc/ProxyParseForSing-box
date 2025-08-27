@@ -34,7 +34,8 @@ class ParseShadowSocks(BaseParse):
             if len(line.split("@")) == 2:
                 try:
                     data = await self.encrypt.base64_decode(m_p if m_p.endswith("=") else m_p + "=")
-                    method, password = data.split(":")
+                    *method, password = data.split(":")
+                    method = ":".join(method)
                     server, port = "@".join(s_p).split(":")
                 except Exception as e:
                     raise
@@ -52,6 +53,8 @@ class ParseShadowSocks(BaseParse):
                 server, port = server_port.split(":")
                 method, password = data.split(":")
         port = port.strip("/")
+
+        fragment += f"_{await self.encrypt.make_md5(data=str(server))}"
 
         res = {
             "type": "shadowsocks",

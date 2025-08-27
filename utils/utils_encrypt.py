@@ -13,7 +13,10 @@ class AsyncEncrypt:
         :param data:
         :return:
         """
-        return b64decode(data).decode("utf-8").strip()
+        try:
+            return b64decode(data).decode("utf-8").strip()
+        except:
+            return data
 
     async def make_md5(self, data):
         """

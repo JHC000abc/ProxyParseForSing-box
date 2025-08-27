@@ -9,6 +9,8 @@
 """
 import re
 import json
+import traceback
+
 from lxml import etree
 from parse_nodes.base import Base
 from urllib import parse
@@ -70,6 +72,6 @@ class ParseNodesharkDoor(Base):
                     node = parse.urlparse(parse.unquote(node.strip()))
                     node_parse_result = await self.build(node)
                     self.success_list.append(node_parse_result)
-            except:
-                pass
+            except  Exception as e:
+                print(f"ParseNodesharkDoor:{traceback.format_exc()}")
         return self.success_list

@@ -99,6 +99,32 @@ class ToolsLimeStart:
             print(f"{latest_url}")
             return latest_url
 
+    async def clear(self):
+        """
+
+        :return:
+        """
+        params = {
+            "username": f"{self.user_name}"
+        }
+        try:
+            res = await self.net.fetch_url_get(self.url, headers=self.headers, params=params)
+            if len(json.loads(res)["results"]) <= 1:
+                print("没有可删除的数据")
+                return
+            for ind, result in enumerate(json.loads(res)["results"]):
+                if ind > 0:
+                    id = result["id"]
+                    content = result["content"]
+                    params = {
+                        "id": f"{id}",
+                        "username": self.user_name
+                    }
+                    await self.net.fetch_url_delete(self.url, headers=self.headers, params=params)
+                    print(f"删除:{content}")
+        except:
+            pass
+
     async def process(self, url):
         """
 
@@ -112,6 +138,7 @@ async def main():
 
     :return:
     """
+    # 上传记录工具
     # t = ToolsLimeStart()
     # parser = argparse.ArgumentParser()
     # parser.add_argument('-i', "--input", dest='input', help='input', required=True, nargs='+')
@@ -120,8 +147,13 @@ async def main():
     # for url in urls:
     #     await t.recode_url(url)
 
+    # 获取最新记录工具
+    # t = ToolsLimeStart()
+    # await t.get_url()
+
+    # 删除记录工具
     t = ToolsLimeStart()
-    await t.get_url()
+    await t.clear()
 
 
 if __name__ == '__main__':

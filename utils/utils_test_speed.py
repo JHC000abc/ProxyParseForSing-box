@@ -3,7 +3,7 @@ import os
 import json
 from utils.utils_cmd import AsyncCMD
 from utils.utils_encrypt import AsyncEncrypt
-from settings import TEST_LISTEN_PORT, SING_BOX_PATH
+from settings import TEST_LISTEN_PORT, SING_BOX_PATH, TIMEOUT
 
 try:
     from settings import SPEED_LIMIT
@@ -55,7 +55,7 @@ class TestSpeed:
 
         }
 
-    async def test_speed(self, node_conf, listen_port=None):
+    async def test_speed(self, node_conf, listen_port=None, forbidden_area_map={}):
         """
 
         :param node_conf:
@@ -69,6 +69,7 @@ class TestSpeed:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
 
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
+            cmd2 = f"curl cip.cc -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
                 # print(msg)
                 match = re.search(r"available: (\d+)ms", msg)
@@ -77,6 +78,14 @@ class TestSpeed:
                     r"context deadline exceeded|no recent network activity|unavailable: |unknown transport type|lookup succeed for",
                     msg)
                 if match:
+                    async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
+                        for k, v in forbidden_area_map.items():
+                            if k in msg2 or "400 Bad Reques" in msg2:
+                                print(f"forbidden area {k} {node_conf['server']}")
+                                proc2.terminate()
+                                proc.terminate()
+                                return False, {}
+
                     speed = match.group(1)
                     if speed:
                         speed = int(speed)

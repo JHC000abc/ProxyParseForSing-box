@@ -15,11 +15,13 @@ class ParseVless(BaseParse):
         print(parse_url)
         netloc = parse_url.netloc
         uuid, server_port = netloc.split("@")
-        server, port = server_port.split(":")
+        *server, port = server_port.split(":")
+        server = ":".join(server)
         query = {k: v[0] for k, v in parse.parse_qs(parse_url.query).items()}
         fragment = parse_url.fragment
+        fragment += f"_{await self.encrypt.make_md5(data=str(server))}"
 
-        if query["path"] == "/":
+        if query.get("path", '/') == "/":
             return
 
         res = {
@@ -32,7 +34,7 @@ class ParseVless(BaseParse):
                 "type": query['type'],
                 "path": query['path'],
                 "headers": {
-                    "Host": query["host"]
+                    "Host": query.get("host", server)
                 }
             }
         }

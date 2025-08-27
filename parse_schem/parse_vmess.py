@@ -15,7 +15,8 @@ class ParseVmess(BaseParse):
         """
         print(parse_url)
         if not parse_url.path:
-            netloc = await self.encrypt.base64_decode(parse_url.netloc if parse_url.netloc.endswith("=") else parse_url.netloc + "=")
+            netloc = await self.encrypt.base64_decode(
+                parse_url.netloc if parse_url.netloc.endswith("=") else parse_url.netloc + "=")
         else:
             netloc = await self.encrypt.base64_decode(parse_url.netloc + parse_url.path if parse_url.netloc.endswith(
                 "=") else parse_url.netloc + parse_url.path + "=")
@@ -26,10 +27,17 @@ class ParseVmess(BaseParse):
         if not netloc.get('host'):
             return
 
+        server = netloc['add']
+        fragment = netloc['ps']
+        fragment += f"_{await self.encrypt.make_md5(data=str(server))}"
+
+        if netloc.get("net") == "tcp":
+            return
+
         res = {
             "type": "vmess",
-            "tag": netloc['ps'],
-            "server": netloc['add'],
+            "tag": fragment,
+            "server": server,
             "server_port": int(netloc['port']),
             "uuid": netloc['id'],
             "tls": {

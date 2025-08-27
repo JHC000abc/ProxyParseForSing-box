@@ -12,81 +12,111 @@ from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from utils.utils_test_speed import TestSpeed
 
+# Set the maximum number of concurrent speed tests
+MAX_CONCURRENCY = 100
+
 
 async def filter(file="./un_used_proxy.list"):
     """
+    Loads a list of unused proxy tags from a file into a dictionary.
 
-    :param file:
-    :return:
+    :param file: Path to the file containing unused proxy tags.
+    :return: A dictionary mapping unused tags to a value (1).
     """
-    un_used_tag_map = {}
-    with open(file, "r", encoding="utf-8") as f:
-        for i in f:
-            un_used_tag_map[i.strip()] = 1
-    return un_used_tag_map
+    tag_map = {}
+    try:
+        with open(file, "r", encoding="utf-8") as f:
+            for line in f:
+                tag_map[line.strip()] = 1
+    except FileNotFoundError:
+        print(f"Warning: '{file}' not found. Skipping unused proxy filtering.")
+    return tag_map
 
 
 async def main():
     """
-
-    :return:
+    Fetches proxy nodes from multiple sources, filters out unused ones,
+    tests their speed with a limited concurrency, and saves the results.
     """
     p1 = ParseNodeSnakem982()
     lis1 = await p1.process()
+
     p2 = ParseNodesharkDoor()
     lis2 = await p2.process()
+
     test_speed_instance = TestSpeed()
 
-    # 合并不同订阅上的节点
+    # Combine nodes from different subscriptions
     all_nodes = lis1 + lis2
 
-    # 获取文件中配置的不可用节点列表
+    # Get the list of unused nodes from the file
     un_used_tag_map = await filter()
+    forbidden_area_map = await filter(r"forbidden_areas.list")
 
-    tasks = []
     nodes_to_test = []
-    # 设置个测试起始端口 每个依次+1,避免端口冲突
-    start_listen_port = 10900
     for info in all_nodes:
         tag = info["tag"]
         if not un_used_tag_map.get(tag):
-            tasks.append(test_speed_instance.test_speed(info, start_listen_port))
             nodes_to_test.append(info)
-            start_listen_port += 1
 
-    print(f"开始并发测试 {len(tasks)} 个代理节点...")
+    if not nodes_to_test:
+        print("No valid nodes to test after filtering.")
+        return
+
+    print(f"准备测试 {len(nodes_to_test)} 个代理节点...")
+
+    # Set up a semaphore to limit concurrency
+    semaphore = asyncio.Semaphore(MAX_CONCURRENCY)
+
+    async def test_node_with_semaphore(info, port,forbidden_area_map):
+        async with semaphore:
+            return await test_speed_instance.test_speed(info, port,forbidden_area_map)
+
+    tasks = []
+    start_listen_port = 10900
+    repeat_recode_map = {}
+    for info in nodes_to_test:
+        if repeat_recode_map.get(info["tag"]) is None:
+            tasks.append(test_node_with_semaphore(info, start_listen_port,forbidden_area_map))
+            start_listen_port += 1
+            repeat_recode_map[info["tag"]] = 1
+
+    print(f"开始并发测试，最大并发量为 {MAX_CONCURRENCY}...")
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
 
     speed_map = {}
     outbounds = []
     tags = []
+    repeat_tag_record = {}
 
-    repeat_map_recode = {}
     for i, result in enumerate(results):
+        node_info = nodes_to_test[i]
+        tag = node_info["tag"]
+
         if isinstance(result, Exception):
-            print(f"节点测试失败: {nodes_to_test[i]['tag']} - {result}")
+            print(f"节点测试失败: {tag} - {result}")
             continue
-        if result:
-            status, speed = result
-            info = nodes_to_test[i]
-            tag = info["tag"]
-            scheme = info["type"]
 
-            if status:
-                # 过滤调重复的
-                if repeat_map_recode.get(tag) is None:
-                    speed_map[tag] = [speed, scheme, info]
-                    outbounds.append(info)
-                    tags.append(tag)
-                    repeat_map_recode[tag] = 1
+        if result and result[0] and repeat_tag_record.get(tag) is None:
+            status, speed_res = result
+            scheme = node_info["type"]
 
-    for tag, (speed_res, scheme, info) in speed_map.items():
-        speed = [v["speed"] for k, v in speed_res.items()][0]
-        print(f"协议: {scheme}\t节点: {tag}\t速度: {speed} ms")
+            # The speed value is wrapped in a dictionary, extract it
+            speed = list(speed_res.values())[0] if isinstance(speed_res, dict) and speed_res else "N/A"
 
-    # 保存结果
-    await p1.save_result_json(tags, outbounds, tags)
+            speed_map[tag] = [speed, scheme, node_info]
+            outbounds.append(node_info)
+            tags.append(tag)
+            repeat_tag_record[tag] = 1
+            print(f"协议: {scheme}\t节点: {tag}\t速度: {speed['speed']} ms")
+
+    if not outbounds:
+        print("未获取到任何有效节点。")
+        return
+
+    # Save the results
+    await p2.save_result_json(tags, outbounds, tags)
 
 
 if __name__ == '__main__':
