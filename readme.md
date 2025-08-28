@@ -197,7 +197,7 @@ uv run main.py
 2. 基础镜像使用的是官方的 ubuntu:22.04 最新版本的镜像
 3. 内置了 sing-box 1.8.8 版本
 4. Python 版本 >=3.9.9
-5. 使用GitHub Actions 每两小时抓取并推送最新节点数据
+5. 使用GitHub Actions 每2小时抓取并推送最新节点数据
 6.
 
 # 更新记录
@@ -240,3 +240,7 @@ uv run main.py
 
 
 2025.08.28
+
+1. 使用GitHub Actions 每1小时抓取并推送最新节点数据
+2. 优化项目结构
+3. 

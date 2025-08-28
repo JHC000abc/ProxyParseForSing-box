@@ -3,61 +3,47 @@ DEBUG = False
 if DEBUG:
     PROXY_HOST = "192.168.2.109"
     PROXY_PORT = 10808
-
-    # aiohttp 使用的代理(主要用于请求github等地址使用 程序中通过配置 self.infos 中的 proxy 确定是否启用)
+    # 代理
     PROXIES_ASYNC = f"http://{PROXY_HOST}:{PROXY_PORT}"
-
-    SING_BOX_PATH = "plugins/sing-box"
-    UPLOAD_TOOLS_FILE = "plugins/upload"
-    TELEGRAM_TOOLS_FILE = "plugins/telegram"
-    TRANS_PHONE_TOOLS_FILE = "plugins/trans_phone"
-    LIMESTART_TOOLS_FILE = "plugins/limestart"
-
-    FORBIDDEN_AREA_FILE = "files/forbidden_areas.list"
-    FORBIDDEN_PROXY_FILE = "files/frobidden_proxy.list"
-
-    # 最后输出的订阅节点默认的测试端口
-    OUT_LISTEN_PORT = 1080
-
-    UPDATE_NODES_TIMES = "1m"
-
-    TIMEOUT = 10
-
-    MAX_CONCURRENCY = 100
-
-    TEST_IP_NODE = "cip.cc"
-
-    # 异步测试时使用的测试端口 默认的(只能支持同时测试一个，程序中用了自增的端口号，这个用不到了)
-    TEST_LISTEN_PORT = 10800
-
-    # 最大延迟(单位ms, 测速结果大于此值的不做保留)
-    SPEED_LIMIT = 1000
-
-
 else:
+    # 代理
     PROXIES_ASYNC = None
-    SING_BOX_PATH = "plugins/sing-box"
-    UPLOAD_TOOLS_FILE = "plugins/upload"
-    TELEGRAM_TOOLS_FILE = "plugins/telegram"
-    TRANS_PHONE_TOOLS_FILE = "plugins/trans_phone"
-    LIMESTART_TOOLS_FILE = "plugins/limestart"
 
-    FORBIDDEN_AREA_FILE = "files/forbidden_areas.list"
-    FORBIDDEN_PROXY_FILE = "files/frobidden_proxy.list"
 
-    # 最后输出的订阅节点默认的测试端口
-    OUT_LISTEN_PORT = 1080
 
-    UPDATE_NODES_TIMES = "1m"
+# sing-box 工具
+SING_BOX_PATH = "plugins/sing-box"
+# 公网订阅链接生成工具
+UPLOAD_TOOLS_FILE = "plugins/upload"
+# TG 机器人通知工具
+TELEGRAM_TOOLS_FILE = "plugins/telegram"
+# 节点转换手机版工具
+TRANS_PHONE_TOOLS_FILE = "plugins/trans_phone"
+# limestart 上传工具路径
+LIMESTART_TOOLS_FILE = "plugins/limestart"
 
-    TIMEOUT = 10
+# 排除区域
+FORBIDDEN_AREA_FILE = "files/forbidden_areas.list"
+# 排除server
+FORBIDDEN_PROXY_FILE = "files/frobidden_proxy.list"
 
-    MAX_CONCURRENCY = 100
+# 最后输出的订阅节点默认的测试端口
+OUT_LISTEN_PORT = 1080
 
-    TEST_IP_NODE = "cip.cc"
+# 节点在sing-box中测速更新间隔时长
+UPDATE_NODES_TIMES = "5m"
 
-    # 异步测试时使用的测试端口 默认的(只能支持同时测试一个，程序中用了自增的端口号，这个用不到了)
-    TEST_LISTEN_PORT = 10900
+# 网络请求超时时间
+TIMEOUT = 10
 
-    # 最大延迟(单位ms, 测速结果大于此值的不做保留)
-    SPEED_LIMIT = 1000
+# 单次最大并法测速数量
+MAX_CONCURRENCY = 100
+
+# 获取节点地区网站
+TEST_IP_NODE = "cip.cc"
+
+# 异步测试时使用的测试端口 默认的(只能支持同时测试一个，程序中用了自增的端口号，这个用不到了)
+TEST_LISTEN_PORT = 10900
+
+# 最大延迟(单位ms, 测速结果大于此值的不做保留)
+SPEED_LIMIT = 1000
