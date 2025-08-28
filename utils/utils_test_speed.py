@@ -3,10 +3,10 @@ import os
 import json
 from utils.utils_cmd import AsyncCMD
 from utils.utils_encrypt import AsyncEncrypt
-from settings import TEST_LISTEN_PORT, SING_BOX_PATH, TIMEOUT
+from settings.setting import TEST_LISTEN_PORT, SING_BOX_PATH, TIMEOUT, TEST_IP_NODE
 
 try:
-    from settings import SPEED_LIMIT
+    from settings.setting import SPEED_LIMIT
 except:
     SPEED_LIMIT = None
 
@@ -69,7 +69,7 @@ class TestSpeed:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
 
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
-            cmd2 = f"curl cip.cc -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
+            cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
                 # print(msg)
                 match = re.search(r"available: (\d+)ms", msg)

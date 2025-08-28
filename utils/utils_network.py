@@ -9,7 +9,7 @@
 """
 import aiohttp
 from utils.utils_retry import retry
-from settings import PROXIES_ASYNC, TIMEOUT
+from settings.setting import PROXIES_ASYNC, TIMEOUT
 
 
 class UtilsNetwork:

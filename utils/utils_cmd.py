@@ -13,7 +13,7 @@ class AsyncCMD:
         :return:
         """
         proc = await asyncio.create_subprocess_exec(
-            *cmd.split(),  # Safer than shell=True
+            *cmd.split(),  # Safer than shells=True
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.STDOUT
         )

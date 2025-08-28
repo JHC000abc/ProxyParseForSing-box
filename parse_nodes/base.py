@@ -6,8 +6,8 @@ from parse_schem import *
 from utils.utils_encrypt import AsyncEncrypt
 from utils.utils_cmd import AsyncCMD
 from utils.utils_times import UtilsTimes
-from settings import OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT, \
-    TRANS_PHONE_TOOLS_FILE, LIMESTART_TOOLS_FILE
+from settings.setting import OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT, \
+    TRANS_PHONE_TOOLS_FILE, LIMESTART_TOOLS_FILE, UPDATE_NODES_TIMES
 from utils.utils_network import UtilsNetwork
 
 
@@ -85,7 +85,7 @@ class Base(ABC):
                 "tag": "AUTO-US",
                 "outbounds": tags_speed,
                 "url": "https://gemini.google.com/gem",
-                "interval": "1m"
+                "interval": f"{UPDATE_NODES_TIMES}"
             }
 
         ]

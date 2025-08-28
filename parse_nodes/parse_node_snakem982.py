@@ -28,7 +28,7 @@ class ParseNodeSnakem982(Base):
             {
 
                 "url": "https://a.nodeshare.xyz/uploads/2025/7/20250720.txt",
-                "proxy": False
+                "proxy": True
             },
             {
                 "url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/base64.txt",

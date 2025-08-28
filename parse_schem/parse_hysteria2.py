@@ -14,7 +14,8 @@ class ParseHysteria2(BaseParse):
         """
         print(parse_url)
         netloc = parse_url.netloc
-        password, server_port = netloc.split("@")
+        *password, server_port = netloc.split("@")
+        password = "@".join(password)
         server, port = server_port.split(":")
         query = {k: v[0] for k, v in parse.parse_qs(parse_url.query).items()}
         fragment = parse_url.fragment

@@ -14,7 +14,7 @@ import os
 import re
 from utils.utils_cmd import AsyncCMD
 
-from settings import UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE
+from settings.setting import UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE
 
 
 class AsyncToolsTransPhone:

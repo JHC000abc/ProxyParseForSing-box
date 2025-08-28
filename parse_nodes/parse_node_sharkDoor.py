@@ -10,7 +10,6 @@
 import re
 import json
 import traceback
-
 from lxml import etree
 from parse_nodes.base import Base
 from urllib import parse
