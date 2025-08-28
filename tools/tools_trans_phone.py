@@ -14,7 +14,8 @@ import os
 import re
 from utils.utils_cmd import AsyncCMD
 
-from settings.setting import UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE
+from settings.setting import UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, OUT_LISTEN_PORT, UPDATE_NODES_TIMES, \
+    NODE_TEST_CONNECT_SPEED
 
 
 class AsyncToolsTransPhone:
@@ -38,7 +39,7 @@ class AsyncToolsTransPhone:
                     "type": "mixed",
                     "tag": "mixed-in",
                     "listen": "::",
-                    "listen_port": 1080,
+                    "listen_port": OUT_LISTEN_PORT,
                     "sniff": True
                 }
             ],
@@ -72,8 +73,8 @@ class AsyncToolsTransPhone:
                     "type": "urltest",
                     "tag": "AUTO-US",
                     "outbounds": tags,
-                    "url": "https://gemini.google.com/gem",
-                    "interval": "1m"
+                    "url": f"{NODE_TEST_CONNECT_SPEED}",
+                    "interval": f"{UPDATE_NODES_TIMES}"
                 }
 
             ],

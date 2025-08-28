@@ -3,7 +3,7 @@ import os
 import json
 from utils.utils_cmd import AsyncCMD
 from utils.utils_encrypt import AsyncEncrypt
-from settings.setting import TEST_LISTEN_PORT, SING_BOX_PATH, TIMEOUT, TEST_IP_NODE
+from settings.setting import TEST_LISTEN_PORT, SING_BOX_PATH, TIMEOUT, TEST_IP_NODE, NODE_TEST_CONNECT_SPEED
 
 try:
     from settings.setting import SPEED_LIMIT
@@ -47,8 +47,8 @@ class TestSpeed:
                     "outbounds": [
                         node_conf["tag"]
                     ],
-                    "url": "https://gemini.google.com/gem",
-                    "interval": "0.1m"
+                    "url": f"{NODE_TEST_CONNECT_SPEED}",
+                    "interval": "1m"
                 },
                 node_conf
             ]
