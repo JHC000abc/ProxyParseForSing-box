@@ -33,7 +33,7 @@ class ParseNodeSnakem982(Base):
             {
                 "url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/base64.txt",
                 "proxy": True
-            },
+            }
 
         ]
 

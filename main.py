@@ -14,7 +14,6 @@ from utils.utils_test_speed import TestSpeed
 from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY
 
 
-
 async def filter(file):
     """
     Loads a list of unused proxy tags from a file into a dictionary.
@@ -90,33 +89,30 @@ async def main():
     repeat_server_record = {}
 
     for i, result in enumerate(results):
-        node_info = nodes_to_test[i]
-        tag = node_info["tag"]
-        server = node_info["server"]
+        test_speed_status, info_speed = result
 
-        if isinstance(result, Exception):
-            print(f"节点测试失败: {tag} - {result}")
+        if test_speed_status is False:
             continue
 
-        if result and result[0] and repeat_server_record.get(server) is None:
-            status, speed_res = result
+        node_info = info_speed["node_info"]
+        tag = node_info["tag"]
+        server = node_info["server"]
+        speed = info_speed["speed"]
+
+        if repeat_server_record.get(server) is None:
             scheme = node_info["type"]
-
-            # The speed value is wrapped in a dictionary, extract it
-            speed = list(speed_res.values())[0] if isinstance(speed_res, dict) and speed_res else "N/A"
-
             speed_map[tag] = [speed, scheme, node_info]
             outbounds.append(node_info)
             tags.append(tag)
             repeat_server_record[server] = 1
-            print(f"协议: {scheme}\t节点: {tag}\t速度: {speed['speed']} ms")
+            print(f"协议: {scheme}\t节点: {tag}\t速度: {speed} ms")
 
     if not outbounds:
         print("未获取到任何有效节点。")
         return
 
     # Save the results
-    await p2.save_result_json(tags, outbounds, tags)
+    await p1.save_result_json(tags, outbounds, tags)
 
 
 if __name__ == '__main__':

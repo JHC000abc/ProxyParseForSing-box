@@ -1,6 +1,8 @@
 import re
 import os
 import json
+import traceback
+
 from utils.utils_cmd import AsyncCMD
 from utils.utils_encrypt import AsyncEncrypt
 from settings.setting import TEST_LISTEN_PORT, SING_BOX_PATH, TIMEOUT, TEST_IP_NODE, NODE_TEST_CONNECT_SPEED
@@ -71,58 +73,56 @@ class TestSpeed:
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
             cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
-                match = re.search(r"available: (\d+)ms", msg)
+                match_speed = re.search(r"available: (\d+)ms", msg)
                 # lookup succeed for 丢弃 避免vmess 成功率低问题
                 match_error = re.search(
                     r"context deadline exceeded|no recent network activity|unavailable: |unknown transport type|lookup succeed for",
                     msg)
-                if match:
+
+                if match_speed:
                     ip = node_conf["server"]
                     area = node_conf["tag"]
                     test_conn_all_msg = ""
                     flag = False
                     async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
-                        match = re.search(r"available: (\d+)ms", msg2)
                         test_conn_all_msg += msg2
+                        match_area = re.match("地址	: (.*)", msg2)
+                        match_ip = re.match("IP	: (.*)", msg2)
+                        if match_area:
+                            area = match_area.group(1)
+                            flag = True
+
+                        if match_ip:
+                            ip = match_ip.group(1)
+                            flag = True
+
                         for k, v in forbidden_area_map.items():
                             if k in msg2 or "400 Bad Reques" in msg2:
                                 print(f"forbidden area {k} {node_conf['server']}")
                                 proc2.terminate()
                                 proc.terminate()
                                 return False, {}
-                            match_area = re.match("地址	: (.*)", msg2)
-                            match_ip = re.match("IP	: (.*)", msg2)
-                            if match_area:
-                                area = match_area.group(1)
-                                print("area--->", area)
-                                flag = True
-
-                            if match_ip:
-                                ip = match_ip.group(1)
-                                print("ip--->", ip)
-                                flag = True
 
                     if flag:
-                        node_conf["tag"] = f"{area}-z{ip}-{await self.encrypt.make_md5(test_conn_all_msg)}"
+                        node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(test_conn_all_msg)}"
 
-                    speed = match.group(1)
-                    if speed:
-                        speed = int(speed)
-                        if SPEED_LIMIT:
-                            if speed > SPEED_LIMIT:
-                                return False, {}
+                    speed = match_speed.group(1)
+                    speed = int(speed)
+                    print(area, ip, f"{speed} ms")
+                    if SPEED_LIMIT:
+                        if speed > SPEED_LIMIT:
+                            return False, {}
                     res = {
-                        f"{await self.encrypt.make_md5(str(node_conf))}": {
-                            "node_info": node_conf,
-                            "speed": speed,
-                        }
+                        "node_info": node_conf,
+                        "speed": speed,
                     }
                     proc.terminate()
                     return True, res
                 elif match_error:
                     proc.terminate()
                     return False, {}
-        except Exception:
+        except Exception as e:
+            print(e, e.__traceback__.tb_lineno)
             return False, {}
         finally:
             if os.path.exists(tmp_file_path):
