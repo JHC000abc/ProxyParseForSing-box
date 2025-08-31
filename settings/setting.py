@@ -44,8 +44,8 @@ MAX_CONCURRENCY = 20
 # 获取节点地区网站
 TEST_IP_NODE = "cip.cc"
 
-# 异步测试时使用的测试端口 默认的(只能支持同时测试一个，程序中用了自增的端口号，这个用不到了)
-TEST_LISTEN_PORT_START = 10900
+# 异步测试时使用的测试端口./main
+TEST_LISTEN_PORT = 10900
 
 # 最大延迟(单位ms, 测速结果大于此值的不做保留)
 SPEED_LIMIT = 2000
@@ -54,3 +54,4 @@ SPEED_LIMIT = 2000
 NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
 # NODE_TEST_CONNECT_SPEED = "https://speed.cloudflare.com/_-down?bytes=100000000"
 # NODE_TEST_CONNECT_SPEED = "https://www.google.com/generate_204"
+
