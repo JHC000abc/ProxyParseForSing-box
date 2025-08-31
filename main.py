@@ -9,6 +9,7 @@
 """
 import os
 import asyncio
+import traceback
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from utils.utils_test_speed import TestSpeed
@@ -83,6 +84,7 @@ async def main():
                 return None  # 或者返回一个特定的错误标记
             except Exception as e:
                 print(f"[错误] 测试节点 '{info.get('tag', 'N/A')}' 时发生异常: {e}")
+                print(traceback.print_exc())
                 return None
 
             # return await test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map)

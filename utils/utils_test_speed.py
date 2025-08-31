@@ -1,8 +1,6 @@
 import re
 import os
 import json
-import traceback
-
 from utils.utils_cmd import AsyncCMD
 from utils.utils_encrypt import AsyncEncrypt
 from settings.setting import TEST_LISTEN_PORT, SING_BOX_PATH, TIMEOUT, TEST_IP_NODE, NODE_TEST_CONNECT_SPEED
@@ -97,6 +95,9 @@ class TestSpeed:
                     r"context deadline exceeded|no recent network activity|unavailable: |unknown transport type|lookup succeed for",
                     msg)
                 if match_speed:
+
+                    proc.terminate()
+
                     ip = node_conf["server"]
                     area = node_conf["tag"]
                     test_conn_all_msg = ""
@@ -140,10 +141,8 @@ class TestSpeed:
                 elif match_error:
                     return False, {}
         except Exception as e:
-            print(traceback.print_exc())
             return False, {}
         finally:
-
             if proc:
                 proc.terminate()
             if proc2:
