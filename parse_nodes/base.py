@@ -52,6 +52,36 @@ class Base(ABC):
         else:
             print(f"发现新协议:{scheme}")
 
+    async def get_dns(self):
+        """
+
+        :return:
+        """
+        return {
+            "servers": [
+                {
+                    "tag": "dns_domestic",
+                    "address": "223.5.5.5",
+                    "address_strategy": "ipv4_only"
+                },
+                {
+                    "tag": "dns_foreign",
+                    "address": "8.8.8.8",
+                    "address_strategy": "prefer_ipv4"
+                }
+            ],
+            "rules": [
+                {
+                    "geosite": "cn",
+                    "server": "dns_domestic"
+                },
+                {
+                    "outbound": "any",
+                    "server": "dns_foreign"
+                }
+            ]
+        }
+
     async def get_outbounds(self, tags=None, tags_speed=None):
         """
 
@@ -166,7 +196,8 @@ class Base(ABC):
         config_result = {
             "inbounds": await self.get_inbounds(),
             "outbounds": await self.get_outbounds(tags, tags_speed) + outbounds,
-            "route": await self.get_route()
+            "route": await self.get_route(),
+            "dns": await self.get_dns()
         }
 
         folder = "./configs"
