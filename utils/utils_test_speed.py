@@ -99,7 +99,7 @@ class TestSpeed:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
 
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
-            cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port}"
+            cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
                 match_speed = re.search(r"available: (\d+)ms", msg)
                 # lookup succeed for 丢弃 避免vmess 成功率低问题
@@ -107,7 +107,6 @@ class TestSpeed:
                     r"context deadline exceeded|no recent network activity|unavailable: |unknown transport type|lookup succeed for",
                     msg)
                 if match_speed:
-                    await self.close_cmd(proc)
                     ip = node_conf["server"]
                     area = node_conf["tag"]
                     flag = False
@@ -127,7 +126,10 @@ class TestSpeed:
                         for k, v in forbidden_area_map.items():
                             if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
                                 print(f"forbidden area {k} {node_conf['server']}")
+                                await self.close_cmd(proc2)
                                 return False, {}
+
+                    await self.close_cmd(proc)
 
                     if flag:
                         print(f"生成新tag:{ip}")
