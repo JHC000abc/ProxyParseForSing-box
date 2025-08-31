@@ -77,7 +77,7 @@ class TestSpeed:
         for rule, _ in rules.items():
             match = re.match(rule, data)
             if match:
-                print(f"成功匹配到规则:{rule}<--->{data}")
+                print(f"【成功匹配到禁止server规则】:{rule}<--->{data}")
                 return True
         return False
 
@@ -124,7 +124,7 @@ class TestSpeed:
 
                         for k, v in forbidden_area_map.items():
                             if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
-                                print(f"forbidden area {k} {node_conf['server']}")
+                                print(f"【禁止区域】 {k} {node_conf['server']}")
                                 await self.close_cmd(proc2)
                                 return False, {}
 
@@ -142,7 +142,7 @@ class TestSpeed:
 
                     speed = match_speed.group(1)
                     speed = int(speed)
-                    print(area, ip, f"{speed} ms")
+
                     if SPEED_LIMIT:
                         if speed > SPEED_LIMIT:
                             return False, {}
@@ -157,6 +157,7 @@ class TestSpeed:
         except Exception as e:
             return False, {}
         finally:
+            print("listen_port",listen_port)
             await self.close_cmd(proc)
             await self.close_cmd(proc2)
 

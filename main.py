@@ -14,7 +14,7 @@ from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from utils.utils_test_speed import TestSpeed
 from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE, \
-    TIMEOUT
+    TIMEOUT, TEST_LISTEN_PORT_START
 
 
 async def filter(file):
@@ -90,7 +90,7 @@ async def main():
             # return await test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map)
 
     tasks = []
-    start_listen_port = 10900
+    start_listen_port = TEST_LISTEN_PORT_START
     repeat_recode_map = {}
     for info in nodes_to_test:
         if repeat_recode_map.get(info["tag"]) is None:
