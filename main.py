@@ -79,7 +79,7 @@ async def main():
                     timeout=TIMEOUT
                 )
             except asyncio.TimeoutError:
-                print(f"[超时] 节点 '{info.get('tag', 'N/A')}' 在 30 秒内未完成测试。")
+                print(f"[超时] 节点 '{info.get('tag', 'N/A')}' 在 {TIMEOUT} 秒内未完成测试。")
                 return None  # 或者返回一个特定的错误标记
             except Exception as e:
                 print(f"[错误] 测试节点 '{info.get('tag', 'N/A')}' 时发生异常: {e}")
