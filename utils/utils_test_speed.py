@@ -100,7 +100,6 @@ class TestSpeed:
 
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
             cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
-            print("listen_port--->", listen_port)
             async for msg, proc in self.cmd.run_cmd_async(cmd):
                 match_speed = re.search(r"available: (\d+)ms", msg)
                 # lookup succeed for 丢弃 避免vmess 成功率低问题
@@ -114,7 +113,6 @@ class TestSpeed:
                     test_conn_all_msg = ""
                     flag = False
                     async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
-                        print("msg2", msg2)
                         test_conn_all_msg += msg2
                         match_area = re.match("地址	: (.*)", msg2)
                         match_ip = re.match("IP	: (.*)", msg2)
@@ -127,7 +125,7 @@ class TestSpeed:
                             flag = True
 
                         for k, v in forbidden_area_map.items():
-                            if k in msg2 or "400 Bad Reques" in msg2:
+                            if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
                                 print(f"forbidden area {k} {node_conf['server']}")
                                 return False, {}
 
