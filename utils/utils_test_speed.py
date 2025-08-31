@@ -99,7 +99,7 @@ class TestSpeed:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
 
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
-            cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
+            cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
                 match_speed = re.search(r"available: (\d+)ms", msg)
                 # lookup succeed for 丢弃 避免vmess 成功率低问题
@@ -110,11 +110,10 @@ class TestSpeed:
                     await self.close_cmd(proc)
                     ip = node_conf["server"]
                     area = node_conf["tag"]
-                    test_conn_all_msg = ""
                     flag = False
                     async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
-                        print("msg2---------->",msg2)
-                        test_conn_all_msg += msg2
+                        print("msg2---------->", msg2)
+
                         match_area = re.match("地址	: (.*)", msg2)
                         match_ip = re.match("IP	: (.*)", msg2)
                         if match_area:
@@ -125,14 +124,14 @@ class TestSpeed:
                             ip = match_ip.group(1)
                             flag = True
 
-                    for k, v in forbidden_area_map.items():
-                        if k in test_conn_all_msg or "400 Bad Reques" in test_conn_all_msg :
-                            print(f"forbidden area {k} {node_conf['server']}")
-                            return False, {}
+                        for k, v in forbidden_area_map.items():
+                            if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
+                                print(f"forbidden area {k} {node_conf['server']}")
+                                return False, {}
 
                     if flag:
                         print(f"生成新tag:{ip}")
-                        node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(test_conn_all_msg)}"
+                        node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
 
                     # 正则匹配剔除ip
                     if forbidden_area_re_map:
