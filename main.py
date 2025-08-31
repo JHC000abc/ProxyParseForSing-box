@@ -99,6 +99,7 @@ async def main():
             start_listen_port += 1
             repeat_recode_map[info["tag"]] = 1
 
+    print(f"去重后剩余待测试节点数量 {len(repeat_recode_map)}...")
     print(f"开始并发测试，最大并发量为 {MAX_CONCURRENCY}...")
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
