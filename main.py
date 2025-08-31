@@ -89,6 +89,9 @@ async def main():
     repeat_server_record = {}
 
     for i, result in enumerate(results):
+        # print("result",result)
+        if not result:
+            continue
         test_speed_status, info_speed = result
 
         if test_speed_status is False:

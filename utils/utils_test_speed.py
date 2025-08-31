@@ -122,7 +122,6 @@ class TestSpeed:
                     proc.terminate()
                     return False, {}
         except Exception as e:
-            print(e, e.__traceback__.tb_lineno)
             return False, {}
         finally:
             if os.path.exists(tmp_file_path):
