@@ -39,7 +39,7 @@ UPDATE_NODES_TIMES = "5m"
 TIMEOUT = 60
 
 # 单次最大并法测速数量
-MAX_CONCURRENCY = 10
+MAX_CONCURRENCY = 100
 
 # 获取节点地区网站
 TEST_IP_NODE = "cip.cc"
@@ -48,7 +48,7 @@ TEST_IP_NODE = "cip.cc"
 TEST_LISTEN_PORT = 10900
 
 # 最大延迟(单位ms, 测速结果大于此值的不做保留)
-SPEED_LIMIT = 1000
+SPEED_LIMIT = 2000
 
 # 节点测速网址
 NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"

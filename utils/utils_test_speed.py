@@ -77,7 +77,7 @@ class TestSpeed:
         for rule, _ in rules.items():
             match = re.match(rule, data)
             if match:
-                print(f"成功匹配到规则:{rule}")
+                print(f"成功匹配到规则:{rule}<--->{data}")
                 return True
         return False
 
