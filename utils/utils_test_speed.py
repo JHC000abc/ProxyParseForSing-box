@@ -116,14 +116,12 @@ class TestSpeed:
                         for k, v in forbidden_area_map.items():
                             if k in msg2 or "400 Bad Reques" in msg2:
                                 print(f"forbidden area {k} {node_conf['server']}")
-                                proc2.terminate()
-                                proc.terminate()
                                 return False, {}
 
                     # 正则匹配剔除ip
                     if forbidden_area_re_map:
                         if await self.verify_forbidden_server(forbidden_area_re_map, ip):
-                            continue
+                            return False, {}
 
                     if flag:
                         node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(test_conn_all_msg)}"
@@ -138,22 +136,17 @@ class TestSpeed:
                         "node_info": node_conf,
                         "speed": speed,
                     }
-                    proc.terminate()
-                    if proc2:
-                        proc2.terminate()
                     return True, res
                 elif match_error:
-                    proc.terminate()
-                    if proc2:
-                        proc2.terminate()
                     return False, {}
         except Exception as e:
+            return False, {}
+        finally:
+
             if proc:
                 proc.terminate()
             if proc2:
                 proc2.terminate()
 
-            return False, {}
-        finally:
             if os.path.exists(tmp_file_path):
                 os.remove(tmp_file_path)
