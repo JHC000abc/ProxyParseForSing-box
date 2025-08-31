@@ -26,6 +26,8 @@ LIMESTART_TOOLS_FILE = "plugins/limestart"
 FORBIDDEN_AREA_FILE = "files/forbidden_areas.list"
 # 排除server
 FORBIDDEN_PROXY_FILE = "files/frobidden_proxy.list"
+# 正则排除server 规则
+FORBIDDEN_SERVER_RE_FILE = "files/forbidden_server_re.list"
 
 # 最后输出的订阅节点默认的测试端口
 OUT_LISTEN_PORT = 1080
@@ -46,7 +48,7 @@ TEST_IP_NODE = "cip.cc"
 TEST_LISTEN_PORT = 10900
 
 # 最大延迟(单位ms, 测速结果大于此值的不做保留)
-SPEED_LIMIT = 1000
+SPEED_LIMIT = 2000
 
 # 节点测速网址
 NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"

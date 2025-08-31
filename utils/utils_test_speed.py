@@ -57,11 +57,26 @@ class TestSpeed:
 
         }
 
-    async def test_speed(self, node_conf, listen_port=None, forbidden_area_map={}):
+    async def verify_forbidden_server(self, rules, data):
+        """
+
+        :param rules:
+        :param data:
+        :return:
+        """
+        for rule, _ in rules.items():
+            match = re.match(rule, data)
+            if match:
+                return False
+        return True
+
+    async def test_speed(self, node_conf, listen_port=None, forbidden_area_map={}, forbidden_area_re_map={}):
         """
 
         :param node_conf:
         :param listen_port:
+        :param forbidden_area_map:
+        :param forbidden_area_re_map:
         :return:
         """
         config = await self.get_test_conf(node_conf, listen_port)
@@ -102,6 +117,11 @@ class TestSpeed:
                                 proc2.terminate()
                                 proc.terminate()
                                 return False, {}
+
+                    # 正则匹配剔除ip
+                    if forbidden_area_re_map:
+                        if await self.verify_forbidden_server(forbidden_area_re_map, ip):
+                            continue
 
                     if flag:
                         node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(test_conn_all_msg)}"

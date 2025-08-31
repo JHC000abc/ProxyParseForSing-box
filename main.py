@@ -11,7 +11,7 @@ import asyncio
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from utils.utils_test_speed import TestSpeed
-from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY
+from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE
 
 
 async def filter(file):
@@ -50,6 +50,7 @@ async def main():
     # Get the list of unused nodes from the file
     un_used_tag_map = await filter(FORBIDDEN_PROXY_FILE)
     forbidden_area_map = await filter(FORBIDDEN_AREA_FILE)
+    forbidden_area_re_map = await filter(FORBIDDEN_SERVER_RE_FILE)
 
     nodes_to_test = []
     for info in all_nodes:
@@ -66,16 +67,16 @@ async def main():
     # Set up a semaphore to limit concurrency
     semaphore = asyncio.Semaphore(MAX_CONCURRENCY)
 
-    async def test_node_with_semaphore(info, port, forbidden_area_map):
+    async def test_node_with_semaphore(info, port, forbidden_area_map, forbidden_area_re_map):
         async with semaphore:
-            return await test_speed_instance.test_speed(info, port, forbidden_area_map)
+            return await test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map)
 
     tasks = []
     start_listen_port = 10900
     repeat_recode_map = {}
     for info in nodes_to_test:
         if repeat_recode_map.get(info["tag"]) is None:
-            tasks.append(test_node_with_semaphore(info, start_listen_port, forbidden_area_map))
+            tasks.append(test_node_with_semaphore(info, start_listen_port, forbidden_area_map, forbidden_area_re_map))
             start_listen_port += 1
             repeat_recode_map[info["tag"]] = 1
 
