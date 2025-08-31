@@ -140,6 +140,7 @@ class TestSpeed:
                 elif match_error:
                     return False, {}
         except Exception as e:
+            print(traceback.print_exc())
             return False, {}
         finally:
 
