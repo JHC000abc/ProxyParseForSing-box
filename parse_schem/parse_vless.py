@@ -44,7 +44,7 @@ class ParseVless(BaseParse):
                 "tls": {
                     "enabled": True,
                     "insecure": True,
-                    "server_name": query["sni"]
+                    "server_name":query.get("sni") if query.get("sni") else server
                 }
             })
 

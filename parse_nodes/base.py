@@ -1,5 +1,6 @@
 import os
 import re
+import traceback
 from abc import ABC, abstractmethod
 from utils.utils_test_speed import TestSpeed
 from parse_schem import *
@@ -48,7 +49,10 @@ class Base(ABC):
         """
         scheme = parse_result.scheme
         if scheme in self.scheme_map:
-            return await self.scheme_map.get(scheme)(parse_result)
+            try:
+                return await self.scheme_map.get(scheme)(parse_result)
+            except Exception as e:
+                print("解析协议异常", traceback.format_exc())
         else:
             print(f"发现新协议:{scheme}")
 
@@ -180,7 +184,7 @@ class Base(ABC):
         """
         base64_decode_result = await self.encrypt.base64_decode(data.split("# ")[0])
         for node in base64_decode_result.split("\n"):
-            if node.strip():
+            if node.strip() and not node.startswith("#"):
                 yield parse.urlparse(parse.unquote(node.strip()))
 
     async def save_result_json(self, tags, outbounds, tags_speed,

@@ -46,6 +46,7 @@ async def main():
 
     p2 = ParseNodesharkDoor()
     lis2 = await p2.process()
+    # lis2 = []
 
     test_speed_instance = TestSpeed()
 
