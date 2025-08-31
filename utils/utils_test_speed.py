@@ -113,6 +113,7 @@ class TestSpeed:
                     test_conn_all_msg = ""
                     flag = False
                     async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
+                        print("msg2--->", msg2)
                         test_conn_all_msg += msg2
                         match_area = re.match("地址	: (.*)", msg2)
                         match_ip = re.match("IP	: (.*)", msg2)
