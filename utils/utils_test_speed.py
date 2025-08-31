@@ -90,8 +90,8 @@ class TestSpeed:
                                 proc2.terminate()
                                 proc.terminate()
                                 return False, {}
-                            match_area = re.match("数据二	: (.*)", msg)
-                            match_ip = re.match("IP	: (.*)", msg)
+                            match_area = re.match("地址	: (.*)", msg2)
+                            match_ip = re.match("IP	: (.*)", msg2)
                             if match_area:
                                 area = match_area.group(1)
                                 print("area--->", area)
