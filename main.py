@@ -7,6 +7,7 @@
 @desc: 
 
 """
+import os
 import asyncio
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
@@ -22,6 +23,8 @@ async def filter(file):
     :return: A dictionary mapping unused tags to a value (1).
     """
     tag_map = {}
+    if not os.path.exists(FORBIDDEN_PROXY_FILE):
+        return tag_map
     try:
         with open(file, "r", encoding="utf-8") as f:
             for line in f:
