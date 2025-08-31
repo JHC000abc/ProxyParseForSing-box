@@ -55,6 +55,18 @@ class TestSpeed:
 
         }
 
+    async def close_cmd(self, proc):
+        """
+
+        :param proc:
+        :return:
+        """
+        try:
+            if proc:
+                proc.terminate()
+        except Exception as e:
+            pass
+
     async def verify_forbidden_server(self, rules, data):
         """
 
@@ -95,9 +107,7 @@ class TestSpeed:
                     r"context deadline exceeded|no recent network activity|unavailable: |unknown transport type|lookup succeed for",
                     msg)
                 if match_speed:
-
-                    proc.terminate()
-
+                    await self.close_cmd(proc)
                     ip = node_conf["server"]
                     area = node_conf["tag"]
                     test_conn_all_msg = ""
@@ -119,8 +129,7 @@ class TestSpeed:
                                 print(f"forbidden area {k} {node_conf['server']}")
                                 return False, {}
 
-
-                    # 正则匹配剔除ip
+                                # 正则匹配剔除ip
                     if forbidden_area_re_map:
                         if await self.verify_forbidden_server(forbidden_area_re_map, ip):
                             return False, {}
@@ -140,23 +149,13 @@ class TestSpeed:
                     }
                     return True, res
                 elif match_error:
-                    proc.terminate()
+                    await self.close_cmd(proc)
                     return False, {}
         except Exception as e:
             return False, {}
         finally:
-            try:
-                if proc:
-                    proc.terminate()
-            except ProcessLookupError:
-                pass
-
-            try:
-                if proc2:
-                    proc2.terminate()
-            except ProcessLookupError:
-                pass
-
+            await self.close_cmd(proc)
+            await self.close_cmd(proc2)
 
             if os.path.exists(tmp_file_path):
                 os.remove(tmp_file_path)
