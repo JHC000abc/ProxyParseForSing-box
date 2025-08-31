@@ -6,9 +6,14 @@ if not getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
     PROXY_PORT = 10808
     # 代理
     PROXIES_ASYNC = f"http://{PROXY_HOST}:{PROXY_PORT}"
+    # 最大延迟(单位ms, 测速结果大于此值的不做保留)
+    SPEED_LIMIT = 5000
 else:
     # 代理
     PROXIES_ASYNC = None
+
+    # 最大延迟(单位ms, 测速结果大于此值的不做保留)
+    SPEED_LIMIT = 2000
 
 # sing-box 工具
 SING_BOX_PATH = "plugins/sing-box"
@@ -46,10 +51,5 @@ TEST_IP_NODE = "cip.cc"
 # 异步测试时使用的测试端口./main
 TEST_LISTEN_PORT = 10900
 
-# 最大延迟(单位ms, 测速结果大于此值的不做保留)
-SPEED_LIMIT = 3000
-
 # 节点测速网址
 NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
-# NODE_TEST_CONNECT_SPEED = "https://speed.cloudflare.com/_-down?bytes=100000000"
-# NODE_TEST_CONNECT_SPEED = "https://www.google.com/generate_204"
