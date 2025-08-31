@@ -103,7 +103,7 @@ class TestSpeed:
                                 flag = True
 
                     if flag:
-                        node_conf["tag"] = f"{area}-z{ip}-{self.encrypt.make_md5(test_conn_all_msg)}"
+                        node_conf["tag"] = f"{area}-z{ip}-{await self.encrypt.make_md5(test_conn_all_msg)}"
 
                     speed = match.group(1)
                     if speed:
