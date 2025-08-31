@@ -82,6 +82,8 @@ class TestSpeed:
         """
         config = await self.get_test_conf(node_conf, listen_port)
         tmp_file_path = f"tmp_{await self.encrypt.make_md5(node_conf['tag'])}"
+        proc = None
+        proc2 = None
         try:
             with open(tmp_file_path, "w", encoding="utf-8") as f:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
@@ -94,7 +96,6 @@ class TestSpeed:
                 match_error = re.search(
                     r"context deadline exceeded|no recent network activity|unavailable: |unknown transport type|lookup succeed for",
                     msg)
-
                 if match_speed:
                     ip = node_conf["server"]
                     area = node_conf["tag"]
@@ -138,11 +139,20 @@ class TestSpeed:
                         "speed": speed,
                     }
                     proc.terminate()
+                    if proc2:
+                        proc2.terminate()
                     return True, res
                 elif match_error:
                     proc.terminate()
+                    if proc2:
+                        proc2.terminate()
                     return False, {}
         except Exception as e:
+            if proc:
+                proc.terminate()
+            if proc2:
+                proc2.terminate()
+
             return False, {}
         finally:
             if os.path.exists(tmp_file_path):

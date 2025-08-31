@@ -12,7 +12,8 @@ import asyncio
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from utils.utils_test_speed import TestSpeed
-from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE
+from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE, \
+    TIMEOUT
 
 
 async def filter(file):
@@ -72,7 +73,19 @@ async def main():
 
     async def test_node_with_semaphore(info, port, forbidden_area_map, forbidden_area_re_map):
         async with semaphore:
-            return await test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map)
+            try:
+                return await asyncio.wait_for(
+                    test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map),
+                    timeout=TIMEOUT
+                )
+            except asyncio.TimeoutError:
+                print(f"[超时] 节点 '{info.get('tag', 'N/A')}' 在 30 秒内未完成测试。")
+                return None  # 或者返回一个特定的错误标记
+            except Exception as e:
+                print(f"[错误] 测试节点 '{info.get('tag', 'N/A')}' 时发生异常: {e}")
+                return None
+
+            # return await test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map)
 
     tasks = []
     start_listen_port = 10900
