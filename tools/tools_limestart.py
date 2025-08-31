@@ -109,10 +109,12 @@ class ToolsLimeStart:
         }
         try:
             res = await self.net.fetch_url_get(self.url, headers=self.headers, params=params)
-            if len(json.loads(res)["results"]) <= 1:
+            data = json.loads(res)["results"]
+            print(f"当前最新订阅链接:{data[0]['content']}")
+            if len(data) <= 1:
                 print("没有可删除的数据")
                 return
-            for ind, result in enumerate(json.loads(res)["results"]):
+            for ind, result in enumerate(data):
                 if ind > 0:
                     id = result["id"]
                     content = result["content"]
