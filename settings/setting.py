@@ -1,6 +1,7 @@
-DEBUG = False
+import sys
 
-if DEBUG:
+# 判断程序是否以可知性文件形式运行
+if not getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
     PROXY_HOST = "192.168.2.109"
     PROXY_PORT = 10808
     # 代理
@@ -8,8 +9,6 @@ if DEBUG:
 else:
     # 代理
     PROXIES_ASYNC = None
-
-
 
 # sing-box 工具
 SING_BOX_PATH = "plugins/sing-box"
@@ -54,4 +53,3 @@ SPEED_LIMIT = 3000
 NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
 # NODE_TEST_CONNECT_SPEED = "https://speed.cloudflare.com/_-down?bytes=100000000"
 # NODE_TEST_CONNECT_SPEED = "https://www.google.com/generate_204"
-
