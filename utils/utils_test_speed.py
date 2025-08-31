@@ -20,6 +20,36 @@ class TestSpeed:
         self.encrypt = AsyncEncrypt()
         self.cmd = AsyncCMD()
 
+    async def get_dns(self):
+        """
+
+        :return:
+        """
+        return {
+            "servers": [
+                {
+                    "tag": "dns_domestic",
+                    "address": "223.5.5.5",
+                    "address_strategy": "ipv4_only"
+                },
+                {
+                    "tag": "dns_foreign",
+                    "address": "8.8.8.8",
+                    "address_strategy": "prefer_ipv4"
+                }
+            ],
+            "rules": [
+                {
+                    "geosite": "cn",
+                    "server": "dns_domestic"
+                },
+                {
+                    "outbound": "any",
+                    "server": "dns_foreign"
+                }
+            ]
+        }
+
     async def get_test_conf(self, node_conf, listen_port=None):
         """
 
@@ -51,8 +81,8 @@ class TestSpeed:
                     "interval": "1m"
                 },
                 node_conf
-            ]
-
+            ],
+            "dns": await self.get_dns()
         }
 
     async def close_cmd(self, proc):
@@ -143,11 +173,11 @@ class TestSpeed:
 
                     speed = match_speed.group(1)
                     speed = int(speed)
-                    print(node_conf, speed)
+                    print(node_conf["tag"], speed)
 
                     if SPEED_LIMIT:
                         if speed > SPEED_LIMIT:
-                            print(f"[超时]:{node_conf},{node_conf}")
+                            print(f"[超时]:{node_conf['tag']},{node_conf}")
                             return False, {}
                     res = {
                         "node_info": node_conf,
@@ -158,6 +188,7 @@ class TestSpeed:
                     await self.close_cmd(proc)
                     return False, {}
         except Exception as e:
+            print(e, e.__traceback__.tb_lineno)
             return False, {}
         finally:
             await self.close_cmd(proc)
