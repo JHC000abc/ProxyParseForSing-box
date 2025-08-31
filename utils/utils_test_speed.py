@@ -109,19 +109,18 @@ class TestSpeed:
                 if match_speed:
                     ip = node_conf["server"]
                     area = node_conf["tag"]
-                    flag = False
+                    flag_area = False
+                    flag_ip = False
                     async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
-                        print("msg2---------->", msg2)
-
                         match_area = re.match("地址	: (.*)", msg2)
                         match_ip = re.match("IP	: (.*)", msg2)
                         if match_area:
                             area = match_area.group(1)
-                            flag = True
+                            flag_area = True
 
                         if match_ip:
                             ip = match_ip.group(1)
-                            flag = True
+                            flag_ip = True
 
                         for k, v in forbidden_area_map.items():
                             if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
@@ -131,9 +130,10 @@ class TestSpeed:
 
                     await self.close_cmd(proc)
 
-                    if flag:
-                        print(f"生成新tag:{ip}")
-                        node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
+                    if not flag_ip or not flag_area:
+                        return False, {}
+
+                    node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
 
                     # 正则匹配剔除ip
                     if forbidden_area_re_map:
