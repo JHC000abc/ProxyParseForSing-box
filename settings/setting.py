@@ -52,4 +52,5 @@ TEST_IP_NODE = "cip.cc"
 TEST_LISTEN_PORT = 10900
 
 # 节点测速网址
-NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
+# NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
+NODE_TEST_CONNECT_SPEED = "https://www.google.com/generate_204"

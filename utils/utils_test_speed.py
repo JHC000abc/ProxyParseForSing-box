@@ -143,9 +143,11 @@ class TestSpeed:
 
                     speed = match_speed.group(1)
                     speed = int(speed)
+                    print(node_conf, speed)
 
                     if SPEED_LIMIT:
                         if speed > SPEED_LIMIT:
+                            print(f"[超时]:{node_conf},{node_conf}")
                             return False, {}
                     res = {
                         "node_info": node_conf,
