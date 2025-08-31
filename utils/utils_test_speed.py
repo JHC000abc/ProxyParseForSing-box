@@ -67,17 +67,18 @@ class TestSpeed:
         except Exception as e:
             pass
 
-    async def verify_forbidden_server(self, rules, data):
+    async def verify_forbidden_server(self, rules, data, tag=None):
         """
 
         :param rules:
         :param data:
+        :param tag:
         :return:
         """
         for rule, _ in rules.items():
             match = re.match(rule, data)
             if match:
-                print(f"【成功匹配到禁止server规则】:{rule}<--->{data}")
+                print(f"【成功匹配到禁止server规则】:{rule}<--->{data}<--->{tag}")
                 return True
         return False
 
@@ -124,7 +125,7 @@ class TestSpeed:
 
                         for k, v in forbidden_area_map.items():
                             if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
-                                print(f"【禁止区域】 {k} {node_conf['server']}")
+                                print(f"【禁止区域】 {k} {node_conf['server']} {node_conf['tag']}")
                                 await self.close_cmd(proc2)
                                 return False, {}
 
@@ -133,12 +134,12 @@ class TestSpeed:
                     if not flag_ip or not flag_area:
                         return False, {}
 
-                    node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
-
                     # 正则匹配剔除ip
                     if forbidden_area_re_map:
-                        if await self.verify_forbidden_server(forbidden_area_re_map, ip):
+                        if await self.verify_forbidden_server(forbidden_area_re_map, ip, node_conf["tag"]):
                             return False, {}
+
+                    node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
 
                     speed = match_speed.group(1)
                     speed = int(speed)
