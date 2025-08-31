@@ -68,8 +68,8 @@ class TestSpeed:
             match = re.match(rule, data)
             if match:
                 print(f"成功匹配到规则:{rule}")
-                return False
-        return True
+                return True
+        return False
 
     async def test_speed(self, node_conf, listen_port=None, forbidden_area_map={}, forbidden_area_re_map={}):
         """
