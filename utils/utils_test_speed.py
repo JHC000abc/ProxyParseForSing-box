@@ -80,8 +80,7 @@ class TestSpeed:
         """
         config = await self.get_test_conf(node_conf, listen_port)
         tmp_file_path = f"tmp_{await self.encrypt.make_md5(node_conf['tag'])}"
-        proc = None
-        proc2 = None
+
         try:
             with open(tmp_file_path, "w", encoding="utf-8") as f:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
@@ -119,6 +118,7 @@ class TestSpeed:
                                 print(f"forbidden area {k} {node_conf['server']}")
                                 return False, {}
 
+
                     # 正则匹配剔除ip
                     if forbidden_area_re_map:
                         if await self.verify_forbidden_server(forbidden_area_re_map, ip):
@@ -139,14 +139,23 @@ class TestSpeed:
                     }
                     return True, res
                 elif match_error:
+                    proc.terminate()
                     return False, {}
         except Exception as e:
             return False, {}
         finally:
-            if proc:
-                proc.terminate()
-            if proc2:
-                proc2.terminate()
+            try:
+                if proc:
+                    proc.terminate()
+            except ProcessLookupError:
+                pass
+
+            try:
+                if proc2:
+                    proc2.terminate()
+            except ProcessLookupError:
+                pass
+
 
             if os.path.exists(tmp_file_path):
                 os.remove(tmp_file_path)
