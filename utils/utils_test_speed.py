@@ -80,7 +80,8 @@ class TestSpeed:
         """
         config = await self.get_test_conf(node_conf, listen_port)
         tmp_file_path = f"tmp_{await self.encrypt.make_md5(node_conf['tag'])}"
-
+        proc = None
+        proc2 = None
         try:
             with open(tmp_file_path, "w", encoding="utf-8") as f:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
