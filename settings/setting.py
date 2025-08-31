@@ -49,4 +49,6 @@ TEST_LISTEN_PORT = 10900
 SPEED_LIMIT = 1000
 
 # 节点测速网址
-NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
+# NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
+# NODE_TEST_CONNECT_SPEED = "https://speed.cloudflare.com/_-down?bytes=100000000"
+NODE_TEST_CONNECT_SPEED = "https://www.google.com/generate_204"

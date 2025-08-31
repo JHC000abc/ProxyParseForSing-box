@@ -17,6 +17,7 @@ class ParseHysteria2(BaseParse):
         *password, server_port = netloc.split("@")
         password = "@".join(password)
         server, port = server_port.split(":")
+        port = port.split(",")[0]
         query = {k: v[0] for k, v in parse.parse_qs(parse_url.query).items()}
         fragment = parse_url.fragment
         fragment += f"_{await self.encrypt.make_md5(data=str(server))}"
