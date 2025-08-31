@@ -126,7 +126,7 @@ class TestSpeed:
                             flag = True
 
                     for k, v in forbidden_area_map.items():
-                        if k in test_conn_all_msg or "400 Bad Reques" in test_conn_all_msg or "Connection refused" in test_conn_all_msg:
+                        if k in test_conn_all_msg or "400 Bad Reques" in test_conn_all_msg :
                             print(f"forbidden area {k} {node_conf['server']}")
                             return False, {}
 
