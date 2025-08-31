@@ -157,7 +157,6 @@ class TestSpeed:
         except Exception as e:
             return False, {}
         finally:
-            print("listen_port",listen_port)
             await self.close_cmd(proc)
             await self.close_cmd(proc2)
 

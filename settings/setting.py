@@ -33,13 +33,13 @@ FORBIDDEN_SERVER_RE_FILE = "files/forbidden_server_re.list"
 OUT_LISTEN_PORT = 1080
 
 # 节点在sing-box中测速更新间隔时长
-UPDATE_NODES_TIMES = "5m"
+UPDATE_NODES_TIMES = "10m"
 
 # 网络请求超时时间
 TIMEOUT = 60
 
 # 单次最大并法测速数量
-MAX_CONCURRENCY = 20
+MAX_CONCURRENCY = 100
 
 # 获取节点地区网站
 TEST_IP_NODE = "cip.cc"
@@ -48,7 +48,7 @@ TEST_IP_NODE = "cip.cc"
 TEST_LISTEN_PORT = 10900
 
 # 最大延迟(单位ms, 测速结果大于此值的不做保留)
-SPEED_LIMIT = 2000
+SPEED_LIMIT = 3000
 
 # 节点测速网址
 NODE_TEST_CONNECT_SPEED = "https://gemini.google.com/gem"
