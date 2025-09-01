@@ -75,8 +75,9 @@ class TestSpeed:
         :return:
         """
         for rule, _ in rules.items():
-            match = re.match(rule, data + server)
-            if match:
+            match_ip = re.match(rule, data.strip())
+            match_server = re.match(rule, server.strip())
+            if match_ip or match_server:
                 print(f"【成功匹配到禁止server规则】:{rule}<--->{data}{server}<--->{tag}")
                 return True
         return False
