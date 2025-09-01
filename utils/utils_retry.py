@@ -2,13 +2,14 @@ import traceback
 import asyncio
 import random
 from functools import wraps
+from settings.setting import NEWTWORK_RETRY_TIMES
 
 
 def retry(func):
     @wraps(func)
     async def wrapper(*args, **kwargs):
         flag = False
-        retry_times = 5
+        retry_times = NEWTWORK_RETRY_TIMES
         while not flag and retry_times > 0:
             try:
                 res = await func(*args, **kwargs)

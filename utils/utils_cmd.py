@@ -1,4 +1,5 @@
 import asyncio
+from settings.setting import TIMEOUT
 
 
 class AsyncCMD:
@@ -28,7 +29,7 @@ class AsyncCMD:
             if proc.returncode is None:
                 proc.terminate()
                 try:
-                    await asyncio.wait_for(proc.wait(), timeout=5)
+                    await asyncio.wait_for(proc.wait(), timeout=TIMEOUT)
                 except asyncio.TimeoutError:
                     proc.kill()
                     print("Forced termination of subprocess.")

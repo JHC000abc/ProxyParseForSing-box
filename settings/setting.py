@@ -1,19 +1,26 @@
 import sys
 
+
 # 判断程序是否以可知性文件形式运行
-if not getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+if not (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')):
+    print("本地代理")
     PROXY_HOST = "192.168.2.109"
     PROXY_PORT = 10808
     # 代理
     PROXIES_ASYNC = f"http://{PROXY_HOST}:{PROXY_PORT}"
     # 最大延迟(单位ms, 测速结果大于此值的不做保留)
     SPEED_LIMIT = 5000
+
+    NEWTWORK_RETRY_TIMES = 3
 else:
+    print("无代理")
     # 代理
     PROXIES_ASYNC = None
 
     # 最大延迟(单位ms, 测速结果大于此值的不做保留)
     SPEED_LIMIT = 2000
+
+    NEWTWORK_RETRY_TIMES = 5
 
 # sing-box 工具
 SING_BOX_PATH = "plugins/sing-box"
@@ -40,7 +47,7 @@ OUT_LISTEN_PORT = 1080
 UPDATE_NODES_TIMES = "10m"
 
 # 网络请求超时时间
-TIMEOUT = 15
+TIMEOUT = 30
 
 # 单次最大并法测速数量
 MAX_CONCURRENCY = 100

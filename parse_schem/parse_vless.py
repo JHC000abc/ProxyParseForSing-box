@@ -22,7 +22,8 @@ class ParseVless(BaseParse):
         fragment += f"_{await self.encrypt.make_md5(data=str(server))}"
 
         if query.get("path", '/') == "/":
-            return
+            query["path"] = ""
+            # return
 
         res = {
             "type": "vless",
@@ -30,22 +31,25 @@ class ParseVless(BaseParse):
             "server": server,
             "server_port": int(port),
             "uuid": uuid,
-            "transport": {
-                "type": query['type'],
-                "path": query['path'],
-                "headers": {
-                    "Host": query.get("host", server)
-                }
-            }
         }
-
-        if query.get('security') == "tls":
+        if query.get("type"):
             res.update({
-                "tls": {
-                    "enabled": True,
-                    "insecure": True,
-                    "server_name":query.get("sni") if query.get("sni") else server
+                "transport": {
+                    "type": query['type'],
+                    "path": query['path'],
+                    "headers": {
+                        "Host": query.get("host", server)
+                    }
                 }
             })
+
+            if query.get('security') == "tls":
+                res.update({
+                    "tls": {
+                        "enabled": True,
+                        "insecure": True,
+                        "server_name": query.get("sni") if query.get("sni") else server
+                    }
+                })
 
         return res

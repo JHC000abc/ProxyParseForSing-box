@@ -20,36 +20,6 @@ class TestSpeed:
         self.encrypt = AsyncEncrypt()
         self.cmd = AsyncCMD()
 
-    async def get_dns(self):
-        """
-
-        :return:
-        """
-        return {
-            "servers": [
-                {
-                    "tag": "dns_domestic",
-                    "address": "223.5.5.5",
-                    "address_strategy": "ipv4_only"
-                },
-                {
-                    "tag": "dns_foreign",
-                    "address": "8.8.8.8",
-                    "address_strategy": "prefer_ipv4"
-                }
-            ],
-            "rules": [
-                {
-                    "geosite": "cn",
-                    "server": "dns_domestic"
-                },
-                {
-                    "outbound": "any",
-                    "server": "dns_foreign"
-                }
-            ]
-        }
-
     async def get_test_conf(self, node_conf, listen_port=None):
         """
 
@@ -81,8 +51,7 @@ class TestSpeed:
                     "interval": "1m"
                 },
                 node_conf
-            ],
-            "dns": await self.get_dns()
+            ]
         }
 
     async def close_cmd(self, proc):
@@ -132,10 +101,11 @@ class TestSpeed:
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
             cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
+                # print("msg", msg)
                 match_speed = re.search(r"available: (\d+)ms", msg)
                 # lookup succeed for 丢弃 避免vmess 成功率低问题
                 match_error = re.search(
-                    r"context deadline exceeded|no recent network activity|unavailable: |unknown transport type|lookup succeed for",
+                    r"context deadline exceeded|no recent network activity|unknown transport type",
                     msg)
                 if match_speed:
                     ip = node_conf["server"]
@@ -143,6 +113,7 @@ class TestSpeed:
                     flag_area = False
                     flag_ip = False
                     async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
+                        print("msg2", msg2)
                         match_area = re.match("地址	: (.*)", msg2)
                         match_ip = re.match("IP	: (.*)", msg2)
                         if match_area:
@@ -164,12 +135,12 @@ class TestSpeed:
                     if not flag_ip or not flag_area:
                         return False, {}
 
+                    node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
+
                     # 正则匹配剔除ip
                     if forbidden_area_re_map:
                         if await self.verify_forbidden_server(forbidden_area_re_map, ip, node_conf["tag"]):
                             return False, {}
-
-                    node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
 
                     speed = match_speed.group(1)
                     speed = int(speed)

@@ -185,7 +185,10 @@ class Base(ABC):
         base64_decode_result = await self.encrypt.base64_decode(data.split("# ")[0])
         for node in base64_decode_result.split("\n"):
             if node.strip() and not node.startswith("#"):
-                yield parse.urlparse(parse.unquote(node.strip()))
+                try:
+                    yield parse.urlparse(parse.unquote(node.strip()))
+                except Exception as e:
+                    print(traceback.format_exc())
 
     async def save_result_json(self, tags, outbounds, tags_speed,
                                file_name=f"config_{UtilsTimes.get_format_utc_8('%Y%m%d')}.json"):
