@@ -66,7 +66,7 @@ class TestSpeed:
         except Exception as e:
             pass
 
-    async def verify_forbidden_server(self, rules, data, tag=None):
+    async def verify_forbidden_server(self, rules, data, server, tag=None):
         """
 
         :param rules:
@@ -75,9 +75,9 @@ class TestSpeed:
         :return:
         """
         for rule, _ in rules.items():
-            match = re.match(rule, data)
+            match = re.match(rule, data + server)
             if match:
-                print(f"【成功匹配到禁止server规则】:{rule}<--->{data}<--->{tag}")
+                print(f"【成功匹配到禁止server规则】:{rule}<--->{data}{server}<--->{tag}")
                 return True
         return False
 
@@ -139,7 +139,8 @@ class TestSpeed:
 
                     # 正则匹配剔除ip
                     if forbidden_area_re_map:
-                        if await self.verify_forbidden_server(forbidden_area_re_map, ip, node_conf["tag"]):
+                        if await self.verify_forbidden_server(forbidden_area_re_map, ip, node_conf['server'],
+                                                              node_conf["tag"]):
                             return False, {}
 
                     speed = match_speed.group(1)
