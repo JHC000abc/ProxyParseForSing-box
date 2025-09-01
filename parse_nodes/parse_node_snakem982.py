@@ -33,8 +33,8 @@ class ParseNodeSnakem982(Base):
             {
                 "url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/base64.txt",
                 "proxy": True
-            }
-            # ,
+            },
+
             # {
             #     "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
             #     "proxy": True
@@ -43,10 +43,10 @@ class ParseNodeSnakem982(Base):
             #     "url": "https://raw.githubusercontent.com/crackbest/V2ray-Config/refs/heads/main/config.txt",
             #     "proxy": True
             # },
-            # {
-            #     "url": "https://raw.githubusercontent.com/AliDev-ir/FreeVPN/main/pcvpn",
-            #     "proxy": True
-            # }
+            {
+                "url": "https://raw.githubusercontent.com/AliDev-ir/FreeVPN/main/pcvpn",
+                "proxy": True
+            }
 
         ]
 
