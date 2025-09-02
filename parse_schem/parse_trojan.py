@@ -47,4 +47,5 @@ class ParseTrojan(BaseParse):
                 }
             })
 
+
         return res

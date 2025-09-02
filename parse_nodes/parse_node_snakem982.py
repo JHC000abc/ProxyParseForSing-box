@@ -34,6 +34,16 @@ class ParseNodeSnakem982(Base):
                 "url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/base64.txt",
                 "proxy": True
             },
+            {
+                "url": "https://raw.githubusercontent.com/AliDev-ir/FreeVPN/main/pcvpn",
+                "proxy": True
+            },
+
+            {
+                "url": "https://x5teol34.diiyx.cn/NwM5/oE_0",
+                "proxy": True,
+
+            }
 
             # {
             #     "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
@@ -43,10 +53,6 @@ class ParseNodeSnakem982(Base):
             #     "url": "https://raw.githubusercontent.com/crackbest/V2ray-Config/refs/heads/main/config.txt",
             #     "proxy": True
             # },
-            {
-                "url": "https://raw.githubusercontent.com/AliDev-ir/FreeVPN/main/pcvpn",
-                "proxy": True
-            }
 
         ]
 
@@ -139,9 +145,12 @@ class ParseNodeSnakem982(Base):
             try:
                 res = await self.net.fetch_url_get(url, headers=self.headers, proxy=proxy)
                 async for node in self.parse_node_base64(res):
-                    node_parse_result = await self.build(node)
-                    if node_parse_result:
-                        self.success_list.append(node_parse_result)
+                    try:
+                        node_parse_result = await self.build(node)
+                        if node_parse_result:
+                            self.success_list.append(node_parse_result)
+                    except:
+                        print(f"ParseNodeSnakem982 节点解析错误：{node}")
             except  Exception as e:
                 print(f"ParseNodeSnakem982:{traceback.format_exc()}")
         return self.success_list
