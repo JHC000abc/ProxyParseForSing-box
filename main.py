@@ -94,10 +94,11 @@ async def main():
     start_listen_port = TEST_LISTEN_PORT
     repeat_recode_map = {}
     for info in nodes_to_test:
-        if repeat_recode_map.get(info["tag"]) is None:
+        repeat_check_tag = f"{info['server']}_{info['port']}"
+        if repeat_recode_map.get(repeat_check_tag) is None:
             tasks.append(test_node_with_semaphore(info, start_listen_port, forbidden_area_map, forbidden_area_re_map))
             start_listen_port += 1
-            repeat_recode_map[info["tag"]] = 1
+            repeat_recode_map[repeat_check_tag] = 1
 
     print(f"去重后剩余待测试节点数量 {len(repeat_recode_map)}...")
     print(f"开始并发测试，最大并发量为 {MAX_CONCURRENCY}...")
@@ -110,7 +111,6 @@ async def main():
     repeat_server_record = {}
 
     for i, result in enumerate(results):
-        # print("result",result)
         if not result:
             continue
         test_speed_status, info_speed = result
