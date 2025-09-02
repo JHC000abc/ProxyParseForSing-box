@@ -39,12 +39,6 @@ class ParseNodeSnakem982(Base):
                 "proxy": True
             },
 
-            {
-                "url": "https://x5teol34.diiyx.cn/NwM5/oE_0",
-                "proxy": True,
-
-            }
-
             # {
             #     "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
             #     "proxy": True
@@ -125,6 +119,26 @@ class ParseNodeSnakem982(Base):
                 "proxy": True
             }])
 
+    async def get_expire_node(self):
+        """
+
+        :return:
+        """
+        return """trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E6%B6%88%E6%81%AF%3A%202%E6%9D%A1%E6%9C%AA%E8%AF%BB%EF%BC%8C%E5%9C%A8APP%E6%9F%A5%E7%9C%8B
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E7%BE%8E%E5%9B%BD%20G1%20%7C%20%E7%9B%B4%E8%BF%9E%E3%80%81%E7%A7%BB%E5%8A%A8%E4%BC%98%E5%8C%96%20%7C%203x
+trojan://xaLw4aO6Dw@23.142.200.97:48369?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E7%BE%8E%E5%9B%BD%20G2%20%7C%20%E7%9B%B4%E8%BF%9E%E3%80%81ChatGPT%20%7C%203x
+trojan://xaLw4aO6Dw@89.185.80.174:48240?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E7%BE%8E%E5%9B%BD%20G4%20%7C%20%E7%9B%B4%E8%BF%9E%20%7C%203x
+trojan://xaLw4aO6Dw@211.72.156.82:14571?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E9%A6%99%E6%B8%AF%20G1%20%7C%20%E5%B0%8F%E5%B8%A6%E5%AE%BD%20%7C%204x
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#-----%20%E8%B4%A6%E5%8F%B7%E4%BF%A1%E6%81%AF%20-----
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E7%99%BB%E5%BD%95%E8%B4%A6%E5%8F%B7%3A%20saijelu%40f.lm%20%20%20%20%20%20%20%20%20%20%20%20%20%20
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E4%BD%93%E9%AA%8C%E5%A5%97%E9%A4%90%3A%20%E5%89%A9%E4%BD%992%E5%A4%A9%20%20%20%20%20%20%20%20%20%20%20%20%20%20
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E6%B5%81%E9%87%8F%E9%87%8D%E7%BD%AE%3A%20%E6%AF%8F%E6%9C%882%E6%97%A5%2010G%EF%BC%8C%E5%89%A9%E4%BD%998G%20%20%20%20%20%20%20%20%20%20%20%20%20%20
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#-----%20%E8%81%94%E7%B3%BB%E6%88%91%E4%BB%AC%20-----
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E7%94%B5%E6%8A%A5%3A%20https%3A%2F%2Ft.me%2Ffalemon_group
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E9%82%AE%E7%AE%B1%3A%20kefu%40falemon.com
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E5%AE%98%E7%BD%91%3A%20mp.dtbaq.cn%2Fol
+trojan://xaLw4aO6Dw@50.115.173.177:21043?allowInsecure=1&peer=v.qq.com&sni=v.qq.com#%E6%97%B6%E9%97%B4%3A%202025-09-02%2020%3A16%3A48"""
+
     async def process(self):
         """
 
@@ -139,11 +153,16 @@ class ParseNodeSnakem982(Base):
             data = await self.get_data_from_github(url)
             await func(data)
 
+        index = 0
         for info in self.infos:
             url = info["url"]
             proxy = info["proxy"]
             try:
                 res = await self.net.fetch_url_get(url, headers=self.headers, proxy=proxy)
+                if index == 0:
+                    expire_nodes = await self.get_expire_node()
+                    res += expire_nodes
+                    print(f"加载过期订阅:{expire_nodes}")
                 async for node in self.parse_node_base64(res):
                     try:
                         node_parse_result = await self.build(node)
@@ -153,4 +172,5 @@ class ParseNodeSnakem982(Base):
                         print(f"ParseNodeSnakem982 节点解析错误：{node}")
             except  Exception as e:
                 print(f"ParseNodeSnakem982:{traceback.format_exc()}")
+            index += 1
         return self.success_list
