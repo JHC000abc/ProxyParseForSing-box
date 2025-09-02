@@ -127,7 +127,7 @@ class TestSpeed:
                         if match_ip:
                             ip = match_ip.group(1)
                             flag_ip = True
-                        print("forbidden_area_map", forbidden_area_map)
+
                         for k, v in forbidden_area_map.items():
                             if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
                                 print(f"【禁止区域】 k:{k} server:{node_conf['server']} tag:{node_conf['tag']}")
