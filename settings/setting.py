@@ -50,7 +50,7 @@ UPDATE_NODES_TIMES = "5m"
 TIMEOUT = 60
 
 # 单次最大并法测速数量
-MAX_CONCURRENCY = 100
+MAX_CONCURRENCY = 1000
 
 # 获取节点地区网站
 # TEST_IP_NODE = "cip.cc"
