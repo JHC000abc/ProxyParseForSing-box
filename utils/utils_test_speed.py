@@ -115,8 +115,11 @@ class TestSpeed:
                     flag_ip = False
                     async for msg2, proc2 in self.cmd.run_cmd_async(cmd2):
                         print("msg2", msg2)
-                        match_area = re.match("地址	: (.*)", msg2)
-                        match_ip = re.match("IP	: (.*)", msg2)
+                        # match_area = re.match("地址	: (.*)", msg2)
+                        # match_ip = re.match("IP	: (.*)", msg2)
+
+                        match_area = re.match('"city": "(.*?)",', msg2)
+                        match_ip = re.match('"ip": "(.*)', msg2)
                         if match_area:
                             area = match_area.group(1)
                             flag_area = True
