@@ -53,7 +53,8 @@ TIMEOUT = 60
 MAX_CONCURRENCY = 100
 
 # 获取节点地区网站
-TEST_IP_NODE = "cip.cc"
+# TEST_IP_NODE = "cip.cc"
+TEST_IP_NODE = "ipinfo.io"
 
 # 异步测试时使用的测试端口./main
 TEST_LISTEN_PORT = 10900
