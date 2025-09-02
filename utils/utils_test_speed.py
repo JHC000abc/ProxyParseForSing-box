@@ -119,7 +119,7 @@ class TestSpeed:
                         # match_ip = re.match("IP	: (.*)", msg2)
 
                         match_area = re.match('"city": "(.*?)",', msg2)
-                        match_ip = re.match('"ip": "(.*)', msg2)
+                        match_ip = re.match('"ip": "(.*)",', msg2)
                         if match_area:
                             area = match_area.group(1)
                             flag_area = True

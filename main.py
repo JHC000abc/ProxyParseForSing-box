@@ -94,7 +94,7 @@ async def main():
     start_listen_port = TEST_LISTEN_PORT
     repeat_recode_map = {}
     for info in nodes_to_test:
-        repeat_check_tag = f"{info['server']}_{info['port']}"
+        repeat_check_tag = f"{info['server']}_{info['server_port']}"
         if repeat_recode_map.get(repeat_check_tag) is None:
             tasks.append(test_node_with_semaphore(info, start_listen_port, forbidden_area_map, forbidden_area_re_map))
             start_listen_port += 1
