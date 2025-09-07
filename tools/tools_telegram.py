@@ -32,9 +32,9 @@ async def main():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', "--messages", dest='messages', help='messages', required=True, nargs='+')
-    parser.add_argument('-i', "--id", dest='id', help='id', default="")
+    parser.add_argument('-i', "--id", dest='id', help='id', default="-1003090557565")
     parser.add_argument('-t', "--token", dest='token', help='token',
-                        default="")
+                        default="8487322597:AAEZB6QXQfm2L6eY_cF90pfLBM_LE1yyNHM")
     args = parser.parse_args()
     for message in args.messages:
         await AsyncTelegram().process(message, args.id, args.token)
