@@ -21,17 +21,17 @@ class AsyncTelegram:
         :param token:
         :return:
         """
-        if message.startswith("http"):
-            message = f"``` \n{message}\n ```"
+        message = f"``` \n{message}\n ```"
         text = f"[{UtilsTimes.get_format_utc_8()}]\n{message}"
         text = text.translate(str.maketrans({
             c: f'\\{c}' for c in '_[]()~>#+-=|{}.!'
         }))
-        cmd = (f"curl -k "
-               f"--data-urlencode chat_id='{chat_id}' "
-               f"--data-urlencode parse_mode='MarkdownV2' "
-               f"--data-urlencode 'text=*机器人通知消息*\n{text}' "
-               f"'https://api.telegram.org/bot{token}/sendMessage' ")
+        cmd = (f"""curl -k """
+               f"""--data-urlencode chat_id='{chat_id}' """
+               f"""--data-urlencode parse_mode='MarkdownV2' """
+               f"""--data-urlencode 'text=*机器人通知消息*\n{text}' """
+               f"""'https://api.telegram.org/bot{token}/sendMessage' """)
+
         os.system(cmd)
 
 
