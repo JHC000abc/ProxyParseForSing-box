@@ -21,7 +21,15 @@ class AsyncTelegram:
         :param token:
         :return:
         """
-        cmd = f"curl -k --data chat_id='{chat_id}' --data 'text=[{UtilsTimes.get_format_utc_8()}]({message})' 'https://api.telegram.org/bot{token}/sendMessage' "
+        text = f"[{UtilsTimes.get_format_utc_8()}]\n```bash\n{message}\n```"
+        text = text.translate(str.maketrans({
+            c: f'\\{c}' for c in '_[]()~>#+-=|{}.!'
+        }))
+        cmd = (f"curl -k "
+               f"--data-urlencode chat_id='{chat_id}' "
+               f"--data-urlencode parse_mode='MarkdownV2' "
+               f"--data-urlencode 'text=*机器人通知消息*\n{text}' "
+               f"'https://api.telegram.org/bot{token}/sendMessage' ")
         os.system(cmd)
 
 
@@ -32,9 +40,9 @@ async def main():
     """
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', "--messages", dest='messages', help='messages', required=True, nargs='+')
-    parser.add_argument('-i', "--id", dest='id', help='id', default="-1003090557565")
+    parser.add_argument('-i', "--id", dest='id', help='id', default="")
     parser.add_argument('-t', "--token", dest='token', help='token',
-                        default="8487322597:AAEZB6QXQfm2L6eY_cF90pfLBM_LE1yyNHM")
+                        default="")
     args = parser.parse_args()
     for message in args.messages:
         await AsyncTelegram().process(message, args.id, args.token)
