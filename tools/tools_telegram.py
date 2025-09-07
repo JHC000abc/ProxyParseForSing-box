@@ -21,7 +21,7 @@ class AsyncTelegram:
         :param token:
         :return:
         """
-        message = f"``` \n{message}\n ```"
+        message = f"```\n{message}\n```"
         text = f"[{UtilsTimes.get_format_utc_8()}]\n{message}"
         text = text.translate(str.maketrans({
             c: f'\\{c}' for c in '_[]()~>#+-=|{}.!'
