@@ -114,7 +114,7 @@ uv run main.py
 ## 5. 打包telegram 工具(自行添加代码中的 token 和 id )
 
 ```bash
-  pyarmor gen -r --pack FC tools/tools_telegram.py && mv dist/tools_telegram plugins/telegram && rm -rf dist/ .pyarmor/ utils_telegram.spec
+  pyarmor gen -r --pack FC tools/tools_telegram.py && mv dist/tools_telegram plugins/telegram && rm -rf dist/ .pyarmor/ tools_telegram.spec
 ```
 
 ## 6. 打包转手机订阅链接插件
