@@ -1,3 +1,4 @@
+import asyncio
 import os
 import re
 import traceback
@@ -250,14 +251,12 @@ class Base(ABC):
             match = re.match("https://(.*?).json", msg)
             if match:
                 url = f"https://{match.group(1)}.json"
-                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' "
-                cmd3 = f"{TELEGRAM_TOOLS_FILE} -m '{url}'"
+                print("url",url)
+                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
                 cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
-                cmd5 = f"{LIMESTART_TOOLS_FILE} -i '{url}'"
+                cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
                 async for msg, proc in self.cmd.run_cmd_async(cmd2):
                     print("msg2", msg)
-                async for msg, proc in self.cmd.run_cmd_async(cmd3):
-                    print("msg3", msg)
                 async for msg, proc in self.cmd.run_cmd_async(cmd4):
                     print("msg4", msg)
                 async for msg, proc in self.cmd.run_cmd_async(cmd5):
