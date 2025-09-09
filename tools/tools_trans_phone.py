@@ -57,7 +57,6 @@ class AsyncToolsTransPhone:
                     "tag": "PROXY",
                     "outbounds": [
                                      "AUTO-US",
-                                     "SELECT-US",
                                      "direct-out",
                                      "block-out"
                                  ] + tags,
@@ -152,12 +151,9 @@ class AsyncToolsTransPhone:
             match = re.match("https://(.*?).json", msg)
             if match:
                 url = f"https://{match.group(1)}.json"
-                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '生成手机专用订阅链接' "
-                cmd3 = f"{TELEGRAM_TOOLS_FILE} -m '{url}'"
+                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '生成手机专用订阅链接' '{url}' "
                 async for msg, proc in self.cmd.run_cmd_async(cmd2):
                     print("msg2", msg)
-                async for msg, proc in self.cmd.run_cmd_async(cmd3):
-                    print("msg3", msg)
 
         os.remove(tmp_file)
 
