@@ -9,7 +9,7 @@ from utils.utils_encrypt import AsyncEncrypt
 from utils.utils_cmd import AsyncCMD
 from utils.utils_times import UtilsTimes
 from settings.setting import OUT_LISTEN_PORT, UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, SPEED_LIMIT, \
-    TRANS_PHONE_TOOLS_FILE, LIMESTART_TOOLS_FILE, UPDATE_NODES_TIMES
+    TRANS_PHONE_TOOLS_FILE, LIMESTART_TOOLS_FILE, UPDATE_NODES_TIMES, NODE_TEST_CONNECT_SPEED
 from utils.utils_network import UtilsNetwork
 
 
@@ -106,20 +106,14 @@ class Base(ABC):
             {
                 "type": "selector",
                 "tag": "PROXY",
-                "outbounds": ["AUTO-US", "SELECT-US", "direct-out", "block-out"] + tags,
+                "outbounds": ["AUTO-US", "direct-out", "block-out"] + tags,
                 "default": "AUTO-US"
-            },
-            {
-                "type": "selector",
-                "tag": "SELECT-US",
-                "outbounds": tags
-
             },
             {
                 "type": "urltest",
                 "tag": "AUTO-US",
                 "outbounds": tags_speed,
-                "url": "https://gemini.google.com/gem",
+                "url": f"{NODE_TEST_CONNECT_SPEED}",
                 "interval": f"{UPDATE_NODES_TIMES}"
             }
 
@@ -251,7 +245,7 @@ class Base(ABC):
             match = re.match("https://(.*?).json", msg)
             if match:
                 url = f"https://{match.group(1)}.json"
-                print("url",url)
+                print("url", url)
                 cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
                 cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
                 cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
