@@ -38,10 +38,11 @@ class ParseNodeSnakem982(Base):
                 "url": "https://raw.githubusercontent.com/AliDev-ir/FreeVPN/main/pcvpn",
                 "proxy": True
             },
-            {
-                "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
-                "proxy": True
-            },
+
+            # {
+            #     "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
+            #     "proxy": True
+            # },
             {
                 "url": "https://raw.githubusercontent.com/crackbest/V2ray-Config/refs/heads/main/config.txt",
                 "proxy": True
@@ -133,7 +134,7 @@ class ParseNodeSnakem982(Base):
         git_hub_pages_urls = {
             "https://github.com/Barabama/FreeNodes/overview-files/main": self.parse_node_Barabama,
             "https://github.com/vpnmianfei/vpnmianfei.github.io/overview-files/main": self.parse_node_vpnmianfei,
-            "https://github.com/barry-far/V2ray-Config/overview-files/main": self.parse_node_barry_far
+            # "https://github.com/barry-far/V2ray-Config/overview-files/main": self.parse_node_barry_far
         }
         for url, func in git_hub_pages_urls.items():
             data = await self.get_data_from_github(url)
