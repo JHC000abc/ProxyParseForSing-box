@@ -56,7 +56,7 @@ class ParseNodesharkDoor(Base):
         """
         try:
             search_html = await self.net.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
-        except:
+        except Exception as e :
             return self.success_list
         async for search_result in self.parse_search(search_html):
             day = f"{UtilsTimes.get_format_utc_8('%d')}日"
