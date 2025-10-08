@@ -22,5 +22,6 @@ def retry(func):
                 await asyncio.sleep(random.randint(1, 3))
 
         print(f"函数 '{func.__name__}' 在 5 次尝试后仍失败。{args}{kwargs}")
+        raise
 
     return wrapper
