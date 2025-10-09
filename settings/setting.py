@@ -3,7 +3,7 @@ import sys
 
 # 判断程序是否以可知性文件形式运行
 if not (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')):
-    print("本地代理")
+    # print("本地代理")
     PROXY_HOST = "192.168.2.109"
     PROXY_PORT = 10808
     # 代理
@@ -13,7 +13,7 @@ if not (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')):
 
     NEWTWORK_RETRY_TIMES = 3
 else:
-    print("无代理")
+    # print("无代理")
     # 代理
     PROXIES_ASYNC = None
 
