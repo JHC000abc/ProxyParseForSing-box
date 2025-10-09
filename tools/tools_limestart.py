@@ -150,12 +150,12 @@ async def main():
     #     await t.recode_url(url)
 
     # 获取最新记录工具
-    # t = ToolsLimeStart()
-    # await t.get_url()
+    t = ToolsLimeStart()
+    await t.get_url()
 
     # 删除记录工具
-    t = ToolsLimeStart()
-    await t.clear()
+    # t = ToolsLimeStart()
+    # await t.clear()
 
 
 if __name__ == '__main__':
