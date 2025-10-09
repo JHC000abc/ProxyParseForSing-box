@@ -18,7 +18,7 @@ class ToolsLimeStart:
 
     """
 
-    def __init__(self, token="af16aa8adb91a9a64014f5ad7f49bf67", user_name="jhc000abct1ljk9ip"):
+    def __init__(self, token="3f57145f726f3a6acf8c974fbf5b1177", user_name="jhc000abct1ljk9ip"):
         self.net = UtilsNetwork()
         self.url = "https://api.limestart.cn/backend/note-v3"
         self.headers = {
@@ -150,12 +150,12 @@ async def main():
     #     await t.recode_url(url)
 
     # 获取最新记录工具
-    # t = ToolsLimeStart()
-    # await t.get_url()
+    t = ToolsLimeStart()
+    await t.get_url()
 
     # 删除记录工具
-    t = ToolsLimeStart()
-    await t.clear()
+    # t = ToolsLimeStart()
+    # await t.clear()
 
 
 if __name__ == '__main__':
