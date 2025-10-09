@@ -141,13 +141,13 @@ async def main():
     :return:
     """
     # 上传记录工具
-    t = ToolsLimeStart()
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-i', "--input", dest='input', help='input', required=True, nargs='+')
-    args = parser.parse_args()
-    urls = args.input
-    for url in urls:
-        await t.recode_url(url)
+    # t = ToolsLimeStart()
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('-i', "--input", dest='input', help='input', required=True, nargs='+')
+    # args = parser.parse_args()
+    # urls = args.input
+    # for url in urls:
+    #     await t.recode_url(url)
 
     # 获取最新记录工具
     # t = ToolsLimeStart()
