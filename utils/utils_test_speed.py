@@ -101,6 +101,7 @@ class TestSpeed:
 
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
             cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
+            cmd3 = f"curl https://gemini.google.com -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
                 # print("msg", msg)
                 match_speed = re.search(r"available: (\d+)ms", msg)
@@ -109,6 +110,11 @@ class TestSpeed:
                     r"context deadline exceeded|no recent network activity|unknown transport type",
                     msg)
                 if match_speed:
+                    async for msg3, proc3 in self.cmd.run_cmd_async(cmd3):
+                        if "302 Moved" in msg3:
+                            proc3.terminate()
+                            return False, {}
+
                     ip = node_conf["server"]
                     area = node_conf["tag"]
                     flag_area = False
