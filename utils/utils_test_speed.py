@@ -114,6 +114,7 @@ class TestSpeed:
                 if match_speed:
                     msg3_all = ""
                     async for msg3, proc3 in self.cmd.run_cmd_async(cmd3):
+                        print("msg3--->", msg3)
                         msg3_all += msg3
                     if msg3_all != "200":
                         print(f"节点：{node_conf} 访问 Gemini 不通")
