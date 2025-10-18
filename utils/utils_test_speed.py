@@ -82,7 +82,8 @@ class TestSpeed:
                 return True
         return False
 
-    async def test_speed(self, node_conf, listen_port=None, forbidden_area_map={}, forbidden_area_re_map={}):
+    async def test_speed(self, node_conf, listen_port=None, forbidden_area_map={}, forbidden_area_re_map={},
+                         enable_area_map={}):
         """
 
         :param node_conf:
@@ -130,20 +131,28 @@ class TestSpeed:
                             area = match_area.group(1)
                             flag_area = True
 
+
                         if match_ip:
                             ip = match_ip.group(1)
                             flag_ip = True
 
-                        for k, v in forbidden_area_map.items():
-                            if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
-                                print(f"【禁止区域】 k:{k} server:{node_conf['server']} tag:{node_conf['tag']}")
-                                await self.close_cmd(proc2)
-                                return False, {}
+                        # for k, v in forbidden_area_map.items():
+                        #     if k in msg2 or "400 Bad Reques" in msg2 or "Connection refused" in msg2:
+                        #         print(f"【禁止区域】 k:{k} server:{node_conf['server']} tag:{node_conf['tag']}")
+                        #         await self.close_cmd(proc2)
+                        #         return False, {}
+
 
                     await self.close_cmd(proc)
 
                     if not flag_ip or not flag_area:
                         return False, {}
+
+                    # if not enable_area_map.get(area):
+                    #     print(f"【禁止区域】 k:{area} server:{node_conf['server']} tag:{node_conf['tag']}")
+                    #     await self.close_cmd(proc2)
+                    #     return False, {}
+
 
                     node_conf["tag"] = f"{area}-{ip}-{await self.encrypt.make_md5(str(node_conf))}"
 
@@ -151,6 +160,7 @@ class TestSpeed:
                     if forbidden_area_re_map:
                         if await self.verify_forbidden_server(forbidden_area_re_map, ip, node_conf['server'],
                                                               node_conf["tag"]):
+                            print(f"【禁止IP】 ip:{ip} server:{node_conf['server']} tag:{node_conf['tag']}")
                             return False, {}
 
                     speed = match_speed.group(1)

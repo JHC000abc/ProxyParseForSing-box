@@ -14,7 +14,7 @@ from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
 from utils.utils_test_speed import TestSpeed
 from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE, \
-    TIMEOUT, TEST_LISTEN_PORT
+    TIMEOUT, TEST_LISTEN_PORT, ENABLE_AREA_FILE
 
 
 async def filter(file):
@@ -59,6 +59,7 @@ async def main():
     un_used_tag_map = await filter(FORBIDDEN_PROXY_FILE)
     forbidden_area_map = await filter(FORBIDDEN_AREA_FILE)
     forbidden_area_re_map = await filter(FORBIDDEN_SERVER_RE_FILE)
+    enable_area_map = await filter(ENABLE_AREA_FILE)
 
     nodes_to_test = []
     for info in all_nodes:
@@ -79,7 +80,8 @@ async def main():
         async with semaphore:
             try:
                 return await asyncio.wait_for(
-                    test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map),
+                    test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map,
+                                                   enable_area_map),
                     timeout=TIMEOUT
                 )
             except asyncio.TimeoutError:

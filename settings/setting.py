@@ -39,6 +39,8 @@ FORBIDDEN_AREA_FILE = "files/forbidden_areas.list"
 FORBIDDEN_PROXY_FILE = "files/frobidden_proxy.list"
 # 正则排除server 规则
 FORBIDDEN_SERVER_RE_FILE = "files/forbidden_server_re.list"
+# Gemini 支持区域
+ENABLE_AREA_FILE = "files/allow_area_list"
 
 # 最后输出的订阅节点默认的测试端口
 OUT_LISTEN_PORT = 1080
