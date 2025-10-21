@@ -18,7 +18,7 @@ else:
     PROXIES_ASYNC = None
 
     # 最大延迟(单位ms, 测速结果大于此值的不做保留)
-    SPEED_LIMIT = 2000
+    SPEED_LIMIT = 1000
 
     NEWTWORK_RETRY_TIMES = 5
 
@@ -44,7 +44,7 @@ FORBIDDEN_SERVER_RE_FILE = "files/forbidden_server_re.list"
 OUT_LISTEN_PORT = 1080
 
 # 节点在sing-box中测速更新间隔时长
-UPDATE_NODES_TIMES = "2m"
+UPDATE_NODES_TIMES = "1m"
 
 # 网络请求超时时间
 TIMEOUT = 60
