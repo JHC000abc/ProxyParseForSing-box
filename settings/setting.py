@@ -44,7 +44,7 @@ FORBIDDEN_SERVER_RE_FILE = "files/forbidden_server_re.list"
 OUT_LISTEN_PORT = 1080
 
 # 节点在sing-box中测速更新间隔时长
-UPDATE_NODES_TIMES = "1m"
+UPDATE_NODES_TIMES = "5m"
 
 # 网络请求超时时间
 TIMEOUT = 60
