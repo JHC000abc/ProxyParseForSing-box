@@ -51,7 +51,7 @@ class ParseNodeSnakem982(Base):
             {
                 "url":"https://github.com/kismetpro/NodeSuber/raw/refs/heads/main/out/All_Configs_Sub.txt",
                  "proxy": True
-            }
+            },
 
         ]
 
@@ -158,7 +158,7 @@ class ParseNodeSnakem982(Base):
         git_hub_pages_urls = {
             "https://github.com/Barabama/FreeNodes/overview-files/main": self.parse_node_Barabama,
             "https://github.com/vpnmianfei/vpnmianfei.github.io/overview-files/main": self.parse_node_vpnmianfei,
-            "https://github.com/free-proxy-nodes/free-nodes": self.parse_node_free_proxy_nodes,
+            # "https://github.com/free-proxy-nodes/free-nodes": self.parse_node_free_proxy_nodes,
             # "https://github.com/barry-far/V2ray-Config/overview-files/main": self.parse_node_barry_far
         }
         for url, func in git_hub_pages_urls.items():
@@ -188,12 +188,12 @@ class ParseNodeSnakem982(Base):
         return self.success_list
 
 
-# async def main():
-#     p2 = ParseNodeSnakem982()
-#     await p2.process()
-#
-#
-# if __name__ == '__main__':
-#     import asyncio
-#
-#     asyncio.run(main())
+async def main():
+    p2 = ParseNodeSnakem982()
+    await p2.process()
+
+
+if __name__ == '__main__':
+    import asyncio
+
+    asyncio.run(main())
