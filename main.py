@@ -32,7 +32,8 @@ async def filter(file):
             for line in f:
                 new_line = line.strip()
                 if new_line:
-                    tag_map[new_line] = 1
+                    if not new_line.startswith("#"):
+                        tag_map[new_line] = 1
     except FileNotFoundError:
         print(f"Warning: '{file}' not found. Skipping unused proxy filtering.")
     return tag_map
