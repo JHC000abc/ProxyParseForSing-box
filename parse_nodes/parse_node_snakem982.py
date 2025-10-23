@@ -8,6 +8,7 @@
 
 """
 import json
+import re
 import traceback
 from lxml import etree
 from parse_nodes.base import Base
@@ -39,14 +40,18 @@ class ParseNodeSnakem982(Base):
                 "proxy": True
             },
 
-            # {
-            #     "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
-            #     "proxy": True
-            # },
+            {
+                "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
+                "proxy": True
+            },
             {
                 "url": "https://raw.githubusercontent.com/crackbest/V2ray-Config/refs/heads/main/config.txt",
                 "proxy": True
             },
+            {
+                "url":"https://github.com/kismetpro/NodeSuber/raw/refs/heads/main/out/All_Configs_Sub.txt",
+                 "proxy": True
+            }
 
         ]
 
@@ -119,6 +124,25 @@ class ParseNodeSnakem982(Base):
                 "proxy": True
             }])
 
+    async def parse_node_free_proxy_nodes(self, data):
+        """
+
+        :param data:
+        :return:
+        """
+        data = json.loads(data)
+        richText = data["payload"]["tree"]["readme"]["richText"]
+
+        res = re.findall('# V2ray订阅链接：(.*?)</code></pre></div>', richText,re.DOTALL)
+        if res:
+            for i in res:
+                for url in [i for i in i.split("\n") if i]:
+                    self.infos.extend([{
+                        "url": url,
+                        "proxy": True
+                    }])
+
+
     async def get_expire_node(self):
         """
 
@@ -134,6 +158,7 @@ class ParseNodeSnakem982(Base):
         git_hub_pages_urls = {
             "https://github.com/Barabama/FreeNodes/overview-files/main": self.parse_node_Barabama,
             "https://github.com/vpnmianfei/vpnmianfei.github.io/overview-files/main": self.parse_node_vpnmianfei,
+            "https://github.com/free-proxy-nodes/free-nodes": self.parse_node_free_proxy_nodes,
             # "https://github.com/barry-far/V2ray-Config/overview-files/main": self.parse_node_barry_far
         }
         for url, func in git_hub_pages_urls.items():
@@ -161,3 +186,14 @@ class ParseNodeSnakem982(Base):
                 print(f"ParseNodeSnakem982:{traceback.format_exc()}")
             index += 1
         return self.success_list
+
+
+# async def main():
+#     p2 = ParseNodeSnakem982()
+#     await p2.process()
+#
+#
+# if __name__ == '__main__':
+#     import asyncio
+#
+#     asyncio.run(main())

@@ -11,7 +11,7 @@ import os
 import asyncio
 import traceback
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
-from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor
+from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoor, ParseNodesharkDoorV2
 from utils.utils_test_speed import TestSpeed
 from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE, \
     TIMEOUT, TEST_LISTEN_PORT
@@ -46,7 +46,7 @@ async def main():
     p1 = ParseNodeSnakem982()
     lis1 = await p1.process()
 
-    p2 = ParseNodesharkDoor()
+    p2 = ParseNodesharkDoorV2()
     lis2 = await p2.process()
     # lis2 = []
 

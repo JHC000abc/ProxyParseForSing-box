@@ -7,6 +7,7 @@
 @desc:
 
 """
+import asyncio
 import re
 import json
 import traceback
@@ -74,3 +75,60 @@ class ParseNodesharkDoor(Base):
             except  Exception as e:
                 print(f"ParseNodesharkDoor:{traceback.format_exc()}")
         return self.success_list
+
+
+class ParseNodesharkDoorV2(Base):
+    """
+
+    """
+    def __init__(self):
+        super().__init__()
+        self.search_url = "https://github.com/shuaidaoya/FreeNodes/blob/main/nodes/base64.txt"
+
+
+    async def parse_search(self, html):
+        """
+
+        :param html:
+        :return:
+        """
+        res = re.findall('<script type="application/json" data-target="react-app.embeddedData">(.*?)</script>', html)[0]
+        for item in json.loads(res)["payload"]["blob"]["rawLines"]:
+            yield item
+
+    async def parse_detail(self, html):
+        """
+
+        :param html:
+        :return:
+        """
+        res = re.findall('<script type="application/json" data-target="react-app.embeddedData">(.*?)</script>', html)
+        res = res[0]
+        data = json.loads(res)["payload"]["blob"]["richText"]
+        tree = etree.HTML(data)
+        lis = tree.xpath("//tr/td[last()]//text()")
+        for li in lis:
+            yield li
+
+    async def process(self):
+        """
+
+        :return:
+        """
+        try:
+            search_html = await self.net.fetch_url_get(url=self.search_url, headers=self.headers, proxy=True)
+            async for search_result in self.parse_search(search_html):
+                async for node in self.parse_node_base64(search_result):
+                    node_parse_result = await self.build(node)
+                    self.success_list.append(node_parse_result)
+        except Exception as e :
+            return self.success_list
+        return self.success_list
+
+# async def main():
+#     p2 = ParseNodesharkDoorV2()
+#     await p2.process()
+#
+#
+# if __name__ == '__main__':
+#     asyncio.run(main())

@@ -4,7 +4,7 @@ import sys
 # 判断程序是否以可知性文件形式运行
 if not (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')):
     # print("本地代理")
-    PROXY_HOST = "192.168.2.109"
+    PROXY_HOST = "172.17.0.1"
     PROXY_PORT = 10808
     # 代理
     PROXIES_ASYNC = f"http://{PROXY_HOST}:{PROXY_PORT}"
