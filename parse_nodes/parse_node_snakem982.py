@@ -12,6 +12,7 @@ import re
 import traceback
 from lxml import etree
 from parse_nodes.base import Base
+from urllib import parse
 
 
 class ParseNodeSnakem982(Base):
@@ -49,9 +50,44 @@ class ParseNodeSnakem982(Base):
                 "proxy": True
             },
             {
-                "url":"https://github.com/kismetpro/NodeSuber/raw/refs/heads/main/out/All_Configs_Sub.txt",
-                 "proxy": True
+                "url": "https://github.com/kismetpro/NodeSuber/raw/refs/heads/main/out/All_Configs_Sub.txt",
+                "proxy": True
             },
+            {
+                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/blues.txt",
+                "proxy": True,
+                "secret": True
+            },
+            {
+                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/clashmeta.txt",
+                "proxy": True,
+                "secret": True
+            },
+            {
+                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/ndnode.txt",
+                "proxy": True,
+                "secret": True
+            },
+            {
+                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/nodefree.txt",
+                "proxy": True,
+                "secret": True
+            },
+            {
+                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/v2rayshare.txt",
+                "proxy": True,
+                "secret": True
+            },
+            {
+                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/wenode.txt",
+                "proxy": True,
+                "secret": True
+            },
+            {
+                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/yudou66.txt",
+                "proxy": True,
+                "secret": True
+            }
 
         ]
 
@@ -133,7 +169,7 @@ class ParseNodeSnakem982(Base):
         data = json.loads(data)
         richText = data["payload"]["tree"]["readme"]["richText"]
 
-        res = re.findall('# V2ray订阅链接：(.*?)</code></pre></div>', richText,re.DOTALL)
+        res = re.findall('# V2ray订阅链接：(.*?)</code></pre></div>', richText, re.DOTALL)
         if res:
             for i in res:
                 for url in [i for i in i.split("\n") if i]:
@@ -141,7 +177,6 @@ class ParseNodeSnakem982(Base):
                         "url": url,
                         "proxy": True
                     }])
-
 
     async def get_expire_node(self):
         """
@@ -169,31 +204,45 @@ class ParseNodeSnakem982(Base):
         for info in self.infos:
             url = info["url"]
             proxy = info["proxy"]
+            secret = info.get("secret")
             try:
                 res = await self.net.fetch_url_get(url, headers=self.headers, proxy=proxy)
                 if index == 0:
                     expire_nodes = await self.get_expire_node()
                     res += expire_nodes
                     print(f"加载过期订阅:{expire_nodes}")
-                async for node in self.parse_node_base64(res):
-                    try:
-                        node_parse_result = await self.build(node)
-                        if node_parse_result:
-                            self.success_list.append(node_parse_result)
-                    except:
-                        print(f"ParseNodeSnakem982 节点解析错误：{node}")
+                if not secret:
+                    async for node in self.parse_node_base64(res):
+                        try:
+                            node_parse_result = await self.build(node)
+                            if node_parse_result:
+                                self.success_list.append(node_parse_result)
+                        except:
+                            print(f"ParseNodeSnakem982 节点解析错误：{node}")
+                else:
+                    result = re.findall(
+                        '<script type="application/json" data-target="react-app.embeddedData">(.*?)</script>', res)
+                    for node in json.loads(result[0])["payload"]["blob"]["rawLines"]:
+                        node = parse.urlparse(parse.unquote(node.strip()))
+                        try:
+                            node_parse_result = await self.build(node)
+                            if node_parse_result:
+                                self.success_list.append(node_parse_result)
+                        except Exception as e:
+                            print(f"ParseNodeSnakem982 节点解析错误：{node}")
+
             except  Exception as e:
                 print(f"ParseNodeSnakem982:{traceback.format_exc()}")
             index += 1
         return self.success_list
 
 
-async def main():
-    p2 = ParseNodeSnakem982()
-    await p2.process()
-
-
-if __name__ == '__main__':
-    import asyncio
-
-    asyncio.run(main())
+# async def main():
+#     p2 = ParseNodeSnakem982()
+#     await p2.process()
+#
+#
+# if __name__ == '__main__':
+#     import asyncio
+#
+#     asyncio.run(main())
