@@ -90,8 +90,6 @@ async def main():
                 print(traceback.print_exc())
                 return None
 
-            # return await test_speed_instance.test_speed(info, port, forbidden_area_map, forbidden_area_re_map)
-
     tasks = []
     start_listen_port = TEST_LISTEN_PORT
     repeat_recode_map = {}
