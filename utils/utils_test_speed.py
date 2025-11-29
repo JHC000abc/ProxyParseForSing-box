@@ -95,14 +95,14 @@ class TestSpeed:
         tmp_file_path = f"tmp_{await self.encrypt.make_md5(node_conf['tag'])}"
         proc = None
         proc2 = None
-        proc3 = None
+        # proc3 = None
         try:
             with open(tmp_file_path, "w", encoding="utf-8") as f:
                 f.write(json.dumps(config, indent=4, ensure_ascii=False))
 
             cmd = f"{SING_BOX_PATH} run -c {tmp_file_path}"
             cmd2 = f"curl {TEST_IP_NODE} -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
-            cmd3 = '''curl -s -o /dev/null -w "%{http_code}" https://gemini.google.com/ ''' + f"-x 127.0.0.1:{listen_port} -m {TIMEOUT}"
+            # cmd3 = '''curl -s -o /dev/null -w "%{http_code}" https://gemini.google.com/ ''' + f"-x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             # cmd3 = f"curl https://gemini.google.com -x 127.0.0.1:{listen_port} -m {TIMEOUT}"
             async for msg, proc in self.cmd.run_cmd_async(cmd):
                 # print("msg", msg)
@@ -112,12 +112,12 @@ class TestSpeed:
                     r"context deadline exceeded|no recent network activity|unknown transport type",
                     msg)
                 if match_speed:
-                    msg3_all = ""
-                    async for msg3, proc3 in self.cmd.run_cmd_async(cmd3):
-                        msg3_all += msg3
-                    if "200" not in msg3_all:
-                        print(f"节点：{node_conf} 访问 Gemini 不通")
-                        return False, {}
+                    # msg3_all = ""
+                    # async for msg3, proc3 in self.cmd.run_cmd_async(cmd3):
+                    #     msg3_all += msg3
+                    # if "200" not in msg3_all:
+                    #     print(f"节点：{node_conf} 访问 Gemini 不通")
+                    #     return False, {}
 
                     ip = node_conf["server"]
                     area = node_conf["tag"]
@@ -175,7 +175,7 @@ class TestSpeed:
         finally:
             await self.close_cmd(proc)
             await self.close_cmd(proc2)
-            await self.close_cmd(proc3)
+            # await self.close_cmd(proc3)
 
             if os.path.exists(tmp_file_path):
                 os.remove(tmp_file_path)
