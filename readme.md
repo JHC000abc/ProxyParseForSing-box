@@ -155,6 +155,12 @@ uv run main.py
     ./plugins/gen_latest_CDN
 ```
 
+## 13. 直接处理sing-box 配置文件(打包)
+```bash
+     pyarmor gen -r --pack FC local.py && cp dist/local ./ && rm -rf dist/ .pyarmor/ local.spec
+```
+
+
 # 错误提示
 
 1. 找不到项目中的文件夹：在项目根路径下执行
@@ -258,3 +264,5 @@ uv run main.py
 3. 项目基本完成，如无长时间无法不获取新节点情况出现，不再修改
 4. 
 
+2026.01.07
+1. 防止Github Actions 清理任务,最变更新点
