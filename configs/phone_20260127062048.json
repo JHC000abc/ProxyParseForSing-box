@@ -1,0 +1,320 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "London-87.120.219.234-de8165389e8c9a03bba83fb9b0c5a7f2",
+                "Singapore-173.234.15.212-f900fd6808a48cba9f333c81267d052d",
+                "Singapore-173.234.15.213-c076dfc48abaf0b498eb4834559c62e6",
+                "San Jose-154.16.27.205-c52af35735810f33e5c12a82f8ae8fd7",
+                "Zürich-185.167.234.161-e61ca61dfcd3f51614c7700504b588ce",
+                "Falkenstein-94.130.141.152-de3ad522c1cbf5596b93d8c7051d7ded",
+                "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+                "Frankfurt am Main-192.248.182.125-8f386f0896a1bfd0662f915f087fb93f",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Frankfurt am Main-78.159.111.154-b6fefb8341befb4ce39adc18841560c5",
+                "Frankfurt am Main-78.159.111.154-1b8413cddd9787d2afb1bfc4efc8f421",
+                "Singapore-167.172.83.42-2e4cbdbd690db302b1bc1c273477bf56"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "London-87.120.219.234-de8165389e8c9a03bba83fb9b0c5a7f2",
+                "Singapore-173.234.15.212-f900fd6808a48cba9f333c81267d052d",
+                "Singapore-173.234.15.213-c076dfc48abaf0b498eb4834559c62e6",
+                "San Jose-154.16.27.205-c52af35735810f33e5c12a82f8ae8fd7",
+                "Zürich-185.167.234.161-e61ca61dfcd3f51614c7700504b588ce",
+                "Falkenstein-94.130.141.152-de3ad522c1cbf5596b93d8c7051d7ded",
+                "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+                "Frankfurt am Main-192.248.182.125-8f386f0896a1bfd0662f915f087fb93f",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Frankfurt am Main-78.159.111.154-b6fefb8341befb4ce39adc18841560c5",
+                "Frankfurt am Main-78.159.111.154-1b8413cddd9787d2afb1bfc4efc8f421",
+                "Singapore-167.172.83.42-2e4cbdbd690db302b1bc1c273477bf56"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "London-87.120.219.234-de8165389e8c9a03bba83fb9b0c5a7f2",
+                "Singapore-173.234.15.212-f900fd6808a48cba9f333c81267d052d",
+                "Singapore-173.234.15.213-c076dfc48abaf0b498eb4834559c62e6",
+                "San Jose-154.16.27.205-c52af35735810f33e5c12a82f8ae8fd7",
+                "Zürich-185.167.234.161-e61ca61dfcd3f51614c7700504b588ce",
+                "Falkenstein-94.130.141.152-de3ad522c1cbf5596b93d8c7051d7ded",
+                "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+                "Frankfurt am Main-192.248.182.125-8f386f0896a1bfd0662f915f087fb93f",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Frankfurt am Main-78.159.111.154-b6fefb8341befb4ce39adc18841560c5",
+                "Frankfurt am Main-78.159.111.154-1b8413cddd9787d2afb1bfc4efc8f421",
+                "Singapore-167.172.83.42-2e4cbdbd690db302b1bc1c273477bf56"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-87.120.219.234-de8165389e8c9a03bba83fb9b0c5a7f2",
+            "server": "uk1.jueduibupao.top",
+            "server_port": 48556,
+            "password": "87ae1c00-89fd-430b-91ad-f55b04e4ab2d",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uk1.jueduibupao.top"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-173.234.15.212-f900fd6808a48cba9f333c81267d052d",
+            "server": "linsg2.jueduibupao.top",
+            "server_port": 40394,
+            "password": "6d20a084-c0d9-4af9-a152-0d706ac2f64b",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "linsg2.jueduibupao.top"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-173.234.15.213-c076dfc48abaf0b498eb4834559c62e6",
+            "server": "linsg3.jueduibupao.top",
+            "server_port": 41881,
+            "password": "6d20a084-c0d9-4af9-a152-0d706ac2f64b",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "linsg3.jueduibupao.top"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "San Jose-154.16.27.205-c52af35735810f33e5c12a82f8ae8fd7",
+            "server": "green2.cdntencentmusic.com",
+            "server_port": 35502,
+            "password": "f23913ba-fe19-4bc3-ac00-e276cc80a80d",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "green2.cdntencentmusic.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-185.167.234.161-e61ca61dfcd3f51614c7700504b588ce",
+            "server": "104.17.71.206",
+            "server_port": 443,
+            "uuid": "bbe684cf-16ae-412c-9434-5ba889d4cf01",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "temp.super-jozveh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "temp.super-jozveh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-94.130.141.152-de3ad522c1cbf5596b93d8c7051d7ded",
+            "server": "irandoc.info",
+            "server_port": 443,
+            "uuid": "8cecfc42-f81b-4754-9833-9014bd8ba0c8",
+            "transport": {
+                "type": "ws",
+                "path": "/18211/api/v4",
+                "headers": {
+                    "Host": "cdn.irandoc.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdn.irandoc.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+            "server": "209.126.84.189",
+            "server_port": 443,
+            "uuid": "2c981164-9b93-4bca-94ff-b78d3f8498d7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmessws",
+                "headers": {
+                    "Host": "209.126.84.189"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-192.248.182.125-8f386f0896a1bfd0662f915f087fb93f",
+            "server": "cdn.halazzon.ir",
+            "server_port": 2053,
+            "uuid": "c659ce22-0a02-4d75-8c89-58d99916b846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ir6.hnbyme.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ir6.hnbyme.online"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+            "server": "t1.620720.xyz",
+            "server_port": 8443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "t1.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+            "server": "v2ray.codefyinc.com",
+            "server_port": 443,
+            "uuid": "2c981164-9b93-4bca-94ff-b78d3f8498d7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmessws",
+                "headers": {
+                    "Host": "v2ray.codefyinc.com"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+            "server": "sy4.620720.xyz",
+            "server_port": 443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "sy4.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-78.159.111.154-b6fefb8341befb4ce39adc18841560c5",
+            "server": "clean.photoggenic.ir",
+            "server_port": 8880,
+            "uuid": "8e997404-cb62-4fa1-a8c9-c77a32f10153",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "rightel.IRANCEELL.mci.it.www.speedtest.net.zula.ir.focusontrade.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-78.159.111.154-1b8413cddd9787d2afb1bfc4efc8f421",
+            "server": "25.25.25.0",
+            "server_port": 8880,
+            "uuid": "8e997404-cb62-4fa1-a8c9-c77a32f10153",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "rightel.IRANCEELL.mci.it.www.speedtest.net.zula.ir.focusontrade.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-167.172.83.42-2e4cbdbd690db302b1bc1c273477bf56",
+            "server": "167.172.83.42",
+            "server_port": 11441,
+            "uuid": "d7a84b8a-66c3-4b9c-b1b7-d576058c489f",
+            "transport": {
+                "type": "ws",
+                "path": "/FREE By Tharuwa (0767597317)",
+                "headers": {
+                    "Host": "zoom.us"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
