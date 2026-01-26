@@ -143,7 +143,9 @@ class AsyncToolsTransPhone:
             return
         main_json = await self.build_main_json(tags, outbounds)
         filename = f"phone_{UtilsTimes.get_format_utc_8('%Y%m%d')}.json"
-        tmp_file = f"config/{filename}"
+        folder = "./configs"
+        os.makedirs(folder, exist_ok=True)
+        tmp_file = os.path.abspath(os.path.join(folder, filename))
         with open(tmp_file, "w", encoding="utf-8") as f:
             json.dump(main_json, f, ensure_ascii=False, indent=4)
 
