@@ -239,22 +239,35 @@ class Base(ABC):
         """
         if node_nums <= 0:
             return
-        cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
-        async for msg, proc in self.cmd.run_cmd_async(cmd):
-            print("msg", msg)
-            match = re.match("https://(.*?).json", msg)
-            if match:
-                url = f"https://{match.group(1)}.json"
-                print("url", url)
-                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
-                cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
-                cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
-                async for msg, proc in self.cmd.run_cmd_async(cmd2):
-                    print("msg2", msg)
-                async for msg, proc in self.cmd.run_cmd_async(cmd4):
-                    print("msg4", msg)
-                async for msg, proc in self.cmd.run_cmd_async(cmd5):
-                    print("cmd5", msg)
+        filename = file.split(os.sep)[-1]
+        url = f"https://JHC000abc.github.io/ProxyParseForSing-box/{filename}"
+        print("url", url)
+        cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
+        cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
+        cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
+        async for msg, proc in self.cmd.run_cmd_async(cmd2):
+            print("msg2", msg)
+        async for msg, proc in self.cmd.run_cmd_async(cmd4):
+            print("msg4", msg)
+        async for msg, proc in self.cmd.run_cmd_async(cmd5):
+            print("cmd5", msg)
+
+        # cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
+        # async for msg, proc in self.cmd.run_cmd_async(cmd):
+        #     print("msg", msg)
+        #     match = re.match("https://(.*?).json", msg)
+        #     if match:
+        #         url = f"https://{match.group(1)}.json"
+        #         print("url", url)
+        #         cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
+        #         cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
+        #         cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
+        #         async for msg, proc in self.cmd.run_cmd_async(cmd2):
+        #             print("msg2", msg)
+        #         async for msg, proc in self.cmd.run_cmd_async(cmd4):
+        #             print("msg4", msg)
+        #         async for msg, proc in self.cmd.run_cmd_async(cmd5):
+        #             print("cmd5", msg)
 
     async def get_data_from_github(self, url):
         """

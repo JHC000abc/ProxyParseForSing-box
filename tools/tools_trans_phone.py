@@ -13,6 +13,7 @@ import json
 import os
 import re
 from utils.utils_cmd import AsyncCMD
+from utils.utils_times import UtilsTimes
 
 from settings.setting import UPLOAD_TOOLS_FILE, TELEGRAM_TOOLS_FILE, OUT_LISTEN_PORT, UPDATE_NODES_TIMES, \
     NODE_TEST_CONNECT_SPEED
@@ -141,21 +142,27 @@ class AsyncToolsTransPhone:
         if node_nums <= 0:
             return
         main_json = await self.build_main_json(tags, outbounds)
-        tmp_file = "tmp.json"
+        filename = f"phone_{UtilsTimes.get_format_utc_8('%Y%m%d')}.json"
+        tmp_file = f"config/{filename}"
         with open(tmp_file, "w", encoding="utf-8") as f:
             json.dump(main_json, f, ensure_ascii=False, indent=4)
 
-        cmd = f"{UPLOAD_TOOLS_FILE} -i {tmp_file}"
-        async for msg, proc in self.cmd.run_cmd_async(cmd):
-            print("msg", msg)
-            match = re.match("https://(.*?).json", msg)
-            if match:
-                url = f"https://{match.group(1)}.json"
-                cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '生成手机专用订阅链接' '{url}' "
-                async for msg, proc in self.cmd.run_cmd_async(cmd2):
-                    print("msg2", msg)
+        url = f"https://JHC000abc.github.io/ProxyParseForSing-box/{filename}"
+        cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '生成手机专用订阅链接' '{url}' "
+        async for msg, proc in self.cmd.run_cmd_async(cmd2):
+            print("msg2", msg)
 
-        os.remove(tmp_file)
+        # cmd = f"{UPLOAD_TOOLS_FILE} -i {tmp_file}"
+        # async for msg, proc in self.cmd.run_cmd_async(cmd):
+        #     print("msg", msg)
+        #     match = re.match("https://(.*?).json", msg)
+        #     if match:
+        #         url = f"https://{match.group(1)}.json"
+        #         cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '生成手机专用订阅链接' '{url}' "
+        #         async for msg, proc in self.cmd.run_cmd_async(cmd2):
+        #             print("msg2", msg)
+
+        # os.remove(tmp_file)
 
 
 async def main():
