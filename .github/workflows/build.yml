@@ -22,7 +22,6 @@ jobs:
       TZ: Asia/Shanghai
 
     steps:
-      - uses: actions/checkout@v4
       - name: Install system dependencies
         run: |
           apt-get update && apt-get install -y \
@@ -30,6 +29,8 @@ jobs:
           git \
           && apt-get clean \
           && rm -rf /var/lib/apt/lists/*
+
+      - uses: actions/checkout@v4
 
       - name: RUN AND PUSH NODES
         shell: bash -l {0}
