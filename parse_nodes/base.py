@@ -186,7 +186,7 @@ class Base(ABC):
                     print(traceback.format_exc())
 
     async def save_result_json(self, tags, outbounds, tags_speed,
-                               file_name=f"config_{UtilsTimes.get_format_utc_8('%Y%m%d')}.json"):
+                               file_name=f"config_{UtilsTimes.get_format_utc_8('%Y%m%d%H%M%S')}.json"):
         """
 
         :param tags:
@@ -240,7 +240,7 @@ class Base(ABC):
         if node_nums <= 0:
             return
         filename = file.split(os.sep)[-1]
-        url = f"https://JHC000abc.github.io/ProxyParseForSing-box/{filename}"
+        url = f"https://JHC000abc.github.io/ProxyParseForSing-box/configs/{filename}"
         print("url", url)
         cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
         cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"

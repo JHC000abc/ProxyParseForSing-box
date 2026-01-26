@@ -18,7 +18,7 @@ class ToolsLimeStart:
 
     """
 
-    def __init__(self, token="9822577ca4e637efc7173da5f2d1da3e5ea00039ca3ecad51c33db06f4c5cad3", user_name="jhc000abct1ljk9ip"):
+    def __init__(self, token="24d89ecd63c49f13f97a38553a635a1109d701344ccef34bc3203fab85f0c8d3", user_name="jhc000abct1ljk9ip"):
         self.net = UtilsNetwork()
         self.url = "https://api.limestart.cn/backend/note-v3"
         self.headers = {
@@ -141,21 +141,21 @@ async def main():
     :return:
     """
     # 上传记录工具
-    # t = ToolsLimeStart()
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('-i', "--input", dest='input', help='input', required=True, nargs='+')
-    # args = parser.parse_args()
-    # urls = args.input
-    # for url in urls:
-    #     await t.recode_url(url)
+    t = ToolsLimeStart()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-i', "--input", dest='input', help='input', required=True, nargs='+')
+    args = parser.parse_args()
+    urls = args.input
+    for url in urls:
+        await t.recode_url(url)
 
     # 获取最新记录工具
     # t = ToolsLimeStart()
     # await t.get_url()
 
     # 删除记录工具
-    t = ToolsLimeStart()
-    await t.clear()
+    # t = ToolsLimeStart()
+    # await t.clear()
 
 
 if __name__ == '__main__':

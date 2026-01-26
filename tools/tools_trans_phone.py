@@ -142,14 +142,14 @@ class AsyncToolsTransPhone:
         if node_nums <= 0:
             return
         main_json = await self.build_main_json(tags, outbounds)
-        filename = f"phone_{UtilsTimes.get_format_utc_8('%Y%m%d')}.json"
+        filename = f"phone_{UtilsTimes.get_format_utc_8('%Y%m%d%H%M%S')}.json"
         folder = "./configs"
         os.makedirs(folder, exist_ok=True)
         tmp_file = os.path.abspath(os.path.join(folder, filename))
         with open(tmp_file, "w", encoding="utf-8") as f:
             json.dump(main_json, f, ensure_ascii=False, indent=4)
 
-        url = f"https://JHC000abc.github.io/ProxyParseForSing-box/{filename}"
+        url = f"https://JHC000abc.github.io/ProxyParseForSing-box/configs/{filename}"
         cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '生成手机专用订阅链接' '{url}' "
         async for msg, proc in self.cmd.run_cmd_async(cmd2):
             print("msg2", msg)
