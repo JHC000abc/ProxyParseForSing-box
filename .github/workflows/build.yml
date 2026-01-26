@@ -27,6 +27,7 @@ jobs:
         run: |
           apt-get update && apt-get install -y \
           curl \
+          git \
           && apt-get clean \
           && rm -rf /var/lib/apt/lists/*
 
@@ -37,6 +38,7 @@ jobs:
 
       - name: Commit and Push
         run: |
+          git config --global --add safe.directory '*'
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
@@ -46,8 +48,3 @@ jobs:
       - name: Create summary
         run: |
           echo "### 🎉 Build Successful" >> $GITHUB_STEP_SUMMARY
-          
-          
-          
-          
-          
