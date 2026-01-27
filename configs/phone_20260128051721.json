@@ -1,0 +1,425 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Zürich-82.22.36.141-b8fa972980053f7e0ec07e68eec52472",
+                "Zürich-82.22.36.141-8c748a98f6633ff7d7e889a5a420e4b8",
+                "Frankfurt am Main-37.221.125.172-e0b17f21db6707b3188114a056922e26",
+                "Amsterdam-209.131.67.64-70ea2d76b5e55334afd502e4be4b3a40",
+                "Frankfurt am Main-94.237.93.9-5bc19336019e55867add469bafd1e80f",
+                "Nürnberg-5.75.198.71-15bb30572121c575ea32a2f964727d65",
+                "Amsterdam-167.71.6.78-57973eb2c55ead2c40632d6f1868d3cf",
+                "Amsterdam-109.104.154.50-f62d811495494faa3c3799dc046734f1",
+                "Genève-195.15.240.204-5fd92d0af7b170df0a439ebada0d6908",
+                "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+                "Gravelines-51.75.182.110-3931fc717fe08d5821b4cb2cfe138532",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Sandefjord-194.32.107.194-6878f4d8d31b450afa96769f367fa589",
+                "Dubai-217.195.200.233-0fb4e51cdb55ecf0bb86297d53c43a5d",
+                "Frankfurt am Main-179.61.132.58-645a2d17bf7bc815d638cea1c363c210",
+                "Nürnberg-5.75.198.71-7ac01c227347a0cec60d2087dfe75985",
+                "Nürnberg-5.75.198.71-21345fe19f469a85eaa07f3445745522",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Zürich-82.22.36.141-b8fa972980053f7e0ec07e68eec52472",
+                "Zürich-82.22.36.141-8c748a98f6633ff7d7e889a5a420e4b8",
+                "Frankfurt am Main-37.221.125.172-e0b17f21db6707b3188114a056922e26",
+                "Amsterdam-209.131.67.64-70ea2d76b5e55334afd502e4be4b3a40",
+                "Frankfurt am Main-94.237.93.9-5bc19336019e55867add469bafd1e80f",
+                "Nürnberg-5.75.198.71-15bb30572121c575ea32a2f964727d65",
+                "Amsterdam-167.71.6.78-57973eb2c55ead2c40632d6f1868d3cf",
+                "Amsterdam-109.104.154.50-f62d811495494faa3c3799dc046734f1",
+                "Genève-195.15.240.204-5fd92d0af7b170df0a439ebada0d6908",
+                "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+                "Gravelines-51.75.182.110-3931fc717fe08d5821b4cb2cfe138532",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Sandefjord-194.32.107.194-6878f4d8d31b450afa96769f367fa589",
+                "Dubai-217.195.200.233-0fb4e51cdb55ecf0bb86297d53c43a5d",
+                "Frankfurt am Main-179.61.132.58-645a2d17bf7bc815d638cea1c363c210",
+                "Nürnberg-5.75.198.71-7ac01c227347a0cec60d2087dfe75985",
+                "Nürnberg-5.75.198.71-21345fe19f469a85eaa07f3445745522",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Zürich-82.22.36.141-b8fa972980053f7e0ec07e68eec52472",
+                "Zürich-82.22.36.141-8c748a98f6633ff7d7e889a5a420e4b8",
+                "Frankfurt am Main-37.221.125.172-e0b17f21db6707b3188114a056922e26",
+                "Amsterdam-209.131.67.64-70ea2d76b5e55334afd502e4be4b3a40",
+                "Frankfurt am Main-94.237.93.9-5bc19336019e55867add469bafd1e80f",
+                "Nürnberg-5.75.198.71-15bb30572121c575ea32a2f964727d65",
+                "Amsterdam-167.71.6.78-57973eb2c55ead2c40632d6f1868d3cf",
+                "Amsterdam-109.104.154.50-f62d811495494faa3c3799dc046734f1",
+                "Genève-195.15.240.204-5fd92d0af7b170df0a439ebada0d6908",
+                "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+                "Gravelines-51.75.182.110-3931fc717fe08d5821b4cb2cfe138532",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Sandefjord-194.32.107.194-6878f4d8d31b450afa96769f367fa589",
+                "Dubai-217.195.200.233-0fb4e51cdb55ecf0bb86297d53c43a5d",
+                "Frankfurt am Main-179.61.132.58-645a2d17bf7bc815d638cea1c363c210",
+                "Nürnberg-5.75.198.71-7ac01c227347a0cec60d2087dfe75985",
+                "Nürnberg-5.75.198.71-21345fe19f469a85eaa07f3445745522",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-82.22.36.141-b8fa972980053f7e0ec07e68eec52472",
+            "server": "vip3.kaixincloud.top",
+            "server_port": 8443,
+            "uuid": "96863176-edbb-47dd-9b56-1d4582a6f9c0",
+            "transport": {
+                "type": "ws",
+                "path": "/hshsHhdsgj54645sgsSdc",
+                "headers": {
+                    "Host": "ir.irannet.shop"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ir.irannet.shop"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-82.22.36.141-8c748a98f6633ff7d7e889a5a420e4b8",
+            "server": "v2.dabache.top",
+            "server_port": 8443,
+            "uuid": "96863176-edbb-47dd-9b56-1d4582a6f9c0",
+            "transport": {
+                "type": "ws",
+                "path": "/hshsHhdsgj54645sgsSdc",
+                "headers": {
+                    "Host": "ir.irannet.shop"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ir.irannet.shop"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-37.221.125.172-e0b17f21db6707b3188114a056922e26",
+            "server": "vip2.kaixincloud.top",
+            "server_port": 443,
+            "uuid": "adaa4ecc-6d82-49c6-9b01-14f6f8e00e08",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "SplDu7h.dARktWonEWly.InFo"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "SplDu7h.dARktWonEWly.InFo"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-209.131.67.64-70ea2d76b5e55334afd502e4be4b3a40",
+            "server": "v1.dabache.top",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-94.237.93.9-5bc19336019e55867add469bafd1e80f",
+            "server": "94.237.93.9",
+            "server_port": 59421,
+            "uuid": "ccbc334b-de33-4431-89b4-35b756230f51",
+            "transport": {
+                "type": "http",
+                "path": "",
+                "headers": {
+                    "Host": "soft98.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.75.198.71-15bb30572121c575ea32a2f964727d65",
+            "server": "104.25.210.3",
+            "server_port": 2052,
+            "uuid": "d80e27b6-1dee-466a-8b18-8f64bfd66a60",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "vxpor.positivsis.website"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-167.71.6.78-57973eb2c55ead2c40632d6f1868d3cf",
+            "server": "meli.dataxshop.ir",
+            "server_port": 2095,
+            "uuid": "d881f1e0-9d84-4f18-8844-c538892db8c0",
+            "transport": {
+                "type": "ws",
+                "path": "/datax_proxy",
+                "headers": {
+                    "Host": "amsterdam.11.v.www.speedtest.net.nestle.ir.ftp.debian.org.tmo.docb.datax.click.dataxshop.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-109.104.154.50-f62d811495494faa3c3799dc046734f1",
+            "server": "151.101.3.19",
+            "server_port": 80,
+            "uuid": "0b516cf6-cd76-470c-954d-9374d734f445",
+            "transport": {
+                "type": "ws",
+                "path": "/site",
+                "headers": {
+                    "Host": "yalandonya.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.240.204-5fd92d0af7b170df0a439ebada0d6908",
+            "server": "195.15.240.204",
+            "server_port": 8880,
+            "uuid": "fc872856-d6fb-486e-8388-1082f7cdb469",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "195.15.240.204"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "St. Louis-209.126.84.189-034854434a3aea75680c325e4f35de46",
+            "server": "209.126.84.189",
+            "server_port": 443,
+            "uuid": "2c981164-9b93-4bca-94ff-b78d3f8498d7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmessws",
+                "headers": {
+                    "Host": "209.126.84.189"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Gravelines-51.75.182.110-3931fc717fe08d5821b4cb2cfe138532",
+            "server": "zzula.ir",
+            "server_port": 443,
+            "uuid": "c249ca6f-1bde-479b-af96-da0e948a3800",
+            "transport": {
+                "type": "ws",
+                "path": "/admin",
+                "headers": {
+                    "Host": "zitel.digikala-aparat-zula.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "zitel.digikala-aparat-zula.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+            "server": "t1.620720.xyz",
+            "server_port": 8443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "t1.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+            "server": "v2ray.codefyinc.com",
+            "server_port": 443,
+            "uuid": "2c981164-9b93-4bca-94ff-b78d3f8498d7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmessws",
+                "headers": {
+                    "Host": "v2ray.codefyinc.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Sandefjord-194.32.107.194-6878f4d8d31b450afa96769f367fa589",
+            "server": "bbbcdn.b-cdn.net",
+            "server_port": 443,
+            "uuid": "44272c20-b905-4c46-bc31-8039ea174501",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bbbcdn.b-cdn.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bbbcdn.b-cdn.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dubai-217.195.200.233-0fb4e51cdb55ecf0bb86297d53c43a5d",
+            "server": "217.195.200.233",
+            "server_port": 35177,
+            "uuid": "8d51e92a-7f6f-433c-b946-1ec411e7a759",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "217.195.200.233"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-179.61.132.58-645a2d17bf7bc815d638cea1c363c210",
+            "server": "179.61.132.58",
+            "server_port": 32143,
+            "uuid": "d4a0cc8c-2f9c-41fb-a5b8-d60c9a2a347d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "179.61.132.58"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.75.198.71-7ac01c227347a0cec60d2087dfe75985",
+            "server": "104.24.17.48",
+            "server_port": 2052,
+            "uuid": "d80e27b6-1dee-466a-8b18-8f64bfd66a60",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "vxpor.positivsis.website"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.75.198.71-21345fe19f469a85eaa07f3445745522",
+            "server": "104.27.114.192",
+            "server_port": 2052,
+            "uuid": "d80e27b6-1dee-466a-8b18-8f64bfd66a60",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "vxpor.positivsis.website"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2",
+            "server": "167.172.83.42",
+            "server_port": 11441,
+            "uuid": "d7a84b8a-66c3-4b9c-b1b7-d576058c489f",
+            "transport": {
+                "type": "ws",
+                "path": "/FREE By Tharuwa (0767597317)",
+                "headers": {
+                    "Host": "zoom.us"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
