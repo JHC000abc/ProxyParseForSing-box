@@ -1,0 +1,195 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-65.109.185.36-e1cbfb801b7797f979b1f98197a94fb2",
+                "Amsterdam-209.131.67.64-92d2a1d20100e9bfea4bf0b9a80905f4",
+                "London-209.250.224.246-dab1d8993d55200937a65fc7a566ba9c",
+                "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+                "Tokyo-47.74.1.191-013bba49bcdca64a7e1947edc8c6822e",
+                "Frankfurt am Main-52.28.25.58-b24c5908946fdd5dfbb45ec25b05cacc",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-65.109.185.36-e1cbfb801b7797f979b1f98197a94fb2",
+                "Amsterdam-209.131.67.64-92d2a1d20100e9bfea4bf0b9a80905f4",
+                "London-209.250.224.246-dab1d8993d55200937a65fc7a566ba9c",
+                "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+                "Tokyo-47.74.1.191-013bba49bcdca64a7e1947edc8c6822e",
+                "Frankfurt am Main-52.28.25.58-b24c5908946fdd5dfbb45ec25b05cacc",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-65.109.185.36-e1cbfb801b7797f979b1f98197a94fb2",
+                "Amsterdam-209.131.67.64-92d2a1d20100e9bfea4bf0b9a80905f4",
+                "London-209.250.224.246-dab1d8993d55200937a65fc7a566ba9c",
+                "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+                "Tokyo-47.74.1.191-013bba49bcdca64a7e1947edc8c6822e",
+                "Frankfurt am Main-52.28.25.58-b24c5908946fdd5dfbb45ec25b05cacc",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.185.36-e1cbfb801b7797f979b1f98197a94fb2",
+            "server": "188.114.98.23",
+            "server_port": 443,
+            "uuid": "d060c686-2553-46aa-9f6d-7d3d3da14792",
+            "transport": {
+                "type": "ws",
+                "path": "/net_serv1",
+                "headers": {
+                    "Host": "netserv.irmedia.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "netserv.irmedia.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-209.131.67.64-92d2a1d20100e9bfea4bf0b9a80905f4",
+            "server": "v1.dabache.top",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "London-209.250.224.246-dab1d8993d55200937a65fc7a566ba9c",
+            "server": "209.250.224.246",
+            "server_port": 24293,
+            "password": "Iisy37ABxOJ8Ha_cb5fpXKkm-WSFV",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒 [By DukeMehdi]"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+            "server": "160.16.81.84",
+            "server_port": 5076,
+            "password": "869e9086806483ca4744a4cb0f3d6e16",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Tokyo-47.74.1.191-013bba49bcdca64a7e1947edc8c6822e",
+            "server": "n1753598451.74qxv.top",
+            "server_port": 443,
+            "uuid": "9798678f-5b8c-4ff1-bbdd-b9b5c1539de0",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "n1753598451.74qxv.top"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-52.28.25.58-b24c5908946fdd5dfbb45ec25b05cacc",
+            "server": "52.28.25.58",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "52.28.25.58"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2",
+            "server": "167.172.83.42",
+            "server_port": 11441,
+            "uuid": "d7a84b8a-66c3-4b9c-b1b7-d576058c489f",
+            "transport": {
+                "type": "ws",
+                "path": "/FREE By Tharuwa (0767597317)",
+                "headers": {
+                    "Host": "zoom.us"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
