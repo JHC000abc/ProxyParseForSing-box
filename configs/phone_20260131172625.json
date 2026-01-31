@@ -1,0 +1,383 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-57.129.64.97-b5c37d1a90441624c57bdd4815320639",
+                "Dronten-5.255.119.23-1945e72be25762d5be50758dc791d1c2",
+                "Dronten-5.255.119.23-07c319e411ea4772875646075680d340",
+                "Lelystad-43.250.54.159-caa7dcdd95bca2e8d3f4bf16e3d8bd2a",
+                "Amsterdam-206.71.158.23-a4632a6188b2a53a2717a77817df9764",
+                "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+                "Buffalo-23.95.112.78-2a1667c5b1c83b6253c57c275b2be39c",
+                "Buffalo-23.95.112.78-0422880472582b78df374f60728363d5",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Buffalo-192.3.233.162-a66c32d17752a640c08b2953c52c4a33",
+                "Buffalo-192.3.233.162-3bafc56f1f81d0b9a0d62cce36f4beb2",
+                "Buffalo-192.3.233.162-37df9cec9ad2871f7c98beff1735c053",
+                "London-209.250.224.246-048580977a78418a7228235cc6d278bb",
+                "Frankfurt am Main-63.182.46.78-cd174fdd3585f7e4bccbbd63a14a08fe",
+                "Amsterdam-45.93.171.100-3d0dc8410bb7fa7f40c72439475a61c2",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-57.129.64.97-b5c37d1a90441624c57bdd4815320639",
+                "Dronten-5.255.119.23-1945e72be25762d5be50758dc791d1c2",
+                "Dronten-5.255.119.23-07c319e411ea4772875646075680d340",
+                "Lelystad-43.250.54.159-caa7dcdd95bca2e8d3f4bf16e3d8bd2a",
+                "Amsterdam-206.71.158.23-a4632a6188b2a53a2717a77817df9764",
+                "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+                "Buffalo-23.95.112.78-2a1667c5b1c83b6253c57c275b2be39c",
+                "Buffalo-23.95.112.78-0422880472582b78df374f60728363d5",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Buffalo-192.3.233.162-a66c32d17752a640c08b2953c52c4a33",
+                "Buffalo-192.3.233.162-3bafc56f1f81d0b9a0d62cce36f4beb2",
+                "Buffalo-192.3.233.162-37df9cec9ad2871f7c98beff1735c053",
+                "London-209.250.224.246-048580977a78418a7228235cc6d278bb",
+                "Frankfurt am Main-63.182.46.78-cd174fdd3585f7e4bccbbd63a14a08fe",
+                "Amsterdam-45.93.171.100-3d0dc8410bb7fa7f40c72439475a61c2",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-57.129.64.97-b5c37d1a90441624c57bdd4815320639",
+                "Dronten-5.255.119.23-1945e72be25762d5be50758dc791d1c2",
+                "Dronten-5.255.119.23-07c319e411ea4772875646075680d340",
+                "Lelystad-43.250.54.159-caa7dcdd95bca2e8d3f4bf16e3d8bd2a",
+                "Amsterdam-206.71.158.23-a4632a6188b2a53a2717a77817df9764",
+                "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+                "Buffalo-23.95.112.78-2a1667c5b1c83b6253c57c275b2be39c",
+                "Buffalo-23.95.112.78-0422880472582b78df374f60728363d5",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "Buffalo-192.3.233.162-a66c32d17752a640c08b2953c52c4a33",
+                "Buffalo-192.3.233.162-3bafc56f1f81d0b9a0d62cce36f4beb2",
+                "Buffalo-192.3.233.162-37df9cec9ad2871f7c98beff1735c053",
+                "London-209.250.224.246-048580977a78418a7228235cc6d278bb",
+                "Frankfurt am Main-63.182.46.78-cd174fdd3585f7e4bccbbd63a14a08fe",
+                "Amsterdam-45.93.171.100-3d0dc8410bb7fa7f40c72439475a61c2",
+                "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-57.129.64.97-b5c37d1a90441624c57bdd4815320639",
+            "server": "tgju.org",
+            "server_port": 8080,
+            "uuid": "nasnet",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/nasnet/cdn",
+                "headers": {
+                    "Host": "nasnet-571296497.iranpress.co"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.119.23-1945e72be25762d5be50758dc791d1c2",
+            "server": "Cf.xuiprospeed.ir",
+            "server_port": 2096,
+            "uuid": "c805b05e-339d-40e0-8787-432d97a27345",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "meraj-nol.hhgksdghfggg.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "meraj-nol.hhgksdghfggg.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.119.23-07c319e411ea4772875646075680d340",
+            "server": "cf.xuiprospeed.ir",
+            "server_port": 2096,
+            "uuid": "c805b05e-339d-40e0-8787-432d97a27345",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "meraj-nol.hhgksdghfggg.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "meraj-nol.hhgksdghfggg.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-43.250.54.159-caa7dcdd95bca2e8d3f4bf16e3d8bd2a",
+            "server": "cloud2.team-pluss.com",
+            "server_port": 2083,
+            "uuid": "52ef7518-892c-4ec7-9e65-8cd0fd41a058",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "manualls.get-service.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "manualls.get-service.ir"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.23-a4632a6188b2a53a2717a77817df9764",
+            "server": "gavazn.lnmarketplace.net",
+            "server_port": 45000,
+            "password": "Telegram-->@Ln2Ray",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "gavazn.55994421.xyz"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "Telegram-->@Ln2Ray"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dallas-38.180.137.196-d58fc0bed759b8a9bfd779ca7e4a7310",
+            "server": "160.16.81.84",
+            "server_port": 5076,
+            "password": "869e9086806483ca4744a4cb0f3d6e16",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Buffalo-23.95.112.78-2a1667c5b1c83b6253c57c275b2be39c",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Buffalo-23.95.112.78-0422880472582b78df374f60728363d5",
+            "server": "104.21.3.219",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+            "server": "v2ray.codefyinc.com",
+            "server_port": 443,
+            "uuid": "2c981164-9b93-4bca-94ff-b78d3f8498d7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmessws",
+                "headers": {
+                    "Host": "v2ray.codefyinc.com"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Buffalo-192.3.233.162-a66c32d17752a640c08b2953c52c4a33",
+            "server": "ddDFHhj.922922.Shop",
+            "server_port": 80,
+            "uuid": "bce0c7cb-08d1-46a7-b77b-7bff8b46252f",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/RkUUbqhA9GJZBROjL3Q5vTymr",
+                "headers": {
+                    "Host": "ddDFHhj.922922.Shop"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Buffalo-192.3.233.162-3bafc56f1f81d0b9a0d62cce36f4beb2",
+            "server": "ZzXxdE.922922.sHOp",
+            "server_port": 80,
+            "uuid": "bce0c7cb-08d1-46a7-b77b-7bff8b46252f",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/RkUUbqhA9GJZBROjL3Q5vTymr",
+                "headers": {
+                    "Host": "ZzXxdE.922922.sHOp"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Buffalo-192.3.233.162-37df9cec9ad2871f7c98beff1735c053",
+            "server": "dddffgthyu.922922.shop",
+            "server_port": 80,
+            "uuid": "bce0c7cb-08d1-46a7-b77b-7bff8b46252f",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/RkUUbqhA9GJZBROjL3Q5vTymr",
+                "headers": {
+                    "Host": "dDdFfGTHYU.922922.SHOP"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "London-209.250.224.246-048580977a78418a7228235cc6d278bb",
+            "server": "209.250.224.246",
+            "server_port": 24293,
+            "password": "Iisy37ABxOJ8Ha_cb5fpXKkm-WSFV",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒 [By DukeMehdi]"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-63.182.46.78-cd174fdd3585f7e4bccbbd63a14a08fe",
+            "server": "63.182.46.78",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "63.182.46.78"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-45.93.171.100-3d0dc8410bb7fa7f40c72439475a61c2",
+            "server": "cdn.bio4cdn.com",
+            "server_port": 2053,
+            "uuid": "2e46ba5a-db56-4940-9500-a61c7b0bcc0c",
+            "transport": {
+                "type": "ws",
+                "path": "/weborder",
+                "headers": {
+                    "Host": "bio.bio4cdn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bio.bio4cdn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-167.172.83.42-44b31e8f34fdb6fbd3a9d97686cffbf2",
+            "server": "167.172.83.42",
+            "server_port": 11441,
+            "uuid": "d7a84b8a-66c3-4b9c-b1b7-d576058c489f",
+            "transport": {
+                "type": "ws",
+                "path": "/FREE By Tharuwa (0767597317)",
+                "headers": {
+                    "Host": "zoom.us"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
