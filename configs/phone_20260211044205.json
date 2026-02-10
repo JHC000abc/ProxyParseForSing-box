@@ -1,0 +1,262 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Ho Chi Minh City-103.245.237.124-08c9f1589c7e2963dc15f241d1be9788",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Amsterdam-92.112.125.223-cd93cc3dc80398aae02906d25f44cdf4",
+                "Los Angeles-204.152.198.135-2a1667c5b1c83b6253c57c275b2be39c",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "St. Louis-209.126.84.189-6150d2a64231a4df00f4f0545738802e",
+                "Tokyo-116.80.63.174-5c47aabb87a988a6a54f9ab98daf1309",
+                "Singapore-38.180.190.177-130835958d4c95fed4f3f49186b09c81",
+                "Chicago-38.180.203.189-73d2d961897db25917835fef52503c41",
+                "Chicago-38.180.203.204-95cb2f0cc454224265bbc5b22a5878c7",
+                "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Ho Chi Minh City-103.245.237.124-08c9f1589c7e2963dc15f241d1be9788",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Amsterdam-92.112.125.223-cd93cc3dc80398aae02906d25f44cdf4",
+                "Los Angeles-204.152.198.135-2a1667c5b1c83b6253c57c275b2be39c",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "St. Louis-209.126.84.189-6150d2a64231a4df00f4f0545738802e",
+                "Tokyo-116.80.63.174-5c47aabb87a988a6a54f9ab98daf1309",
+                "Singapore-38.180.190.177-130835958d4c95fed4f3f49186b09c81",
+                "Chicago-38.180.203.189-73d2d961897db25917835fef52503c41",
+                "Chicago-38.180.203.204-95cb2f0cc454224265bbc5b22a5878c7",
+                "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Ho Chi Minh City-103.245.237.124-08c9f1589c7e2963dc15f241d1be9788",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Amsterdam-92.112.125.223-cd93cc3dc80398aae02906d25f44cdf4",
+                "Los Angeles-204.152.198.135-2a1667c5b1c83b6253c57c275b2be39c",
+                "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+                "St. Louis-209.126.84.189-6150d2a64231a4df00f4f0545738802e",
+                "Tokyo-116.80.63.174-5c47aabb87a988a6a54f9ab98daf1309",
+                "Singapore-38.180.190.177-130835958d4c95fed4f3f49186b09c81",
+                "Chicago-38.180.203.189-73d2d961897db25917835fef52503c41",
+                "Chicago-38.180.203.204-95cb2f0cc454224265bbc5b22a5878c7",
+                "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Ho Chi Minh City-103.245.237.124-08c9f1589c7e2963dc15f241d1be9788",
+            "server": "103.245.237.124",
+            "server_port": 58202,
+            "uuid": "cca053d5-7123-4a87-83d6-babe4e9c8115",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "103.245.237.124"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-92.112.125.223-cd93cc3dc80398aae02906d25f44cdf4",
+            "server": "104.21.3.219",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-204.152.198.135-2a1667c5b1c83b6253c57c275b2be39c",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "St. Louis-209.126.84.189-eda2ce199212466ae2141b143d0df303",
+            "server": "v2ray.codefyinc.com",
+            "server_port": 443,
+            "uuid": "2c981164-9b93-4bca-94ff-b78d3f8498d7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmessws",
+                "headers": {
+                    "Host": "v2ray.codefyinc.com"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "St. Louis-209.126.84.189-6150d2a64231a4df00f4f0545738802e",
+            "server": "209.126.84.189",
+            "server_port": 443,
+            "uuid": "2c981164-9b93-4bca-94ff-b78d3f8498d7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmessws",
+                "headers": {
+                    "Host": "209.126.84.189"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-116.80.63.174-5c47aabb87a988a6a54f9ab98daf1309",
+            "server": "13.115.255.135",
+            "server_port": 2762,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-38.180.190.177-130835958d4c95fed4f3f49186b09c81",
+            "server": "54.150.247.142",
+            "server_port": 1691,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Chicago-38.180.203.189-73d2d961897db25917835fef52503c41",
+            "server": "18.163.2.13",
+            "server_port": 3159,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Chicago-38.180.203.204-95cb2f0cc454224265bbc5b22a5878c7",
+            "server": "43.199.47.199",
+            "server_port": 2569,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394",
+            "server": "pq-india1.09vpn.com",
+            "server_port": 80,
+            "uuid": "05b544a4-d479-4ba4-8208-950bd4411453",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-india1.09vpn.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
