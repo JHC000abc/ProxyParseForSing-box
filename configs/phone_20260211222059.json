@@ -1,0 +1,339 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Osaka-210.152.173.45-3d68c488f8b92d102806499b7fbe629e",
+                "Nürnberg-46.225.106.21-f5fdaa5fc35a1362f94aafc550629252",
+                "Nürnberg-46.225.106.21-96d19cf0b8969cf246b9abcb7f6282f4",
+                "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+                "Nürnberg-46.225.106.21-a8d41d2fdb8aa6a075cfb9944d5d28d9",
+                "Nürnberg-46.225.106.21-b0029e481aa6cbd41c456825114a67fb",
+                "Nürnberg-46.225.106.21-204b1fa927a968b374ed5084bff55b12",
+                "Frankfurt am Main-3.64.214.206-a6e4a604b7b6b2ba082a0c7f94eadaa2",
+                "Harlow-74.220.19.0-598de2b2d515879bb16a791ed877a922",
+                "Frankfurt am Main-51.195.24.24-cb15d47b8d10406316da903af3998e4e",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Nürnberg-46.225.106.21-ddac4d4f850cee27059fcf201f179751",
+                "Amsterdam-92.112.125.223-0422880472582b78df374f60728363d5"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Osaka-210.152.173.45-3d68c488f8b92d102806499b7fbe629e",
+                "Nürnberg-46.225.106.21-f5fdaa5fc35a1362f94aafc550629252",
+                "Nürnberg-46.225.106.21-96d19cf0b8969cf246b9abcb7f6282f4",
+                "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+                "Nürnberg-46.225.106.21-a8d41d2fdb8aa6a075cfb9944d5d28d9",
+                "Nürnberg-46.225.106.21-b0029e481aa6cbd41c456825114a67fb",
+                "Nürnberg-46.225.106.21-204b1fa927a968b374ed5084bff55b12",
+                "Frankfurt am Main-3.64.214.206-a6e4a604b7b6b2ba082a0c7f94eadaa2",
+                "Harlow-74.220.19.0-598de2b2d515879bb16a791ed877a922",
+                "Frankfurt am Main-51.195.24.24-cb15d47b8d10406316da903af3998e4e",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Nürnberg-46.225.106.21-ddac4d4f850cee27059fcf201f179751",
+                "Amsterdam-92.112.125.223-0422880472582b78df374f60728363d5"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Osaka-210.152.173.45-3d68c488f8b92d102806499b7fbe629e",
+                "Nürnberg-46.225.106.21-f5fdaa5fc35a1362f94aafc550629252",
+                "Nürnberg-46.225.106.21-96d19cf0b8969cf246b9abcb7f6282f4",
+                "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+                "Nürnberg-46.225.106.21-a8d41d2fdb8aa6a075cfb9944d5d28d9",
+                "Nürnberg-46.225.106.21-b0029e481aa6cbd41c456825114a67fb",
+                "Nürnberg-46.225.106.21-204b1fa927a968b374ed5084bff55b12",
+                "Frankfurt am Main-3.64.214.206-a6e4a604b7b6b2ba082a0c7f94eadaa2",
+                "Harlow-74.220.19.0-598de2b2d515879bb16a791ed877a922",
+                "Frankfurt am Main-51.195.24.24-cb15d47b8d10406316da903af3998e4e",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Nürnberg-46.225.106.21-ddac4d4f850cee27059fcf201f179751",
+                "Amsterdam-92.112.125.223-0422880472582b78df374f60728363d5"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Osaka-210.152.173.45-3d68c488f8b92d102806499b7fbe629e",
+            "server": "kjp.sanmaojichang.com",
+            "server_port": 21200,
+            "password": "d1360777-ae8a-4c15-93ed-5bcd4bbbeb23",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "kjp.sanmaojichang.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-f5fdaa5fc35a1362f94aafc550629252",
+            "server": "cosmin.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-96d19cf0b8969cf246b9abcb7f6282f4",
+            "server": "clyde.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+            "server": "frankfurt02.zgjok.com",
+            "server_port": 443,
+            "uuid": "90d50c62-13b4-4f9c-b5d8-0168d30b423a",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "frankfurt02.zgjok.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-a8d41d2fdb8aa6a075cfb9944d5d28d9",
+            "server": "172.64.158.2",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-b0029e481aa6cbd41c456825114a67fb",
+            "server": "www.speedtest.net",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-204b1fa927a968b374ed5084bff55b12",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-3.64.214.206-a6e4a604b7b6b2ba082a0c7f94eadaa2",
+            "server": "sh.shahab--web.com",
+            "server_port": 2083,
+            "uuid": "b0191eca-a681-44a3-ceab-70560d5ca1a8",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "sh.shahab--web.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sh.shahab--web.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Harlow-74.220.19.0-598de2b2d515879bb16a791ed877a922",
+            "server": "nodejs.org",
+            "server_port": 443,
+            "uuid": "fef4a93d-eb4f-4657-b56b-32a0dc060045",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "dev.nestandneighbours.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dev.nestandneighbours.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-51.195.24.24-cb15d47b8d10406316da903af3998e4e",
+            "server": "104.21.69.44",
+            "server_port": 8080,
+            "uuid": "nasnet",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/nasnet/cdn",
+                "headers": {
+                    "Host": "nasnet-511952424.mcitel.co"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-ddac4d4f850cee27059fcf201f179751",
+            "server": "104.17.147.22",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-92.112.125.223-0422880472582b78df374f60728363d5",
+            "server": "104.21.3.219",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
