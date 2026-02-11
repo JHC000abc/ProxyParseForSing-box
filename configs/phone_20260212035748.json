@@ -1,0 +1,268 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-37.114.37.183-658f4e60f911b21a02d1799bb3959a93",
+                "Frankfurt am Main-37.114.37.183-c3577f1c8b2d80903d8da2f3797c45e3",
+                "Bexley-57.129.132.223-72a3138e5106b7b263f0e0ab1b1b4b89",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Los Angeles-96.44.178.67-2a1667c5b1c83b6253c57c275b2be39c",
+                "Los Angeles-204.152.198.194-0422880472582b78df374f60728363d5",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Chuncheon-152.67.201.111-284992b381ddfdc67e0ed32370e529f7",
+                "Sham Shui Po-219.76.135.98-17929e00dd4b9cba73c46c26574d2390"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.37.183-658f4e60f911b21a02d1799bb3959a93",
+                "Frankfurt am Main-37.114.37.183-c3577f1c8b2d80903d8da2f3797c45e3",
+                "Bexley-57.129.132.223-72a3138e5106b7b263f0e0ab1b1b4b89",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Los Angeles-96.44.178.67-2a1667c5b1c83b6253c57c275b2be39c",
+                "Los Angeles-204.152.198.194-0422880472582b78df374f60728363d5",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Chuncheon-152.67.201.111-284992b381ddfdc67e0ed32370e529f7",
+                "Sham Shui Po-219.76.135.98-17929e00dd4b9cba73c46c26574d2390"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.37.183-658f4e60f911b21a02d1799bb3959a93",
+                "Frankfurt am Main-37.114.37.183-c3577f1c8b2d80903d8da2f3797c45e3",
+                "Bexley-57.129.132.223-72a3138e5106b7b263f0e0ab1b1b4b89",
+                "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+                "Los Angeles-96.44.178.67-2a1667c5b1c83b6253c57c275b2be39c",
+                "Los Angeles-204.152.198.194-0422880472582b78df374f60728363d5",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Chuncheon-152.67.201.111-284992b381ddfdc67e0ed32370e529f7",
+                "Sham Shui Po-219.76.135.98-17929e00dd4b9cba73c46c26574d2390"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-37.114.37.183-658f4e60f911b21a02d1799bb3959a93",
+            "server": "188.114.98.0",
+            "server_port": 2087,
+            "uuid": "0f7794ff-c024-4968-a6c7-6e44c7d188c7",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "vaaaaay.i-farm.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vaaaaay.i-farm.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-37.114.37.183-c3577f1c8b2d80903d8da2f3797c45e3",
+            "server": "dariush-kharabkar.global.ssl.fastly.net",
+            "server_port": 443,
+            "uuid": "0f7794ff-c024-4968-a6c7-6e44c7d188c7",
+            "transport": {
+                "type": "ws",
+                "path": "site",
+                "headers": {
+                    "Host": "dariush-kharabkar.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dariush-kharabkar.global.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.129.132.223-72a3138e5106b7b263f0e0ab1b1b4b89",
+            "server": "57.129.132.223",
+            "server_port": 80,
+            "uuid": "a25cbf11-2908-4a1b-a3a8-9a571777dca3",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess/",
+                "headers": {
+                    "Host": "google.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-0b3c465c69c335b87058db7ea8c33070",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-2a1667c5b1c83b6253c57c275b2be39c",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-204.152.198.194-0422880472582b78df374f60728363d5",
+            "server": "104.21.3.219",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+            "server": "t1.620720.xyz",
+            "server_port": 8443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "t1.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+            "server": "sy4.620720.xyz",
+            "server_port": 443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "sy4.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Chuncheon-152.67.201.111-284992b381ddfdc67e0ed32370e529f7",
+            "server": "c7.620720.xyz",
+            "server_port": 8443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "c7.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Sham Shui Po-219.76.135.98-17929e00dd4b9cba73c46c26574d2390",
+            "server": "219.76.135.98",
+            "server_port": 443,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
