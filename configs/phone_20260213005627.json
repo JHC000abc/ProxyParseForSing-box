@@ -1,0 +1,262 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-147.45.49.29-021be708598e695f89bdaeb0edb4153c",
+                "Tokyo-103.62.49.74-40bb5f26b872aa94efea593d63727e56",
+                "Meppel-93.185.166.101-aebf7c3f346405ef5c1cdf0c98518560",
+                "Frankfurt am Main-51.68.162.178-b68508ac6a474e1791829ffa48126211",
+                "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+                "Paris-13.38.185.255-8fa8bcdc88d70571be0f20247428b4a8",
+                "Dronten-5.255.114.61-0cfc6112fc85f17e86cb1897bffec6ac",
+                "Limburg an der Lahn-51.195.110.193-f4318b41a3a12546eb417dbff4dd4f87",
+                "Frankfurt am Main-185.235.137.29-42e6ea2a73dcc8bb00bdd7e1fd55ab2a",
+                "Nürnberg-91.99.160.30-e54e2d6724d067d9f15f0fac252e68a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-147.45.49.29-021be708598e695f89bdaeb0edb4153c",
+                "Tokyo-103.62.49.74-40bb5f26b872aa94efea593d63727e56",
+                "Meppel-93.185.166.101-aebf7c3f346405ef5c1cdf0c98518560",
+                "Frankfurt am Main-51.68.162.178-b68508ac6a474e1791829ffa48126211",
+                "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+                "Paris-13.38.185.255-8fa8bcdc88d70571be0f20247428b4a8",
+                "Dronten-5.255.114.61-0cfc6112fc85f17e86cb1897bffec6ac",
+                "Limburg an der Lahn-51.195.110.193-f4318b41a3a12546eb417dbff4dd4f87",
+                "Frankfurt am Main-185.235.137.29-42e6ea2a73dcc8bb00bdd7e1fd55ab2a",
+                "Nürnberg-91.99.160.30-e54e2d6724d067d9f15f0fac252e68a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-147.45.49.29-021be708598e695f89bdaeb0edb4153c",
+                "Tokyo-103.62.49.74-40bb5f26b872aa94efea593d63727e56",
+                "Meppel-93.185.166.101-aebf7c3f346405ef5c1cdf0c98518560",
+                "Frankfurt am Main-51.68.162.178-b68508ac6a474e1791829ffa48126211",
+                "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+                "Paris-13.38.185.255-8fa8bcdc88d70571be0f20247428b4a8",
+                "Dronten-5.255.114.61-0cfc6112fc85f17e86cb1897bffec6ac",
+                "Limburg an der Lahn-51.195.110.193-f4318b41a3a12546eb417dbff4dd4f87",
+                "Frankfurt am Main-185.235.137.29-42e6ea2a73dcc8bb00bdd7e1fd55ab2a",
+                "Nürnberg-91.99.160.30-e54e2d6724d067d9f15f0fac252e68a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-147.45.49.29-021be708598e695f89bdaeb0edb4153c",
+            "server": "sg1.eyucdn.xyz",
+            "server_port": 2056,
+            "password": "41aec03d-4345-4bff-9bab-69d36d80033c",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sg1.eyucdn.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-103.62.49.74-40bb5f26b872aa94efea593d63727e56",
+            "server": "69.84.182.13",
+            "server_port": 443,
+            "uuid": "f7d33985-dfa7-45a1-8649-26235a90c810",
+            "transport": {
+                "type": "ws",
+                "path": "/kbjc/jp1",
+                "headers": {
+                    "Host": "jp1-jp1.aiopen.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp1-jp1.aiopen.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Meppel-93.185.166.101-aebf7c3f346405ef5c1cdf0c98518560",
+            "server": "vip2.kaixincloud.top",
+            "server_port": 2052,
+            "uuid": "25b7069d-a1e0-4053-8469-a54ec1ce8f56",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "rOugh-preseNCEUROCy1N6YY.sEOtOOLsfOryou.cO.UK"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.68.162.178-b68508ac6a474e1791829ffa48126211",
+            "server": "162.159.198.189",
+            "server_port": 443,
+            "uuid": "dbc8b845-5441-4a43-98cb-2e33ecb06f59",
+            "transport": {
+                "type": "ws",
+                "path": "/v2rayroad",
+                "headers": {
+                    "Host": "hotchoclate.graphapp.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hotchoclate.graphapp.ir"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-158.101.170.154-8a8bd58dc5914fd45bd55372d1eeb41e",
+            "server": "frankfurt02.zgjok.com",
+            "server_port": 443,
+            "uuid": "90d50c62-13b4-4f9c-b5d8-0168d30b423a",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "frankfurt02.zgjok.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-13.38.185.255-8fa8bcdc88d70571be0f20247428b4a8",
+            "server": "13.38.185.255",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "13.38.185.255"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-0cfc6112fc85f17e86cb1897bffec6ac",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Limburg an der Lahn-51.195.110.193-f4318b41a3a12546eb417dbff4dd4f87",
+            "server": "entrainmentworld.de",
+            "server_port": 2083,
+            "uuid": "c61fd003-1ad7-44fb-9bfc-da6382c6f4d3",
+            "transport": {
+                "type": "ws",
+                "path": "/vlessws",
+                "headers": {
+                    "Host": "entrainmentworld.de"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "entrainmentworld.de"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-185.235.137.29-42e6ea2a73dcc8bb00bdd7e1fd55ab2a",
+            "server": "free-de-2.undef.network",
+            "server_port": 443,
+            "password": "pYIoKUPGpWeTYXEx3HjR7s97B",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "free-de-2.undef.network"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-91.99.160.30-e54e2d6724d067d9f15f0fac252e68a2",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
