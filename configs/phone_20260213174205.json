@@ -1,0 +1,303 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-147.45.49.29-9bad96c3b01f006c72f0159d1521c4a5",
+                "Nürnberg-46.225.105.153-dc0457c11d38535e949ab8f5cf5c3744",
+                "Nürnberg-46.225.105.153-8f53e450c143791f997014bb7707ac36",
+                "Nürnberg-46.225.105.153-b7b86ab4516e8776caf70229856071cf",
+                "Paris-15.188.241.30-1cffb3a50c6ad6e50b6d398bcab776ce",
+                "Amsterdam-146.103.102.82-12cb09303dd4f20d367e86e4df998d3d",
+                "Frankfurt am Main-18.198.110.94-6e79111eddb27671da4cb7447a8a35e8",
+                "Frankfurt am Main-35.157.96.104-d6fb562048aa31630aa11f7cb49bbee0",
+                "Mumbai-45.89.105.56-0b3017ed88240e5a037e7162c0827284",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+                "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-147.45.49.29-9bad96c3b01f006c72f0159d1521c4a5",
+                "Nürnberg-46.225.105.153-dc0457c11d38535e949ab8f5cf5c3744",
+                "Nürnberg-46.225.105.153-8f53e450c143791f997014bb7707ac36",
+                "Nürnberg-46.225.105.153-b7b86ab4516e8776caf70229856071cf",
+                "Paris-15.188.241.30-1cffb3a50c6ad6e50b6d398bcab776ce",
+                "Amsterdam-146.103.102.82-12cb09303dd4f20d367e86e4df998d3d",
+                "Frankfurt am Main-18.198.110.94-6e79111eddb27671da4cb7447a8a35e8",
+                "Frankfurt am Main-35.157.96.104-d6fb562048aa31630aa11f7cb49bbee0",
+                "Mumbai-45.89.105.56-0b3017ed88240e5a037e7162c0827284",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+                "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-147.45.49.29-9bad96c3b01f006c72f0159d1521c4a5",
+                "Nürnberg-46.225.105.153-dc0457c11d38535e949ab8f5cf5c3744",
+                "Nürnberg-46.225.105.153-8f53e450c143791f997014bb7707ac36",
+                "Nürnberg-46.225.105.153-b7b86ab4516e8776caf70229856071cf",
+                "Paris-15.188.241.30-1cffb3a50c6ad6e50b6d398bcab776ce",
+                "Amsterdam-146.103.102.82-12cb09303dd4f20d367e86e4df998d3d",
+                "Frankfurt am Main-18.198.110.94-6e79111eddb27671da4cb7447a8a35e8",
+                "Frankfurt am Main-35.157.96.104-d6fb562048aa31630aa11f7cb49bbee0",
+                "Mumbai-45.89.105.56-0b3017ed88240e5a037e7162c0827284",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+                "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-147.45.49.29-9bad96c3b01f006c72f0159d1521c4a5",
+            "server": "sg1.eyucdn.xyz",
+            "server_port": 2056,
+            "password": "41aec03d-4345-4bff-9bab-69d36d80033c",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sg1.eyucdn.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.153-dc0457c11d38535e949ab8f5cf5c3744",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.153-8f53e450c143791f997014bb7707ac36",
+            "server": "www.speedtest.net",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.153-b7b86ab4516e8776caf70229856071cf",
+            "server": "172.64.33.91",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-15.188.241.30-1cffb3a50c6ad6e50b6d398bcab776ce",
+            "server": "15.188.241.30",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "15.188.241.30"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-146.103.102.82-12cb09303dd4f20d367e86e4df998d3d",
+            "server": "nl-90w-c.southnetworks.cloud",
+            "server_port": 80,
+            "uuid": "e08f1ad7-0c60-446d-baec-08b3b69bb3d0",
+            "transport": {
+                "type": "ws",
+                "path": "/getWorkerUpdates",
+                "headers": {
+                    "Host": "nl-90w-c.southnetworks.cloud"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-18.198.110.94-6e79111eddb27671da4cb7447a8a35e8",
+            "server": "18.198.110.94",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "18.198.110.94"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-35.157.96.104-d6fb562048aa31630aa11f7cb49bbee0",
+            "server": "35.157.96.104",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "35.157.96.104"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-45.89.105.56-0b3017ed88240e5a037e7162c0827284",
+            "server": "45.89.105.56",
+            "server_port": 80,
+            "uuid": "05b544a4-d479-4ba4-8208-950bd4411453",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "45.89.105.56"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+            "server": "mmki9.kk1.ccwu.cc",
+            "server_port": 443,
+            "uuid": "9d24b07c-71f4-4aa5-95ac-3307c6995619",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/FlydU79Rnu0lNhu1YZc7zZ",
+                "headers": {
+                    "Host": "mmki9.kk1.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-45.89.105.56-4fed31bedf5dcd035e1ba37395eba394",
+            "server": "pq-india1.09vpn.com",
+            "server_port": 80,
+            "uuid": "05b544a4-d479-4ba4-8208-950bd4411453",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-india1.09vpn.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
