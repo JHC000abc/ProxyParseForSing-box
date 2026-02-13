@@ -1,0 +1,410 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Changhua-36.234.135.169-1da129594b0d53c98e79a9a06df72da3",
+                "Tokyo-103.62.49.74-6d5d347d0286b95b753e6d7ea62fe598",
+                "San Jose-134.195.101.188-098e254a5932aa5e899b31677e844fc7",
+                "Nürnberg-46.225.106.53-dcfb2f1f218465c8814f6771d5455e20",
+                "Nürnberg-46.225.106.53-85fd6b9fbed7895998c02456249f6fef",
+                "Nürnberg-46.225.106.53-b3f38930f6df017daa55b120bbb18553",
+                "Amsterdam-146.103.102.82-3b8757de18a249e4f61e312bbc09eca3",
+                "Nürnberg-46.225.106.53-c65f60814eeaf858a46dd245fc7bffa6",
+                "Elk Grove Village-192.3.130.103-83f884e653b97375137be5cc0b8e9039",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Amsterdam-146.103.99.25-2ff955ec4937e7dab478f835ec49259f",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+                "Frankfurt am Main-82.22.174.78-2c7de18af92b1b67403fe95b980c4933",
+                "Frankfurt am Main-82.22.174.78-11042cec78fd0df36be1d3e19ec1d131",
+                "Frankfurt am Main-82.22.174.78-cd23258df534172557991257eb536a21"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Changhua-36.234.135.169-1da129594b0d53c98e79a9a06df72da3",
+                "Tokyo-103.62.49.74-6d5d347d0286b95b753e6d7ea62fe598",
+                "San Jose-134.195.101.188-098e254a5932aa5e899b31677e844fc7",
+                "Nürnberg-46.225.106.53-dcfb2f1f218465c8814f6771d5455e20",
+                "Nürnberg-46.225.106.53-85fd6b9fbed7895998c02456249f6fef",
+                "Nürnberg-46.225.106.53-b3f38930f6df017daa55b120bbb18553",
+                "Amsterdam-146.103.102.82-3b8757de18a249e4f61e312bbc09eca3",
+                "Nürnberg-46.225.106.53-c65f60814eeaf858a46dd245fc7bffa6",
+                "Elk Grove Village-192.3.130.103-83f884e653b97375137be5cc0b8e9039",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Amsterdam-146.103.99.25-2ff955ec4937e7dab478f835ec49259f",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+                "Frankfurt am Main-82.22.174.78-2c7de18af92b1b67403fe95b980c4933",
+                "Frankfurt am Main-82.22.174.78-11042cec78fd0df36be1d3e19ec1d131",
+                "Frankfurt am Main-82.22.174.78-cd23258df534172557991257eb536a21"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Changhua-36.234.135.169-1da129594b0d53c98e79a9a06df72da3",
+                "Tokyo-103.62.49.74-6d5d347d0286b95b753e6d7ea62fe598",
+                "San Jose-134.195.101.188-098e254a5932aa5e899b31677e844fc7",
+                "Nürnberg-46.225.106.53-dcfb2f1f218465c8814f6771d5455e20",
+                "Nürnberg-46.225.106.53-85fd6b9fbed7895998c02456249f6fef",
+                "Nürnberg-46.225.106.53-b3f38930f6df017daa55b120bbb18553",
+                "Amsterdam-146.103.102.82-3b8757de18a249e4f61e312bbc09eca3",
+                "Nürnberg-46.225.106.53-c65f60814eeaf858a46dd245fc7bffa6",
+                "Elk Grove Village-192.3.130.103-83f884e653b97375137be5cc0b8e9039",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Amsterdam-146.103.99.25-2ff955ec4937e7dab478f835ec49259f",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+                "Frankfurt am Main-82.22.174.78-2c7de18af92b1b67403fe95b980c4933",
+                "Frankfurt am Main-82.22.174.78-11042cec78fd0df36be1d3e19ec1d131",
+                "Frankfurt am Main-82.22.174.78-cd23258df534172557991257eb536a21"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Changhua-36.234.135.169-1da129594b0d53c98e79a9a06df72da3",
+            "server": "twneko.jjxcloud.xyz",
+            "server_port": 8443,
+            "password": "cd7e0971-4b98-41fc-9ecb-1267a2b0e4f4",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "twneko.jjxcloud.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-103.62.49.74-6d5d347d0286b95b753e6d7ea62fe598",
+            "server": "69.84.182.13",
+            "server_port": 443,
+            "uuid": "f7d33985-dfa7-45a1-8649-26235a90c810",
+            "transport": {
+                "type": "ws",
+                "path": "/kbjc/jp1",
+                "headers": {
+                    "Host": "jp1-jp1.aiopen.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp1-jp1.aiopen.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-134.195.101.188-098e254a5932aa5e899b31677e844fc7",
+            "server": "104.19.58.118",
+            "server_port": 443,
+            "uuid": "f7d33985-dfa7-45a1-8649-26235a90c810",
+            "transport": {
+                "type": "ws",
+                "path": "/kbjc/us1",
+                "headers": {
+                    "Host": "us1-us1.aiopen.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us1-us1.aiopen.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.53-dcfb2f1f218465c8814f6771d5455e20",
+            "server": "www.speedtest.net",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.53-85fd6b9fbed7895998c02456249f6fef",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.53-b3f38930f6df017daa55b120bbb18553",
+            "server": "172.64.33.91",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-146.103.102.82-3b8757de18a249e4f61e312bbc09eca3",
+            "server": "nl-90w-c.southnetworks.cloud",
+            "server_port": 80,
+            "uuid": "e08f1ad7-0c60-446d-baec-08b3b69bb3d0",
+            "transport": {
+                "type": "ws",
+                "path": "/getWorkerUpdates",
+                "headers": {
+                    "Host": "nl-90w-c.southnetworks.cloud"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.53-c65f60814eeaf858a46dd245fc7bffa6",
+            "server": "clyde.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Elk Grove Village-192.3.130.103-83f884e653b97375137be5cc0b8e9039",
+            "server": "mkirt.818185.xyz",
+            "server_port": 443,
+            "uuid": "eed4a583-b20e-4787-bbdb-09018156e53f",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cI9XtKvjiIyvZXFAbvQEN",
+                "headers": {
+                    "Host": "mkirt.818185.xyz"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+            "server": "206.71.158.40",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+            "server": "206.71.158.41",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-146.103.99.25-2ff955ec4937e7dab478f835ec49259f",
+            "server": "nl-78w-c.southnetworks.cloud",
+            "server_port": 80,
+            "uuid": "094e66a9-8d92-41fe-85ad-8e7bf9b5fcaa",
+            "transport": {
+                "type": "ws",
+                "path": "/getWorkerUpdates",
+                "headers": {
+                    "Host": "nl-78w-c.southnetworks.cloud"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Elk Grove Village-192.3.130.96-ab40d96fddc45fdd2f0aeba4834246df",
+            "server": "mmki9.kk1.ccwu.cc",
+            "server_port": 443,
+            "uuid": "9d24b07c-71f4-4aa5-95ac-3307c6995619",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/FlydU79Rnu0lNhu1YZc7zZ",
+                "headers": {
+                    "Host": "mmki9.kk1.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-82.22.174.78-2c7de18af92b1b67403fe95b980c4933",
+            "server": "104.21.224.5",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-82.22.174.78-11042cec78fd0df36be1d3e19ec1d131",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-82.22.174.78-cd23258df534172557991257eb536a21",
+            "server": "vip2.kaixincloud.top",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
