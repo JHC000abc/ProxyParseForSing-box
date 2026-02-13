@@ -1,0 +1,484 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+                "Nürnberg-94.16.112.40-3311423b4084d1aea1df19bc70e5c637",
+                "Mumbai-141.148.204.183-eb8c41b2cbd2e41e36ab0f8e9656d8d5",
+                "Novosibirsk-94.103.3.40-d8f17d529fc2e2d5ece36730a2ac1176",
+                "Changhua-36.234.129.106-240b0cc0b4889eb515063bc6c55aa6e6",
+                "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+                "Nürnberg-46.224.192.48-7d56908ff5c4777d848d6163f88a2d0c",
+                "Frankfurt am Main-45.140.43.27-15980ca36998bd03628de4e87c815350",
+                "Nürnberg-46.225.101.200-e13d3803470fe73c5c66cf12fed9f3b9",
+                "Nürnberg-46.225.101.200-2b82dba25e69407a27987c03c25ba005",
+                "Nürnberg-46.225.101.200-465284e8fb001fd078c369cbd5fcbfd4",
+                "Frankfurt am Main-51.68.162.178-0b53501ef02b376ba889595436c2e3a8",
+                "Genève-195.15.207.211-188bdd288600fa138c8db27936bbd778",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Tokyo-116.80.63.152-59e55c00ef046819083b783cac9beb90",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Paris-15.188.225.111-d80ac90d339987ff65083b55450e1f26",
+                "Frankfurt am Main-18.192.246.137-2842fd4bfcdf772d703fb778fa88fd05",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Genève-195.15.207.211-2c7de18af92b1b67403fe95b980c4933",
+                "Genève-195.15.207.211-cd23258df534172557991257eb536a21"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+                "Nürnberg-94.16.112.40-3311423b4084d1aea1df19bc70e5c637",
+                "Mumbai-141.148.204.183-eb8c41b2cbd2e41e36ab0f8e9656d8d5",
+                "Novosibirsk-94.103.3.40-d8f17d529fc2e2d5ece36730a2ac1176",
+                "Changhua-36.234.129.106-240b0cc0b4889eb515063bc6c55aa6e6",
+                "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+                "Nürnberg-46.224.192.48-7d56908ff5c4777d848d6163f88a2d0c",
+                "Frankfurt am Main-45.140.43.27-15980ca36998bd03628de4e87c815350",
+                "Nürnberg-46.225.101.200-e13d3803470fe73c5c66cf12fed9f3b9",
+                "Nürnberg-46.225.101.200-2b82dba25e69407a27987c03c25ba005",
+                "Nürnberg-46.225.101.200-465284e8fb001fd078c369cbd5fcbfd4",
+                "Frankfurt am Main-51.68.162.178-0b53501ef02b376ba889595436c2e3a8",
+                "Genève-195.15.207.211-188bdd288600fa138c8db27936bbd778",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Tokyo-116.80.63.152-59e55c00ef046819083b783cac9beb90",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Paris-15.188.225.111-d80ac90d339987ff65083b55450e1f26",
+                "Frankfurt am Main-18.192.246.137-2842fd4bfcdf772d703fb778fa88fd05",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Genève-195.15.207.211-2c7de18af92b1b67403fe95b980c4933",
+                "Genève-195.15.207.211-cd23258df534172557991257eb536a21"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+                "Nürnberg-94.16.112.40-3311423b4084d1aea1df19bc70e5c637",
+                "Mumbai-141.148.204.183-eb8c41b2cbd2e41e36ab0f8e9656d8d5",
+                "Novosibirsk-94.103.3.40-d8f17d529fc2e2d5ece36730a2ac1176",
+                "Changhua-36.234.129.106-240b0cc0b4889eb515063bc6c55aa6e6",
+                "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+                "Nürnberg-46.224.192.48-7d56908ff5c4777d848d6163f88a2d0c",
+                "Frankfurt am Main-45.140.43.27-15980ca36998bd03628de4e87c815350",
+                "Nürnberg-46.225.101.200-e13d3803470fe73c5c66cf12fed9f3b9",
+                "Nürnberg-46.225.101.200-2b82dba25e69407a27987c03c25ba005",
+                "Nürnberg-46.225.101.200-465284e8fb001fd078c369cbd5fcbfd4",
+                "Frankfurt am Main-51.68.162.178-0b53501ef02b376ba889595436c2e3a8",
+                "Genève-195.15.207.211-188bdd288600fa138c8db27936bbd778",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Tokyo-116.80.63.152-59e55c00ef046819083b783cac9beb90",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Paris-15.188.225.111-d80ac90d339987ff65083b55450e1f26",
+                "Frankfurt am Main-18.192.246.137-2842fd4bfcdf772d703fb778fa88fd05",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Genève-195.15.207.211-2c7de18af92b1b67403fe95b980c4933",
+                "Genève-195.15.207.211-cd23258df534172557991257eb536a21"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+            "server": "flkf2.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "flkf2.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Nürnberg-94.16.112.40-3311423b4084d1aea1df19bc70e5c637",
+            "server": "nlb3.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nlb3.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-141.148.204.183-eb8c41b2cbd2e41e36ab0f8e9656d8d5",
+            "server": "mm1.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mm1.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Novosibirsk-94.103.3.40-d8f17d529fc2e2d5ece36730a2ac1176",
+            "server": "ru.eyucdn.xyz",
+            "server_port": 2056,
+            "password": "41aec03d-4345-4bff-9bab-69d36d80033c",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ru.eyucdn.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Changhua-36.234.129.106-240b0cc0b4889eb515063bc6c55aa6e6",
+            "server": "twneko.jjxcloud.xyz",
+            "server_port": 8443,
+            "password": "e4543370-0591-45c5-ba43-14f53fd58b4c",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "twneko.jjxcloud.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+            "server": "mg5.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mg5.mangshe.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.224.192.48-7d56908ff5c4777d848d6163f88a2d0c",
+            "server": "104.24.192.27",
+            "server_port": 443,
+            "uuid": "752741e4-ca51-4ec2-9ebd-e8806bfa0649",
+            "transport": {
+                "type": "ws",
+                "path": "/uqBYRQhpA2NzSIhejwuqjz",
+                "headers": {
+                    "Host": "de001c.ketabv.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "de001c.ketabv.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-45.140.43.27-15980ca36998bd03628de4e87c815350",
+            "server": "vpn.nnet.online",
+            "server_port": 80,
+            "uuid": "79d24ca6-8f75-4653-9a9c-2d4ee38f4b88",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-ntls",
+                "headers": {
+                    "Host": "nnet.online"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.101.200-e13d3803470fe73c5c66cf12fed9f3b9",
+            "server": "104.17.148.22",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.101.200-2b82dba25e69407a27987c03c25ba005",
+            "server": "www.speedtest.net",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.101.200-465284e8fb001fd078c369cbd5fcbfd4",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.68.162.178-0b53501ef02b376ba889595436c2e3a8",
+            "server": "185.238.228.46",
+            "server_port": 443,
+            "uuid": "a992c7a6-832b-4243-a294-d34783d0294c",
+            "transport": {
+                "type": "ws",
+                "path": "/v2rayroad",
+                "headers": {
+                    "Host": "hotchoclate.graphapp.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hotchoclate.graphapp.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.207.211-188bdd288600fa138c8db27936bbd778",
+            "server": "172.66.47.45",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+            "server": "t1.620720.xyz",
+            "server_port": 8443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "t1.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-116.80.63.152-59e55c00ef046819083b783cac9beb90",
+            "server": "13.113.192.229",
+            "server_port": 2595,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+            "server": "206.71.158.40",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+            "server": "206.71.158.41",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-15.188.225.111-d80ac90d339987ff65083b55450e1f26",
+            "server": "15.188.225.111",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "15.188.225.111"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-18.192.246.137-2842fd4bfcdf772d703fb778fa88fd05",
+            "server": "18.192.246.137",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "18.192.246.137"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.207.211-2c7de18af92b1b67403fe95b980c4933",
+            "server": "104.21.224.5",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.207.211-cd23258df534172557991257eb536a21",
+            "server": "vip2.kaixincloud.top",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
