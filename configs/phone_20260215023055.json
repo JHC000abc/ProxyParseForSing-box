@@ -1,0 +1,364 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+                "Mumbai-141.148.201.7-761a53596094d187e85be7db3d3e44e7",
+                "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+                "Nürnberg-94.16.112.40-bc0965beffaf98d9069c6a68a01bbf0b",
+                "Frankfurt am Main-51.68.162.178-2b0da48ad98534bd685ae47afa2ac6d3",
+                "Frankfurt am Main-37.114.37.183-7ecff0129e936cfab7a7d8a9b92d9909",
+                "Nürnberg-46.225.105.63-9f6982e75e098573752df9f17fd97fd8",
+                "Nürnberg-46.225.105.63-6e8586772e0dd9f315b1aec51c457985",
+                "Nürnberg-46.225.105.63-decc3c3137eec2400c1b77da44f453c8",
+                "Nürnberg-46.225.105.63-d3c9de1bdefdb80c4010a46a99196c54",
+                "Nürnberg-46.225.105.63-856afc0624fbad2eba5c4d588ab3df2e",
+                "Paris-13.36.58.242-47a40a31ca03ba312d60318b58a6ea63",
+                "Moscow-185.250.149.242-0862e93960ddef8f32ec2f5f3c1ed20d",
+                "Moscow-193.163.203.36-c6a6ab811faae6ca0de73f6869348162",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+                "Mumbai-141.148.201.7-761a53596094d187e85be7db3d3e44e7",
+                "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+                "Nürnberg-94.16.112.40-bc0965beffaf98d9069c6a68a01bbf0b",
+                "Frankfurt am Main-51.68.162.178-2b0da48ad98534bd685ae47afa2ac6d3",
+                "Frankfurt am Main-37.114.37.183-7ecff0129e936cfab7a7d8a9b92d9909",
+                "Nürnberg-46.225.105.63-9f6982e75e098573752df9f17fd97fd8",
+                "Nürnberg-46.225.105.63-6e8586772e0dd9f315b1aec51c457985",
+                "Nürnberg-46.225.105.63-decc3c3137eec2400c1b77da44f453c8",
+                "Nürnberg-46.225.105.63-d3c9de1bdefdb80c4010a46a99196c54",
+                "Nürnberg-46.225.105.63-856afc0624fbad2eba5c4d588ab3df2e",
+                "Paris-13.36.58.242-47a40a31ca03ba312d60318b58a6ea63",
+                "Moscow-185.250.149.242-0862e93960ddef8f32ec2f5f3c1ed20d",
+                "Moscow-193.163.203.36-c6a6ab811faae6ca0de73f6869348162",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+                "Mumbai-141.148.201.7-761a53596094d187e85be7db3d3e44e7",
+                "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+                "Nürnberg-94.16.112.40-bc0965beffaf98d9069c6a68a01bbf0b",
+                "Frankfurt am Main-51.68.162.178-2b0da48ad98534bd685ae47afa2ac6d3",
+                "Frankfurt am Main-37.114.37.183-7ecff0129e936cfab7a7d8a9b92d9909",
+                "Nürnberg-46.225.105.63-9f6982e75e098573752df9f17fd97fd8",
+                "Nürnberg-46.225.105.63-6e8586772e0dd9f315b1aec51c457985",
+                "Nürnberg-46.225.105.63-decc3c3137eec2400c1b77da44f453c8",
+                "Nürnberg-46.225.105.63-d3c9de1bdefdb80c4010a46a99196c54",
+                "Nürnberg-46.225.105.63-856afc0624fbad2eba5c4d588ab3df2e",
+                "Paris-13.36.58.242-47a40a31ca03ba312d60318b58a6ea63",
+                "Moscow-185.250.149.242-0862e93960ddef8f32ec2f5f3c1ed20d",
+                "Moscow-193.163.203.36-c6a6ab811faae6ca0de73f6869348162",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-37.114.48.222-f631532b4dc0e7bf832515e07f3e4458",
+            "server": "flkf2.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "flkf2.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-141.148.201.7-761a53596094d187e85be7db3d3e44e7",
+            "server": "mm2.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mm2.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Houston-136.0.42.119-40366ba800c327d5479bbbedd0b36e67",
+            "server": "mg5.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mg5.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Nürnberg-94.16.112.40-bc0965beffaf98d9069c6a68a01bbf0b",
+            "server": "nlb3.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nlb3.mangshe.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.68.162.178-2b0da48ad98534bd685ae47afa2ac6d3",
+            "server": "185.238.228.46",
+            "server_port": 443,
+            "uuid": "a992c7a6-832b-4243-a294-d34783d0294c",
+            "transport": {
+                "type": "ws",
+                "path": "/v2rayroad",
+                "headers": {
+                    "Host": "hotchoclate.graphapp.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hotchoclate.graphapp.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-37.114.37.183-7ecff0129e936cfab7a7d8a9b92d9909",
+            "server": "sfmidorfeed.global.ssl.fastly.net",
+            "server_port": 443,
+            "uuid": "6a2cb1ed-83fa-4f31-999c-d51a6628ef69",
+            "transport": {
+                "type": "ws",
+                "path": "/site",
+                "headers": {
+                    "Host": "sfmidorfeed.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sfmidorfeed.global.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.63-9f6982e75e098573752df9f17fd97fd8",
+            "server": "clyde.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.63-6e8586772e0dd9f315b1aec51c457985",
+            "server": "www.speedtest.net",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.63-decc3c3137eec2400c1b77da44f453c8",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.63-d3c9de1bdefdb80c4010a46a99196c54",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.63-856afc0624fbad2eba5c4d588ab3df2e",
+            "server": "brenna.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-13.36.58.242-47a40a31ca03ba312d60318b58a6ea63",
+            "server": "13.36.58.242",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "13.36.58.242"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-185.250.149.242-0862e93960ddef8f32ec2f5f3c1ed20d",
+            "server": "rus3.worldunlocked.org",
+            "server_port": 8443,
+            "uuid": "0e4865bf-811e-44e8-90ce-233ecf209b0b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus3.worldunlocked.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus3.worldunlocked.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-193.163.203.36-c6a6ab811faae6ca0de73f6869348162",
+            "server": "193.163.203.36",
+            "server_port": 18570,
+            "uuid": "88e148ba-1e39-45e9-8aef-6b207411435a",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "193.163.203.36"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "193.163.203.36"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
