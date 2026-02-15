@@ -1,0 +1,236 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Warsaw-57.128.251.195-5eb4c60911f0fe93304ad47d0723405a",
+                "Moscow-185.250.149.238-f91d9bdf7cfe80749e44d88ec3685c10",
+                "Moscow-45.12.114.184-17bf4917a5a3be277786ca9e2b3c81ab",
+                "Singapore-38.180.190.146-fc826608eb92e8f9f71756b4e0d76510",
+                "Novosibirsk-94.103.3.40-13863743e141dfa3139a2eaf59bcd4d6",
+                "Moscow-185.250.149.242-52309ce19ddaea675bb57b6ef5e91294",
+                "Amsterdam-146.103.102.82-ec66170bfbd39703302b6ce72ac0aa09",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Barcelona-63.251.122.139-646b29c5f1e1865b4ea2dd93a15fd6b7"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Warsaw-57.128.251.195-5eb4c60911f0fe93304ad47d0723405a",
+                "Moscow-185.250.149.238-f91d9bdf7cfe80749e44d88ec3685c10",
+                "Moscow-45.12.114.184-17bf4917a5a3be277786ca9e2b3c81ab",
+                "Singapore-38.180.190.146-fc826608eb92e8f9f71756b4e0d76510",
+                "Novosibirsk-94.103.3.40-13863743e141dfa3139a2eaf59bcd4d6",
+                "Moscow-185.250.149.242-52309ce19ddaea675bb57b6ef5e91294",
+                "Amsterdam-146.103.102.82-ec66170bfbd39703302b6ce72ac0aa09",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Barcelona-63.251.122.139-646b29c5f1e1865b4ea2dd93a15fd6b7"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Warsaw-57.128.251.195-5eb4c60911f0fe93304ad47d0723405a",
+                "Moscow-185.250.149.238-f91d9bdf7cfe80749e44d88ec3685c10",
+                "Moscow-45.12.114.184-17bf4917a5a3be277786ca9e2b3c81ab",
+                "Singapore-38.180.190.146-fc826608eb92e8f9f71756b4e0d76510",
+                "Novosibirsk-94.103.3.40-13863743e141dfa3139a2eaf59bcd4d6",
+                "Moscow-185.250.149.242-52309ce19ddaea675bb57b6ef5e91294",
+                "Amsterdam-146.103.102.82-ec66170bfbd39703302b6ce72ac0aa09",
+                "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+                "Barcelona-63.251.122.139-646b29c5f1e1865b4ea2dd93a15fd6b7"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-57.128.251.195-5eb4c60911f0fe93304ad47d0723405a",
+            "server": "telegram.vpnazadie.store",
+            "server_port": 80,
+            "uuid": "425ef0c5-4e79-4aa5-bf9e-b847a0f73601",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-ntls",
+                "headers": {
+                    "Host": "vpnazadie.store"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-185.250.149.238-f91d9bdf7cfe80749e44d88ec3685c10",
+            "server": "185.250.149.238",
+            "server_port": 8443,
+            "uuid": "0e4865bf-811e-44e8-90ce-233ecf209b0b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus3.worldunlocked.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus3.worldunlocked.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.184-17bf4917a5a3be277786ca9e2b3c81ab",
+            "server": "rus21.unboundworld.org",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-38.180.190.146-fc826608eb92e8f9f71756b4e0d76510",
+            "server": "13.192.163.115",
+            "server_port": 381,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Novosibirsk-94.103.3.40-13863743e141dfa3139a2eaf59bcd4d6",
+            "server": "ru.eyucdn.xyz",
+            "server_port": 2056,
+            "password": "41aec03d-4345-4bff-9bab-69d36d80033c",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ru.eyucdn.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-185.250.149.242-52309ce19ddaea675bb57b6ef5e91294",
+            "server": "185.250.149.242",
+            "server_port": 8443,
+            "uuid": "0e4865bf-811e-44e8-90ce-233ecf209b0b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus3.worldunlocked.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus3.worldunlocked.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-146.103.102.82-ec66170bfbd39703302b6ce72ac0aa09",
+            "server": "nl-90w-c.southnetworks.cloud",
+            "server_port": 80,
+            "uuid": "e08f1ad7-0c60-446d-baec-08b3b69bb3d0",
+            "transport": {
+                "type": "ws",
+                "path": "/getWorkerUpdates",
+                "headers": {
+                    "Host": "nl-90w-c.southnetworks.cloud"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.114.61-4a17a5533dab3d84c96ad42e97a054c8",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Barcelona-63.251.122.139-646b29c5f1e1865b4ea2dd93a15fd6b7",
+            "server": "es2.vpnbyvinarsky.ru",
+            "server_port": 443,
+            "uuid": "fb27b6f5-bb5c-45a6-8bc2-265fcfd2b658",
+            "transport": {
+                "type": "ws",
+                "path": "/chat",
+                "headers": {
+                    "Host": "es2.vpnbyvinarsky.ru"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "es2.vpnbyvinarsky.ru"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
