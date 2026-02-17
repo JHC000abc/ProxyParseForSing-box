@@ -1,0 +1,300 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-37.114.48.97-860354d107e0af5b3f8b9e3c2ea522f9",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Nürnberg-46.225.106.21-9d6c537ca897f4ebe6312ad1caca89e1",
+                "Frankfurt am Main-185.235.137.77-e869b8bed7d85ff036ff9fcc43a7a797",
+                "Nürnberg-46.225.106.21-6cd83c7907197b1f96c803d2e569670c",
+                "Nürnberg-46.225.106.21-d349139ef05243ccb0d47df2419826b6",
+                "Nürnberg-46.225.106.21-19ba805bdf88a2d53f8476a58da7ff7c",
+                "Nürnberg-46.225.106.21-aee6715c9fc394e0051a3f44a5ff9a45",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Frankfurt am Main-82.22.174.78-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.97-860354d107e0af5b3f8b9e3c2ea522f9",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Nürnberg-46.225.106.21-9d6c537ca897f4ebe6312ad1caca89e1",
+                "Frankfurt am Main-185.235.137.77-e869b8bed7d85ff036ff9fcc43a7a797",
+                "Nürnberg-46.225.106.21-6cd83c7907197b1f96c803d2e569670c",
+                "Nürnberg-46.225.106.21-d349139ef05243ccb0d47df2419826b6",
+                "Nürnberg-46.225.106.21-19ba805bdf88a2d53f8476a58da7ff7c",
+                "Nürnberg-46.225.106.21-aee6715c9fc394e0051a3f44a5ff9a45",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Frankfurt am Main-82.22.174.78-e39f063f75687e8a4cc7da8bc1df084a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.97-860354d107e0af5b3f8b9e3c2ea522f9",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Nürnberg-46.225.106.21-9d6c537ca897f4ebe6312ad1caca89e1",
+                "Frankfurt am Main-185.235.137.77-e869b8bed7d85ff036ff9fcc43a7a797",
+                "Nürnberg-46.225.106.21-6cd83c7907197b1f96c803d2e569670c",
+                "Nürnberg-46.225.106.21-d349139ef05243ccb0d47df2419826b6",
+                "Nürnberg-46.225.106.21-19ba805bdf88a2d53f8476a58da7ff7c",
+                "Nürnberg-46.225.106.21-aee6715c9fc394e0051a3f44a5ff9a45",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+                "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Frankfurt am Main-82.22.174.78-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-37.114.48.97-860354d107e0af5b3f8b9e3c2ea522f9",
+            "server": "flkf3.mangshe.xyz",
+            "server_port": 2056,
+            "password": "7dd10318-28fd-413f-81f0-cd0a286e4779",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "flkf3.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+            "server": "yapc-1.adamhayward.co.uk",
+            "server_port": 35200,
+            "password": "Yet-Another-Public-Config-1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "YAPC-1.afshin.ir"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "Yet-Another-Public-Config-1"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-9d6c537ca897f4ebe6312ad1caca89e1",
+            "server": "172.64.158.2",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-185.235.137.77-e869b8bed7d85ff036ff9fcc43a7a797",
+            "server": "free-de-3.undef.network",
+            "server_port": 443,
+            "password": "yoi9VG3vimwIPZf4hoYwWJ8SW",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "free-de-3.undef.network"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-6cd83c7907197b1f96c803d2e569670c",
+            "server": "chatgpt.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-d349139ef05243ccb0d47df2419826b6",
+            "server": "www.speedtest.net",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-19ba805bdf88a2d53f8476a58da7ff7c",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.106.21-aee6715c9fc394e0051a3f44a5ff9a45",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+            "server": "206.71.158.37",
+            "server_port": 35000,
+            "password": "Yet-Another-Public-Config-1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "YAPC-1.afshin.ir"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "Yet-Another-Public-Config-1"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-5796d5d72bfc5cb6bbe8fc8d5e7e739c",
+            "server": "206.71.158.40",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+            "server": "206.71.158.41",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-82.22.174.78-e39f063f75687e8a4cc7da8bc1df084a",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
