@@ -1,0 +1,145 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nürnberg-46.225.164.52-1162a6377ed4e4090997c49d994f0131",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Frankfurt am Main-82.22.174.75-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nürnberg-46.225.164.52-1162a6377ed4e4090997c49d994f0131",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Frankfurt am Main-82.22.174.75-e39f063f75687e8a4cc7da8bc1df084a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nürnberg-46.225.164.52-1162a6377ed4e4090997c49d994f0131",
+                "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Frankfurt am Main-82.22.174.75-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.164.52-1162a6377ed4e4090997c49d994f0131",
+            "server": "ip.shakhle.ir",
+            "server_port": 2083,
+            "uuid": "260f19e2-41c2-4f0c-870f-ab7e28e72ef6",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ipv4.yasharteam.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ipv4.yasharteam.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Inzai-158.101.89.118-72474e4f187a5288908354e0552e4ab9",
+            "server": "t1.620720.xyz",
+            "server_port": 8443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "t1.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+            "server": "206.71.158.41",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-82.22.174.75-e39f063f75687e8a4cc7da8bc1df084a",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
