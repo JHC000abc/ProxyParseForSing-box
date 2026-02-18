@@ -1,0 +1,296 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-51.75.69.164-e1bf3a934ed79066c41cb8a8503702ee",
+                "Frankfurt am Main-139.162.153.14-a7b8974f4563d664fbb14c97c8a01079",
+                "Dunkerque-51.254.142.162-48d5c2749297b638bebddb31d2357cb0",
+                "San Jose-104.233.211.85-1cc67ee6db159c1d053972faf9f0e556",
+                "Nürnberg-46.225.164.52-1db0ea1340cf315af54b8a5e4c7645f8",
+                "Nürnberg-46.225.101.200-c11a90340dd663f629ba5a964da0ce71",
+                "Nürnberg-46.225.101.200-f42bfa6082e5a6c4c51fef23b064154a",
+                "Nürnberg-46.225.101.200-711b91be2cecc5b6b604a14b4ef4984a",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Aachen-45.13.227.118-b0738b049de27f76d7b50b27e72811a7",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-51.75.69.164-e1bf3a934ed79066c41cb8a8503702ee",
+                "Frankfurt am Main-139.162.153.14-a7b8974f4563d664fbb14c97c8a01079",
+                "Dunkerque-51.254.142.162-48d5c2749297b638bebddb31d2357cb0",
+                "San Jose-104.233.211.85-1cc67ee6db159c1d053972faf9f0e556",
+                "Nürnberg-46.225.164.52-1db0ea1340cf315af54b8a5e4c7645f8",
+                "Nürnberg-46.225.101.200-c11a90340dd663f629ba5a964da0ce71",
+                "Nürnberg-46.225.101.200-f42bfa6082e5a6c4c51fef23b064154a",
+                "Nürnberg-46.225.101.200-711b91be2cecc5b6b604a14b4ef4984a",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Aachen-45.13.227.118-b0738b049de27f76d7b50b27e72811a7",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-51.75.69.164-e1bf3a934ed79066c41cb8a8503702ee",
+                "Frankfurt am Main-139.162.153.14-a7b8974f4563d664fbb14c97c8a01079",
+                "Dunkerque-51.254.142.162-48d5c2749297b638bebddb31d2357cb0",
+                "San Jose-104.233.211.85-1cc67ee6db159c1d053972faf9f0e556",
+                "Nürnberg-46.225.164.52-1db0ea1340cf315af54b8a5e4c7645f8",
+                "Nürnberg-46.225.101.200-c11a90340dd663f629ba5a964da0ce71",
+                "Nürnberg-46.225.101.200-f42bfa6082e5a6c4c51fef23b064154a",
+                "Nürnberg-46.225.101.200-711b91be2cecc5b6b604a14b4ef4984a",
+                "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+                "Aachen-45.13.227.118-b0738b049de27f76d7b50b27e72811a7",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.69.164-e1bf3a934ed79066c41cb8a8503702ee",
+            "server": "69.84.182.20",
+            "server_port": 443,
+            "uuid": "9ccd06a2-5616-47e3-9763-f9696959d7ad",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "rAyAn-cOnFiG-de-1.pArSa.dPdNs.oRg"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rAyAn-cOnFiG-de-1.pArSa.dPdNs.oRg"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-139.162.153.14-a7b8974f4563d664fbb14c97c8a01079",
+            "server": "z.ssl.fastly.net",
+            "server_port": 80,
+            "uuid": "837b6716-6901-4b4d-a49f-2b6ac9306aa3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "gerrma.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkerque-51.254.142.162-48d5c2749297b638bebddb31d2357cb0",
+            "server": "194.76.18.25",
+            "server_port": 443,
+            "uuid": "e65a5cbc-5663-4f7d-ad7d-800e86ba487d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "rAyAn-cOnFiG-fr-1.pArSa.dPdNs.oRg"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rAyAn-cOnFiG-fr-1.pArSa.dPdNs.oRg"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-104.233.211.85-1cc67ee6db159c1d053972faf9f0e556",
+            "server": "frgt.0of.ccwu.cc",
+            "server_port": 443,
+            "uuid": "077a4330-7cb0-4d4b-8feb-7ceb3cd43f69",
+            "transport": {
+                "type": "ws",
+                "path": "/7ZHQqqDZuBdYKaAHx8c",
+                "headers": {
+                    "Host": "frgt.0of.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "frgt.0of.ccwu.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.164.52-1db0ea1340cf315af54b8a5e4c7645f8",
+            "server": "ip.shakhle.ir",
+            "server_port": 2083,
+            "uuid": "260f19e2-41c2-4f0c-870f-ab7e28e72ef6",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ipv4.yasharteam.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ipv4.yasharteam.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.101.200-c11a90340dd663f629ba5a964da0ce71",
+            "server": "brenna.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.101.200-f42bfa6082e5a6c4c51fef23b064154a",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.101.200-711b91be2cecc5b6b604a14b4ef4984a",
+            "server": "172.64.35.45",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Toongabbie West-152.67.98.139-5214341efe4978a4c201c81749755a03",
+            "server": "sy4.620720.xyz",
+            "server_port": 443,
+            "uuid": "516d8a7a-3f0b-41d3-bad0-246116381516",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "sy4.620720.xyz"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Aachen-45.13.227.118-b0738b049de27f76d7b50b27e72811a7",
+            "server": "45.13.227.118",
+            "server_port": 80,
+            "uuid": "8ce64662-f8b8-4955-bdf2-a55b821bc4aa",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/eyJqdW5rIjoiNDBNWGY3Z0NPd0loZ2YiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByb3h5aXAiLCJwYW5lbElQcyI6W119",
+                "headers": {
+                    "Host": "......................................................................................()..........................................................................................................................................................................................................................................................."
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
