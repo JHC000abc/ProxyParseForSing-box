@@ -1,0 +1,176 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+                "Moscow-193.162.143.99-4cfc0a6e7f7fe513382e8219a3bd4542",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Frankfurt am Main-139.162.153.14-f732b02ff6b45da925886e2249b99c0e",
+                "Nürnberg-46.225.164.52-daf9a9117ba19ddaa85d06bdc1b390ab",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+                "Moscow-193.162.143.99-4cfc0a6e7f7fe513382e8219a3bd4542",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Frankfurt am Main-139.162.153.14-f732b02ff6b45da925886e2249b99c0e",
+                "Nürnberg-46.225.164.52-daf9a9117ba19ddaa85d06bdc1b390ab",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+                "Moscow-193.162.143.99-4cfc0a6e7f7fe513382e8219a3bd4542",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Frankfurt am Main-139.162.153.14-f732b02ff6b45da925886e2249b99c0e",
+                "Nürnberg-46.225.164.52-daf9a9117ba19ddaa85d06bdc1b390ab",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+            "server": "208.103.161.110",
+            "server_port": 443,
+            "uuid": "9ccd06a2-5616-47e3-9763-f9696959d7ad",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "rAyAn-cOnFiG-de-1.pArSa.dPdNs.oRg"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rAyAn-cOnFiG-de-1.pArSa.dPdNs.oRg"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Moscow-193.162.143.99-4cfc0a6e7f7fe513382e8219a3bd4542",
+            "server": "elsxxx.892622.xyz",
+            "server_port": 8080,
+            "password": "b5f85b3e-9211-4989-ae50-5a3fd510f9ba",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "elsxxx.892622.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+            "server": "yapc-1.adamhayward.co.uk",
+            "server_port": 35200,
+            "password": "Yet-Another-Public-Config-1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "YAPC-1.afshin.ir"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "Yet-Another-Public-Config-1"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-139.162.153.14-f732b02ff6b45da925886e2249b99c0e",
+            "server": "z.ssl.fastly.net",
+            "server_port": 80,
+            "uuid": "837b6716-6901-4b4d-a49f-2b6ac9306aa3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "gerrma.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.164.52-daf9a9117ba19ddaa85d06bdc1b390ab",
+            "server": "ip.shakhle.ir",
+            "server_port": 2083,
+            "uuid": "260f19e2-41c2-4f0c-870f-ab7e28e72ef6",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ipv4.yasharteam.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ipv4.yasharteam.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+            "server": "206.71.158.37",
+            "server_port": 35000,
+            "password": "Yet-Another-Public-Config-1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "YAPC-1.afshin.ir"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "Yet-Another-Public-Config-1"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
