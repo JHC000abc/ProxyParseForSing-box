@@ -1,0 +1,239 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+                "San Jose-154.16.27.205-ac74b79477bfe9f3bef50504a2430b93",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Nürnberg-46.225.164.117-31766452fe7217745d650b6e18eec357",
+                "Frankfurt am Main-139.162.153.14-f782277a38eb9d99c3b6c8e8a4eb68d7",
+                "Helsinki-193.161.247.170-45a02a31446f4669bd38f7e6ef228a36",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+                "San Jose-154.16.27.205-ac74b79477bfe9f3bef50504a2430b93",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Nürnberg-46.225.164.117-31766452fe7217745d650b6e18eec357",
+                "Frankfurt am Main-139.162.153.14-f782277a38eb9d99c3b6c8e8a4eb68d7",
+                "Helsinki-193.161.247.170-45a02a31446f4669bd38f7e6ef228a36",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+                "San Jose-154.16.27.205-ac74b79477bfe9f3bef50504a2430b93",
+                "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+                "Nürnberg-46.225.164.117-31766452fe7217745d650b6e18eec357",
+                "Frankfurt am Main-139.162.153.14-f782277a38eb9d99c3b6c8e8a4eb68d7",
+                "Helsinki-193.161.247.170-45a02a31446f4669bd38f7e6ef228a36",
+                "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+                "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.69.164-25ae7ddb00dffa76557339edb9ca635f",
+            "server": "208.103.161.110",
+            "server_port": 443,
+            "uuid": "9ccd06a2-5616-47e3-9763-f9696959d7ad",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "rAyAn-cOnFiG-de-1.pArSa.dPdNs.oRg"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rAyAn-cOnFiG-de-1.pArSa.dPdNs.oRg"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "San Jose-154.16.27.205-ac74b79477bfe9f3bef50504a2430b93",
+            "server": "220.130.58.136",
+            "server_port": 35502,
+            "password": "c5355528-55a2-45df-b8fd-a48ce3c41413",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "green2.cdntencentmusic.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.37-bfc2bd1fb80f97b9504cf549cdac3731",
+            "server": "yapc-1.adamhayward.co.uk",
+            "server_port": 35200,
+            "password": "Yet-Another-Public-Config-1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "YAPC-1.afshin.ir"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "Yet-Another-Public-Config-1"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.164.117-31766452fe7217745d650b6e18eec357",
+            "server": "ip.shakhle.ir",
+            "server_port": 2083,
+            "uuid": "260f19e2-41c2-4f0c-870f-ab7e28e72ef6",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ipv4.yasharteam.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ipv4.yasharteam.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-139.162.153.14-f782277a38eb9d99c3b6c8e8a4eb68d7",
+            "server": "z.ssl.fastly.net",
+            "server_port": 80,
+            "uuid": "837b6716-6901-4b4d-a49f-2b6ac9306aa3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "gerrma.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-193.161.247.170-45a02a31446f4669bd38f7e6ef228a36",
+            "server": "termux.net",
+            "server_port": 443,
+            "uuid": "472b07d2-31e4-41ab-ae47-48914d9b7900",
+            "transport": {
+                "type": "ws",
+                "path": "/Net3rffws",
+                "headers": {
+                    "Host": "fi.unoix.io"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fi.unoix.io"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.37-be36b37e41a05ea020d425d0f0de8bb9",
+            "server": "206.71.158.37",
+            "server_port": 35000,
+            "password": "Yet-Another-Public-Config-1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "YAPC-1.afshin.ir"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "Yet-Another-Public-Config-1"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-206.71.158.40-a4b109af9f49770e80ca6c86edace45e",
+            "server": "206.71.158.41",
+            "server_port": 35000,
+            "password": "b4bd0613-ff7c-4f2f-954d-185915e6ddad",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.kermanshahi.org"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "@JavidnamanIran-Javid-SHAH-KingRezaPahlavi"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
