@@ -1,0 +1,317 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Moscow-62.113.114.116-89701bd6ea1143e527f84a2b3ac11879",
+                "San Jose-104.233.211.85-f1b4df210844f9c73070959d64534bd6",
+                "Nürnberg-46.225.131.7-4ef8c337158bdc7910d781fd53932dc2",
+                "Kerkrade-84.54.48.215-1fb96f626ce463b7e8bc6e61eedc1e8d",
+                "Charlotte-77.110.123.217-9c4aaa427c26371b7be45efd226f657e",
+                "Santiago de Querétaro-89.223.88.33-a7d082cd02ef7dbbef7d30fe145460c0",
+                "Frankfurt am Main-135.125.245.131-8b31fc75c4292612247b172720e210ba",
+                "Frankfurt am Main-57.129.95.45-c5ecba91270652cb937406fbdcb67123",
+                "Beauharnois-148.113.139.160-f941cc3505af056962182fece945b35b",
+                "Tel Aviv-163.171.213.47-a62ca2fc0fd52643a077b38a7d0f559a",
+                "Santa Clara-92.38.149.110-f29be76d8627059d47fbe5392e15e659",
+                "Helsinki-95.164.113.198-a12c9b391ec48c23d68597cc14bc39b5",
+                "Heritage Hills-38.135.24.131-1285a428e19a10e73050adaa5f2dd3b1",
+                "Helsinki-178.17.61.67-45a4db066b079ce5f19c0bf4ea1b6c57",
+                "Rome-194.165.59.93-0d2b48026195ed80c2a539ba860ddc60",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+                "Milan-57.131.42.19-b2ec234b07070cdfa741a6d7ee6fa6c9"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Moscow-62.113.114.116-89701bd6ea1143e527f84a2b3ac11879",
+                "San Jose-104.233.211.85-f1b4df210844f9c73070959d64534bd6",
+                "Nürnberg-46.225.131.7-4ef8c337158bdc7910d781fd53932dc2",
+                "Kerkrade-84.54.48.215-1fb96f626ce463b7e8bc6e61eedc1e8d",
+                "Charlotte-77.110.123.217-9c4aaa427c26371b7be45efd226f657e",
+                "Santiago de Querétaro-89.223.88.33-a7d082cd02ef7dbbef7d30fe145460c0",
+                "Frankfurt am Main-135.125.245.131-8b31fc75c4292612247b172720e210ba",
+                "Frankfurt am Main-57.129.95.45-c5ecba91270652cb937406fbdcb67123",
+                "Beauharnois-148.113.139.160-f941cc3505af056962182fece945b35b",
+                "Tel Aviv-163.171.213.47-a62ca2fc0fd52643a077b38a7d0f559a",
+                "Santa Clara-92.38.149.110-f29be76d8627059d47fbe5392e15e659",
+                "Helsinki-95.164.113.198-a12c9b391ec48c23d68597cc14bc39b5",
+                "Heritage Hills-38.135.24.131-1285a428e19a10e73050adaa5f2dd3b1",
+                "Helsinki-178.17.61.67-45a4db066b079ce5f19c0bf4ea1b6c57",
+                "Rome-194.165.59.93-0d2b48026195ed80c2a539ba860ddc60",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+                "Milan-57.131.42.19-b2ec234b07070cdfa741a6d7ee6fa6c9"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Moscow-62.113.114.116-89701bd6ea1143e527f84a2b3ac11879",
+            "server": "62.113.114.116",
+            "server_port": 42320,
+            "method": "chacha20-ietf-poly1305",
+            "password": "BShcek5ydIWbXEnhI2vIym"
+        },
+        {
+            "type": "vmess",
+            "tag": "San Jose-104.233.211.85-f1b4df210844f9c73070959d64534bd6",
+            "server": "dvgb.oo1.ccwu.cc",
+            "server_port": 443,
+            "uuid": "077a4330-7cb0-4d4b-8feb-7ceb3cd43f69",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/DatH8bwo7YKaAHx8c",
+                "headers": {
+                    "Host": "dvgb.oo1.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.131.7-4ef8c337158bdc7910d781fd53932dc2",
+            "server": "c8f7b1ab85189cf5.first.sapienza-mahan.ir",
+            "server_port": 443,
+            "uuid": "c4baefee-fc4c-42ed-b19c-5d5f7dad36ba",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "harro-likeh1.sdcards1.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "harro-likeh1.sdcards1.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kerkrade-84.54.48.215-1fb96f626ce463b7e8bc6e61eedc1e8d",
+            "server": "F3.HaMrAhCoNf.Ir",
+            "server_port": 8443,
+            "uuid": "ce837763-c7dc-4df6-9336-8edd2a0fcf3f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "app-core-06.hamrahconfig.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uiuyoyw.hamrahconfig.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.123.217-9c4aaa427c26371b7be45efd226f657e",
+            "server": "proxy.rahmancloud.ir",
+            "server_port": 8443,
+            "uuid": "6b279ab4-10e8-4e66-fb5d-9092c6709a1e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "proxy.rahmancloud.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "proxy.rahmancloud.ir"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Santiago de Querétaro-89.223.88.33-a7d082cd02ef7dbbef7d30fe145460c0",
+            "server": "89.223.88.33",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7c31a67b41b18c26"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-135.125.245.131-8b31fc75c4292612247b172720e210ba",
+            "server": "135.125.245.131",
+            "server_port": 20939,
+            "method": "chacha20-ietf-poly1305",
+            "password": "85d3d8ccba287d3e"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-57.129.95.45-c5ecba91270652cb937406fbdcb67123",
+            "server": "57.129.95.45",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "6675cbf62d6a3a4f"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Beauharnois-148.113.139.160-f941cc3505af056962182fece945b35b",
+            "server": "148.113.139.160",
+            "server_port": 46534,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7a106afc33eaa261"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Tel Aviv-163.171.213.47-a62ca2fc0fd52643a077b38a7d0f559a",
+            "server": "163.171.213.47",
+            "server_port": 19702,
+            "method": "chacha20-ietf-poly1305",
+            "password": "2e5c75c35d7ee929"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Santa Clara-92.38.149.110-f29be76d8627059d47fbe5392e15e659",
+            "server": "92.38.149.110",
+            "server_port": 31348,
+            "method": "chacha20-ietf-poly1305",
+            "password": "351q6zQEEgP2hVB8WOAYmOZzzXqMq5AEVuDDOMjpnAgJMJKG"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Helsinki-95.164.113.198-a12c9b391ec48c23d68597cc14bc39b5",
+            "server": "95.164.113.198",
+            "server_port": 53829,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Kbm3xoK04p4OhoqVpEzdlj"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Heritage Hills-38.135.24.131-1285a428e19a10e73050adaa5f2dd3b1",
+            "server": "tinkered-pennies-puppies.freesocks.work",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "hbGrpfvNrJsUmKmPbR3iY2"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Helsinki-178.17.61.67-45a4db066b079ce5f19c0bf4ea1b6c57",
+            "server": "178.17.61.67",
+            "server_port": 5790,
+            "method": "chacha20-ietf-poly1305",
+            "password": "qS3skwmolrQ70q842irQD0"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Rome-194.165.59.93-0d2b48026195ed80c2a539ba860ddc60",
+            "server": "194.165.59.93",
+            "server_port": 442,
+            "method": "aes-256-gcm",
+            "password": "8801339e-8ed3-4389-9d1d-2f211ccf07be"
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+            "server": "172.67.153.156",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Milan-57.131.42.19-b2ec234b07070cdfa741a6d7ee6fa6c9",
+            "server": "57.131.42.19",
+            "server_port": 8390,
+            "method": "2022-blake3-aes-256-gcm",
+            "password": "et1sgh1iQaWzsw201JX2eexN1Ai6QmIGcZIlvlC5L54="
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
