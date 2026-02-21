@@ -1,0 +1,160 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Charlotte-77.110.123.217-0d734fdffe98b3ef2acbbbb9670d8bcf",
+                "Genève-83.228.230.228-31c444fdb639885ad857d011afced175",
+                "Helsinki-89.167.52.104-c4bf4c64fed1f1d8ab28afe3a0611264",
+                "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+                "Genève-83.228.230.228-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Charlotte-77.110.123.217-0d734fdffe98b3ef2acbbbb9670d8bcf",
+                "Genève-83.228.230.228-31c444fdb639885ad857d011afced175",
+                "Helsinki-89.167.52.104-c4bf4c64fed1f1d8ab28afe3a0611264",
+                "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+                "Genève-83.228.230.228-e39f063f75687e8a4cc7da8bc1df084a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Charlotte-77.110.123.217-0d734fdffe98b3ef2acbbbb9670d8bcf",
+                "Genève-83.228.230.228-31c444fdb639885ad857d011afced175",
+                "Helsinki-89.167.52.104-c4bf4c64fed1f1d8ab28afe3a0611264",
+                "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+                "Genève-83.228.230.228-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.123.217-0d734fdffe98b3ef2acbbbb9670d8bcf",
+            "server": "proxy.rahmancloud.ir",
+            "server_port": 8443,
+            "uuid": "6b279ab4-10e8-4e66-fb5d-9092c6709a1e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "proxy.rahmancloud.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "proxy.rahmancloud.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-83.228.230.228-31c444fdb639885ad857d011afced175",
+            "server": "chatgpt.com",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-89.167.52.104-c4bf4c64fed1f1d8ab28afe3a0611264",
+            "server": "bouquetberlin.org",
+            "server_port": 8443,
+            "uuid": "453c3861-eaf4-4c60-94e0-e57a2c9d2fcf",
+            "transport": {
+                "type": "ws",
+                "path": "/vlessws",
+                "headers": {
+                    "Host": "bouquetberlin.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bouquetberlin.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+            "server": "47.82.6.36",
+            "server_port": 51164,
+            "uuid": "d29a7cee-acd1-4821-adbf-517f8681040e"
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-83.228.230.228-e39f063f75687e8a4cc7da8bc1df084a",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
