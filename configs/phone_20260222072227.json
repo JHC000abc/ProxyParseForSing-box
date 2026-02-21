@@ -1,0 +1,160 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-178.17.58.17-c53d266c014c4b561843419a52102bc2",
+                "Genève-195.15.207.211-ace459dcb21ec30629d67164d90f2703",
+                "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-178.17.58.17-c53d266c014c4b561843419a52102bc2",
+                "Genève-195.15.207.211-ace459dcb21ec30629d67164d90f2703",
+                "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-178.17.58.17-c53d266c014c4b561843419a52102bc2",
+                "Genève-195.15.207.211-ace459dcb21ec30629d67164d90f2703",
+                "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-178.17.58.17-c53d266c014c4b561843419a52102bc2",
+            "server": "deu469.unboundworld.org",
+            "server_port": 8443,
+            "uuid": "cc9f7840-757a-430b-bddc-a73478bea434",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "deu469.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "deu469.unboundworld.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.207.211-ace459dcb21ec30629d67164d90f2703",
+            "server": "chatgpt.com",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-47.82.6.36-b0e7de0b21434a2938588e3a0d3518e6",
+            "server": "47.82.6.36",
+            "server_port": 51164,
+            "uuid": "d29a7cee-acd1-4821-adbf-517f8681040e"
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+            "server": "172.67.153.156",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
