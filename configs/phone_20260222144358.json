@@ -1,0 +1,174 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-8.211.169.247-2ea385d07a51af5d36be1d08472ce221",
+                "Frankfurt am Main-185.235.137.29-07150e3496b09e1fed9a77c313789724",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-8.211.169.247-2ea385d07a51af5d36be1d08472ce221",
+                "Frankfurt am Main-185.235.137.29-07150e3496b09e1fed9a77c313789724",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-8.211.169.247-2ea385d07a51af5d36be1d08472ce221",
+                "Frankfurt am Main-185.235.137.29-07150e3496b09e1fed9a77c313789724",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Tokyo-8.211.169.247-2ea385d07a51af5d36be1d08472ce221",
+            "server": "n1751468092.lie5d.cyou",
+            "server_port": 443,
+            "uuid": "7ace1873-9822-46af-9920-bd64f725212c",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "n1751468092.lie5d.cyou"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-185.235.137.29-07150e3496b09e1fed9a77c313789724",
+            "server": "free-de-2.undef.network",
+            "server_port": 443,
+            "password": "pYIoKUPGpWeTYXEx3HjR7s97B",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "free-de-2.undef.network"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+            "server": "bhy7.ae1autumn.dpdns.org",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "bhy7.ae1autumn.dpdns.org"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+            "server": "ghj.ae1autumn.cc.cd",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "ghj.ae1autumn.cc.cd"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+            "server": "njk.222560.xyz",
+            "server_port": 443,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/YsmRouA9ZbxgW4",
+                "headers": {
+                    "Host": "njk.222560.xyz"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa",
+            "server": "cdfr.222560.xyz",
+            "server_port": 443,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "cdfr.222560.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdfr.222560.xyz"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
