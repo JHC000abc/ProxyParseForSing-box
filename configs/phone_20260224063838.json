@@ -1,0 +1,161 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "New York City-185.116.236.180-2592b229739ec20d75b46a5ee3c5c2a0",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "New York City-185.116.236.180-2592b229739ec20d75b46a5ee3c5c2a0",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "New York City-185.116.236.180-2592b229739ec20d75b46a5ee3c5c2a0",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+            "server": "de.pddwdf.store",
+            "server_port": 42586,
+            "password": "c7730b65-c3c7-44a6-b1be-9d72d36679d1",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "de.pddwdf.store"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "ZDQxZDhjZDk4ZjAwYjIwNA=="
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-2592b229739ec20d75b46a5ee3c5c2a0",
+            "server": "104.21.73.139",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "hnj.wc4.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+            "server": "nmk.tt6.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmk.tt6.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+            "server": "nmj.wc8.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmj.wc8.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0",
+            "server": "bbbnmki.kk7.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "transport": {
+                "type": "ws",
+                "path": "/Ay6844iXSu2BDycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "bbbnmki.kk7.ccwu.cc"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
