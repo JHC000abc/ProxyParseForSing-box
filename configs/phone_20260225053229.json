@@ -1,0 +1,392 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+                "New York City-185.184.68.94-e6c0ef2c36ab5a92b9e46427ca31e5cc",
+                "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+                "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+                "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+                "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "Ho Chi Minh City-103.245.237.124-35928b5c047242566fa912e6648e9b7c",
+                "Coventry-146.19.230.178-3242bbeabeb61fcb9b4340385055d7be",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+                "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+                "New York City-185.184.68.94-e6c0ef2c36ab5a92b9e46427ca31e5cc",
+                "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+                "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+                "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+                "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "Ho Chi Minh City-103.245.237.124-35928b5c047242566fa912e6648e9b7c",
+                "Coventry-146.19.230.178-3242bbeabeb61fcb9b4340385055d7be",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+                "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+                "New York City-185.184.68.94-e6c0ef2c36ab5a92b9e46427ca31e5cc",
+                "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+                "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+                "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+                "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "Ho Chi Minh City-103.245.237.124-35928b5c047242566fa912e6648e9b7c",
+                "Coventry-146.19.230.178-3242bbeabeb61fcb9b4340385055d7be",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+                "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+            "server": "172.67.135.2",
+            "server_port": 80,
+            "uuid": "077a4330-7cb0-4d4b-8feb-7ceb3cd43f69",
+            "transport": {
+                "type": "ws",
+                "path": "/7ZHQqqDZuBdYKaAHx8c",
+                "headers": {
+                    "Host": "w.0op.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-e6c0ef2c36ab5a92b9e46427ca31e5cc",
+            "server": "104.21.94.245",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "ghju.apocalypse.cc.cd"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+            "server": "clyde.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "f07c0d18-6e39-4302-c4d5-46842739bfd5",
+            "transport": {
+                "type": "ws",
+                "path": "/xjxnssjxkvkcmzzndnfjxnxkvxkzbdbcnxnznxc",
+                "headers": {
+                    "Host": "vip.ghostroute.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vip.ghostroute.ir"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+            "server": "156.236.76.45",
+            "server_port": 37952,
+            "uuid": "b8304f18-9a28-427c-b1fe-d92ee1757c0b",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/arki",
+                "headers": {
+                    "Host": "156.236.76.45"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+            "server": "nnnmmmmj.0b0.ccwu.cc",
+            "server_port": 443,
+            "uuid": "2bfded8d-6a7c-4c18-aaa5-fc65b955d50c",
+            "transport": {
+                "type": "ws",
+                "path": "/HoBSIvRY1m5xOEJ3dX414bl",
+                "headers": {
+                    "Host": "nnnmmmmj.0b0.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nnnmmmmj.0b0.ccwu.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+            "server": "news.zoom.us",
+            "server_port": 8443,
+            "uuid": "f52a8839-5f73-43da-a379-7fc1d881795a",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ultravpn.bestprovider.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ultravpn.bestprovider.site"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+            "server": "de.pddwdf.store",
+            "server_port": 42586,
+            "password": "c7730b65-c3c7-44a6-b1be-9d72d36679d1",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "de.pddwdf.store"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "ZDQxZDhjZDk4ZjAwYjIwNA=="
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Ho Chi Minh City-103.245.237.124-35928b5c047242566fa912e6648e9b7c",
+            "server": "103.245.237.124",
+            "server_port": 58202,
+            "uuid": "cca053d5-7123-4a87-83d6-babe4e9c8115",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "103.245.237.124"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Coventry-146.19.230.178-3242bbeabeb61fcb9b4340385055d7be",
+            "server": "jeff.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "kqfip.texas-sea.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "kqfip.texas-sea.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+            "server": "47.82.6.36",
+            "server_port": 51164,
+            "uuid": "d29a7cee-acd1-4821-adbf-517f8681040e"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+            "server": "bhy7.ae1autumn.dpdns.org",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "bhy7.ae1autumn.dpdns.org"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+            "server": "nmk.tt6.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmk.tt6.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+            "server": "ghj.ae1autumn.cc.cd",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "ghj.ae1autumn.cc.cd"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+            "server": "njk.222560.xyz",
+            "server_port": 443,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/YsmRouA9ZbxgW4",
+                "headers": {
+                    "Host": "njk.222560.xyz"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+            "server": "nmj.wc8.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmj.wc8.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa",
+            "server": "cdfr.222560.xyz",
+            "server_port": 443,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "cdfr.222560.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdfr.222560.xyz"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
