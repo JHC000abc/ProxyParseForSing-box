@@ -1,0 +1,239 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+                "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+                "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+                "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+                "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "Coventry-146.19.230.181-622d8919fc30a720de76dcc3f9e213e3",
+                "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+                "Nürnberg-91.99.160.30-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+                "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+                "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+                "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+                "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "Coventry-146.19.230.181-622d8919fc30a720de76dcc3f9e213e3",
+                "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+                "Nürnberg-91.99.160.30-e39f063f75687e8a4cc7da8bc1df084a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+                "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+                "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+                "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+                "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+                "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+                "Coventry-146.19.230.181-622d8919fc30a720de76dcc3f9e213e3",
+                "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+                "Nürnberg-91.99.160.30-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-104.233.211.85-83ba2b2ea0e60ea6ef57583a33af9c28",
+            "server": "172.67.135.2",
+            "server_port": 80,
+            "uuid": "077a4330-7cb0-4d4b-8feb-7ceb3cd43f69",
+            "transport": {
+                "type": "ws",
+                "path": "/7ZHQqqDZuBdYKaAHx8c",
+                "headers": {
+                    "Host": "w.0op.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-162.217.249.65-4d6a988ade1982881f3a765385ac9854",
+            "server": "clyde.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "f07c0d18-6e39-4302-c4d5-46842739bfd5",
+            "transport": {
+                "type": "ws",
+                "path": "/xjxnssjxkvkcmzzndnfjxnxkvxkzbdbcnxnznxc",
+                "headers": {
+                    "Host": "vip.ghostroute.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vip.ghostroute.ir"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-156.236.76.45-a606c118ef82267cb95c6f7c0379d7c9",
+            "server": "156.236.76.45",
+            "server_port": 37952,
+            "uuid": "b8304f18-9a28-427c-b1fe-d92ee1757c0b",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/arki",
+                "headers": {
+                    "Host": "156.236.76.45"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.7-e3838b277b9927ce2c865206e2aeefbc",
+            "server": "nnnmmmmj.0b0.ccwu.cc",
+            "server_port": 443,
+            "uuid": "2bfded8d-6a7c-4c18-aaa5-fc65b955d50c",
+            "transport": {
+                "type": "ws",
+                "path": "/HoBSIvRY1m5xOEJ3dX414bl",
+                "headers": {
+                    "Host": "nnnmmmmj.0b0.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nnnmmmmj.0b0.ccwu.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-172.237.86.9-bff12daf666133d01a85a877d8a52a72",
+            "server": "news.zoom.us",
+            "server_port": 8443,
+            "uuid": "f52a8839-5f73-43da-a379-7fc1d881795a",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ultravpn.bestprovider.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ultravpn.bestprovider.site"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-202.71.15.226-26b1c6154eef79ac17f26147119b12a3",
+            "server": "de.pddwdf.store",
+            "server_port": 42586,
+            "password": "c7730b65-c3c7-44a6-b1be-9d72d36679d1",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "de.pddwdf.store"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "ZDQxZDhjZDk4ZjAwYjIwNA=="
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Coventry-146.19.230.181-622d8919fc30a720de76dcc3f9e213e3",
+            "server": "jeff.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "kqfip.texas-sea.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "kqfip.texas-sea.sbs"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-47.82.6.36-b7e0d0247abf12fd0fef0f6be3f66135",
+            "server": "47.82.6.36",
+            "server_port": 51164,
+            "uuid": "d29a7cee-acd1-4821-adbf-517f8681040e"
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-91.99.160.30-e39f063f75687e8a4cc7da8bc1df084a",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
