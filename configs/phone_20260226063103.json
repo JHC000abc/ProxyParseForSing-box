@@ -1,0 +1,229 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "New York City-185.116.236.104-d9cd154411b6967a77c4ce7a749cfb34",
+                "Secaucus-138.124.180.152-bab45d111dccacba7f12e0e744f4f209",
+                "Nürnberg-188.245.96.88-5eed03cb7e2c2b18f21f371b5b3d0f19",
+                "Lelystad-5.255.114.61-97ba5b9687da1a5d7bec7e7ab0ac4377",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "New York City-185.116.236.104-d9cd154411b6967a77c4ce7a749cfb34",
+                "Secaucus-138.124.180.152-bab45d111dccacba7f12e0e744f4f209",
+                "Nürnberg-188.245.96.88-5eed03cb7e2c2b18f21f371b5b3d0f19",
+                "Lelystad-5.255.114.61-97ba5b9687da1a5d7bec7e7ab0ac4377",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "New York City-185.116.236.104-d9cd154411b6967a77c4ce7a749cfb34",
+                "Secaucus-138.124.180.152-bab45d111dccacba7f12e0e744f4f209",
+                "Nürnberg-188.245.96.88-5eed03cb7e2c2b18f21f371b5b3d0f19",
+                "Lelystad-5.255.114.61-97ba5b9687da1a5d7bec7e7ab0ac4377",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+                "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0",
+                "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.104-d9cd154411b6967a77c4ce7a749cfb34",
+            "server": "scvbghy.988988.shop",
+            "server_port": 443,
+            "uuid": "9e308743-bc58-4109-b8a8-c2c686959c65",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/YeQPaMoU0eDN02l1D3pAvPtZpEoeO",
+                "headers": {
+                    "Host": "scvbghy.988988.shop"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-138.124.180.152-bab45d111dccacba7f12e0e744f4f209",
+            "server": "198.62.62.248",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "tar.alabama-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tar.alabama-tigr.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-188.245.96.88-5eed03cb7e2c2b18f21f371b5b3d0f19",
+            "server": "172.67.193.88",
+            "server_port": 443,
+            "uuid": "mahanvpn-free-iran5",
+            "transport": {
+                "type": "ws",
+                "path": "/assets",
+                "headers": {
+                    "Host": "MAHANteAm.noD32Cpu.iR"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "MAHANteAm.noD32Cpu.iR"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-5.255.114.61-97ba5b9687da1a5d7bec7e7ab0ac4377",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+            "server": "nmk.tt6.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmk.tt6.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+            "server": "nmj.wc8.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmj.wc8.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.180-7c71fb1c9a4954e925c47934dd357fe0",
+            "server": "bbbnmki.kk7.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "transport": {
+                "type": "ws",
+                "path": "/Ay6844iXSu2BDycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "bbbnmki.kk7.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-195.15.207.211-e39f063f75687e8a4cc7da8bc1df084a",
+            "server": "104.21.227.134",
+            "server_port": 2096,
+            "uuid": "686c62d9-17a7-43c9-a40a-f6747df60a9f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ca.adobe-connect.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ca.adobe-connect.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
