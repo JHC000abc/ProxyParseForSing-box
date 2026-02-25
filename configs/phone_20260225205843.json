@@ -1,0 +1,106 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Secaucus-138.124.180.190-71e28df49e4bfbba81a3111d74866d94",
+                "Lelystad-5.255.114.61-9314fefc2f406534a9da65717efba25a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Secaucus-138.124.180.190-71e28df49e4bfbba81a3111d74866d94",
+                "Lelystad-5.255.114.61-9314fefc2f406534a9da65717efba25a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Secaucus-138.124.180.190-71e28df49e4bfbba81a3111d74866d94",
+                "Lelystad-5.255.114.61-9314fefc2f406534a9da65717efba25a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-138.124.180.190-71e28df49e4bfbba81a3111d74866d94",
+            "server": "198.62.62.248",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "tar.alabama-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tar.alabama-tigr.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-5.255.114.61-9314fefc2f406534a9da65717efba25a",
+            "server": "5.255.114.61",
+            "server_port": 2083,
+            "uuid": "b658a9a6-f8f5-4a86-a438-f912a8509db2",
+            "transport": {
+                "type": "ws",
+                "path": "/ehueueuejs",
+                "headers": {
+                    "Host": "native.loveplus.de5.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "native.loveplus.de5.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
