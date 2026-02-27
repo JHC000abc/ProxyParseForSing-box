@@ -1,0 +1,116 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "New York City-185.44.65.204-131952105a6a92cf0d42486118e04aab",
+                "Singapore-38.180.74.205-86ddb7fdb32c86d5852621d52fa145f4",
+                "Moscow-45.12.114.73-50ff15e613ccb4aaf3f705c66605e38d"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "New York City-185.44.65.204-131952105a6a92cf0d42486118e04aab",
+                "Singapore-38.180.74.205-86ddb7fdb32c86d5852621d52fa145f4",
+                "Moscow-45.12.114.73-50ff15e613ccb4aaf3f705c66605e38d"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "New York City-185.44.65.204-131952105a6a92cf0d42486118e04aab",
+                "Singapore-38.180.74.205-86ddb7fdb32c86d5852621d52fa145f4",
+                "Moscow-45.12.114.73-50ff15e613ccb4aaf3f705c66605e38d"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.44.65.204-131952105a6a92cf0d42486118e04aab",
+            "server": "nmjju8.0sm.ccwu.cc",
+            "server_port": 80,
+            "uuid": "9b354a64-81f6-4a15-a127-337cd17e25ba",
+            "transport": {
+                "type": "ws",
+                "path": "/IBb38gsTRjFOzklVEUuTu7GKK",
+                "headers": {
+                    "Host": "nmjju8.0sm.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-38.180.74.205-86ddb7fdb32c86d5852621d52fa145f4",
+            "server": "16.163.102.116",
+            "server_port": 52951,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.73-50ff15e613ccb4aaf3f705c66605e38d",
+            "server": "45.12.114.73",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
