@@ -1,0 +1,185 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Secaucus-138.124.180.162-4af8e3b22de3443d9a5dc6e8bd031c1e",
+                "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+                "Mumbai-92.4.64.184-3503c9cc88b0b45e1a909076b3713a60",
+                "Singapore-38.180.74.205-8a86595a725d6ddd9bd3f2c3fd89fdf9",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Secaucus-138.124.180.162-4af8e3b22de3443d9a5dc6e8bd031c1e",
+                "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+                "Mumbai-92.4.64.184-3503c9cc88b0b45e1a909076b3713a60",
+                "Singapore-38.180.74.205-8a86595a725d6ddd9bd3f2c3fd89fdf9",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Secaucus-138.124.180.162-4af8e3b22de3443d9a5dc6e8bd031c1e",
+                "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+                "Mumbai-92.4.64.184-3503c9cc88b0b45e1a909076b3713a60",
+                "Singapore-38.180.74.205-8a86595a725d6ddd9bd3f2c3fd89fdf9",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-138.124.180.162-4af8e3b22de3443d9a5dc6e8bd031c1e",
+            "server": "198.62.62.248",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "tar.alabama-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tar.alabama-tigr.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+            "server": "F1.HaMrAhCoNf.Ir",
+            "server_port": 8443,
+            "uuid": "929b0c34-a05f-4e5d-bd5d-396c5b6dd4e7",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "app-core-05.secoxi.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uiuyoyw.secoxi.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-92.4.64.184-3503c9cc88b0b45e1a909076b3713a60",
+            "server": "ott.abhizzz.net",
+            "server_port": 443,
+            "uuid": "d6aa725e-6092-4858-97f7-df3d14ce36bd",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "ott.abhizzz.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ott.abhizzz.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-38.180.74.205-8a86595a725d6ddd9bd3f2c3fd89fdf9",
+            "server": "16.163.102.116",
+            "server_port": 52951,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+            "server": "nmk.tt6.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmk.tt6.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-40e2d53c0e2f538b7e8169fb92a81085",
+            "server": "nmj.wc8.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmj.wc8.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
