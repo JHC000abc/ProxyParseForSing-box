@@ -1,0 +1,149 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Secaucus-138.124.180.174-4af8e3b22de3443d9a5dc6e8bd031c1e",
+                "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Secaucus-138.124.180.174-4af8e3b22de3443d9a5dc6e8bd031c1e",
+                "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Secaucus-138.124.180.174-4af8e3b22de3443d9a5dc6e8bd031c1e",
+                "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+                "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+                "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-138.124.180.174-4af8e3b22de3443d9a5dc6e8bd031c1e",
+            "server": "198.62.62.248",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "tar.alabama-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tar.alabama-tigr.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-185.55.243.33-b0356f41f1f2485121faac1a0cb78a4c",
+            "server": "F1.HaMrAhCoNf.Ir",
+            "server_port": 8443,
+            "uuid": "929b0c34-a05f-4e5d-bd5d-396c5b6dd4e7",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "app-core-05.secoxi.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uiuyoyw.secoxi.site"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.116.236.180-7882ba5d724b9d87314310866d74fde0",
+            "server": "nmk.tt6.ccwu.cc",
+            "server_port": 80,
+            "uuid": "1798b14b-aee0-4008-ba9a-2e53877761b4",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/kFK9O5cl8ZycyrxcJWNVFC21",
+                "headers": {
+                    "Host": "nmk.tt6.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-154d769d476a2e55094c02e8aa4e942f",
+            "server": "172.67.153.156",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
