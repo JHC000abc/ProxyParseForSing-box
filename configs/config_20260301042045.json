@@ -1,0 +1,267 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Jakarta-103.126.226.194-5bcc48576706e00e837973d0bf4cf1b8",
+                "Saphan Sung-168.222.16.102-53db2ce6af7bb62e3fb3c7ded8b0bf19",
+                "New York City-185.44.65.204-0c5e1acb5a44b16f0ff39d79a89c2ec7",
+                "Santiago de Querétaro-89.223.88.33-e4cb2733d344d7084b990c358f8137b2",
+                "Frankfurt am Main-135.125.245.131-cdba5e3453593d30bdace14813d72784",
+                "Helsinki-38.244.136.233-3806c3047b2a17216b63ef8997182c68",
+                "Moscow-45.12.114.73-a9b8ca18a2a433bcba678b31fc624433",
+                "Bogotá-154.223.16.41-0d0766496cbcf17d44a80e8be019fbf4",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+                "Frankfurt am Main-57.129.95.45-c41c5e66b8c847ce0d0e3721f5762b6a",
+                "Tel Aviv-163.171.213.47-d6070c9840ca38252bb04ee230398af2",
+                "Marseille-185.253.116.95-3aad59fcc8068d4a4ba22ad8a0191764",
+                "Helsinki-178.17.61.67-e8c1a4bd47b2dd23853d41e62123ab58"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Jakarta-103.126.226.194-5bcc48576706e00e837973d0bf4cf1b8",
+                "Saphan Sung-168.222.16.102-53db2ce6af7bb62e3fb3c7ded8b0bf19",
+                "New York City-185.44.65.204-0c5e1acb5a44b16f0ff39d79a89c2ec7",
+                "Santiago de Querétaro-89.223.88.33-e4cb2733d344d7084b990c358f8137b2",
+                "Frankfurt am Main-135.125.245.131-cdba5e3453593d30bdace14813d72784",
+                "Helsinki-38.244.136.233-3806c3047b2a17216b63ef8997182c68",
+                "Moscow-45.12.114.73-a9b8ca18a2a433bcba678b31fc624433",
+                "Bogotá-154.223.16.41-0d0766496cbcf17d44a80e8be019fbf4",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+                "Frankfurt am Main-57.129.95.45-c41c5e66b8c847ce0d0e3721f5762b6a",
+                "Tel Aviv-163.171.213.47-d6070c9840ca38252bb04ee230398af2",
+                "Marseille-185.253.116.95-3aad59fcc8068d4a4ba22ad8a0191764",
+                "Helsinki-178.17.61.67-e8c1a4bd47b2dd23853d41e62123ab58"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Jakarta-103.126.226.194-5bcc48576706e00e837973d0bf4cf1b8",
+            "server": "neva.azlan.biz.id",
+            "server_port": 443,
+            "uuid": "8072298f-cd28-4a61-8e05-5879c84b9100",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess",
+                "headers": {
+                    "Host": "neva.azlan.biz.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-53db2ce6af7bb62e3fb3c7ded8b0bf19",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.44.65.204-0c5e1acb5a44b16f0ff39d79a89c2ec7",
+            "server": "nmjju8.0sm.ccwu.cc",
+            "server_port": 80,
+            "uuid": "9b354a64-81f6-4a15-a127-337cd17e25ba",
+            "transport": {
+                "type": "ws",
+                "path": "/IBb38gsTRjFOzklVEUuTu7GKK",
+                "headers": {
+                    "Host": "nmjju8.0sm.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Santiago de Querétaro-89.223.88.33-e4cb2733d344d7084b990c358f8137b2",
+            "server": "89.223.88.33",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7c31a67b41b18c26"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-135.125.245.131-cdba5e3453593d30bdace14813d72784",
+            "server": "135.125.245.131",
+            "server_port": 20939,
+            "method": "chacha20-ietf-poly1305",
+            "password": "85d3d8ccba287d3e"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Helsinki-38.244.136.233-3806c3047b2a17216b63ef8997182c68",
+            "server": "promo18v.bystrivpn.ru",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "dAHM1pm8ag7KdlrUylQi6t"
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.73-a9b8ca18a2a433bcba678b31fc624433",
+            "server": "45.12.114.73",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Bogotá-154.223.16.41-0d0766496cbcf17d44a80e8be019fbf4",
+            "server": "154.223.16.41",
+            "server_port": 4444,
+            "method": "aes-256-gcm",
+            "password": "pKEW8JPByTVTLtM"
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-57.129.95.45-c41c5e66b8c847ce0d0e3721f5762b6a",
+            "server": "57.129.95.45",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "6675cbf62d6a3a4f"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Tel Aviv-163.171.213.47-d6070c9840ca38252bb04ee230398af2",
+            "server": "163.171.213.47",
+            "server_port": 12025,
+            "method": "chacha20-ietf-poly1305",
+            "password": "abe595aeb7a6a035"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Marseille-185.253.116.95-3aad59fcc8068d4a4ba22ad8a0191764",
+            "server": "185.253.116.95",
+            "server_port": 16673,
+            "method": "chacha20-ietf-poly1305",
+            "password": "aiXO0FnjYHg6ZKJAPohBVW"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Helsinki-178.17.61.67-e8c1a4bd47b2dd23853d41e62123ab58",
+            "server": "178.17.61.67",
+            "server_port": 5790,
+            "method": "chacha20-ietf-poly1305",
+            "password": "qS3skwmolrQ70q842irQD0"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}

@@ -1,0 +1,160 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Jakarta-103.126.226.194-5bcc48576706e00e837973d0bf4cf1b8",
+                "Saphan Sung-168.222.16.102-53db2ce6af7bb62e3fb3c7ded8b0bf19",
+                "New York City-185.44.65.204-0c5e1acb5a44b16f0ff39d79a89c2ec7",
+                "Moscow-45.12.114.73-a9b8ca18a2a433bcba678b31fc624433",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Jakarta-103.126.226.194-5bcc48576706e00e837973d0bf4cf1b8",
+                "Saphan Sung-168.222.16.102-53db2ce6af7bb62e3fb3c7ded8b0bf19",
+                "New York City-185.44.65.204-0c5e1acb5a44b16f0ff39d79a89c2ec7",
+                "Moscow-45.12.114.73-a9b8ca18a2a433bcba678b31fc624433",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Jakarta-103.126.226.194-5bcc48576706e00e837973d0bf4cf1b8",
+                "Saphan Sung-168.222.16.102-53db2ce6af7bb62e3fb3c7ded8b0bf19",
+                "New York City-185.44.65.204-0c5e1acb5a44b16f0ff39d79a89c2ec7",
+                "Moscow-45.12.114.73-a9b8ca18a2a433bcba678b31fc624433",
+                "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Jakarta-103.126.226.194-5bcc48576706e00e837973d0bf4cf1b8",
+            "server": "neva.azlan.biz.id",
+            "server_port": 443,
+            "uuid": "8072298f-cd28-4a61-8e05-5879c84b9100",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess",
+                "headers": {
+                    "Host": "neva.azlan.biz.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-53db2ce6af7bb62e3fb3c7ded8b0bf19",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.44.65.204-0c5e1acb5a44b16f0ff39d79a89c2ec7",
+            "server": "nmjju8.0sm.ccwu.cc",
+            "server_port": 80,
+            "uuid": "9b354a64-81f6-4a15-a127-337cd17e25ba",
+            "transport": {
+                "type": "ws",
+                "path": "/IBb38gsTRjFOzklVEUuTu7GKK",
+                "headers": {
+                    "Host": "nmjju8.0sm.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.73-a9b8ca18a2a433bcba678b31fc624433",
+            "server": "45.12.114.73",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-96.44.178.67-6d398eded44476febb7c8ea15f1f66d7",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
