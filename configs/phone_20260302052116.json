@@ -1,0 +1,226 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Coventry-45.159.248.223-1fb7161c4c664370d6f3806040425461",
+                "Secaucus-138.124.180.198-54db3166721fe860a0645d10b1eb2661",
+                "Moscow-45.12.114.73-57f1a12067d9000c621520ca832a8fea",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-6235ee381acb42c93f1ea50966041866",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Coventry-45.159.248.223-1fb7161c4c664370d6f3806040425461",
+                "Secaucus-138.124.180.198-54db3166721fe860a0645d10b1eb2661",
+                "Moscow-45.12.114.73-57f1a12067d9000c621520ca832a8fea",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-6235ee381acb42c93f1ea50966041866",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Coventry-45.159.248.223-1fb7161c4c664370d6f3806040425461",
+                "Secaucus-138.124.180.198-54db3166721fe860a0645d10b1eb2661",
+                "Moscow-45.12.114.73-57f1a12067d9000c621520ca832a8fea",
+                "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+                "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+                "New York City-185.184.68.94-6235ee381acb42c93f1ea50966041866",
+                "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+                "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Coventry-45.159.248.223-1fb7161c4c664370d6f3806040425461",
+            "server": "198.62.62.235",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "bank.alaska-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bank.alaska-tigr.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-138.124.180.198-54db3166721fe860a0645d10b1eb2661",
+            "server": "198.62.62.248",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "tar.alabama-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tar.alabama-tigr.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.73-57f1a12067d9000c621520ca832a8fea",
+            "server": "45.12.114.73",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-648c4650f56923e9700320124bc1bea6",
+            "server": "bhy7.ae1autumn.dpdns.org",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "bhy7.ae1autumn.dpdns.org"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-e37decdef37a2288ea7cd4f4360e7e6e",
+            "server": "ghj.ae1autumn.cc.cd",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "ghj.ae1autumn.cc.cd"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.184.68.94-6235ee381acb42c93f1ea50966041866",
+            "server": "cdfr.ae1autumn.dpdns.org",
+            "server_port": 443,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/YsmRouA9ZbxgW4",
+                "headers": {
+                    "Host": "cdfr.ae1autumn.dpdns.org"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.184.68.94-7e1ea4f4419c48944f63cc43e7425826",
+            "server": "njk.222560.xyz",
+            "server_port": 443,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/YsmRouA9ZbxgW4",
+                "headers": {
+                    "Host": "njk.222560.xyz"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-396fc009dee082dc3e1104e0efb495fa",
+            "server": "cdfr.222560.xyz",
+            "server_port": 443,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "cdfr.222560.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdfr.222560.xyz"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
