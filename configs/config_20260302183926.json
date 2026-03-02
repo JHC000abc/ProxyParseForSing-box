@@ -1,0 +1,339 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Secaucus-138.124.180.145-92b3e13ced6e655a088beee73ff9e215",
+                "Buffalo-192.3.233.205-7fcf490e6545a3a5bcfd2f5cdf09bcee",
+                "Coventry-45.140.167.30-a3babaa71b956b32f2b0a7e9242a14fc",
+                "Santiago de Querétaro-89.223.88.33-e4cb2733d344d7084b990c358f8137b2",
+                "Bogotá-154.223.16.41-379379c7a4b7303ab90184fb3ba4b5f0",
+                "Frankfurt am Main-135.125.245.131-d6846a9195b19b878cc6f6a2fafce044",
+                "London-20.90.97.88-5f9604c8596f09518d1b8a66aeb2d404",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "London-20.90.97.88-a1e874da4e8bec2ef0678a912af6bb45",
+                "Frankfurt am Main-209.46.102.22-16d73f83f6d16b01e8ec7e8c10b0cf5a",
+                "London-20.90.97.88-ef616d6a1735c3a561663b68c298adab",
+                "Sydney-46.250.241.55-3cd0d7ef45c74bc5337bb8eb08176857",
+                "Orlando-172.56.72.6-69ffcebf05c2a6950bf7d572d6d227f3",
+                "Hannover-176.5.141.28-424e118f62dcd5b39985ae0665419c20",
+                "Sofia-38.180.2.141-f08252d463d7579ff32a10ff7e1bcedb",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Coventry-45.140.167.30-9a7056e999d3151d3edc1f474cc6ff1b",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Secaucus-138.124.180.145-92b3e13ced6e655a088beee73ff9e215",
+                "Buffalo-192.3.233.205-7fcf490e6545a3a5bcfd2f5cdf09bcee",
+                "Coventry-45.140.167.30-a3babaa71b956b32f2b0a7e9242a14fc",
+                "Santiago de Querétaro-89.223.88.33-e4cb2733d344d7084b990c358f8137b2",
+                "Bogotá-154.223.16.41-379379c7a4b7303ab90184fb3ba4b5f0",
+                "Frankfurt am Main-135.125.245.131-d6846a9195b19b878cc6f6a2fafce044",
+                "London-20.90.97.88-5f9604c8596f09518d1b8a66aeb2d404",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "London-20.90.97.88-a1e874da4e8bec2ef0678a912af6bb45",
+                "Frankfurt am Main-209.46.102.22-16d73f83f6d16b01e8ec7e8c10b0cf5a",
+                "London-20.90.97.88-ef616d6a1735c3a561663b68c298adab",
+                "Sydney-46.250.241.55-3cd0d7ef45c74bc5337bb8eb08176857",
+                "Orlando-172.56.72.6-69ffcebf05c2a6950bf7d572d6d227f3",
+                "Hannover-176.5.141.28-424e118f62dcd5b39985ae0665419c20",
+                "Sofia-38.180.2.141-f08252d463d7579ff32a10ff7e1bcedb",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Coventry-45.140.167.30-9a7056e999d3151d3edc1f474cc6ff1b",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-138.124.180.145-92b3e13ced6e655a088beee73ff9e215",
+            "server": "198.62.62.248",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "tar.alabama-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tar.alabama-tigr.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Buffalo-192.3.233.205-7fcf490e6545a3a5bcfd2f5cdf09bcee",
+            "server": "hnjjuu.huangshang.eu.cc",
+            "server_port": 443,
+            "uuid": "5f6c3f92-7220-4275-b34d-57c04db3f967",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/KnuT4XBUucXkOSONBms",
+                "headers": {
+                    "Host": "hnjjuu.huangshang.eu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Coventry-45.140.167.30-a3babaa71b956b32f2b0a7e9242a14fc",
+            "server": "173.245.59.217",
+            "server_port": 443,
+            "uuid": "98aec3c3-d957-4363-9933-018e533c7c06",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "uk.dlaparat.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uk.dlaparat.ir"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Santiago de Querétaro-89.223.88.33-e4cb2733d344d7084b990c358f8137b2",
+            "server": "89.223.88.33",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7c31a67b41b18c26"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Bogotá-154.223.16.41-379379c7a4b7303ab90184fb3ba4b5f0",
+            "server": "154.223.16.41",
+            "server_port": 4444,
+            "method": "aes-256-gcm",
+            "password": "pKEW8JPByTVTLtM"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-135.125.245.131-d6846a9195b19b878cc6f6a2fafce044",
+            "server": "135.125.245.131",
+            "server_port": 20939,
+            "method": "chacha20-ietf-poly1305",
+            "password": "85d3d8ccba287d3e"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-20.90.97.88-5f9604c8596f09518d1b8a66aeb2d404",
+            "server": "series-a1.samanehha.co",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "W74XFALLLuw6m5IA"
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+            "server": "ffbghn.2xv.ccwu.cc",
+            "server_port": 80,
+            "uuid": "9b354a64-81f6-4a15-a127-337cd17e25ba",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/7t9M6fIZbmR7zklVEUuTu7GKK",
+                "headers": {
+                    "Host": "ffbghn.2xv.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-20.90.97.88-a1e874da4e8bec2ef0678a912af6bb45",
+            "server": "admin.c1.havij.co",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "1kVr0KATIJI7mwOF"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-209.46.102.22-16d73f83f6d16b01e8ec7e8c10b0cf5a",
+            "server": "209.46.102.22",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "1hhrqrokj3ag"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-20.90.97.88-ef616d6a1735c3a561663b68c298adab",
+            "server": "series-a2.samanehha.co",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "W74XFALLLuw6m5IA"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Sydney-46.250.241.55-3cd0d7ef45c74bc5337bb8eb08176857",
+            "server": "46.250.241.55",
+            "server_port": 45720,
+            "method": "chacha20-ietf-poly1305",
+            "password": "c90d63dc7a6203af"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Orlando-172.56.72.6-69ffcebf05c2a6950bf7d572d6d227f3",
+            "server": "144.217.164.29",
+            "server_port": 12000,
+            "method": "aes-256-gcm",
+            "password": "8JCsPssfgS8tiRwiMlhARg=="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Hannover-176.5.141.28-424e118f62dcd5b39985ae0665419c20",
+            "server": "57.128.214.100",
+            "server_port": 12000,
+            "method": "aes-256-gcm",
+            "password": "8JCsPssfgS8tiRwiMlhARg=="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Sofia-38.180.2.141-f08252d463d7579ff32a10ff7e1bcedb",
+            "server": "38.180.2.141",
+            "server_port": 5499,
+            "method": "aes-256-gcm",
+            "password": "lGqs95QkFHo2NV"
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Coventry-45.140.167.30-9a7056e999d3151d3edc1f474cc6ff1b",
+            "server": "104.16.139.37",
+            "server_port": 443,
+            "uuid": "98aec3c3-d957-4363-9933-018e533c7c06",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "uk.dlaparat.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uk.dlaparat.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772",
+            "server": "37.156.45.227",
+            "server_port": 36261,
+            "uuid": "cb57b920-cd95-4bbf-bd8c-9e58833fcc5c",
+            "transport": {
+                "type": "ws",
+                "path": "//connect",
+                "headers": {
+                    "Host": "GitHub.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
