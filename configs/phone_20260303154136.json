@@ -1,0 +1,292 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Los Angeles-108.181.23.253-688c42bf1556900543b5253df9552f8e",
+                "Frankfurt am Main-138.124.113.21-d3e3a9fa209ed7f726d62eae669a3b6f",
+                "Dronten-5.255.125.34-5d49bdf4ae16f06201c67970f5adc581",
+                "Toronto-155.94.236.143-a9cefd467d65c707a387550336e39366",
+                "Buffalo-192.3.233.205-c4b794d66818dee6f55331974ec6301f",
+                "Coventry-45.140.167.30-a3babaa71b956b32f2b0a7e9242a14fc",
+                "Secaucus-138.124.180.184-654e7260e4e9c59f2dac5a011c6d03a7",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Coventry-45.140.167.30-9a7056e999d3151d3edc1f474cc6ff1b",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Los Angeles-108.181.23.253-688c42bf1556900543b5253df9552f8e",
+                "Frankfurt am Main-138.124.113.21-d3e3a9fa209ed7f726d62eae669a3b6f",
+                "Dronten-5.255.125.34-5d49bdf4ae16f06201c67970f5adc581",
+                "Toronto-155.94.236.143-a9cefd467d65c707a387550336e39366",
+                "Buffalo-192.3.233.205-c4b794d66818dee6f55331974ec6301f",
+                "Coventry-45.140.167.30-a3babaa71b956b32f2b0a7e9242a14fc",
+                "Secaucus-138.124.180.184-654e7260e4e9c59f2dac5a011c6d03a7",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Coventry-45.140.167.30-9a7056e999d3151d3edc1f474cc6ff1b",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Los Angeles-108.181.23.253-688c42bf1556900543b5253df9552f8e",
+                "Frankfurt am Main-138.124.113.21-d3e3a9fa209ed7f726d62eae669a3b6f",
+                "Dronten-5.255.125.34-5d49bdf4ae16f06201c67970f5adc581",
+                "Toronto-155.94.236.143-a9cefd467d65c707a387550336e39366",
+                "Buffalo-192.3.233.205-c4b794d66818dee6f55331974ec6301f",
+                "Coventry-45.140.167.30-a3babaa71b956b32f2b0a7e9242a14fc",
+                "Secaucus-138.124.180.184-654e7260e4e9c59f2dac5a011c6d03a7",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Coventry-45.140.167.30-9a7056e999d3151d3edc1f474cc6ff1b",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-108.181.23.253-688c42bf1556900543b5253df9552f8e",
+            "server": "63.141.128.188",
+            "server_port": 443,
+            "uuid": "edd0d9b9-d2ef-40a0-af10-0dca357351e3",
+            "transport": {
+                "type": "ws",
+                "path": "/djjc/us1",
+                "headers": {
+                    "Host": "d2-us1.djwstlsweb.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d2-us1.djwstlsweb.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-138.124.113.21-d3e3a9fa209ed7f726d62eae669a3b6f",
+            "server": "azaranik.ir",
+            "server_port": 2053,
+            "uuid": "7b3ba8c0-0bb2-469a-a396-1c360e7da8d7",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "kffoepwiqmiovvunwoowow2jowpqpwkc892.mrpixanos.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "kffoepwiqmiovvunwoowow2jowpqpwkc892.mrpixanos.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-5.255.125.34-5d49bdf4ae16f06201c67970f5adc581",
+            "server": "ip-data.turkserver.ir",
+            "server_port": 2087,
+            "uuid": "f256491e-8e71-4757-ac68-ec8989f5ddbe",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "all-zm1.netsnap.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "all-zm1.netsnap.ir."
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Toronto-155.94.236.143-a9cefd467d65c707a387550336e39366",
+            "server": "ghuj.852224.xyz",
+            "server_port": 443,
+            "uuid": "c52d2de2-fc6d-490c-8421-132f87615736",
+            "transport": {
+                "type": "ws",
+                "path": "/EoI8opJbDe2mwi4xImwtg6PusRbe",
+                "headers": {
+                    "Host": "ghuj.852224.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ghuj.852224.xyz"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Buffalo-192.3.233.205-c4b794d66818dee6f55331974ec6301f",
+            "server": "kki.huangzi.eu.cc",
+            "server_port": 443,
+            "uuid": "5f6c3f92-7220-4275-b34d-57c04db3f967",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/KnuT4XBUucXkOSONBms",
+                "headers": {
+                    "Host": "kki.huangzi.eu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Coventry-45.140.167.30-a3babaa71b956b32f2b0a7e9242a14fc",
+            "server": "173.245.59.217",
+            "server_port": 443,
+            "uuid": "98aec3c3-d957-4363-9933-018e533c7c06",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "uk.dlaparat.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uk.dlaparat.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-138.124.180.184-654e7260e4e9c59f2dac5a011c6d03a7",
+            "server": "198.62.62.248",
+            "server_port": 443,
+            "uuid": "5a4abb78-ecd7-4d68-ab2a-c11a3842f261",
+            "transport": {
+                "type": "ws",
+                "path": "/love",
+                "headers": {
+                    "Host": "tar.alabama-tigr.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tar.alabama-tigr.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+            "server": "ffbghn.2xv.ccwu.cc",
+            "server_port": 80,
+            "uuid": "9b354a64-81f6-4a15-a127-337cd17e25ba",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/7t9M6fIZbmR7zklVEUuTu7GKK",
+                "headers": {
+                    "Host": "ffbghn.2xv.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Coventry-45.140.167.30-9a7056e999d3151d3edc1f474cc6ff1b",
+            "server": "104.16.139.37",
+            "server_port": 443,
+            "uuid": "98aec3c3-d957-4363-9933-018e533c7c06",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "uk.dlaparat.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uk.dlaparat.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772",
+            "server": "37.156.45.227",
+            "server_port": 36261,
+            "uuid": "cb57b920-cd95-4bbf-bd8c-9e58833fcc5c",
+            "transport": {
+                "type": "ws",
+                "path": "//connect",
+                "headers": {
+                    "Host": "GitHub.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
