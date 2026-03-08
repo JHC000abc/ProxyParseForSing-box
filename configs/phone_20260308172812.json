@@ -1,0 +1,236 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nürnberg-85.209.53.178-bb399875d3a400f64702e8de12ae7468",
+                "Nürnberg-85.209.53.170-247f920f663f7987a7600c24402df560",
+                "Nürnberg-85.209.53.178-65475ae094cb1106a3e9fd4e5e9ef8b5",
+                "Salt Lake City-157.254.223.24-f4f502d65797d3138a8a2c3d2f32f359",
+                "Moscow-45.12.114.73-6fc6adf157611772716b9eea09c6224d",
+                "New York City-185.184.68.7-4f778c89178439bca41e525e43f7ca67",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nürnberg-85.209.53.178-bb399875d3a400f64702e8de12ae7468",
+                "Nürnberg-85.209.53.170-247f920f663f7987a7600c24402df560",
+                "Nürnberg-85.209.53.178-65475ae094cb1106a3e9fd4e5e9ef8b5",
+                "Salt Lake City-157.254.223.24-f4f502d65797d3138a8a2c3d2f32f359",
+                "Moscow-45.12.114.73-6fc6adf157611772716b9eea09c6224d",
+                "New York City-185.184.68.7-4f778c89178439bca41e525e43f7ca67",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nürnberg-85.209.53.178-bb399875d3a400f64702e8de12ae7468",
+                "Nürnberg-85.209.53.170-247f920f663f7987a7600c24402df560",
+                "Nürnberg-85.209.53.178-65475ae094cb1106a3e9fd4e5e9ef8b5",
+                "Salt Lake City-157.254.223.24-f4f502d65797d3138a8a2c3d2f32f359",
+                "Moscow-45.12.114.73-6fc6adf157611772716b9eea09c6224d",
+                "New York City-185.184.68.7-4f778c89178439bca41e525e43f7ca67",
+                "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+                "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+                "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Nürnberg-85.209.53.178-bb399875d3a400f64702e8de12ae7468",
+            "server": "kwtgm.cmvvb.online",
+            "server_port": 8443,
+            "uuid": "86fdcdff-3be1-4a9e-8f67-a75fa326102d",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "kwtgm.cmvvb.online"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Nürnberg-85.209.53.170-247f920f663f7987a7600c24402df560",
+            "server": "zdqbk.cmvvb.online",
+            "server_port": 8443,
+            "uuid": "3d74c959-2a4c-4df8-887a-4f9736a77b6f",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "zdqbk.cmvvb.online"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Nürnberg-85.209.53.178-65475ae094cb1106a3e9fd4e5e9ef8b5",
+            "server": "udtzy.cmvvb.online",
+            "server_port": 443,
+            "uuid": "82aa5240-ee95-427d-91b0-1ba42383d49e",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "udtzy.cmvvb.online"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Salt Lake City-157.254.223.24-f4f502d65797d3138a8a2c3d2f32f359",
+            "server": "157.254.223.24",
+            "server_port": 30088,
+            "password": "alvin9999.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apple.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.73-6fc6adf157611772716b9eea09c6224d",
+            "server": "45.12.114.73",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.7-4f778c89178439bca41e525e43f7ca67",
+            "server": "mmmjjjkio.890604.dpdns.org",
+            "server_port": 443,
+            "uuid": "2bfded8d-6a7c-4c18-aaa5-fc65b955d50c",
+            "transport": {
+                "type": "ws",
+                "path": "/HoBSIvRY1m5xOEJ3dX414bl",
+                "headers": {
+                    "Host": "mmmjjjkio.890604.dpdns.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mmmjjjkio.890604.dpdns.org"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-185.44.65.204-0dd01c19eed31c2eb4b2dd79ab600a1f",
+            "server": "ffbghn.2xv.ccwu.cc",
+            "server_port": 80,
+            "uuid": "9b354a64-81f6-4a15-a127-337cd17e25ba",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/7t9M6fIZbmR7zklVEUuTu7GKK",
+                "headers": {
+                    "Host": "ffbghn.2xv.ccwu.cc"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-c7faacda117f1491a4d0e8fd58eaf6a7",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-37.156.45.227-46fd048fb87b0aaba21f574448cc4772",
+            "server": "37.156.45.227",
+            "server_port": 36261,
+            "uuid": "cb57b920-cd95-4bbf-bd8c-9e58833fcc5c",
+            "transport": {
+                "type": "ws",
+                "path": "//connect",
+                "headers": {
+                    "Host": "GitHub.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
