@@ -1,0 +1,224 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Salt Lake City-157.254.223.24-7ed222af0ac86c426f1982e223312d0a",
+                "Tokyo-116.80.65.187-3522b51963b11e374c57d1c8072c9e94",
+                "Frankfurt am Main-51.75.74.61-83362d3b9a348af92768bbb6ad5e628a",
+                "San Jose-38.182.109.191-56ae5aac23b1b3b7ee4b50d2f1cc689d",
+                "Nürnberg-37.120.162.56-56ffee88a841d15643cb11a8cda0ba58",
+                "Genève-37.156.45.227-7100c03f14bff27e4241b92438c9b10f",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-37.120.162.56-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Salt Lake City-157.254.223.24-7ed222af0ac86c426f1982e223312d0a",
+                "Tokyo-116.80.65.187-3522b51963b11e374c57d1c8072c9e94",
+                "Frankfurt am Main-51.75.74.61-83362d3b9a348af92768bbb6ad5e628a",
+                "San Jose-38.182.109.191-56ae5aac23b1b3b7ee4b50d2f1cc689d",
+                "Nürnberg-37.120.162.56-56ffee88a841d15643cb11a8cda0ba58",
+                "Genève-37.156.45.227-7100c03f14bff27e4241b92438c9b10f",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-37.120.162.56-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Salt Lake City-157.254.223.24-7ed222af0ac86c426f1982e223312d0a",
+                "Tokyo-116.80.65.187-3522b51963b11e374c57d1c8072c9e94",
+                "Frankfurt am Main-51.75.74.61-83362d3b9a348af92768bbb6ad5e628a",
+                "San Jose-38.182.109.191-56ae5aac23b1b3b7ee4b50d2f1cc689d",
+                "Nürnberg-37.120.162.56-56ffee88a841d15643cb11a8cda0ba58",
+                "Genève-37.156.45.227-7100c03f14bff27e4241b92438c9b10f",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-37.120.162.56-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Salt Lake City-157.254.223.24-7ed222af0ac86c426f1982e223312d0a",
+            "server": "157.254.223.24",
+            "server_port": 30088,
+            "password": "alvin9999.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apple.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-116.80.65.187-3522b51963b11e374c57d1c8072c9e94",
+            "server": "13.230.222.150",
+            "server_port": 21508,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me%2Fripaojiedian"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.74.61-83362d3b9a348af92768bbb6ad5e628a",
+            "server": "gr5.vpnjantit.com",
+            "server_port": 10002,
+            "uuid": "c71d2f84-1ae1-11f1-97cf-7fa5d2a6fb9f",
+            "transport": {
+                "type": "ws",
+                "path": "/vpnjantit",
+                "headers": {
+                    "Host": "gr5.vpnjantit.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "gr5.vpnjantit.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "San Jose-38.182.109.191-56ae5aac23b1b3b7ee4b50d2f1cc689d",
+            "server": "38.182.109.191",
+            "server_port": 443,
+            "password": "adb13850-7e70-492e-85b2-01184801d587",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us08.oportal.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-37.120.162.56-56ffee88a841d15643cb11a8cda0ba58",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-37.156.45.227-7100c03f14bff27e4241b92438c9b10f",
+            "server": "37.156.45.227",
+            "server_port": 36261,
+            "uuid": "cb57b920-cd95-4bbf-bd8c-9e58833fcc5c",
+            "transport": {
+                "type": "ws",
+                "path": "//connect",
+                "headers": {
+                    "Host": "GitHub.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-37.120.162.56-0db8289b5a0c7163c2849b7db8f80ec4",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
