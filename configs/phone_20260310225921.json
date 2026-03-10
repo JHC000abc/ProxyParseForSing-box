@@ -1,0 +1,270 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Kuala Lumpur-38.60.193.14-f007ca98cc2ff502e7cca5ca20e657cb",
+                "Singapore-47.236.121.60-ea53b24e7e6d0a516229d9b60155fbc7",
+                "Frankfurt am Main-51.75.74.61-8380e7a8c5d0de6534589bab7a9bce5f",
+                "Frankfurt am Main-51.75.74.61-1d98abb6918b8f52b7ec7551704c00ca",
+                "Elk Grove Village-192.3.130.103-ecfd2842dd4f7b865f42d7925ef41a3e",
+                "Buffalo-192.3.233.205-a14417b9f4384960cffb09763a003a10",
+                "New York City-185.116.236.180-448f8d133bb0d68d62b19231c1fe5dbb",
+                "New York City-185.116.236.153-3a4f65fb918b0af335b46b26e108d766",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-159.195.43.219-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Kuala Lumpur-38.60.193.14-f007ca98cc2ff502e7cca5ca20e657cb",
+                "Singapore-47.236.121.60-ea53b24e7e6d0a516229d9b60155fbc7",
+                "Frankfurt am Main-51.75.74.61-8380e7a8c5d0de6534589bab7a9bce5f",
+                "Frankfurt am Main-51.75.74.61-1d98abb6918b8f52b7ec7551704c00ca",
+                "Elk Grove Village-192.3.130.103-ecfd2842dd4f7b865f42d7925ef41a3e",
+                "Buffalo-192.3.233.205-a14417b9f4384960cffb09763a003a10",
+                "New York City-185.116.236.180-448f8d133bb0d68d62b19231c1fe5dbb",
+                "New York City-185.116.236.153-3a4f65fb918b0af335b46b26e108d766",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-159.195.43.219-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Kuala Lumpur-38.60.193.14-f007ca98cc2ff502e7cca5ca20e657cb",
+                "Singapore-47.236.121.60-ea53b24e7e6d0a516229d9b60155fbc7",
+                "Frankfurt am Main-51.75.74.61-8380e7a8c5d0de6534589bab7a9bce5f",
+                "Frankfurt am Main-51.75.74.61-1d98abb6918b8f52b7ec7551704c00ca",
+                "Elk Grove Village-192.3.130.103-ecfd2842dd4f7b865f42d7925ef41a3e",
+                "Buffalo-192.3.233.205-a14417b9f4384960cffb09763a003a10",
+                "New York City-185.116.236.180-448f8d133bb0d68d62b19231c1fe5dbb",
+                "New York City-185.116.236.153-3a4f65fb918b0af335b46b26e108d766",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-159.195.43.219-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Kuala Lumpur-38.60.193.14-f007ca98cc2ff502e7cca5ca20e657cb",
+            "server": "my01.jsylianjie6.com",
+            "server_port": 45720,
+            "password": "d5fa43f9-1ace-4b8f-b865-627e67b1fe37",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jsygouer.weixin-baidu-qq.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Singapore-47.236.121.60-ea53b24e7e6d0a516229d9b60155fbc7",
+            "server": "abc.gaogroup.bid",
+            "server_port": 20911,
+            "uuid": "ddd57817-cc09-44da-a29a-efbbd8ffa0d4",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/yefq",
+                "headers": {
+                    "Host": "abc.gaogroup.bid"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.74.61-8380e7a8c5d0de6534589bab7a9bce5f",
+            "server": "51.75.74.61",
+            "server_port": 10004,
+            "uuid": "c71d2f84-1ae1-11f1-97cf-7fa5d2a6fb9f",
+            "transport": {
+                "type": "ws",
+                "path": "/vpnjantit",
+                "headers": {
+                    "Host": "51.75.74.61"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.74.61-1d98abb6918b8f52b7ec7551704c00ca",
+            "server": "gr5.vpnjantit.com",
+            "server_port": 10004,
+            "uuid": "c71d2f84-1ae1-11f1-97cf-7fa5d2a6fb9f",
+            "transport": {
+                "type": "ws",
+                "path": "/vpnjantit",
+                "headers": {
+                    "Host": "gr5.vpnjantit.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Elk Grove Village-192.3.130.103-ecfd2842dd4f7b865f42d7925ef41a3e",
+            "server": "1-p-6-h-p.1no.ccwu.cc",
+            "server_port": 443,
+            "uuid": "ee8bc706-b0be-4053-944e-710f2697b022",
+            "transport": {
+                "type": "ws",
+                "path": "/7QbB9t8n6kQaEnWsy5Crj",
+                "headers": {
+                    "Host": "1-p-6-h-p.1no.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "1-p-6-h-p.1no.ccwu.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Buffalo-192.3.233.205-a14417b9f4384960cffb09763a003a10",
+            "server": "172.67.204.137",
+            "server_port": 443,
+            "uuid": "395539b3-3970-498a-8268-8fab1a0d7309",
+            "transport": {
+                "type": "ws",
+                "path": "/ck4MBeCVkM6TDoVtZw",
+                "headers": {
+                    "Host": "7-f-r-f-fr-55-thy.0zx.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "7-f-r-f-fr-55-thy.0zx.ccwu.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.180-448f8d133bb0d68d62b19231c1fe5dbb",
+            "server": "172.67.211.136",
+            "server_port": 443,
+            "uuid": "8ea4b3d0-86a8-4fc3-9eb1-5364760710ea",
+            "transport": {
+                "type": "ws",
+                "path": "/8enyf1e8YqeudROmhBuN",
+                "headers": {
+                    "Host": "s-e-t-y-u-j.191266.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "s-e-t-y-u-j.191266.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.153-3a4f65fb918b0af335b46b26e108d766",
+            "server": "mki.1nn.ccwu.cc",
+            "server_port": 80,
+            "uuid": "d5604db8-1f31-403d-a315-d8bafc70f7d2",
+            "transport": {
+                "type": "ws",
+                "path": "/1Aeip9N4V6m20grcpQ8L96b",
+                "headers": {
+                    "Host": "mki.1nn.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.43.219-0db8289b5a0c7163c2849b7db8f80ec4",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975",
+            "server": "37.156.45.227",
+            "server_port": 36261,
+            "uuid": "cb57b920-cd95-4bbf-bd8c-9e58833fcc5c",
+            "transport": {
+                "type": "ws",
+                "path": "//connect",
+                "headers": {
+                    "Host": "GitHub.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
