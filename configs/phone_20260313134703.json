@@ -1,0 +1,297 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+                "Taipei-188.253.116.193-36eecedd12f98454941db6debe14bc3f",
+                "San Jose-38.207.159.165-e96c54935d4fe5ab00bf77b63aeb0e6d",
+                "Falkenstein-144.76.188.140-1d4d28618068e3db633cb6156bd4da1e",
+                "Moscow-45.12.114.73-fec2c7baa76c9e925572a035a87e10a2",
+                "Ashburn-23.95.113.104-03271272b398887242731532f803a586",
+                "Dallas-198.23.249.154-56843e75de7b455abe8c57c92f449f81",
+                "Kyiv-31.42.190.76-93a3f7e99613e825f1658326cb1189ee",
+                "Frankfurt am Main-45.82.120.220-43709af58a6b299ee6acbbcde84eeacc",
+                "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+                "Nürnberg-5.45.108.170-7fd1d5b8c69dff125043f579436051d8",
+                "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+                "Taipei-188.253.116.193-36eecedd12f98454941db6debe14bc3f",
+                "San Jose-38.207.159.165-e96c54935d4fe5ab00bf77b63aeb0e6d",
+                "Falkenstein-144.76.188.140-1d4d28618068e3db633cb6156bd4da1e",
+                "Moscow-45.12.114.73-fec2c7baa76c9e925572a035a87e10a2",
+                "Ashburn-23.95.113.104-03271272b398887242731532f803a586",
+                "Dallas-198.23.249.154-56843e75de7b455abe8c57c92f449f81",
+                "Kyiv-31.42.190.76-93a3f7e99613e825f1658326cb1189ee",
+                "Frankfurt am Main-45.82.120.220-43709af58a6b299ee6acbbcde84eeacc",
+                "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+                "Nürnberg-5.45.108.170-7fd1d5b8c69dff125043f579436051d8",
+                "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+                "Taipei-188.253.116.193-36eecedd12f98454941db6debe14bc3f",
+                "San Jose-38.207.159.165-e96c54935d4fe5ab00bf77b63aeb0e6d",
+                "Falkenstein-144.76.188.140-1d4d28618068e3db633cb6156bd4da1e",
+                "Moscow-45.12.114.73-fec2c7baa76c9e925572a035a87e10a2",
+                "Ashburn-23.95.113.104-03271272b398887242731532f803a586",
+                "Dallas-198.23.249.154-56843e75de7b455abe8c57c92f449f81",
+                "Kyiv-31.42.190.76-93a3f7e99613e825f1658326cb1189ee",
+                "Frankfurt am Main-45.82.120.220-43709af58a6b299ee6acbbcde84eeacc",
+                "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+                "Nürnberg-5.45.108.170-7fd1d5b8c69dff125043f579436051d8",
+                "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+            "server": "150.241.78.128",
+            "server_port": 1935,
+            "password": "hysteria2_fastlane_y3phbb5eb:8FXcfb2dGzLFFgNvqVZdCWMApn6xfCiV",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "de3.h.fastlanehosting.ru"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Taipei-188.253.116.193-36eecedd12f98454941db6debe14bc3f",
+            "server": "tw05.stimaysmhy8.com",
+            "server_port": 31500,
+            "password": "d5fa43f9-1ace-4b8f-b865-627e67b1fe37",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jsygouer.weixin-baidu-qq.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "San Jose-38.207.159.165-e96c54935d4fe5ab00bf77b63aeb0e6d",
+            "server": "us03.stimaysmhy8.com",
+            "server_port": 42554,
+            "password": "d5fa43f9-1ace-4b8f-b865-627e67b1fe37",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jsygouer.weixin-baidu-qq.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-144.76.188.140-1d4d28618068e3db633cb6156bd4da1e",
+            "server": "144.76.188.140",
+            "server_port": 443,
+            "uuid": "ba849385-a780-43a0-b4e7-6ab8a08d3824",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "144.76.188.140"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.73-fec2c7baa76c9e925572a035a87e10a2",
+            "server": "45.12.114.73",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Ashburn-23.95.113.104-03271272b398887242731532f803a586",
+            "server": "23.95.113.104",
+            "server_port": 443,
+            "uuid": "f91c1cc2-05fe-4efd-ba09-86cb6bec19e3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "23.95.113.104"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dallas-198.23.249.154-56843e75de7b455abe8c57c92f449f81",
+            "server": "198.23.249.154",
+            "server_port": 443,
+            "uuid": "f91c1cc2-05fe-4efd-ba09-86cb6bec19e3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "198.23.249.154"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kyiv-31.42.190.76-93a3f7e99613e825f1658326cb1189ee",
+            "server": "31.42.190.76",
+            "server_port": 443,
+            "uuid": "5ac2d3b6-33cc-4442-9c0b-ae3909cabaae",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "31.42.190.76"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-45.82.120.220-43709af58a6b299ee6acbbcde84eeacc",
+            "server": "188.114.98.0",
+            "server_port": 2087,
+            "uuid": "3f58cc47-94f6-40d3-8797-1ce66cb0555e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "a1d.maxriser.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "a1d.maxriser.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+            "server": "fsdns.ectunnelvpn.me",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.170-7fd1d5b8c69dff125043f579436051d8",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+            "server": "gr5.vpnjantit.com",
+            "server_port": 10002,
+            "uuid": "c71d2f84-1ae1-11f1-97cf-7fa5d2a6fb9f",
+            "transport": {
+                "type": "ws",
+                "path": "/vpnjantit",
+                "headers": {
+                    "Host": "gr5.vpnjantit.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "gr5.vpnjantit.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975",
+            "server": "37.156.45.227",
+            "server_port": 36261,
+            "uuid": "cb57b920-cd95-4bbf-bd8c-9e58833fcc5c",
+            "transport": {
+                "type": "ws",
+                "path": "//connect",
+                "headers": {
+                    "Host": "GitHub.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
