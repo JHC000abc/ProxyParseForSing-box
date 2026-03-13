@@ -1,0 +1,253 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-13.231.201.245-9ddc9379fa75875bf297fd73dfc95ae1",
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Nürnberg-46.225.61.97-677a36e11125fb00d9b298b18e674394",
+                "Kyiv-31.42.190.76-fb5ebd016bf3b42d5556f0b8e16746d4",
+                "Šiauliai-195.66.25.251-779c101369e131a47bae0e04903d40f8",
+                "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+                "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+                "Nürnberg-5.45.108.74-7fd1d5b8c69dff125043f579436051d8",
+                "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-13.231.201.245-9ddc9379fa75875bf297fd73dfc95ae1",
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Nürnberg-46.225.61.97-677a36e11125fb00d9b298b18e674394",
+                "Kyiv-31.42.190.76-fb5ebd016bf3b42d5556f0b8e16746d4",
+                "Šiauliai-195.66.25.251-779c101369e131a47bae0e04903d40f8",
+                "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+                "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+                "Nürnberg-5.45.108.74-7fd1d5b8c69dff125043f579436051d8",
+                "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-13.231.201.245-9ddc9379fa75875bf297fd73dfc95ae1",
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Nürnberg-46.225.61.97-677a36e11125fb00d9b298b18e674394",
+                "Kyiv-31.42.190.76-fb5ebd016bf3b42d5556f0b8e16746d4",
+                "Šiauliai-195.66.25.251-779c101369e131a47bae0e04903d40f8",
+                "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+                "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+                "Nürnberg-5.45.108.74-7fd1d5b8c69dff125043f579436051d8",
+                "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-13.231.201.245-9ddc9379fa75875bf297fd73dfc95ae1",
+            "server": "13.231.201.245",
+            "server_port": 60000,
+            "password": "d150ba57-67b9-4eae-b18f-0e956ee9c075",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tv.apple.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+            "server": "svt1.fq.ito8.com",
+            "server_port": 8080,
+            "password": "1ae9f3fa-46a3-4ccf-ac29-990ec9673022",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "svt1.fq.ito8.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.61.97-677a36e11125fb00d9b298b18e674394",
+            "server": "46.225.61.97",
+            "server_port": 8080,
+            "uuid": "a4b53348-294d-43be-8549-93055291de3f",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "v.iampedi7.live"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kyiv-31.42.190.76-fb5ebd016bf3b42d5556f0b8e16746d4",
+            "server": "31.42.190.76",
+            "server_port": 443,
+            "uuid": "5ac2d3b6-33cc-4442-9c0b-ae3909cabaae",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "31.42.190.76"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Šiauliai-195.66.25.251-779c101369e131a47bae0e04903d40f8",
+            "server": "8443.golden-cards.me",
+            "server_port": 443,
+            "password": "q2GRUM1-odJBWq_KV6xv2fuNvu8ed-",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-0da8ab0a2a6970665a39f0fccb3cbd68",
+            "server": "fsdns.ectunnelvpn.me",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.74-7fd1d5b8c69dff125043f579436051d8",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.75.74.61-d07d794b8b52005de466337445505c58",
+            "server": "gr5.vpnjantit.com",
+            "server_port": 10002,
+            "uuid": "c71d2f84-1ae1-11f1-97cf-7fa5d2a6fb9f",
+            "transport": {
+                "type": "ws",
+                "path": "/vpnjantit",
+                "headers": {
+                    "Host": "gr5.vpnjantit.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "gr5.vpnjantit.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
