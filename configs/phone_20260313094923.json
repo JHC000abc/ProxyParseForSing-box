@@ -1,0 +1,333 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+                "Dallas-198.23.249.154-1b6aa0106b7f8835ed5b11fbe6905bdc",
+                "Kyiv-31.42.190.76-329385062e0e60fdd882059f12950912",
+                "Frankfurt am Main-45.82.120.220-fa5395e78e091a6ad52082293afa18f9",
+                "Ashburn-23.95.113.104-9517cb114a6ca4918d029a68d3c6513b",
+                "Moscow-45.12.114.73-594cfa8222a5373b547ecbc219757987",
+                "Falkenstein-144.76.188.140-f9ba0807f62d36f7c826c1dc49e093d7",
+                "Elk Grove Village-192.3.130.96-c257235130366904125bccaf41fd3594",
+                "Elk Grove Village-192.3.130.96-748603daef13cb3808fd85a21a809ad3",
+                "Elk Grove Village-192.3.130.96-9d55ed5e47fe9f3eb96ec491454a9ddb",
+                "New York City-185.116.236.180-93a0352aac967cd5d4131d35dbcdec77",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-159.195.41.95-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+                "Dallas-198.23.249.154-1b6aa0106b7f8835ed5b11fbe6905bdc",
+                "Kyiv-31.42.190.76-329385062e0e60fdd882059f12950912",
+                "Frankfurt am Main-45.82.120.220-fa5395e78e091a6ad52082293afa18f9",
+                "Ashburn-23.95.113.104-9517cb114a6ca4918d029a68d3c6513b",
+                "Moscow-45.12.114.73-594cfa8222a5373b547ecbc219757987",
+                "Falkenstein-144.76.188.140-f9ba0807f62d36f7c826c1dc49e093d7",
+                "Elk Grove Village-192.3.130.96-c257235130366904125bccaf41fd3594",
+                "Elk Grove Village-192.3.130.96-748603daef13cb3808fd85a21a809ad3",
+                "Elk Grove Village-192.3.130.96-9d55ed5e47fe9f3eb96ec491454a9ddb",
+                "New York City-185.116.236.180-93a0352aac967cd5d4131d35dbcdec77",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-159.195.41.95-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+                "Dallas-198.23.249.154-1b6aa0106b7f8835ed5b11fbe6905bdc",
+                "Kyiv-31.42.190.76-329385062e0e60fdd882059f12950912",
+                "Frankfurt am Main-45.82.120.220-fa5395e78e091a6ad52082293afa18f9",
+                "Ashburn-23.95.113.104-9517cb114a6ca4918d029a68d3c6513b",
+                "Moscow-45.12.114.73-594cfa8222a5373b547ecbc219757987",
+                "Falkenstein-144.76.188.140-f9ba0807f62d36f7c826c1dc49e093d7",
+                "Elk Grove Village-192.3.130.96-c257235130366904125bccaf41fd3594",
+                "Elk Grove Village-192.3.130.96-748603daef13cb3808fd85a21a809ad3",
+                "Elk Grove Village-192.3.130.96-9d55ed5e47fe9f3eb96ec491454a9ddb",
+                "New York City-185.116.236.180-93a0352aac967cd5d4131d35dbcdec77",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-159.195.41.95-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Bern-45.82.254.158-5827978a92ed3aed9bc626f5a171356f",
+            "server": "150.241.78.128",
+            "server_port": 1935,
+            "password": "hysteria2_fastlane_y3phbb5eb:8FXcfb2dGzLFFgNvqVZdCWMApn6xfCiV",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "de3.h.fastlanehosting.ru"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dallas-198.23.249.154-1b6aa0106b7f8835ed5b11fbe6905bdc",
+            "server": "198.23.249.154",
+            "server_port": 443,
+            "uuid": "f91c1cc2-05fe-4efd-ba09-86cb6bec19e3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "198.23.249.154"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kyiv-31.42.190.76-329385062e0e60fdd882059f12950912",
+            "server": "31.42.190.76",
+            "server_port": 443,
+            "uuid": "5ac2d3b6-33cc-4442-9c0b-ae3909cabaae",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "31.42.190.76"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-45.82.120.220-fa5395e78e091a6ad52082293afa18f9",
+            "server": "188.114.98.0",
+            "server_port": 2087,
+            "uuid": "3f58cc47-94f6-40d3-8797-1ce66cb0555e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "a1d.maxriser.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "a1d.maxriser.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Ashburn-23.95.113.104-9517cb114a6ca4918d029a68d3c6513b",
+            "server": "23.95.113.104",
+            "server_port": 443,
+            "uuid": "f91c1cc2-05fe-4efd-ba09-86cb6bec19e3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "23.95.113.104"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-45.12.114.73-594cfa8222a5373b547ecbc219757987",
+            "server": "45.12.114.73",
+            "server_port": 8443,
+            "uuid": "f1e74548-4c0b-463b-b68d-0d1ec48c965d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-vless/",
+                "headers": {
+                    "Host": "rus21.unboundworld.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rus21.unboundworld.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-144.76.188.140-f9ba0807f62d36f7c826c1dc49e093d7",
+            "server": "144.76.188.140",
+            "server_port": 443,
+            "uuid": "ba849385-a780-43a0-b4e7-6ab8a08d3824",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "144.76.188.140"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Elk Grove Village-192.3.130.96-c257235130366904125bccaf41fd3594",
+            "server": "104.21.84.152",
+            "server_port": 443,
+            "uuid": "0523397d-0010-4379-a4f2-1ec0b29d4127",
+            "transport": {
+                "type": "ws",
+                "path": "/tof6MKB48S3g7wUBWjfYG",
+                "headers": {
+                    "Host": "yyy778.uk2030.indevs.in"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "yyy778.uk2030.indevs.in"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Elk Grove Village-192.3.130.96-748603daef13cb3808fd85a21a809ad3",
+            "server": "104.21.76.10",
+            "server_port": 443,
+            "uuid": "0523397d-0010-4379-a4f2-1ec0b29d4127",
+            "transport": {
+                "type": "ws",
+                "path": "/tof6MKB48S3g7wUBWjfYG",
+                "headers": {
+                    "Host": "a-e-r-t-y-t.222569.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "a-e-r-t-y-t.222569.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Elk Grove Village-192.3.130.96-9d55ed5e47fe9f3eb96ec491454a9ddb",
+            "server": "104.21.65.190",
+            "server_port": 443,
+            "uuid": "0523397d-0010-4379-a4f2-1ec0b29d4127",
+            "transport": {
+                "type": "ws",
+                "path": "/tof6MKB48S3g7wUBWjfYG",
+                "headers": {
+                    "Host": "a-3-r-g-y.4444936.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "a-3-r-g-y.4444936.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.180-93a0352aac967cd5d4131d35dbcdec77",
+            "server": "172.67.211.136",
+            "server_port": 443,
+            "uuid": "8ea4b3d0-86a8-4fc3-9eb1-5364760710ea",
+            "transport": {
+                "type": "ws",
+                "path": "/8enyf1e8YqeudROmhBuN",
+                "headers": {
+                    "Host": "s-e-t-y-u-j.191266.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "s-e-t-y-u-j.191266.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.41.95-0db8289b5a0c7163c2849b7db8f80ec4",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-37.156.45.227-f66aa30bca0dac78781d9d098884b975",
+            "server": "37.156.45.227",
+            "server_port": 36261,
+            "uuid": "cb57b920-cd95-4bbf-bd8c-9e58833fcc5c",
+            "transport": {
+                "type": "ws",
+                "path": "//connect",
+                "headers": {
+                    "Host": "GitHub.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
