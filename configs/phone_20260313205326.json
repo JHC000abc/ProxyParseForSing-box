@@ -1,0 +1,184 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Falkenstein-144.76.188.140-96604945c8803c17cc9f9fb87096e294",
+                "Dallas-198.23.249.154-325f2c2309c96bf75fe3afa42bad3698",
+                "Kyiv-31.42.190.76-dab983e70d9afe5850303c26eb1d3ffb",
+                "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+                "Nürnberg-159.195.42.17-7fd1d5b8c69dff125043f579436051d8",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Falkenstein-144.76.188.140-96604945c8803c17cc9f9fb87096e294",
+                "Dallas-198.23.249.154-325f2c2309c96bf75fe3afa42bad3698",
+                "Kyiv-31.42.190.76-dab983e70d9afe5850303c26eb1d3ffb",
+                "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+                "Nürnberg-159.195.42.17-7fd1d5b8c69dff125043f579436051d8",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Falkenstein-144.76.188.140-96604945c8803c17cc9f9fb87096e294",
+                "Dallas-198.23.249.154-325f2c2309c96bf75fe3afa42bad3698",
+                "Kyiv-31.42.190.76-dab983e70d9afe5850303c26eb1d3ffb",
+                "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+                "Nürnberg-159.195.42.17-7fd1d5b8c69dff125043f579436051d8",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+            "server": "svt1.fq.ito8.com",
+            "server_port": 8080,
+            "password": "1ae9f3fa-46a3-4ccf-ac29-990ec9673022",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "svt1.fq.ito8.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-144.76.188.140-96604945c8803c17cc9f9fb87096e294",
+            "server": "144.76.188.140",
+            "server_port": 443,
+            "uuid": "ba849385-a780-43a0-b4e7-6ab8a08d3824",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "144.76.188.140"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dallas-198.23.249.154-325f2c2309c96bf75fe3afa42bad3698",
+            "server": "198.23.249.154",
+            "server_port": 443,
+            "uuid": "f91c1cc2-05fe-4efd-ba09-86cb6bec19e3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "198.23.249.154"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kyiv-31.42.190.76-dab983e70d9afe5850303c26eb1d3ffb",
+            "server": "31.42.190.76",
+            "server_port": 443,
+            "uuid": "5ac2d3b6-33cc-4442-9c0b-ae3909cabaae",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "31.42.190.76"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-1cbdcd2dd2034de309bd3e0f98388ce0",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.42.17-7fd1d5b8c69dff125043f579436051d8",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
