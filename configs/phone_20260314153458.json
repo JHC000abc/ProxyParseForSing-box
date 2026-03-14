@@ -1,0 +1,172 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Inzai-140.238.37.247-66ad6e36f3c0553d6bca49b42287ce29",
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Kyiv-31.42.190.76-14c4d5425062a3f521bbd1555c9343a7",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-5.45.108.170-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Inzai-140.238.37.247-66ad6e36f3c0553d6bca49b42287ce29",
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Kyiv-31.42.190.76-14c4d5425062a3f521bbd1555c9343a7",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-5.45.108.170-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Inzai-140.238.37.247-66ad6e36f3c0553d6bca49b42287ce29",
+                "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+                "Kyiv-31.42.190.76-14c4d5425062a3f521bbd1555c9343a7",
+                "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+                "Nürnberg-5.45.108.170-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Inzai-140.238.37.247-66ad6e36f3c0553d6bca49b42287ce29",
+            "server": "63.141.128.188",
+            "server_port": 443,
+            "uuid": "d46ad20a-4454-4da7-8f9c-87f9152bedee",
+            "transport": {
+                "type": "ws",
+                "path": "/djjc/jp1",
+                "headers": {
+                    "Host": "d2-jp1.djwstlsweb.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d2-jp1.djwstlsweb.top"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Santa Clara-170.106.172.131-4fd901728f79099d78ea7f7421161c5f",
+            "server": "svt1.fq.ito8.com",
+            "server_port": 8080,
+            "password": "1ae9f3fa-46a3-4ccf-ac29-990ec9673022",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "svt1.fq.ito8.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kyiv-31.42.190.76-14c4d5425062a3f521bbd1555c9343a7",
+            "server": "31.42.190.76",
+            "server_port": 443,
+            "uuid": "5ac2d3b6-33cc-4442-9c0b-ae3909cabaae",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "31.42.190.76"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-04b3f12678db1a195e25f41f0bc3ec3a",
+            "server": "www.ptnk.sry-vpn.com",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.170-0db8289b5a0c7163c2849b7db8f80ec4",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-174.138.29.111-371d3be746caabc6a27526a2d6089dc7",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
