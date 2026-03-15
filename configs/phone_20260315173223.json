@@ -1,0 +1,176 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-78.142.192.190-ee52310fcb02e5cb764396249dce504d",
+                "Amsterdam-78.142.192.190-8edfbb0b2ba2177c57d9bfb6890dee58",
+                "Taipei-1.162.139.91-1f17cb2be9d065cdd5456bef8b58ccd2",
+                "Seoul-43.164.130.26-e1cc4e12813acfab869819892f36a4ca",
+                "Kyiv-31.42.190.76-9433439923ff4b60f7d9b7f02354dbbd",
+                "Frankfurt am Main-63.179.49.246-c7d9d5749a88374c54d18cc2793354a0",
+                "Nürnberg-37.120.163.52-0db8289b5a0c7163c2849b7db8f80ec4"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-78.142.192.190-ee52310fcb02e5cb764396249dce504d",
+                "Amsterdam-78.142.192.190-8edfbb0b2ba2177c57d9bfb6890dee58",
+                "Taipei-1.162.139.91-1f17cb2be9d065cdd5456bef8b58ccd2",
+                "Seoul-43.164.130.26-e1cc4e12813acfab869819892f36a4ca",
+                "Kyiv-31.42.190.76-9433439923ff4b60f7d9b7f02354dbbd",
+                "Frankfurt am Main-63.179.49.246-c7d9d5749a88374c54d18cc2793354a0",
+                "Nürnberg-37.120.163.52-0db8289b5a0c7163c2849b7db8f80ec4"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-78.142.192.190-ee52310fcb02e5cb764396249dce504d",
+                "Amsterdam-78.142.192.190-8edfbb0b2ba2177c57d9bfb6890dee58",
+                "Taipei-1.162.139.91-1f17cb2be9d065cdd5456bef8b58ccd2",
+                "Seoul-43.164.130.26-e1cc4e12813acfab869819892f36a4ca",
+                "Kyiv-31.42.190.76-9433439923ff4b60f7d9b7f02354dbbd",
+                "Frankfurt am Main-63.179.49.246-c7d9d5749a88374c54d18cc2793354a0",
+                "Nürnberg-37.120.163.52-0db8289b5a0c7163c2849b7db8f80ec4"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Amsterdam-78.142.192.190-ee52310fcb02e5cb764396249dce504d",
+            "server": "nl-4.tr202507.com",
+            "server_port": 443,
+            "password": "uThbm8eGmXZ7GKqnWy",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nl-4.tr202507.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Amsterdam-78.142.192.190-8edfbb0b2ba2177c57d9bfb6890dee58",
+            "server": "nl-4.tr202512.com",
+            "server_port": 443,
+            "password": "M08tvzYWtUEJNtbpHp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nl-4.tr202512.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Taipei-1.162.139.91-1f17cb2be9d065cdd5456bef8b58ccd2",
+            "server": "tw.ccwink.cc",
+            "server_port": 30102,
+            "password": "fe0fda62-79ff-467e-bef4-983322c1d21b",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tw.ccwink.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Seoul-43.164.130.26-e1cc4e12813acfab869819892f36a4ca",
+            "server": "kr.ccwink.cc",
+            "server_port": 56309,
+            "password": "fe0fda62-79ff-467e-bef4-983322c1d21b",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "kr.ccwink.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kyiv-31.42.190.76-9433439923ff4b60f7d9b7f02354dbbd",
+            "server": "31.42.190.76",
+            "server_port": 443,
+            "uuid": "5ac2d3b6-33cc-4442-9c0b-ae3909cabaae",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "31.42.190.76"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-63.179.49.246-c7d9d5749a88374c54d18cc2793354a0",
+            "server": "cool-lioness.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-37.120.163.52-0db8289b5a0c7163c2849b7db8f80ec4",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
