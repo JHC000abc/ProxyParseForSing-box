@@ -1,0 +1,253 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Kampong Loyang-134.185.84.38-d2b7ace6d893ebe81cd3682c49a7ffee",
+                "Tokyo-43.207.68.62-0ebd9ce56f32b7b1ce2b9ef18b8aaf21",
+                "Tokyo-35.72.9.196-1afcd999a3df642b9f320729abd6a252",
+                "Tung Chung-103.172.81.150-81faf348e4190071e63d05c34598925b",
+                "Tokyo-54.249.181.133-c99880ad02175f5c68b497af51cc3f12",
+                "Tokyo-13.230.8.241-918b477dea7f3f3a18e96901e22cfcab",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Falkenstein-144.76.188.130-4d43ad2d737ce0bb783fe726e5683b8c",
+                "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f",
+                "Falkenstein-144.76.188.140-7311cc1f51f380ab0adfa6c9a9fcd580"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Kampong Loyang-134.185.84.38-d2b7ace6d893ebe81cd3682c49a7ffee",
+                "Tokyo-43.207.68.62-0ebd9ce56f32b7b1ce2b9ef18b8aaf21",
+                "Tokyo-35.72.9.196-1afcd999a3df642b9f320729abd6a252",
+                "Tung Chung-103.172.81.150-81faf348e4190071e63d05c34598925b",
+                "Tokyo-54.249.181.133-c99880ad02175f5c68b497af51cc3f12",
+                "Tokyo-13.230.8.241-918b477dea7f3f3a18e96901e22cfcab",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Falkenstein-144.76.188.130-4d43ad2d737ce0bb783fe726e5683b8c",
+                "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f",
+                "Falkenstein-144.76.188.140-7311cc1f51f380ab0adfa6c9a9fcd580"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Kampong Loyang-134.185.84.38-d2b7ace6d893ebe81cd3682c49a7ffee",
+                "Tokyo-43.207.68.62-0ebd9ce56f32b7b1ce2b9ef18b8aaf21",
+                "Tokyo-35.72.9.196-1afcd999a3df642b9f320729abd6a252",
+                "Tung Chung-103.172.81.150-81faf348e4190071e63d05c34598925b",
+                "Tokyo-54.249.181.133-c99880ad02175f5c68b497af51cc3f12",
+                "Tokyo-13.230.8.241-918b477dea7f3f3a18e96901e22cfcab",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Falkenstein-144.76.188.130-4d43ad2d737ce0bb783fe726e5683b8c",
+                "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f",
+                "Falkenstein-144.76.188.140-7311cc1f51f380ab0adfa6c9a9fcd580"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Kampong Loyang-134.185.84.38-d2b7ace6d893ebe81cd3682c49a7ffee",
+            "server": "sg1.tangnin.top",
+            "server_port": 1443,
+            "uuid": "ebb58926-84cf-460a-b6ce-b69656fcfcce",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "sg1.tangnin.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sg1.tangnin.top"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-43.207.68.62-0ebd9ce56f32b7b1ce2b9ef18b8aaf21",
+            "server": "fleet-bonefish.rooster465.autos",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fleet-bonefish.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-35.72.9.196-1afcd999a3df642b9f320729abd6a252",
+            "server": "on-airedale.rooster465.autos",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "on-airedale.rooster465.autos"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Tung Chung-103.172.81.150-81faf348e4190071e63d05c34598925b",
+            "server": "aflzzul.meiquankongjian.com",
+            "server_port": 52513,
+            "uuid": "342bacfd-2b8f-3f49-a16e-439db5b0b9d5",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/564dfa20/",
+                "headers": {
+                    "Host": "aflzzul.meiquankongjian.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-54.249.181.133-c99880ad02175f5c68b497af51cc3f12",
+            "server": "close-wasp.rooster465.autos",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "close-wasp.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.230.8.241-918b477dea7f3f3a18e96901e22cfcab",
+            "server": "sharp-dogfish.rooster465.autos",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sharp-dogfish.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+            "server": "glowing-deer.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "glowing-deer.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-144.76.188.130-4d43ad2d737ce0bb783fe726e5683b8c",
+            "server": "144.76.188.130",
+            "server_port": 443,
+            "uuid": "75e13bcc-139b-4fe7-8525-548c8cfca08d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "144.76.188.130"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-144.76.188.140-7311cc1f51f380ab0adfa6c9a9fcd580",
+            "server": "144.76.188.140",
+            "server_port": 443,
+            "uuid": "ba849385-a780-43a0-b4e7-6ab8a08d3824",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "144.76.188.140"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
