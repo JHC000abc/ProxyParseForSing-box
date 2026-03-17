@@ -1,0 +1,260 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Bursa-212.87.198.66-88b9169c860a640bd4f46cbdd60465ae",
+                "Lauterbourg-213.136.69.8-14f9ed34bd5a511d447e466c1e9cf587",
+                "Kerkrade-78.159.131.12-529f06bce0773149669ca934644d3633",
+                "Lauterbourg-213.136.69.8-e73a0bfd35072b87909ab4e72514defd",
+                "Frankfurt am Main-57.129.119.115-4e356fd6f799b2212246ca742f081847",
+                "Saphan Sung-168.222.16.102-47634ab23328ed3a51826d1daed00e7e",
+                "Falkenstein-144.76.188.130-4158ed810cc6303ddd781b79c7154154",
+                "Nürnberg-159.195.42.17-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Falkenstein-144.76.188.140-d7ab0796c6c619362efa663fdc773b94",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-159.195.42.17-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Bursa-212.87.198.66-88b9169c860a640bd4f46cbdd60465ae",
+                "Lauterbourg-213.136.69.8-14f9ed34bd5a511d447e466c1e9cf587",
+                "Kerkrade-78.159.131.12-529f06bce0773149669ca934644d3633",
+                "Lauterbourg-213.136.69.8-e73a0bfd35072b87909ab4e72514defd",
+                "Frankfurt am Main-57.129.119.115-4e356fd6f799b2212246ca742f081847",
+                "Saphan Sung-168.222.16.102-47634ab23328ed3a51826d1daed00e7e",
+                "Falkenstein-144.76.188.130-4158ed810cc6303ddd781b79c7154154",
+                "Nürnberg-159.195.42.17-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Falkenstein-144.76.188.140-d7ab0796c6c619362efa663fdc773b94",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-159.195.42.17-222d95ccead75d92c5afbc7a9fc4176f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Bursa-212.87.198.66-88b9169c860a640bd4f46cbdd60465ae",
+                "Lauterbourg-213.136.69.8-14f9ed34bd5a511d447e466c1e9cf587",
+                "Kerkrade-78.159.131.12-529f06bce0773149669ca934644d3633",
+                "Lauterbourg-213.136.69.8-e73a0bfd35072b87909ab4e72514defd",
+                "Frankfurt am Main-57.129.119.115-4e356fd6f799b2212246ca742f081847",
+                "Saphan Sung-168.222.16.102-47634ab23328ed3a51826d1daed00e7e",
+                "Falkenstein-144.76.188.130-4158ed810cc6303ddd781b79c7154154",
+                "Nürnberg-159.195.42.17-0db8289b5a0c7163c2849b7db8f80ec4",
+                "Falkenstein-144.76.188.140-d7ab0796c6c619362efa663fdc773b94",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-159.195.42.17-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-88b9169c860a640bd4f46cbdd60465ae",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-14f9ed34bd5a511d447e466c1e9cf587",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-529f06bce0773149669ca934644d3633",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ads.x5.ru"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-e73a0bfd35072b87909ab4e72514defd",
+            "server": "fsdns.ectunnelvpn.me",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-4e356fd6f799b2212246ca742f081847",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-47634ab23328ed3a51826d1daed00e7e",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-144.76.188.130-4158ed810cc6303ddd781b79c7154154",
+            "server": "144.76.188.130",
+            "server_port": 443,
+            "uuid": "75e13bcc-139b-4fe7-8525-548c8cfca08d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "144.76.188.130"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.42.17-0db8289b5a0c7163c2849b7db8f80ec4",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-144.76.188.140-d7ab0796c6c619362efa663fdc773b94",
+            "server": "144.76.188.140",
+            "server_port": 443,
+            "uuid": "ba849385-a780-43a0-b4e7-6ab8a08d3824",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "144.76.188.140"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+            "server": "glowing-deer.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "glowing-deer.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.42.17-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
