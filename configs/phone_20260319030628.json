@@ -1,0 +1,169 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+                "Bāshettihalli-206.189.143.216-d69455bf49987227d6a421e5bbc70229",
+                "New York City-185.116.236.104-eabc9f025fc471d61b2ee1d812b01912",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Frankfurt am Main-57.129.119.115-cbaef192575a322db872c7dc351854d8",
+                "Nürnberg-159.195.43.18-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+                "Bāshettihalli-206.189.143.216-d69455bf49987227d6a421e5bbc70229",
+                "New York City-185.116.236.104-eabc9f025fc471d61b2ee1d812b01912",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Frankfurt am Main-57.129.119.115-cbaef192575a322db872c7dc351854d8",
+                "Nürnberg-159.195.43.18-222d95ccead75d92c5afbc7a9fc4176f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+                "Bāshettihalli-206.189.143.216-d69455bf49987227d6a421e5bbc70229",
+                "New York City-185.116.236.104-eabc9f025fc471d61b2ee1d812b01912",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Frankfurt am Main-57.129.119.115-cbaef192575a322db872c7dc351854d8",
+                "Nürnberg-159.195.43.18-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+            "server": "38.165.21.126",
+            "server_port": 29794,
+            "password": "fGIvSUXOYn7WYPNAc2PmjYuIKbw",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bing.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bāshettihalli-206.189.143.216-d69455bf49987227d6a421e5bbc70229",
+            "server": "planb.mojcn.com",
+            "server_port": 16626,
+            "uuid": "dbe3102c-5e26-4b5f-82eb-493ae07e758c",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "437dfed94cb7943bb6f7f93ccf00a561.mobgslb.tbcache.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.104-eabc9f025fc471d61b2ee1d812b01912",
+            "server": "fvbghyu.2xv.ccwu.cc",
+            "server_port": 80,
+            "uuid": "9e308743-bc58-4109-b8a8-c2c686959c65",
+            "transport": {
+                "type": "ws",
+                "path": "/I4W63AAjPkpe1D3pAvPtZpEoeO",
+                "headers": {
+                    "Host": "fvbghyu.2xv.ccwu.cc"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+            "server": "glowing-deer.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "glowing-deer.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-cbaef192575a322db872c7dc351854d8",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.43.18-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
