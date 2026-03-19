@@ -1,0 +1,241 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Fujairah-188.208.110.45-34b6237b6066650ffe47a2bdc2909bba",
+                "Elk Grove Village-192.3.130.103-6845814893ad444b6c190a49a947f320",
+                "Buffalo-192.3.179.114-9fe827bba2be477cab5a4d5580fa015b",
+                "Incheon-54.180.131.34-ebfdbc1fd62d85955dec728d249091cc",
+                "Amsterdam-163.172.214.188-6e9f0952d07e020e61fffa50801cba93",
+                "Bursa-212.87.198.66-470f974678d8b930935b4fd191bb0f57",
+                "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Fujairah-188.208.110.45-34b6237b6066650ffe47a2bdc2909bba",
+                "Elk Grove Village-192.3.130.103-6845814893ad444b6c190a49a947f320",
+                "Buffalo-192.3.179.114-9fe827bba2be477cab5a4d5580fa015b",
+                "Incheon-54.180.131.34-ebfdbc1fd62d85955dec728d249091cc",
+                "Amsterdam-163.172.214.188-6e9f0952d07e020e61fffa50801cba93",
+                "Bursa-212.87.198.66-470f974678d8b930935b4fd191bb0f57",
+                "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Fujairah-188.208.110.45-34b6237b6066650ffe47a2bdc2909bba",
+                "Elk Grove Village-192.3.130.103-6845814893ad444b6c190a49a947f320",
+                "Buffalo-192.3.179.114-9fe827bba2be477cab5a4d5580fa015b",
+                "Incheon-54.180.131.34-ebfdbc1fd62d85955dec728d249091cc",
+                "Amsterdam-163.172.214.188-6e9f0952d07e020e61fffa50801cba93",
+                "Bursa-212.87.198.66-470f974678d8b930935b4fd191bb0f57",
+                "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Fujairah-188.208.110.45-34b6237b6066650ffe47a2bdc2909bba",
+            "server": "cg1c15.waimaojd.com",
+            "server_port": 443,
+            "uuid": "4378a67e-d277-44b5-a99b-a947fff1ee21",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/api/v1/graphql",
+                "headers": {
+                    "Host": "cg1c15.waimaojd.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Elk Grove Village-192.3.130.103-6845814893ad444b6c190a49a947f320",
+            "server": "1-p-6-h-p.1no.ccwu.cc",
+            "server_port": 443,
+            "uuid": "ee8bc706-b0be-4053-944e-710f2697b022",
+            "transport": {
+                "type": "ws",
+                "path": "/7QbB9t8n6kQaEnWsy5Crj",
+                "headers": {
+                    "Host": "1-p-6-h-p.1no.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "1-p-6-h-p.1no.ccwu.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Buffalo-192.3.179.114-9fe827bba2be477cab5a4d5580fa015b",
+            "server": "172.67.204.137",
+            "server_port": 443,
+            "uuid": "3e6a5273-1c23-45a4-be64-3ca638615148",
+            "transport": {
+                "type": "ws",
+                "path": "/VuklMmoQe9bIrsrMvDeXGMpFCqHFh",
+                "headers": {
+                    "Host": "5thyj-p-0-.0zx.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "5thyj-p-0-.0zx.ccwu.cc"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.131.34-ebfdbc1fd62d85955dec728d249091cc",
+            "server": "glowing-deer.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "glowing-deer.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-6e9f0952d07e020e61fffa50801cba93",
+            "server": "SC-TheNetherlands1.09vpn.com",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "SC-TheNetherlands1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-470f974678d8b930935b4fd191bb0f57",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+            "server": "162.159.38.176",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
