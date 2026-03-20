@@ -1,0 +1,319 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Sydney-87.121.33.165-79339b866d068840ede36520a41fae83",
+                "Luxembourg-45.12.144.61-187d729ef3d314c75a42914f20d78bff",
+                "Nürnberg-152.53.245.65-91bbbfc2afde0c466f1c86eab4697be4",
+                "Vienna-152.53.45.80-985fa655af74731982f93588cc6e4a55",
+                "Nürnberg-5.181.50.54-b70eedaa10c9058ec048fca1bd94f4e1",
+                "Nürnberg-202.61.229.9-ab94512813690fe7b863585ab8461cf7",
+                "Singapore-206.189.147.22-0f2a1c7cb9e69e9ee912bcd576f0a016",
+                "Nürnberg-152.53.245.65-53a1bcd02a1db735b7f234de8e9c7b42",
+                "Saphan Sung-168.222.16.102-2ba3d13a4906f0a1a52d0fd5de690d4d",
+                "Nürnberg-5.45.108.74-a80fb62a90d7ccbdc3c01a2d7cf6ff5c",
+                "Amsterdam-163.172.213.174-2fe619f0e9af1131c3f92bee18ec1c89",
+                "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Sydney-87.121.33.165-79339b866d068840ede36520a41fae83",
+                "Luxembourg-45.12.144.61-187d729ef3d314c75a42914f20d78bff",
+                "Nürnberg-152.53.245.65-91bbbfc2afde0c466f1c86eab4697be4",
+                "Vienna-152.53.45.80-985fa655af74731982f93588cc6e4a55",
+                "Nürnberg-5.181.50.54-b70eedaa10c9058ec048fca1bd94f4e1",
+                "Nürnberg-202.61.229.9-ab94512813690fe7b863585ab8461cf7",
+                "Singapore-206.189.147.22-0f2a1c7cb9e69e9ee912bcd576f0a016",
+                "Nürnberg-152.53.245.65-53a1bcd02a1db735b7f234de8e9c7b42",
+                "Saphan Sung-168.222.16.102-2ba3d13a4906f0a1a52d0fd5de690d4d",
+                "Nürnberg-5.45.108.74-a80fb62a90d7ccbdc3c01a2d7cf6ff5c",
+                "Amsterdam-163.172.213.174-2fe619f0e9af1131c3f92bee18ec1c89",
+                "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Sydney-87.121.33.165-79339b866d068840ede36520a41fae83",
+                "Luxembourg-45.12.144.61-187d729ef3d314c75a42914f20d78bff",
+                "Nürnberg-152.53.245.65-91bbbfc2afde0c466f1c86eab4697be4",
+                "Vienna-152.53.45.80-985fa655af74731982f93588cc6e4a55",
+                "Nürnberg-5.181.50.54-b70eedaa10c9058ec048fca1bd94f4e1",
+                "Nürnberg-202.61.229.9-ab94512813690fe7b863585ab8461cf7",
+                "Singapore-206.189.147.22-0f2a1c7cb9e69e9ee912bcd576f0a016",
+                "Nürnberg-152.53.245.65-53a1bcd02a1db735b7f234de8e9c7b42",
+                "Saphan Sung-168.222.16.102-2ba3d13a4906f0a1a52d0fd5de690d4d",
+                "Nürnberg-5.45.108.74-a80fb62a90d7ccbdc3c01a2d7cf6ff5c",
+                "Amsterdam-163.172.213.174-2fe619f0e9af1131c3f92bee18ec1c89",
+                "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Sydney-87.121.33.165-79339b866d068840ede36520a41fae83",
+            "server": "enhanced-crayfish.rooster465.autos",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "enhanced-crayfish.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Luxembourg-45.12.144.61-187d729ef3d314c75a42914f20d78bff",
+            "server": "45.12.144.61",
+            "server_port": 443,
+            "password": "3ac6a6ca99f74941b1eaf892818e2ddb",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "45.12.144.61"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.245.65-91bbbfc2afde0c466f1c86eab4697be4",
+            "server": "brenna.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-152.53.45.80-985fa655af74731982f93588cc6e4a55",
+            "server": "lucy.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "098fd515-29de-4d74-b77d-d8ab878a7e2c",
+            "transport": {
+                "type": "ws",
+                "path": "/resgdws",
+                "headers": {
+                    "Host": "rivvers.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rivvers.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.181.50.54-b70eedaa10c9058ec048fca1bd94f4e1",
+            "server": "elliot.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+            "transport": {
+                "type": "ws",
+                "path": "/udfyfws",
+                "headers": {
+                    "Host": "octopusss5.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss5.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-202.61.229.9-ab94512813690fe7b863585ab8461cf7",
+            "server": "cosmin.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "7270612b-49f6-4b04-999c-34d8263da767",
+            "transport": {
+                "type": "ws",
+                "path": "/aymdlws",
+                "headers": {
+                    "Host": "picassooo.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "picassooo.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-206.189.147.22-0f2a1c7cb9e69e9ee912bcd576f0a016",
+            "server": "vps.zakir.web.id",
+            "server_port": 80,
+            "uuid": "ca73d911-29f4-42d8-ada5-81dee679e96a",
+            "transport": {
+                "type": "ws",
+                "path": "vless",
+                "headers": {
+                    "Host": "vps.zakir.web.id"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.245.65-53a1bcd02a1db735b7f234de8e9c7b42",
+            "server": "172.64.34.176",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-2ba3d13a4906f0a1a52d0fd5de690d4d",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.74-a80fb62a90d7ccbdc3c01a2d7cf6ff5c",
+            "server": "108.162.193.217",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.213.174-2fe619f0e9af1131c3f92bee18ec1c89",
+            "server": "SC-TheNetherlands2.09vpn.com",
+            "server_port": 80,
+            "uuid": "e73df646-1f62-41bf-8c50-653497d603d0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "SC-TheNetherlands2.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.245.65-2217eb7ca564c68d0e667185a122996d",
+            "server": "162.159.38.176",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
