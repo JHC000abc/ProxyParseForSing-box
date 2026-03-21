@@ -1,0 +1,248 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+                "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+                "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+                "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+                "Nürnberg-5.45.110.16-0a38739e8ca704e032e9f8674328cc73",
+                "Nürnberg-152.53.246.6-f33de8248d99bb57cd47767f9a6714d5",
+                "Frankfurt am Main-57.129.119.115-592f617c7e7f5a7758a97c26dbd874ec",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+                "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+                "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+                "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+                "Nürnberg-5.45.110.16-0a38739e8ca704e032e9f8674328cc73",
+                "Nürnberg-152.53.246.6-f33de8248d99bb57cd47767f9a6714d5",
+                "Frankfurt am Main-57.129.119.115-592f617c7e7f5a7758a97c26dbd874ec",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+                "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+                "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+                "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+                "Nürnberg-5.45.110.16-0a38739e8ca704e032e9f8674328cc73",
+                "Nürnberg-152.53.246.6-f33de8248d99bb57cd47767f9a6714d5",
+                "Frankfurt am Main-57.129.119.115-592f617c7e7f5a7758a97c26dbd874ec",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+                "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+            "server": "185.151.146.64",
+            "server_port": 443,
+            "password": "3ac6a6ca99f74941b1eaf892818e2ddb",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+            "server": "news.zoom.us",
+            "server_port": 8443,
+            "uuid": "39eb8c33-ee7f-4980-b3e5-684aaf390f56",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "darknet-free.alexid.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "darknet-free.alexid.org"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+            "server": "85.237.206.249",
+            "server_port": 443,
+            "password": "3ac6a6ca99f74941b1eaf892818e2ddb",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+            "server": "uk01.nekocloud.top",
+            "server_port": 65001,
+            "password": "86bfdc9d-64b0-447b-9316-2e3cc8712690",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "buylite.music.apple.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "YxNSWNJUQkeKDiPc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.110.16-0a38739e8ca704e032e9f8674328cc73",
+            "server": "v1.dabache.top",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.246.6-f33de8248d99bb57cd47767f9a6714d5",
+            "server": "162.159.38.176",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-592f617c7e7f5a7758a97c26dbd874ec",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+            "server": "glowing-deer.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "glowing-deer.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-ed1cb2061128579c9aed4760e6884102",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.110.16-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
