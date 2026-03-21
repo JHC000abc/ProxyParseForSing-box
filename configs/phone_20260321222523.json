@@ -1,0 +1,209 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+                "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+                "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+                "Nürnberg-152.53.245.65-eb0206d4cce7f68ade8a930c579317c8",
+                "Nürnberg-5.45.108.74-f748d672dd8f3a12c78c2d7b21bced54",
+                "Frankfurt am Main-57.129.119.115-d914274fdb12106056c95186a0085838",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+                "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+                "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+                "Nürnberg-152.53.245.65-eb0206d4cce7f68ade8a930c579317c8",
+                "Nürnberg-5.45.108.74-f748d672dd8f3a12c78c2d7b21bced54",
+                "Frankfurt am Main-57.129.119.115-d914274fdb12106056c95186a0085838",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+                "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+                "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+                "Nürnberg-152.53.245.65-eb0206d4cce7f68ade8a930c579317c8",
+                "Nürnberg-5.45.108.74-f748d672dd8f3a12c78c2d7b21bced54",
+                "Frankfurt am Main-57.129.119.115-d914274fdb12106056c95186a0085838",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-185.151.146.64-caae5d7138d56b06aec393e447533362",
+            "server": "185.151.146.64",
+            "server_port": 443,
+            "password": "3ac6a6ca99f74941b1eaf892818e2ddb",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Taipei-85.237.206.249-16d4dccc14f85970c425a7e02ac7b160",
+            "server": "85.237.206.249",
+            "server_port": 443,
+            "password": "3ac6a6ca99f74941b1eaf892818e2ddb",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-141.147.108.74-cd8256d5eb5208050675863a8b90664b",
+            "server": "uk01.nekocloud.top",
+            "server_port": 65001,
+            "password": "86bfdc9d-64b0-447b-9316-2e3cc8712690",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "buylite.music.apple.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "YxNSWNJUQkeKDiPc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.245.65-eb0206d4cce7f68ade8a930c579317c8",
+            "server": "162.159.38.176",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.74-f748d672dd8f3a12c78c2d7b21bced54",
+            "server": "v1.dabache.top",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-d914274fdb12106056c95186a0085838",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+            "server": "glowing-deer.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "glowing-deer.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.74-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
