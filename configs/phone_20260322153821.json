@@ -1,0 +1,231 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+                "Chang-hua-220.130.75.217-513e2d06de984c769fef8d902e6d9045",
+                "Singapore-152.42.168.0-1c54d1a10ba4049fd9533bbd28beca71",
+                "Nürnberg-5.45.108.170-ce409a9438690c55b3603de9e12c6b8b",
+                "Nürnberg-152.53.245.52-eb57f914639ba71a54649b3d484f82b7",
+                "New York City-185.184.68.94-3f0b7f1c2adebdba3429aabc20b5e14e",
+                "New York City-185.184.68.94-c8e908fca15d5a8fda88149c7f58ec5d",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-5.45.108.170-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+                "Chang-hua-220.130.75.217-513e2d06de984c769fef8d902e6d9045",
+                "Singapore-152.42.168.0-1c54d1a10ba4049fd9533bbd28beca71",
+                "Nürnberg-5.45.108.170-ce409a9438690c55b3603de9e12c6b8b",
+                "Nürnberg-152.53.245.52-eb57f914639ba71a54649b3d484f82b7",
+                "New York City-185.184.68.94-3f0b7f1c2adebdba3429aabc20b5e14e",
+                "New York City-185.184.68.94-c8e908fca15d5a8fda88149c7f58ec5d",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-5.45.108.170-222d95ccead75d92c5afbc7a9fc4176f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+                "Chang-hua-220.130.75.217-513e2d06de984c769fef8d902e6d9045",
+                "Singapore-152.42.168.0-1c54d1a10ba4049fd9533bbd28beca71",
+                "Nürnberg-5.45.108.170-ce409a9438690c55b3603de9e12c6b8b",
+                "Nürnberg-152.53.245.52-eb57f914639ba71a54649b3d484f82b7",
+                "New York City-185.184.68.94-3f0b7f1c2adebdba3429aabc20b5e14e",
+                "New York City-185.184.68.94-c8e908fca15d5a8fda88149c7f58ec5d",
+                "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+                "Nürnberg-5.45.108.170-222d95ccead75d92c5afbc7a9fc4176f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-103.125.217.171-9116235a89196c846604b4e6b11ba59e",
+            "server": "news.zoom.us",
+            "server_port": 8443,
+            "uuid": "39eb8c33-ee7f-4980-b3e5-684aaf390f56",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "darknet-free.alexid.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "darknet-free.alexid.org"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Chang-hua-220.130.75.217-513e2d06de984c769fef8d902e6d9045",
+            "server": "220.130.75.217",
+            "server_port": 443,
+            "password": "3ac6a6ca99f74941b1eaf892818e2ddb",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "220.130.75.217"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-152.42.168.0-1c54d1a10ba4049fd9533bbd28beca71",
+            "server": "162.159.134.61",
+            "server_port": 80,
+            "uuid": "26f85c0f-c741-4695-b1aa-d3f2d07d1b68",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "path.xyz-my.eu.org"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.170-ce409a9438690c55b3603de9e12c6b8b",
+            "server": "v1.dabache.top",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.245.52-eb57f914639ba71a54649b3d484f82b7",
+            "server": "162.159.38.176",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-3f0b7f1c2adebdba3429aabc20b5e14e",
+            "server": "cdfr.ae1autumn.dpdns.org",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "cdfr.ae1autumn.dpdns.org"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.184.68.94-c8e908fca15d5a8fda88149c7f58ec5d",
+            "server": "bhy7.ae1autumn.dpdns.org",
+            "server_port": 80,
+            "uuid": "13ad36e6-c091-43f2-8505-47d868dd544c",
+            "transport": {
+                "type": "ws",
+                "path": "/XR8So0uqFVa3vY9ZbxgW4",
+                "headers": {
+                    "Host": "bhy7.ae1autumn.dpdns.org"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.131.34-ae0ce39a19f85f46f5d7327f479b0ffe",
+            "server": "glowing-deer.rooster465.autos",
+            "server_port": 443,
+            "password": "ZY07256934",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "glowing-deer.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.108.170-222d95ccead75d92c5afbc7a9fc4176f",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
