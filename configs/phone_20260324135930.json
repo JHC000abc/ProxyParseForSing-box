@@ -1,0 +1,162 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Vienna-152.53.102.201-206370af146d75a45b020580843ba91a",
+                "Frankfurt am Main-45.140.43.27-f2016623135fbfed4bb7a4fb96bbb5e5",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Vienna-152.53.102.201-206370af146d75a45b020580843ba91a",
+                "Frankfurt am Main-45.140.43.27-f2016623135fbfed4bb7a4fb96bbb5e5",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Vienna-152.53.102.201-206370af146d75a45b020580843ba91a",
+                "Frankfurt am Main-45.140.43.27-f2016623135fbfed4bb7a4fb96bbb5e5",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-152.53.102.201-206370af146d75a45b020580843ba91a",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-45.140.43.27-f2016623135fbfed4bb7a4fb96bbb5e5",
+            "server": "vpn.nnet.online",
+            "server_port": 443,
+            "uuid": "5d950f22-a120-42c3-86f8-8ee81bfa08c9",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-tls",
+                "headers": {
+                    "Host": "nnet.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "VPN.NNET.Online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+            "server": "ov-france1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-france1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
