@@ -1,0 +1,233 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Calais-152.228.162.19-691a52f6a26249f011969abf9bdc4b2b",
+                "Frankfurt am Main-45.140.43.27-d781303bb2823638d222251e257d2906",
+                "Nürnberg-152.53.229.241-be4c536591bd7a392ca4652002eded48",
+                "Vienna-152.53.100.160-413363b54135dc8397a5bc4ad0800055",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+                "Riga-94.158.218.63-53a7ace1393f2e878a53c07b395e333e"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Calais-152.228.162.19-691a52f6a26249f011969abf9bdc4b2b",
+                "Frankfurt am Main-45.140.43.27-d781303bb2823638d222251e257d2906",
+                "Nürnberg-152.53.229.241-be4c536591bd7a392ca4652002eded48",
+                "Vienna-152.53.100.160-413363b54135dc8397a5bc4ad0800055",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+                "Riga-94.158.218.63-53a7ace1393f2e878a53c07b395e333e"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Calais-152.228.162.19-691a52f6a26249f011969abf9bdc4b2b",
+                "Frankfurt am Main-45.140.43.27-d781303bb2823638d222251e257d2906",
+                "Nürnberg-152.53.229.241-be4c536591bd7a392ca4652002eded48",
+                "Vienna-152.53.100.160-413363b54135dc8397a5bc4ad0800055",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+                "Riga-94.158.218.63-53a7ace1393f2e878a53c07b395e333e"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-691a52f6a26249f011969abf9bdc4b2b",
+            "server": "152.228.162.19",
+            "server_port": 80,
+            "uuid": "5ce84688-f535-46ad-a512-37b17becf6ea",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "akamaized.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-45.140.43.27-d781303bb2823638d222251e257d2906",
+            "server": "vpn.nnet.online",
+            "server_port": 443,
+            "uuid": "5d950f22-a120-42c3-86f8-8ee81bfa08c9",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-tls",
+                "headers": {
+                    "Host": "nnet.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "VPN.NNET.Online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.229.241-be4c536591bd7a392ca4652002eded48",
+            "server": "vip3.kaixincloud.top",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-152.53.100.160-413363b54135dc8397a5bc4ad0800055",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+            "server": "fluent-stingray.crayfish192.xyz",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fluent-stingray.crayfish192.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+            "server": "ov-france1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-france1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+            "server": "vpn3.rnmcnm.com",
+            "server_port": 443,
+            "uuid": "c3d4e5f6-7890-1234-5678-90abcdef1234",
+            "transport": {
+                "type": "ws",
+                "path": "/ray",
+                "headers": {
+                    "Host": "vpn3.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn3.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Riga-94.158.218.63-53a7ace1393f2e878a53c07b395e333e",
+            "server": "94.158.218.63",
+            "server_port": 443,
+            "uuid": "f2a806c6-f36b-4cd9-8bb6-7addb218ad2d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "94.158.218.63"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
