@@ -1,0 +1,299 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-51.89.11.94-6b576180df6a2c57c759468317691c78",
+                "Tel Aviv-34.165.65.189-f7b5f797f55955b57058d781ba629ab4",
+                "The Dalles-34.83.79.170-15e4df419377d06f088cf9459bd8c685",
+                "Los Angeles-64.186.255.102-82a1ca06d37175d76d6ffe1feb565ab5",
+                "Los Angeles-38.165.21.126-271fe4f9bf5c838631537f7ec118f4fb",
+                "Kawagoe-157.120.37.197-bf538b67bba10f7c631d2de2c8b2f038",
+                "Nürnberg-46.225.105.230-c9b678f810a8ddfc5a21a5c7062e3c38",
+                "Nürnberg-46.225.105.230-e48de83b24496811d00767851dc30769",
+                "Vienna-152.53.51.2-f3e381ac2768f666b7555920f7c9b06c",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-51.89.11.94-6b576180df6a2c57c759468317691c78",
+                "Tel Aviv-34.165.65.189-f7b5f797f55955b57058d781ba629ab4",
+                "The Dalles-34.83.79.170-15e4df419377d06f088cf9459bd8c685",
+                "Los Angeles-64.186.255.102-82a1ca06d37175d76d6ffe1feb565ab5",
+                "Los Angeles-38.165.21.126-271fe4f9bf5c838631537f7ec118f4fb",
+                "Kawagoe-157.120.37.197-bf538b67bba10f7c631d2de2c8b2f038",
+                "Nürnberg-46.225.105.230-c9b678f810a8ddfc5a21a5c7062e3c38",
+                "Nürnberg-46.225.105.230-e48de83b24496811d00767851dc30769",
+                "Vienna-152.53.51.2-f3e381ac2768f666b7555920f7c9b06c",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-51.89.11.94-6b576180df6a2c57c759468317691c78",
+                "Tel Aviv-34.165.65.189-f7b5f797f55955b57058d781ba629ab4",
+                "The Dalles-34.83.79.170-15e4df419377d06f088cf9459bd8c685",
+                "Los Angeles-64.186.255.102-82a1ca06d37175d76d6ffe1feb565ab5",
+                "Los Angeles-38.165.21.126-271fe4f9bf5c838631537f7ec118f4fb",
+                "Kawagoe-157.120.37.197-bf538b67bba10f7c631d2de2c8b2f038",
+                "Nürnberg-46.225.105.230-c9b678f810a8ddfc5a21a5c7062e3c38",
+                "Nürnberg-46.225.105.230-e48de83b24496811d00767851dc30769",
+                "Vienna-152.53.51.2-f3e381ac2768f666b7555920f7c9b06c",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-51.89.11.94-6b576180df6a2c57c759468317691c78",
+            "server": "51.89.11.94",
+            "server_port": 443,
+            "uuid": "e5408561-3874-4d41-a744-0cd0dfdb86c8",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "http",
+                "path": "/",
+                "headers": {
+                    "Host": "51.89.11.94"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tel Aviv-34.165.65.189-f7b5f797f55955b57058d781ba629ab4",
+            "server": "yiselie.iptk123.com",
+            "server_port": 443,
+            "password": "9cfd3d46-6d4c-48c8-8a60-046a9e615abb",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "yiselie.iptk123.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "The Dalles-34.83.79.170-15e4df419377d06f088cf9459bd8c685",
+            "server": "meiguo.iptk123.com",
+            "server_port": 443,
+            "password": "ed665842-ef8e-41b4-925b-04e8ab546e82",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "meiguo.iptk123.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Los Angeles-64.186.255.102-82a1ca06d37175d76d6ffe1feb565ab5",
+            "server": "n3.chateditimage.com",
+            "server_port": 443,
+            "password": "4123ae62-0999-4984-8ead-091630e594a9",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "n3.chateditimage.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-38.165.21.126-271fe4f9bf5c838631537f7ec118f4fb",
+            "server": "38.165.21.126",
+            "server_port": 29794,
+            "password": "fGIvSUXOYn7WYPNAc2PmjYuIKbw",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bing.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kawagoe-157.120.37.197-bf538b67bba10f7c631d2de2c8b2f038",
+            "server": "13.113.229.223",
+            "server_port": 3022,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me%2Fripaojiedian"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.230-c9b678f810a8ddfc5a21a5c7062e3c38",
+            "server": "172.64.35.45",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.105.230-e48de83b24496811d00767851dc30769",
+            "server": "norman.ns.cloudflare.com",
+            "server_port": 2096,
+            "uuid": "3f0f36f5-f091-45c5-88c9-4bcc545b922c",
+            "transport": {
+                "type": "ws",
+                "path": "/45.76.183.217=49292",
+                "headers": {
+                    "Host": "hetz.x-smm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hetz.x-smm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-152.53.51.2-f3e381ac2768f666b7555920f7c9b06c",
+            "server": "cosmin.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "7270612b-49f6-4b04-999c-34d8263da767",
+            "transport": {
+                "type": "ws",
+                "path": "/aymdlws",
+                "headers": {
+                    "Host": "picassooo.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "picassooo.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+            "server": "fluent-stingray.crayfish192.xyz",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fluent-stingray.crayfish192.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+            "server": "vpn3.rnmcnm.com",
+            "server_port": 443,
+            "uuid": "c3d4e5f6-7890-1234-5678-90abcdef1234",
+            "transport": {
+                "type": "ws",
+                "path": "/ray",
+                "headers": {
+                    "Host": "vpn3.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn3.rnmcnm.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
