@@ -1,0 +1,243 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Ursynów-62.112.222.76-859e1bf5a09f51d994ec85c0da6e729f",
+                "Yuanlin-1.170.233.61-60ad58b325a7f879397ab4d764a52bf4",
+                "Nürnberg-202.61.228.220-f3e381ac2768f666b7555920f7c9b06c",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Amsterdam-163.172.214.188-22db8e2a96c5672708a3968d98b39c5f",
+                "Saphan Sung-168.222.16.102-268ba04c94eb1b23fe0a14da2b4c35d6",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Ursynów-62.112.222.76-859e1bf5a09f51d994ec85c0da6e729f",
+                "Yuanlin-1.170.233.61-60ad58b325a7f879397ab4d764a52bf4",
+                "Nürnberg-202.61.228.220-f3e381ac2768f666b7555920f7c9b06c",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Amsterdam-163.172.214.188-22db8e2a96c5672708a3968d98b39c5f",
+                "Saphan Sung-168.222.16.102-268ba04c94eb1b23fe0a14da2b4c35d6",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Ursynów-62.112.222.76-859e1bf5a09f51d994ec85c0da6e729f",
+                "Yuanlin-1.170.233.61-60ad58b325a7f879397ab4d764a52bf4",
+                "Nürnberg-202.61.228.220-f3e381ac2768f666b7555920f7c9b06c",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+                "Amsterdam-163.172.214.188-22db8e2a96c5672708a3968d98b39c5f",
+                "Saphan Sung-168.222.16.102-268ba04c94eb1b23fe0a14da2b4c35d6",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.76-859e1bf5a09f51d994ec85c0da6e729f",
+            "server": "62.112.222.76",
+            "server_port": 443,
+            "password": "WF42809561",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "top-goshawk.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Yuanlin-1.170.233.61-60ad58b325a7f879397ab4d764a52bf4",
+            "server": "api.livecut.cc",
+            "server_port": 443,
+            "uuid": "ac421bf3-470d-4e21-a56d-c8d622f6df2f",
+            "transport": {
+                "type": "ws",
+                "path": "/music",
+                "headers": {
+                    "Host": "api.livecut.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.livecut.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-202.61.228.220-f3e381ac2768f666b7555920f7c9b06c",
+            "server": "cosmin.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "7270612b-49f6-4b04-999c-34d8263da767",
+            "transport": {
+                "type": "ws",
+                "path": "/aymdlws",
+                "headers": {
+                    "Host": "picassooo.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "picassooo.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+            "server": "fluent-stingray.crayfish192.xyz",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fluent-stingray.crayfish192.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-0030e23c3ff2992f61c1b72c6e760ac9",
+            "server": "ov-france1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-france1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-22db8e2a96c5672708a3968d98b39c5f",
+            "server": "SC-TheNetherlands1.09vpn.com",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "SC-TheNetherlands1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saphan Sung-168.222.16.102-268ba04c94eb1b23fe0a14da2b4c35d6",
+            "server": "168.222.16.102",
+            "server_port": 80,
+            "uuid": "4dc817f7-2595-4330-a1b0-e35e7c6b803a",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "www.ptnk.sry-vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e",
+            "server": "partner.zoom.us",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
