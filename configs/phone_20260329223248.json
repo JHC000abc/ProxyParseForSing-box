@@ -1,0 +1,278 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Calais-51.68.240.35-5ead97f58a5ce3620f92ba2eac8adeb7",
+                "London-159.65.95.169-29052904038f9bccd5a71555978e3452",
+                "Portland-15.204.109.160-128f4283e458b2411e25192d25bc4e52",
+                "Los Angeles-74.48.12.234-4a9e0ee38bda7507d530e274a990f0a9",
+                "Nürnberg-152.53.246.6-91bbbfc2afde0c466f1c86eab4697be4",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+                "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Calais-51.68.240.35-5ead97f58a5ce3620f92ba2eac8adeb7",
+                "London-159.65.95.169-29052904038f9bccd5a71555978e3452",
+                "Portland-15.204.109.160-128f4283e458b2411e25192d25bc4e52",
+                "Los Angeles-74.48.12.234-4a9e0ee38bda7507d530e274a990f0a9",
+                "Nürnberg-152.53.246.6-91bbbfc2afde0c466f1c86eab4697be4",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+                "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Calais-51.68.240.35-5ead97f58a5ce3620f92ba2eac8adeb7",
+                "London-159.65.95.169-29052904038f9bccd5a71555978e3452",
+                "Portland-15.204.109.160-128f4283e458b2411e25192d25bc4e52",
+                "Los Angeles-74.48.12.234-4a9e0ee38bda7507d530e274a990f0a9",
+                "Nürnberg-152.53.246.6-91bbbfc2afde0c466f1c86eab4697be4",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+                "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Calais-51.68.240.35-5ead97f58a5ce3620f92ba2eac8adeb7",
+            "server": "51.68.240.35",
+            "server_port": 443,
+            "uuid": "491ce522-7923-41ad-869f-df74539af6e0",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "http",
+                "path": "/",
+                "headers": {
+                    "Host": "51.68.240.35"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "London-159.65.95.169-29052904038f9bccd5a71555978e3452",
+            "server": "104.21.227.134",
+            "server_port": 443,
+            "uuid": "53f0bca8-f170-4ef7-8031-c7d441189dbf",
+            "transport": {
+                "type": "ws",
+                "path": "/cahttingws",
+                "headers": {
+                    "Host": "639073677259599430.civic-perma.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "639073677259599430.civic-perma.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Portland-15.204.109.160-128f4283e458b2411e25192d25bc4e52",
+            "server": "15.204.50.250",
+            "server_port": 443,
+            "uuid": "64c58857-f224-4011-aaf3-5f7915a526b6",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "http",
+                "path": "/",
+                "headers": {
+                    "Host": "15.204.50.250"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-74.48.12.234-4a9e0ee38bda7507d530e274a990f0a9",
+            "server": "162.159.45.202",
+            "server_port": 8443,
+            "uuid": "d39ddd0b-8d20-4d13-df63-752ad78c69c5",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "ccnew.jakesolo.eu.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ccnew.jakesolo.eu.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.246.6-91bbbfc2afde0c466f1c86eab4697be4",
+            "server": "brenna.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "1b2c91ab-f6c9-42f8-b2c6-8de0ac133d63",
+            "transport": {
+                "type": "ws",
+                "path": "/sghiyws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+            "server": "fluent-stingray.crayfish192.xyz",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fluent-stingray.crayfish192.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-0c965aab73db3913e060a1a2aac4f509",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+            "server": "pq-BosniaandHerzegovina1.09vpn.com",
+            "server_port": 80,
+            "uuid": "75e1fde7-6bf6-48ef-ba43-400e960e185b",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-BosniaandHerzegovina1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+            "server": "vpn3.rnmcnm.com",
+            "server_port": 443,
+            "uuid": "c3d4e5f6-7890-1234-5678-90abcdef1234",
+            "transport": {
+                "type": "ws",
+                "path": "/ray",
+                "headers": {
+                    "Host": "vpn3.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn3.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-168.144.38.165-7bf42c34185e7efac19c022284ee429e",
+            "server": "partner.zoom.us",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
