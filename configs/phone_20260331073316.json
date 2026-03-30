@@ -1,0 +1,222 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Toronto-34.130.189.242-f7723e56c3c160804e7371b347d052f9",
+                "Tel Aviv-34.165.65.189-d36b20536a07fbeb0b4ed54da0816c33",
+                "New York City-199.195.254.136-197dccfe46a623088b674c3265bd6393",
+                "Frankfurt am Main-5.56.26.170-852d275015d35df9e05f387eecca95e9",
+                "Frankfurt am Main-57.129.119.115-f491f573bf110562b24928539878b508",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Toronto-34.130.189.242-f7723e56c3c160804e7371b347d052f9",
+                "Tel Aviv-34.165.65.189-d36b20536a07fbeb0b4ed54da0816c33",
+                "New York City-199.195.254.136-197dccfe46a623088b674c3265bd6393",
+                "Frankfurt am Main-5.56.26.170-852d275015d35df9e05f387eecca95e9",
+                "Frankfurt am Main-57.129.119.115-f491f573bf110562b24928539878b508",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Toronto-34.130.189.242-f7723e56c3c160804e7371b347d052f9",
+                "Tel Aviv-34.165.65.189-d36b20536a07fbeb0b4ed54da0816c33",
+                "New York City-199.195.254.136-197dccfe46a623088b674c3265bd6393",
+                "Frankfurt am Main-5.56.26.170-852d275015d35df9e05f387eecca95e9",
+                "Frankfurt am Main-57.129.119.115-f491f573bf110562b24928539878b508",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+                "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toronto-34.130.189.242-f7723e56c3c160804e7371b347d052f9",
+            "server": "jianada.iptk123.com",
+            "server_port": 443,
+            "password": "c8d187bb-1464-4407-a86b-c9fd5c777334",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jianada.iptk123.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tel Aviv-34.165.65.189-d36b20536a07fbeb0b4ed54da0816c33",
+            "server": "yiselie.iptk123.com",
+            "server_port": 443,
+            "password": "2e6e6164-ba26-45f8-a831-9365e0f58a0a",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "yiselie.iptk123.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-199.195.254.136-197dccfe46a623088b674c3265bd6393",
+            "server": "199.195.254.136",
+            "server_port": 443,
+            "uuid": "6ca3af71-f1b0-46da-b64f-ac6ef4406596",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "199.195.254.136"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "199.195.254.136"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-852d275015d35df9e05f387eecca95e9",
+            "server": "82.26.155.20",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra35.chasem2026sud.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-f491f573bf110562b24928539878b508",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+            "server": "fluent-stingray.crayfish192.xyz",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fluent-stingray.crayfish192.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+            "server": "pq-BosniaandHerzegovina1.09vpn.com",
+            "server_port": 80,
+            "uuid": "75e1fde7-6bf6-48ef-ba43-400e960e185b",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-BosniaandHerzegovina1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tung Chung-45.197.148.81-e771c8480f510f3a31acf617668b8d11",
+            "server": "vpn3.rnmcnm.com",
+            "server_port": 443,
+            "uuid": "c3d4e5f6-7890-1234-5678-90abcdef1234",
+            "transport": {
+                "type": "ws",
+                "path": "/ray",
+                "headers": {
+                    "Host": "vpn3.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn3.rnmcnm.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
