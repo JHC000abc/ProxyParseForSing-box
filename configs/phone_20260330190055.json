@@ -1,0 +1,229 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-147.45.49.251-126543da5dcd80c2e006a55e0fad0cfc",
+                "Incheon-13.125.212.169-3c3b25c0d2259b44fc05574315c0acbb",
+                "Phoenix-89.185.80.192-f5bcc9ce3c8584749023734f84a625e3",
+                "Paris-195.154.200.13-c4139fdb99a3a0574a7545ccb94c519e",
+                "Frankfurt am Main-57.129.119.115-bedf26f61e27c4f34709b1e957c55ba4",
+                "Brussels-45.120.179.9-70b2291d3b73b8fc94c0dea86c510b31",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-147.45.49.251-126543da5dcd80c2e006a55e0fad0cfc",
+                "Incheon-13.125.212.169-3c3b25c0d2259b44fc05574315c0acbb",
+                "Phoenix-89.185.80.192-f5bcc9ce3c8584749023734f84a625e3",
+                "Paris-195.154.200.13-c4139fdb99a3a0574a7545ccb94c519e",
+                "Frankfurt am Main-57.129.119.115-bedf26f61e27c4f34709b1e957c55ba4",
+                "Brussels-45.120.179.9-70b2291d3b73b8fc94c0dea86c510b31",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-147.45.49.251-126543da5dcd80c2e006a55e0fad0cfc",
+                "Incheon-13.125.212.169-3c3b25c0d2259b44fc05574315c0acbb",
+                "Phoenix-89.185.80.192-f5bcc9ce3c8584749023734f84a625e3",
+                "Paris-195.154.200.13-c4139fdb99a3a0574a7545ccb94c519e",
+                "Frankfurt am Main-57.129.119.115-bedf26f61e27c4f34709b1e957c55ba4",
+                "Brussels-45.120.179.9-70b2291d3b73b8fc94c0dea86c510b31",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-147.45.49.251-126543da5dcd80c2e006a55e0fad0cfc",
+            "server": "linjp1.jueduibupao.top",
+            "server_port": 47722,
+            "password": "06bb0c42-9c60-4a2a-bc40-3e950d4c458b",
+            "tls": {
+                "enabled": true,
+                "insecure": true
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-13.125.212.169-3c3b25c0d2259b44fc05574315c0acbb",
+            "server": "kr1.ktmhyld.com",
+            "server_port": 18385,
+            "password": "6d5d1d83-b04e-4c5d-873e-b027d59e0b36",
+            "tls": {
+                "enabled": true,
+                "insecure": true
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Phoenix-89.185.80.192-f5bcc9ce3c8584749023734f84a625e3",
+            "server": "ny.jueduibupao.top",
+            "server_port": 50001,
+            "password": "06bb0c42-9c60-4a2a-bc40-3e950d4c458b",
+            "tls": {
+                "enabled": true,
+                "insecure": true
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-195.154.200.13-c4139fdb99a3a0574a7545ccb94c519e",
+            "server": "195.154.54.131",
+            "server_port": 40022,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-bedf26f61e27c4f34709b1e957c55ba4",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Brussels-45.120.179.9-70b2291d3b73b8fc94c0dea86c510b31",
+            "server": "192.200.160.20",
+            "server_port": 443,
+            "uuid": "c1a5ecfa-8a01-4070-91e0-0328b82388ad",
+            "transport": {
+                "type": "ws",
+                "path": "/phnkfhws",
+                "headers": {
+                    "Host": "639073677243396643.camry-perma.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "639073677243396643.camry-perma.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+            "server": "fluent-stingray.crayfish192.xyz",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fluent-stingray.crayfish192.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-dc5a99580cee5e619158b633dd75bd04",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+            "server": "pq-BosniaandHerzegovina1.09vpn.com",
+            "server_port": 80,
+            "uuid": "75e1fde7-6bf6-48ef-ba43-400e960e185b",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-BosniaandHerzegovina1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
