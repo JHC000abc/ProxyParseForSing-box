@@ -1,0 +1,335 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-57.129.94.79-f10e5f90cd9fd64784dd384a4e62a66f",
+                "Johannesburg-102.37.156.224-1cd2ccb66fc20e14bd755d32ce601f2c",
+                "Frankfurt am Main-135.125.245.131-8f1da74beba42ab6e2e54254e2820e46",
+                "Frankfurt am Main-57.129.119.115-85e2e17e1187085bb88a14b0bc177836",
+                "Frankfurt am Main-5.56.26.170-51caf0afb4c6c40db14d059c80fe72a1",
+                "Frankfurt am Main-57.129.95.38-8b597163f4b278cc909a86e2572daa31",
+                "Helsinki-38.244.136.233-a8c14f63ff01235df24186384d109858",
+                "Banqiao-36.224.128.32-c25f131d07d7a8d0344242031e835d6a",
+                "Heritage Hills-38.135.24.131-c0c012798f8f7791cf46d7f249ccead7",
+                "Frankfurt am Main-57.129.95.45-f0f04abad79371ef09bc6502d17d0332",
+                "Bexley-51.75.168.50-3379b2485eea45400c0cb3906700ae18",
+                "Frankfurt am Main-141.95.106.127-27b1d0a942e00799215eba2444e03036",
+                "Helsinki-193.47.60.186-83b1b675cd6ca0d3f40505167a78f4e0",
+                "Riga-185.176.221.72-452bd06ec05241c88b9d544c948d1397",
+                "Voluntari-154.46.31.106-8d4036caf23377249d8c3628d1647622",
+                "Johannesburg-4.222.217.240-118648a8a55ad6a1d4bd0a5fc6e99a1a",
+                "Ho Chi Minh City-112.197.26.106-78c25bcb0643234859922fffa26dd247",
+                "Amsterdam-158.173.20.171-3e16a18f091a5d25c07f84431ed8571a",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-57.129.94.79-f10e5f90cd9fd64784dd384a4e62a66f",
+                "Johannesburg-102.37.156.224-1cd2ccb66fc20e14bd755d32ce601f2c",
+                "Frankfurt am Main-135.125.245.131-8f1da74beba42ab6e2e54254e2820e46",
+                "Frankfurt am Main-57.129.119.115-85e2e17e1187085bb88a14b0bc177836",
+                "Frankfurt am Main-5.56.26.170-51caf0afb4c6c40db14d059c80fe72a1",
+                "Frankfurt am Main-57.129.95.38-8b597163f4b278cc909a86e2572daa31",
+                "Helsinki-38.244.136.233-a8c14f63ff01235df24186384d109858",
+                "Banqiao-36.224.128.32-c25f131d07d7a8d0344242031e835d6a",
+                "Heritage Hills-38.135.24.131-c0c012798f8f7791cf46d7f249ccead7",
+                "Frankfurt am Main-57.129.95.45-f0f04abad79371ef09bc6502d17d0332",
+                "Bexley-51.75.168.50-3379b2485eea45400c0cb3906700ae18",
+                "Frankfurt am Main-141.95.106.127-27b1d0a942e00799215eba2444e03036",
+                "Helsinki-193.47.60.186-83b1b675cd6ca0d3f40505167a78f4e0",
+                "Riga-185.176.221.72-452bd06ec05241c88b9d544c948d1397",
+                "Voluntari-154.46.31.106-8d4036caf23377249d8c3628d1647622",
+                "Johannesburg-4.222.217.240-118648a8a55ad6a1d4bd0a5fc6e99a1a",
+                "Ho Chi Minh City-112.197.26.106-78c25bcb0643234859922fffa26dd247",
+                "Amsterdam-158.173.20.171-3e16a18f091a5d25c07f84431ed8571a",
+                "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+                "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+                "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-57.129.94.79-f10e5f90cd9fd64784dd384a4e62a66f",
+            "server": "57.129.94.79",
+            "server_port": 11206,
+            "method": "chacha20-ietf-poly1305",
+            "password": "70c455c9f19aa3a5"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Johannesburg-102.37.156.224-1cd2ccb66fc20e14bd755d32ce601f2c",
+            "server": "102.37.156.224",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "aduB9HGxQHjA2SBMRjkHX6"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-135.125.245.131-8f1da74beba42ab6e2e54254e2820e46",
+            "server": "135.125.245.131",
+            "server_port": 20939,
+            "method": "chacha20-ietf-poly1305",
+            "password": "85d3d8ccba287d3e"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-85e2e17e1187085bb88a14b0bc177836",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-51caf0afb4c6c40db14d059c80fe72a1",
+            "server": "82.26.155.20",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra35.chasem2026sud.com"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-57.129.95.38-8b597163f4b278cc909a86e2572daa31",
+            "server": "57.129.95.38",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "f54cdee10f8b25ce"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Helsinki-38.244.136.233-a8c14f63ff01235df24186384d109858",
+            "server": "promo18v.bystrivpn.ru",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "dAHM1pm8ag7KdlrUylQi6t"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Banqiao-36.224.128.32-c25f131d07d7a8d0344242031e835d6a",
+            "server": "r3mrcg001233myh.cybervena.com",
+            "server_port": 50099,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Heritage Hills-38.135.24.131-c0c012798f8f7791cf46d7f249ccead7",
+            "server": "tinkered-pennies-puppies.freesocks.work",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "hbGrpfvNrJsUmKmPbR3iY2"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-57.129.95.45-f0f04abad79371ef09bc6502d17d0332",
+            "server": "57.129.95.45",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "6675cbf62d6a3a4f"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Bexley-51.75.168.50-3379b2485eea45400c0cb3906700ae18",
+            "server": "51.75.168.50",
+            "server_port": 13030,
+            "method": "chacha20-ietf-poly1305",
+            "password": "6c815bb84c781da5"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-141.95.106.127-27b1d0a942e00799215eba2444e03036",
+            "server": "141.95.106.127",
+            "server_port": 11201,
+            "method": "chacha20-ietf-poly1305",
+            "password": "94aae0510188e8c5"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Helsinki-193.47.60.186-83b1b675cd6ca0d3f40505167a78f4e0",
+            "server": "193.47.60.186",
+            "server_port": 28687,
+            "method": "chacha20-ietf-poly1305",
+            "password": "yKVMoB3AwiTEznpnoq2FYR"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Riga-185.176.221.72-452bd06ec05241c88b9d544c948d1397",
+            "server": "185.176.221.72",
+            "server_port": 24637,
+            "method": "chacha20-ietf-poly1305",
+            "password": "MholStyHL7DhrewKbpQa20"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Voluntari-154.46.31.106-8d4036caf23377249d8c3628d1647622",
+            "server": "154.46.31.106",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "QFWzCw2uX9B9i6qAYeFBIE"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Johannesburg-4.222.217.240-118648a8a55ad6a1d4bd0a5fc6e99a1a",
+            "server": "102.133.165.160",
+            "server_port": 16233,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Xsy8Ox4yOV3xLlpxtjzs3X"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Ho Chi Minh City-112.197.26.106-78c25bcb0643234859922fffa26dd247",
+            "server": "112.197.26.106",
+            "server_port": 45310,
+            "method": "chacha20-ietf-poly1305",
+            "password": "ca5a5efae00a832b"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Amsterdam-158.173.20.171-3e16a18f091a5d25c07f84431ed8571a",
+            "server": "158.173.20.171",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "trojan",
+            "tag": "Ursynów-62.112.222.55-237726e274a88650fa972c278631fbb0",
+            "server": "fluent-stingray.crayfish192.xyz",
+            "server_port": 443,
+            "password": "IL37892054",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fluent-stingray.crayfish192.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Sarajevo-45.15.178.124-9d5e3de08f40bce635d9d60d7c43475c",
+            "server": "pq-BosniaandHerzegovina1.09vpn.com",
+            "server_port": 80,
+            "uuid": "75e1fde7-6bf6-48ef-ba43-400e960e185b",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-BosniaandHerzegovina1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bursa-212.87.198.66-eee25d0dee53c70c84fc0b755d619050",
+            "server": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online",
+            "server_port": 443,
+            "uuid": "b2f99930-7d48-4a22-8d67-539c440b6a7a",
+            "transport": {
+                "type": "ws",
+                "path": "/01119417",
+                "headers": {
+                    "Host": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "8adeefa1-96b4-42d4-b163-1e0bf13bae5d.quadzero.online"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
