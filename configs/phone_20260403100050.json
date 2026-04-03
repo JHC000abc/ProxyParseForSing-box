@@ -1,0 +1,246 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-57.129.119.115-927cf7b86efc548594137fa6925b1099",
+                "Frankfurt am Main-5.56.26.170-921b63d77e86fedadec0e50c40ff0ea9",
+                "Los Angeles-204.152.198.135-04a72b048f082bf6e2dc23feae6c5c0e",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Meppel-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+                "Nürnberg-152.53.148.33-1d7e6813e5d5e672a57e97f36d4a2481",
+                "Frankfurt am Main-74.220.27.192-b5b8f112045e31a62d364f36bc0ef569",
+                "Frankfurt am Main-74.220.27.192-01a864d44825577a4c3ab07671cbfbdb",
+                "Nürnberg-159.195.42.17-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-152.53.101.244-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-57.129.119.115-927cf7b86efc548594137fa6925b1099",
+                "Frankfurt am Main-5.56.26.170-921b63d77e86fedadec0e50c40ff0ea9",
+                "Los Angeles-204.152.198.135-04a72b048f082bf6e2dc23feae6c5c0e",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Meppel-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+                "Nürnberg-152.53.148.33-1d7e6813e5d5e672a57e97f36d4a2481",
+                "Frankfurt am Main-74.220.27.192-b5b8f112045e31a62d364f36bc0ef569",
+                "Frankfurt am Main-74.220.27.192-01a864d44825577a4c3ab07671cbfbdb",
+                "Nürnberg-159.195.42.17-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-152.53.101.244-3488783a6b2b14b3464b6444bc2c8730"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-57.129.119.115-927cf7b86efc548594137fa6925b1099",
+                "Frankfurt am Main-5.56.26.170-921b63d77e86fedadec0e50c40ff0ea9",
+                "Los Angeles-204.152.198.135-04a72b048f082bf6e2dc23feae6c5c0e",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Meppel-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+                "Nürnberg-152.53.148.33-1d7e6813e5d5e672a57e97f36d4a2481",
+                "Frankfurt am Main-74.220.27.192-b5b8f112045e31a62d364f36bc0ef569",
+                "Frankfurt am Main-74.220.27.192-01a864d44825577a4c3ab07671cbfbdb",
+                "Nürnberg-159.195.42.17-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-152.53.101.244-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.119.115-927cf7b86efc548594137fa6925b1099",
+            "server": "57.129.119.115",
+            "server_port": 443,
+            "uuid": "1e97f262-296c-45cf-afc0-6ed86f768013",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "57.129.119.115"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-921b63d77e86fedadec0e50c40ff0ea9",
+            "server": "82.26.155.199",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra4.chasem2026sud.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-204.152.198.135-04a72b048f082bf6e2dc23feae6c5c0e",
+            "server": "ovhwuxian.pai50288.uk",
+            "server_port": 8443,
+            "uuid": "57ba2ab1-a283-42eb-82ee-dc3561a805b8",
+            "transport": {
+                "type": "ws",
+                "path": "/57ba2ab1",
+                "headers": {
+                    "Host": "ovhwuxian.pai50288.uk"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ovhwuxian.pai50288.uk"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+            "server": "103.231.73.181",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Meppel-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.148.33-1d7e6813e5d5e672a57e97f36d4a2481",
+            "server": "lucy.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "098fd515-29de-4d74-b77d-d8ab878a7e2c",
+            "transport": {
+                "type": "ws",
+                "path": "/resgdws",
+                "headers": {
+                    "Host": "rivvers.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rivvers.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-b5b8f112045e31a62d364f36bc0ef569",
+            "server": "104.21.224.5",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-01a864d44825577a4c3ab07671cbfbdb",
+            "server": "188.114.98.0",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.42.17-e812cd1f54a15e348d95e77a1eb23a62",
+            "server": "v1.dabache.top",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-152.53.101.244-3488783a6b2b14b3464b6444bc2c8730",
+            "server": "162.159.36.20",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
