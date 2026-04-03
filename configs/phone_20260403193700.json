@@ -1,0 +1,121 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-195.154.200.13-4256b2cb321c1b35521e3ba7d88cfc66",
+                "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Paris-195.154.200.13-4256b2cb321c1b35521e3ba7d88cfc66",
+                "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-195.154.200.13-4256b2cb321c1b35521e3ba7d88cfc66",
+                "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-195.154.200.13-4256b2cb321c1b35521e3ba7d88cfc66",
+            "server": "62.210.25.116",
+            "server_port": 40022,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+            "server": "v1.dabache.top",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730",
+            "server": "162.159.36.20",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
