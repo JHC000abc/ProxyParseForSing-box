@@ -1,0 +1,177 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-37.114.49.243-9e21f6f159206012ed68596b7f81ded5",
+                "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+                "Osaka-161.33.10.254-7e6f32080e0a2355729b841f587baaa5",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.49.243-9e21f6f159206012ed68596b7f81ded5",
+                "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+                "Osaka-161.33.10.254-7e6f32080e0a2355729b841f587baaa5",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.49.243-9e21f6f159206012ed68596b7f81ded5",
+                "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+                "Osaka-161.33.10.254-7e6f32080e0a2355729b841f587baaa5",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-37.114.49.243-9e21f6f159206012ed68596b7f81ded5",
+            "server": "188.114.98.0",
+            "server_port": 2087,
+            "uuid": "3f58cc47-94f6-40d3-8797-1ce66cb0555e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "nl4.maxriser.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nl4.maxriser.ir"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-38.165.21.126-d0cce21a10f3a6517cf9c4d72049310f",
+            "server": "38.165.21.126",
+            "server_port": 29794,
+            "password": "fGIvSUXOYn7WYPNAc2PmjYuIKbw",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bing.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Osaka-161.33.10.254-7e6f32080e0a2355729b841f587baaa5",
+            "server": "jp-hy2.onetaplink.app",
+            "server_port": 5443,
+            "password": "48b36b6a-eaa6-4843-9231-0bb8b38b5da5",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "hy2-jp.onetaplink.app"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CF7WJGiw6r1c8imX"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+            "server": "103.231.73.181",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.45.110.16-e812cd1f54a15e348d95e77a1eb23a62",
+            "server": "v1.dabache.top",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-89.58.17.85-3488783a6b2b14b3464b6444bc2c8730",
+            "server": "162.159.36.20",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
