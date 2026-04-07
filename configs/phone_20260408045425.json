@@ -1,0 +1,179 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-84.200.91.118-f65c20011bdbc3dc071585f0780ef78e",
+                "Tung Chung-103.172.81.150-d53a3679d2e78d6ced552db3b4dd1fc8",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Nürnberg-152.53.148.129-1d7e6813e5d5e672a57e97f36d4a2481",
+                "Nürnberg-159.195.41.95-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-152.53.101.184-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-84.200.91.118-f65c20011bdbc3dc071585f0780ef78e",
+                "Tung Chung-103.172.81.150-d53a3679d2e78d6ced552db3b4dd1fc8",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Nürnberg-152.53.148.129-1d7e6813e5d5e672a57e97f36d4a2481",
+                "Nürnberg-159.195.41.95-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-152.53.101.184-3488783a6b2b14b3464b6444bc2c8730"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-84.200.91.118-f65c20011bdbc3dc071585f0780ef78e",
+                "Tung Chung-103.172.81.150-d53a3679d2e78d6ced552db3b4dd1fc8",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Nürnberg-152.53.148.129-1d7e6813e5d5e672a57e97f36d4a2481",
+                "Nürnberg-159.195.41.95-e812cd1f54a15e348d95e77a1eb23a62",
+                "Vienna-152.53.101.184-3488783a6b2b14b3464b6444bc2c8730"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-84.200.91.118-f65c20011bdbc3dc071585f0780ef78e",
+            "server": "84.200.91.118",
+            "server_port": 443,
+            "password": "0f771058-7892-4d46-b77e-a69e811b9cbc",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hls-svod.itunes.apple.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Tung Chung-103.172.81.150-d53a3679d2e78d6ced552db3b4dd1fc8",
+            "server": "aflzzul.meiquankongjian.com",
+            "server_port": 52513,
+            "uuid": "342bacfd-2b8f-3f49-a16e-439db5b0b9d5",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/564dfa20/",
+                "headers": {
+                    "Host": "aflzzul.meiquankongjian.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+            "server": "103.231.73.181",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.148.129-1d7e6813e5d5e672a57e97f36d4a2481",
+            "server": "lucy.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "098fd515-29de-4d74-b77d-d8ab878a7e2c",
+            "transport": {
+                "type": "ws",
+                "path": "/resgdws",
+                "headers": {
+                    "Host": "rivvers.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rivvers.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.41.95-e812cd1f54a15e348d95e77a1eb23a62",
+            "server": "v1.dabache.top",
+            "server_port": 443,
+            "uuid": "94daa8ad-75ed-4dbf-a6de-d05036d98df5",
+            "transport": {
+                "type": "ws",
+                "path": "/tixvuws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Vienna-152.53.101.184-3488783a6b2b14b3464b6444bc2c8730",
+            "server": "162.159.36.20",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
