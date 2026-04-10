@@ -1,0 +1,258 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "São Paulo-167.234.251.78-ff61aa8f77bbcce2a5eecfb7f882820e",
+                "London-51.195.241.243-de1d8ea3583668f6aae27ee501d5d635",
+                "Marseille-129.151.250.154-a53e2ddbc484b80c652a0f55357f0d0c",
+                "Taipei-85.237.206.45-f575059345b353fe12421a4f4544377d",
+                "Los Angeles-154.29.145.235-271790b4077fdb59b3668b26286dd5bd",
+                "Singapore-13.212.200.61-0423397c9bd7e627d17ebd1661cfae61",
+                "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+                "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+                "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+                "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "São Paulo-167.234.251.78-ff61aa8f77bbcce2a5eecfb7f882820e",
+                "London-51.195.241.243-de1d8ea3583668f6aae27ee501d5d635",
+                "Marseille-129.151.250.154-a53e2ddbc484b80c652a0f55357f0d0c",
+                "Taipei-85.237.206.45-f575059345b353fe12421a4f4544377d",
+                "Los Angeles-154.29.145.235-271790b4077fdb59b3668b26286dd5bd",
+                "Singapore-13.212.200.61-0423397c9bd7e627d17ebd1661cfae61",
+                "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+                "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+                "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+                "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "São Paulo-167.234.251.78-ff61aa8f77bbcce2a5eecfb7f882820e",
+                "London-51.195.241.243-de1d8ea3583668f6aae27ee501d5d635",
+                "Marseille-129.151.250.154-a53e2ddbc484b80c652a0f55357f0d0c",
+                "Taipei-85.237.206.45-f575059345b353fe12421a4f4544377d",
+                "Los Angeles-154.29.145.235-271790b4077fdb59b3668b26286dd5bd",
+                "Singapore-13.212.200.61-0423397c9bd7e627d17ebd1661cfae61",
+                "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+                "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+                "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+                "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "São Paulo-167.234.251.78-ff61aa8f77bbcce2a5eecfb7f882820e",
+            "server": "167.234.251.78",
+            "server_port": 35000,
+            "password": "fadab0a4-861d-4ebf-89ac-c9b34aef631a",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.apple.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-51.195.241.243-de1d8ea3583668f6aae27ee501d5d635",
+            "server": "51.195.241.243",
+            "server_port": 50000,
+            "password": "0d892bc7-41c5-4dc5-90bb-40dfc0043dd5",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bing.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Marseille-129.151.250.154-a53e2ddbc484b80c652a0f55357f0d0c",
+            "server": "129.151.251.122",
+            "server_port": 35000,
+            "password": "fadab0a4-861d-4ebf-89ac-c9b34aef631a",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.lamer.com.hk"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Taipei-85.237.206.45-f575059345b353fe12421a4f4544377d",
+            "server": "gtm1.ktmwan.net",
+            "server_port": 12888,
+            "uuid": "21324e77-b4d2-4fca-8884-5e8b75836d2a",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "baidu.com"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.145.235-271790b4077fdb59b3668b26286dd5bd",
+            "server": "vpn-us-024.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-024.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-13.212.200.61-0423397c9bd7e627d17ebd1661cfae61",
+            "server": "vpn-sg-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+            "server": "usa-hy2.onetaplink.app",
+            "server_port": 443,
+            "password": "48b36b6a-eaa6-4843-9231-0bb8b38b5da5",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "hy2-usa.onetaplink.app"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "OrT7yQQIMqcvKdet"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+            "server": "vpn-us-011.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-011.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+            "server": "vpn-us-020.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-020.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+            "server": "vpn-us-023.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-023.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+            "server": "43.160.204.190",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.160.204.190"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xinjiapo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+            "server": "103.231.73.181",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
