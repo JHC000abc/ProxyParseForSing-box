@@ -1,0 +1,198 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-54.169.233.206-04b9764836574263a5027be62baaa387",
+                "Los Angeles-154.29.154.165-ba3aa46ed76b3df3ca4ed07cdb3bcf56",
+                "Tokyo-54.249.149.234-50f0c5f9288c212aa288f7ab25992127",
+                "Singapore-13.250.53.236-5c2b05f8d21ba8c0a735c589f267c591",
+                "Tokyo-45.192.248.212-35940a4b529cf529f08c77e5ac2e642d",
+                "Singapore-159.223.61.105-fe85c9344613a8caeee3551fa98d7df5",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-54.169.233.206-04b9764836574263a5027be62baaa387",
+                "Los Angeles-154.29.154.165-ba3aa46ed76b3df3ca4ed07cdb3bcf56",
+                "Tokyo-54.249.149.234-50f0c5f9288c212aa288f7ab25992127",
+                "Singapore-13.250.53.236-5c2b05f8d21ba8c0a735c589f267c591",
+                "Tokyo-45.192.248.212-35940a4b529cf529f08c77e5ac2e642d",
+                "Singapore-159.223.61.105-fe85c9344613a8caeee3551fa98d7df5",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-54.169.233.206-04b9764836574263a5027be62baaa387",
+                "Los Angeles-154.29.154.165-ba3aa46ed76b3df3ca4ed07cdb3bcf56",
+                "Tokyo-54.249.149.234-50f0c5f9288c212aa288f7ab25992127",
+                "Singapore-13.250.53.236-5c2b05f8d21ba8c0a735c589f267c591",
+                "Tokyo-45.192.248.212-35940a4b529cf529f08c77e5ac2e642d",
+                "Singapore-159.223.61.105-fe85c9344613a8caeee3551fa98d7df5",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-54.169.233.206-04b9764836574263a5027be62baaa387",
+            "server": "vpn-sg-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.154.165-ba3aa46ed76b3df3ca4ed07cdb3bcf56",
+            "server": "vpn-us-023.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-023.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-54.249.149.234-50f0c5f9288c212aa288f7ab25992127",
+            "server": "vpn-jp-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-13.250.53.236-5c2b05f8d21ba8c0a735c589f267c591",
+            "server": "vpn-sg-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-45.192.248.212-35940a4b529cf529f08c77e5ac2e642d",
+            "server": "dbp.qzz.io",
+            "server_port": 8443,
+            "password": "GEbo3x7TXbmNkdmABqS4mZP7Ax5fjFBPbheKauGJJ9Sw",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dbp.qzz.io"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-159.223.61.105-fe85c9344613a8caeee3551fa98d7df5",
+            "server": "partner.zoom.us",
+            "server_port": 8443,
+            "uuid": "39eb8c33-ee7f-4980-b3e5-684aaf390f56",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "darknet-free.alexid.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "darknet-free.alexid.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+            "server": "43.160.204.190",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.160.204.190"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xinjiapo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c",
+            "server": "188.114.98.0",
+            "server_port": 2082,
+            "uuid": "f0ff4425-8c26-4d81-8662-f34593060c8d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "DOFF.mehrsazi.ir"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
