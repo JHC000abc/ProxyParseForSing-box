@@ -1,0 +1,242 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Los Angeles-154.29.154.39-b5c9727b285989e452d425b30ef3f89a",
+                "Singapore-18.143.151.127-0423397c9bd7e627d17ebd1661cfae61",
+                "Osaka-161.33.10.254-ec1488dd5e00732668641c1822a6198e",
+                "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+                "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+                "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+                "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+                "Los Angeles-154.29.145.235-547109f0154935c83523943b209ac89b",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Almere Stad-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+                "Nürnberg-152.53.149.178-1d7e6813e5d5e672a57e97f36d4a2481"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Los Angeles-154.29.154.39-b5c9727b285989e452d425b30ef3f89a",
+                "Singapore-18.143.151.127-0423397c9bd7e627d17ebd1661cfae61",
+                "Osaka-161.33.10.254-ec1488dd5e00732668641c1822a6198e",
+                "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+                "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+                "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+                "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+                "Los Angeles-154.29.145.235-547109f0154935c83523943b209ac89b",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Almere Stad-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+                "Nürnberg-152.53.149.178-1d7e6813e5d5e672a57e97f36d4a2481"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Los Angeles-154.29.154.39-b5c9727b285989e452d425b30ef3f89a",
+                "Singapore-18.143.151.127-0423397c9bd7e627d17ebd1661cfae61",
+                "Osaka-161.33.10.254-ec1488dd5e00732668641c1822a6198e",
+                "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+                "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+                "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+                "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+                "Los Angeles-154.29.145.235-547109f0154935c83523943b209ac89b",
+                "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+                "Almere Stad-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+                "Nürnberg-152.53.149.178-1d7e6813e5d5e672a57e97f36d4a2481"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.154.39-b5c9727b285989e452d425b30ef3f89a",
+            "server": "vpn-us-022.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-022.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-18.143.151.127-0423397c9bd7e627d17ebd1661cfae61",
+            "server": "vpn-sg-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Osaka-161.33.10.254-ec1488dd5e00732668641c1822a6198e",
+            "server": "jp-hy2.onetaplink.app",
+            "server_port": 5443,
+            "password": "48b36b6a-eaa6-4843-9231-0bb8b38b5da5",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "hy2-jp.onetaplink.app"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CF7WJGiw6r1c8imX"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "San Jose-163.192.25.6-7e236a2494c148725e803288d81a4895",
+            "server": "usa-hy2.onetaplink.app",
+            "server_port": 443,
+            "password": "48b36b6a-eaa6-4843-9231-0bb8b38b5da5",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "hy2-usa.onetaplink.app"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "OrT7yQQIMqcvKdet"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.9.241.53-7c0dbb8d3be85c7d055d5fc82d685f19",
+            "server": "vpn-us-011.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-011.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.158.139-1d65a37e65cff88e1a3a977bb1540855",
+            "server": "vpn-us-020.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-020.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.154.165-657037a883fa6acd31bb5ca507666ccf",
+            "server": "vpn-us-023.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-023.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.145.235-547109f0154935c83523943b209ac89b",
+            "server": "vpn-us-024.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-024.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Riga-103.231.73.181-7561cfa709ecded11b7baf3728ea5d56",
+            "server": "103.231.73.181",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-812fb3c62e36141704f56331f75cf27c",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.149.178-1d7e6813e5d5e672a57e97f36d4a2481",
+            "server": "lucy.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "098fd515-29de-4d74-b77d-d8ab878a7e2c",
+            "transport": {
+                "type": "ws",
+                "path": "/resgdws",
+                "headers": {
+                    "Host": "rivvers.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rivvers.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
