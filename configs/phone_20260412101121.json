@@ -1,0 +1,219 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "San Jose-134.195.101.188-2de9fd33b5c1b15d2e99956b3cd77069",
+                "Macau-45.202.247.12-fc5ea2a59aa75e7c796bdfc4d3f5a40c",
+                "São Paulo-43.164.198.39-01a1f1df79eda1233a4edc8a6178b1dc",
+                "São Paulo-43.164.198.39-d792c5923b06fd34042359d681e837ec",
+                "Tokyo-103.62.49.74-c6b87d00b6de4214e2ea8bcb8fac8b0a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "Nürnberg-152.53.151.242-c61820f91b45e93a659a8794162b4b62",
+                "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "San Jose-134.195.101.188-2de9fd33b5c1b15d2e99956b3cd77069",
+                "Macau-45.202.247.12-fc5ea2a59aa75e7c796bdfc4d3f5a40c",
+                "São Paulo-43.164.198.39-01a1f1df79eda1233a4edc8a6178b1dc",
+                "São Paulo-43.164.198.39-d792c5923b06fd34042359d681e837ec",
+                "Tokyo-103.62.49.74-c6b87d00b6de4214e2ea8bcb8fac8b0a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "Nürnberg-152.53.151.242-c61820f91b45e93a659a8794162b4b62",
+                "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "San Jose-134.195.101.188-2de9fd33b5c1b15d2e99956b3cd77069",
+                "Macau-45.202.247.12-fc5ea2a59aa75e7c796bdfc4d3f5a40c",
+                "São Paulo-43.164.198.39-01a1f1df79eda1233a4edc8a6178b1dc",
+                "São Paulo-43.164.198.39-d792c5923b06fd34042359d681e837ec",
+                "Tokyo-103.62.49.74-c6b87d00b6de4214e2ea8bcb8fac8b0a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "Nürnberg-152.53.151.242-c61820f91b45e93a659a8794162b4b62",
+                "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-134.195.101.188-2de9fd33b5c1b15d2e99956b3cd77069",
+            "server": "104.19.58.118",
+            "server_port": 443,
+            "uuid": "340dee85-bfd7-4395-8d2e-87dbc2781a13",
+            "transport": {
+                "type": "ws",
+                "path": "/kbjc/us1",
+                "headers": {
+                    "Host": "us1-us1.aiopen.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us1-us1.aiopen.sbs"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Macau-45.202.247.12-fc5ea2a59aa75e7c796bdfc4d3f5a40c",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 58,
+            "password": "9e0f72bb-7ad6-4383-994a-497569a94d74",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "moak.ccwink.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-01a1f1df79eda1233a4edc8a6178b1dc",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-d792c5923b06fd34042359d681e837ec",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-103.62.49.74-c6b87d00b6de4214e2ea8bcb8fac8b0a",
+            "server": "69.84.182.13",
+            "server_port": 443,
+            "uuid": "340dee85-bfd7-4395-8d2e-87dbc2781a13",
+            "transport": {
+                "type": "ws",
+                "path": "/kbjc/jp1",
+                "headers": {
+                    "Host": "jp1-jp1.aiopen.sbs"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp1-jp1.aiopen.sbs"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-152.53.151.242-c61820f91b45e93a659a8794162b4b62",
+            "server": "108.162.192.133",
+            "server_port": 443,
+            "uuid": "098fd515-29de-4d74-b77d-d8ab878a7e2c",
+            "transport": {
+                "type": "ws",
+                "path": "/resgdws",
+                "headers": {
+                    "Host": "rivvers.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rivvers.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.230.237-b957c6369d0e753e7707afbcce2ab03c",
+            "server": "188.114.98.0",
+            "server_port": 2082,
+            "uuid": "f0ff4425-8c26-4d81-8662-f34593060c8d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "DOFF.mehrsazi.ir"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
