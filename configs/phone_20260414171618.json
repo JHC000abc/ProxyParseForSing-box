@@ -1,0 +1,230 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+                "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+                "Tokyo-103.62.49.74-30c80a5ad81f2cb887a9fb696f4e4678",
+                "Nürnberg-178.104.206.117-a1438b1293cb399bf07cbe8916ab77d3",
+                "Nürnberg-46.225.230.237-456ce09ab9c0ed6c5784047130ca74aa",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+                "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+                "Tokyo-103.62.49.74-30c80a5ad81f2cb887a9fb696f4e4678",
+                "Nürnberg-178.104.206.117-a1438b1293cb399bf07cbe8916ab77d3",
+                "Nürnberg-46.225.230.237-456ce09ab9c0ed6c5784047130ca74aa",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+                "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+                "Tokyo-103.62.49.74-30c80a5ad81f2cb887a9fb696f4e4678",
+                "Nürnberg-178.104.206.117-a1438b1293cb399bf07cbe8916ab77d3",
+                "Nürnberg-46.225.230.237-456ce09ab9c0ed6c5784047130ca74aa",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 58,
+            "password": "9e0f72bb-7ad6-4383-994a-497569a94d74",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "moak.ccwink.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+            "server": "us1.xiaoliyu.cyou",
+            "server_port": 10086,
+            "password": "a4c1b618-024a-42d4-b78a-1c25c337a484",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us1.xiaoliyu.cyou"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "PQ$hN78bzXWN"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-103.62.49.74-30c80a5ad81f2cb887a9fb696f4e4678",
+            "server": "103.62.49.76",
+            "server_port": 35000,
+            "password": "38428a74-c651-47a5-b2c9-4bec5a1809cf",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.apple.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.206.117-a1438b1293cb399bf07cbe8916ab77d3",
+            "server": "172.64.152.23",
+            "server_port": 8443,
+            "uuid": "4dc0b42a-1a8a-4337-851b-5d8a1f149fca",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "deold.turboo-server.com.co"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "deold.turboo-server.com.co"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.230.237-456ce09ab9c0ed6c5784047130ca74aa",
+            "server": "188.114.98.0",
+            "server_port": 2082,
+            "uuid": "f0ff4425-8c26-4d81-8662-f34593060c8d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "DOFF.mehrsazi.ir"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+            "server": "cloudflare-dns.com",
+            "server_port": 80,
+            "uuid": "8e34e170-13ae-4892-9d20-05962acc9f84",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "q.ikez.dpdns.org"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
