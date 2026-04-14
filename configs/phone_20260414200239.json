@@ -1,0 +1,230 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Eindhoven-45.43.92.213-524199c3a6031ef234624c032be2a79f",
+                "Hannover-195.149.92.235-98b57d94da318cfff0f1fbeb94355a22",
+                "Nürnberg-178.104.206.117-76452f76317aa97666357fd66b523d9b",
+                "Hannover-195.149.92.235-a511ead6c1d1d7d045e9c1cfe28a7241",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Eindhoven-45.43.92.213-524199c3a6031ef234624c032be2a79f",
+                "Hannover-195.149.92.235-98b57d94da318cfff0f1fbeb94355a22",
+                "Nürnberg-178.104.206.117-76452f76317aa97666357fd66b523d9b",
+                "Hannover-195.149.92.235-a511ead6c1d1d7d045e9c1cfe28a7241",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Eindhoven-45.43.92.213-524199c3a6031ef234624c032be2a79f",
+                "Hannover-195.149.92.235-98b57d94da318cfff0f1fbeb94355a22",
+                "Nürnberg-178.104.206.117-76452f76317aa97666357fd66b523d9b",
+                "Hannover-195.149.92.235-a511ead6c1d1d7d045e9c1cfe28a7241",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.213-524199c3a6031ef234624c032be2a79f",
+            "server": "172.64.149.54",
+            "server_port": 443,
+            "uuid": "c7ecc0c5-0f21-4413-881c-b1cf82a356d0",
+            "transport": {
+                "type": "ws",
+                "path": "/fg6s5f7fg76ftg7s65d7s6f5s78fs67f67sdfhfggh467547547",
+                "headers": {
+                    "Host": "mobo.karl22.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mobo.karl22.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hannover-195.149.92.235-98b57d94da318cfff0f1fbeb94355a22",
+            "server": "104.18.16.56",
+            "server_port": 443,
+            "uuid": "37b9d175-d01e-4bdf-9217-579cdcad542e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "Mio.purplrose.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "Mio.purplrose.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.206.117-76452f76317aa97666357fd66b523d9b",
+            "server": "172.64.152.23",
+            "server_port": 8443,
+            "uuid": "4dc0b42a-1a8a-4337-851b-5d8a1f149fca",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "deold.turboo-server.com.co"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "deold.turboo-server.com.co"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hannover-195.149.92.235-a511ead6c1d1d7d045e9c1cfe28a7241",
+            "server": "104.18.35.233",
+            "server_port": 443,
+            "uuid": "37b9d175-d01e-4bdf-9217-579cdcad542e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "Mio.purplrose.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "Mio.purplrose.ir"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+            "server": "cloudflare-dns.com",
+            "server_port": 80,
+            "uuid": "8e34e170-13ae-4892-9d20-05962acc9f84",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "q.ikez.dpdns.org"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
