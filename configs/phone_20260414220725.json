@@ -1,0 +1,301 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Inzai-168.138.193.202-69b80cf24abdcebaab9abcac62ddddb0",
+                "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+                "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+                "Hannover-195.149.92.235-42f4b8c5668453b52ef6e483902a5dbd",
+                "Nürnberg-46.225.230.237-1da8892e0407df74aa632a42eeb1021e",
+                "Hannover-195.149.92.235-f52c9d54e7a1aa0ffc754a2806cf53fa",
+                "Nürnberg-178.104.206.117-488145688e8c2c6f05fa4a6da0d7e276",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Inzai-168.138.193.202-69b80cf24abdcebaab9abcac62ddddb0",
+                "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+                "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+                "Hannover-195.149.92.235-42f4b8c5668453b52ef6e483902a5dbd",
+                "Nürnberg-46.225.230.237-1da8892e0407df74aa632a42eeb1021e",
+                "Hannover-195.149.92.235-f52c9d54e7a1aa0ffc754a2806cf53fa",
+                "Nürnberg-178.104.206.117-488145688e8c2c6f05fa4a6da0d7e276",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Inzai-168.138.193.202-69b80cf24abdcebaab9abcac62ddddb0",
+                "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+                "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+                "Hannover-195.149.92.235-42f4b8c5668453b52ef6e483902a5dbd",
+                "Nürnberg-46.225.230.237-1da8892e0407df74aa632a42eeb1021e",
+                "Hannover-195.149.92.235-f52c9d54e7a1aa0ffc754a2806cf53fa",
+                "Nürnberg-178.104.206.117-488145688e8c2c6f05fa4a6da0d7e276",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Inzai-168.138.193.202-69b80cf24abdcebaab9abcac62ddddb0",
+            "server": "tokyo01.zgjok.com",
+            "server_port": 443,
+            "uuid": "e6d5d668-2091-41d9-9bff-df0a1c5107ec",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "tokyo01.zgjok.com"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Macau-45.202.247.12-e5c5ecb98dbbcca3b34cf6d1e40f4067",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 58,
+            "password": "9e0f72bb-7ad6-4383-994a-497569a94d74",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "moak.ccwink.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "New York City-23.26.156.239-3832c4560b83b5f4a0cbc6bc846235b5",
+            "server": "us1.xiaoliyu.cyou",
+            "server_port": 10086,
+            "password": "a4c1b618-024a-42d4-b78a-1c25c337a484",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us1.xiaoliyu.cyou"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "PQ$hN78bzXWN"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hannover-195.149.92.235-42f4b8c5668453b52ef6e483902a5dbd",
+            "server": "104.18.16.56",
+            "server_port": 443,
+            "uuid": "37b9d175-d01e-4bdf-9217-579cdcad542e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "Mio.purplrose.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "Mio.purplrose.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.225.230.237-1da8892e0407df74aa632a42eeb1021e",
+            "server": "188.114.98.0",
+            "server_port": 2082,
+            "uuid": "f0ff4425-8c26-4d81-8662-f34593060c8d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "DOFF.mehrsazi.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hannover-195.149.92.235-f52c9d54e7a1aa0ffc754a2806cf53fa",
+            "server": "104.18.35.233",
+            "server_port": 443,
+            "uuid": "37b9d175-d01e-4bdf-9217-579cdcad542e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "Mio.purplrose.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "Mio.purplrose.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.206.117-488145688e8c2c6f05fa4a6da0d7e276",
+            "server": "172.64.152.23",
+            "server_port": 8443,
+            "uuid": "4dc0b42a-1a8a-4337-851b-5d8a1f149fca",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "deold.turboo-server.com.co"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "deold.turboo-server.com.co"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+            "server": "mangu1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "mangu1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mangu1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Paris-62.210.113.151-16e2c33a4736d0ab1737814e523be34e",
+            "server": "cloudflare-dns.com",
+            "server_port": 80,
+            "uuid": "8e34e170-13ae-4892-9d20-05962acc9f84",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "q.ikez.dpdns.org"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
