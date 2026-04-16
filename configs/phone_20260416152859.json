@@ -1,0 +1,202 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Toongabbie West-159.13.40.81-b029308c1ca2d98aabd6d9e8434be17a",
+                "Inzai-140.238.37.247-c21c30c6577ff321f1f26a2a80a67baf",
+                "Tokyo-43.165.174.229-4fc77e78e27f9f08768492221b7206d1",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Toongabbie West-159.13.40.81-b029308c1ca2d98aabd6d9e8434be17a",
+                "Inzai-140.238.37.247-c21c30c6577ff321f1f26a2a80a67baf",
+                "Tokyo-43.165.174.229-4fc77e78e27f9f08768492221b7206d1",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Toongabbie West-159.13.40.81-b029308c1ca2d98aabd6d9e8434be17a",
+                "Inzai-140.238.37.247-c21c30c6577ff321f1f26a2a80a67baf",
+                "Tokyo-43.165.174.229-4fc77e78e27f9f08768492221b7206d1",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-b029308c1ca2d98aabd6d9e8434be17a",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d3f922d2-d95c-4c4d-8406-b1acc18111c8",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Inzai-140.238.37.247-c21c30c6577ff321f1f26a2a80a67baf",
+            "server": "63.141.128.188",
+            "server_port": 443,
+            "uuid": "d46056cf-da4e-4426-a3e4-39fcbfefa112",
+            "transport": {
+                "type": "ws",
+                "path": "/djjc/jp1",
+                "headers": {
+                    "Host": "d2-jp1.djwstlsweb.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d2-jp1.djwstlsweb.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-43.165.174.229-4fc77e78e27f9f08768492221b7206d1",
+            "server": "43.165.174.229",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.165.174.229"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+            "server": "falankefu1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "falankefu1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "falankefu1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
