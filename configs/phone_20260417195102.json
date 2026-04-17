@@ -1,0 +1,251 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-84.200.205.226-c52463c743d4d9b30aebab2b58d19ed7",
+                "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+                "Coventry-45.140.167.209-76a143b2a31e00f3c245acb290691bb4",
+                "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+                "Frankfurt am Main-5.56.26.170-3fc4b733d103c37123d885dfb8ea7e4a",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-84.200.205.226-c52463c743d4d9b30aebab2b58d19ed7",
+                "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+                "Coventry-45.140.167.209-76a143b2a31e00f3c245acb290691bb4",
+                "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+                "Frankfurt am Main-5.56.26.170-3fc4b733d103c37123d885dfb8ea7e4a",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-84.200.205.226-c52463c743d4d9b30aebab2b58d19ed7",
+                "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+                "Coventry-45.140.167.209-76a143b2a31e00f3c245acb290691bb4",
+                "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+                "Frankfurt am Main-5.56.26.170-3fc4b733d103c37123d885dfb8ea7e4a",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-84.200.205.226-c52463c743d4d9b30aebab2b58d19ed7",
+            "server": "fr1.shiyuandian.shop",
+            "server_port": 1935,
+            "password": "372f3c21-ca44-4982-a830-d0b81e08a7c8",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fr1.shiyuandian.shop"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 58,
+            "password": "9e0f72bb-7ad6-4383-994a-497569a94d74",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "moak.ccwink.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Coventry-45.140.167.209-76a143b2a31e00f3c245acb290691bb4",
+            "server": "45.140.167.209",
+            "server_port": 444,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "cry_me_a_r1ver_2026"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+            "server": "cdn.prostovpn.website",
+            "server_port": 2087,
+            "uuid": "5b1c5027-5bc6-4ee2-b287-001b05fba219",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-cdn",
+                "headers": {
+                    "Host": "cdn.prostovpn.website"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdn.prostovpn.website"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-3fc4b733d103c37123d885dfb8ea7e4a",
+            "server": "82.26.155.121",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra33.chasem2026sud.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+            "server": "falankefu1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "falankefu1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "falankefu1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d23iuljn5k9z1j.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d23iuljn5k9z1j.cloudfront.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
