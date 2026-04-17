@@ -1,0 +1,259 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Macau-45.202.247.12-cdc900dc6dba516f9e4ea8b79f17f0b2",
+                "Los Angeles-154.44.3.179-a2a162de3186226764b33dd694171e1d",
+                "Los Angeles-154.44.3.227-d03b56fe3e6b91b1c98c9de1e3893a13",
+                "Tokyo-35.77.86.209-5a0d5a97998e93b014581f6fa038eea9",
+                "Kampong Loyang-152.69.215.78-1eae931dea2a084bf9ed6034a6cad06b",
+                "Lelystad-89.149.242.132-0a31a54dfce3326089a0e3040cbec91e",
+                "Frankfurt am Main-5.56.26.170-edd587c9db6d0414e14ffe072af276d9",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Macau-45.202.247.12-cdc900dc6dba516f9e4ea8b79f17f0b2",
+                "Los Angeles-154.44.3.179-a2a162de3186226764b33dd694171e1d",
+                "Los Angeles-154.44.3.227-d03b56fe3e6b91b1c98c9de1e3893a13",
+                "Tokyo-35.77.86.209-5a0d5a97998e93b014581f6fa038eea9",
+                "Kampong Loyang-152.69.215.78-1eae931dea2a084bf9ed6034a6cad06b",
+                "Lelystad-89.149.242.132-0a31a54dfce3326089a0e3040cbec91e",
+                "Frankfurt am Main-5.56.26.170-edd587c9db6d0414e14ffe072af276d9",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Macau-45.202.247.12-cdc900dc6dba516f9e4ea8b79f17f0b2",
+                "Los Angeles-154.44.3.179-a2a162de3186226764b33dd694171e1d",
+                "Los Angeles-154.44.3.227-d03b56fe3e6b91b1c98c9de1e3893a13",
+                "Tokyo-35.77.86.209-5a0d5a97998e93b014581f6fa038eea9",
+                "Kampong Loyang-152.69.215.78-1eae931dea2a084bf9ed6034a6cad06b",
+                "Lelystad-89.149.242.132-0a31a54dfce3326089a0e3040cbec91e",
+                "Frankfurt am Main-5.56.26.170-edd587c9db6d0414e14ffe072af276d9",
+                "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Macau-45.202.247.12-cdc900dc6dba516f9e4ea8b79f17f0b2",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 58,
+            "password": "9e0f72bb-7ad6-4383-994a-497569a94d74",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "moak.ccwink.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.44.3.179-a2a162de3186226764b33dd694171e1d",
+            "server": "vpn-us-018.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-018.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.44.3.227-d03b56fe3e6b91b1c98c9de1e3893a13",
+            "server": "vpn-us-021.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-021.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-35.77.86.209-5a0d5a97998e93b014581f6fa038eea9",
+            "server": "vpn-jp-018.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-018.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kampong Loyang-152.69.215.78-1eae931dea2a084bf9ed6034a6cad06b",
+            "server": "sg-hy2.onetaplink.app",
+            "server_port": 443,
+            "password": "48b36b6a-eaa6-4843-9231-0bb8b38b5da5",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hy2-sg.onetaplink.app"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "OrT7yQQIMqcvKdet"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-89.149.242.132-0a31a54dfce3326089a0e3040cbec91e",
+            "server": "8.6.112.0",
+            "server_port": 443,
+            "uuid": "7eeeb196-0018-4e77-8bb4-34aca534930d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "dl.wolfpro.fun"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dl.wolfpro.fun"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-edd587c9db6d0414e14ffe072af276d9",
+            "server": "82.26.155.121",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra33.chasem2026sud.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-43.165.3.87-4eb78725873bb0fc0c135bf69e0738ed",
+            "server": "falankefu1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "falankefu1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "falankefu1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
