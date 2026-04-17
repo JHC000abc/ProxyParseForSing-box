@@ -1,0 +1,225 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Coventry-45.140.167.209-84dc968e708959d6aa2d27c477ce0559",
+                "Los Angeles-154.44.3.179-8437ecd20232c1d977d67a8d7baa0dc7",
+                "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+                "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+                "Frankfurt am Main-5.56.26.170-a08890706f12e1dd8b7756d13cd6806f",
+                "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Coventry-45.140.167.209-84dc968e708959d6aa2d27c477ce0559",
+                "Los Angeles-154.44.3.179-8437ecd20232c1d977d67a8d7baa0dc7",
+                "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+                "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+                "Frankfurt am Main-5.56.26.170-a08890706f12e1dd8b7756d13cd6806f",
+                "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Coventry-45.140.167.209-84dc968e708959d6aa2d27c477ce0559",
+                "Los Angeles-154.44.3.179-8437ecd20232c1d977d67a8d7baa0dc7",
+                "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+                "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+                "Frankfurt am Main-5.56.26.170-a08890706f12e1dd8b7756d13cd6806f",
+                "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+                "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+                "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Coventry-45.140.167.209-84dc968e708959d6aa2d27c477ce0559",
+            "server": "45.140.167.209",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.44.3.179-8437ecd20232c1d977d67a8d7baa0dc7",
+            "server": "vpn-us-018.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-018.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Macau-45.202.247.12-f2a18e533002252c1aa72e0ca1d87927",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 58,
+            "password": "9e0f72bb-7ad6-4383-994a-497569a94d74",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "moak.ccwink.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-144.31.4.166-02fc0edfba8a08c376dd70b87ee4c60e",
+            "server": "cdn.prostovpn.website",
+            "server_port": 2087,
+            "uuid": "5b1c5027-5bc6-4ee2-b287-001b05fba219",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-cdn",
+                "headers": {
+                    "Host": "cdn.prostovpn.website"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdn.prostovpn.website"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-a08890706f12e1dd8b7756d13cd6806f",
+            "server": "82.26.155.121",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra33.chasem2026sud.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-116.203.60.218-1103ea856647a2e755983941271c5c4d",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d23iuljn5k9z1j.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d23iuljn5k9z1j.cloudfront.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-046b08055962910a5ca97fb520b4f9d0",
+            "server": "43.164.198.39",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.164.198.39"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "São Paulo-43.164.198.39-f38de77487e1950b347f7f4a9f3593bb",
+            "server": "shenbaoluo1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "shenbaoluo1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shenbaoluo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
