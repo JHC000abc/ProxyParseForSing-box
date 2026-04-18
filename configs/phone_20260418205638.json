@@ -1,0 +1,215 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nürnberg-116.203.60.218-3d9381e7ea48e8994ed76d9ed2a665e2",
+                "Helsinki-95.216.210.215-ca3fa5e34811771def99d47f75a042e6",
+                "Tokyo-156.246.89.51-ddb8ee655e34473d20944a7112bb980e",
+                "Tokyo-43.165.185.191-f7c204f42cd0e592ba087bdfb2a13bd8",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Taipei-134.122.162.53-6194b0bd4b68d2bb095406a37a2a5a86",
+                "Osaka-206.190.234.176-f6b35218f3176d3d0dd1e65b3e57a2b4",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nürnberg-116.203.60.218-3d9381e7ea48e8994ed76d9ed2a665e2",
+                "Helsinki-95.216.210.215-ca3fa5e34811771def99d47f75a042e6",
+                "Tokyo-156.246.89.51-ddb8ee655e34473d20944a7112bb980e",
+                "Tokyo-43.165.185.191-f7c204f42cd0e592ba087bdfb2a13bd8",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Taipei-134.122.162.53-6194b0bd4b68d2bb095406a37a2a5a86",
+                "Osaka-206.190.234.176-f6b35218f3176d3d0dd1e65b3e57a2b4",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nürnberg-116.203.60.218-3d9381e7ea48e8994ed76d9ed2a665e2",
+                "Helsinki-95.216.210.215-ca3fa5e34811771def99d47f75a042e6",
+                "Tokyo-156.246.89.51-ddb8ee655e34473d20944a7112bb980e",
+                "Tokyo-43.165.185.191-f7c204f42cd0e592ba087bdfb2a13bd8",
+                "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+                "Taipei-134.122.162.53-6194b0bd4b68d2bb095406a37a2a5a86",
+                "Osaka-206.190.234.176-f6b35218f3176d3d0dd1e65b3e57a2b4",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-116.203.60.218-3d9381e7ea48e8994ed76d9ed2a665e2",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d23iuljn5k9z1j.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d23iuljn5k9z1j.cloudfront.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-95.216.210.215-ca3fa5e34811771def99d47f75a042e6",
+            "server": "172.64.149.54",
+            "server_port": 2083,
+            "uuid": "dcc864d3-4a2e-42dd-b17c-4f8447fb449c",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-content/app.js",
+                "headers": {
+                    "Host": "FiN.ShAkHle.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "FiN.ShAkHle.ir."
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-156.246.89.51-ddb8ee655e34473d20944a7112bb980e",
+            "server": "vpn-jp-007.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-007.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-43.165.185.191-f7c204f42cd0e592ba087bdfb2a13bd8",
+            "server": "jp200m.jiasu.asia",
+            "server_port": 50000,
+            "password": "07cb3d6e-fe43-4a7b-a071-897db2f6bc98",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp200m.jiasu.asia"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-43.160.204.190-6fcd8eb939ec6fdff033afa130a4fb05",
+            "server": "43.160.204.190",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.160.204.190"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xinjiapo1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Taipei-134.122.162.53-6194b0bd4b68d2bb095406a37a2a5a86",
+            "server": "tw53.cowjump.site",
+            "server_port": 443,
+            "uuid": "0bf1cead-bdd4-4692-b3d4-6866ccb9f37a",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "tw53.cowjump.site"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "Osaka-206.190.234.176-f6b35218f3176d3d0dd1e65b3e57a2b4",
+            "server": "jp176.cowjump.site",
+            "server_port": 443,
+            "uuid": "0bf1cead-bdd4-4692-b3d4-6866ccb9f37a",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "jp176.cowjump.site"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
