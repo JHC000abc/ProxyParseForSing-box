@@ -1,0 +1,218 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Toronto-167.160.186.153-b0f16894c96dd78757cce2eddec0e64d",
+                "Boardman-52.38.25.63-da40028c714a298ca4ea2fbb69177621",
+                "Tokyo-18.177.136.57-06253e0170993156b4c4a09510cafa99",
+                "Los Angeles-154.44.3.179-4b7e0febf174188451ad41d880a422a9",
+                "Helsinki-95.216.210.215-0e8217e7375afc027835c9d1f16f9ccd",
+                "Frankfurt am Main-5.56.26.170-7fafcbc2e6468d8cdd78116332650b2a",
+                "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+                "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Toronto-167.160.186.153-b0f16894c96dd78757cce2eddec0e64d",
+                "Boardman-52.38.25.63-da40028c714a298ca4ea2fbb69177621",
+                "Tokyo-18.177.136.57-06253e0170993156b4c4a09510cafa99",
+                "Los Angeles-154.44.3.179-4b7e0febf174188451ad41d880a422a9",
+                "Helsinki-95.216.210.215-0e8217e7375afc027835c9d1f16f9ccd",
+                "Frankfurt am Main-5.56.26.170-7fafcbc2e6468d8cdd78116332650b2a",
+                "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+                "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Toronto-167.160.186.153-b0f16894c96dd78757cce2eddec0e64d",
+                "Boardman-52.38.25.63-da40028c714a298ca4ea2fbb69177621",
+                "Tokyo-18.177.136.57-06253e0170993156b4c4a09510cafa99",
+                "Los Angeles-154.44.3.179-4b7e0febf174188451ad41d880a422a9",
+                "Helsinki-95.216.210.215-0e8217e7375afc027835c9d1f16f9ccd",
+                "Frankfurt am Main-5.56.26.170-7fafcbc2e6468d8cdd78116332650b2a",
+                "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+                "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toronto-167.160.186.153-b0f16894c96dd78757cce2eddec0e64d",
+            "server": "hjnd.0101.pw",
+            "server_port": 8444,
+            "password": "6987a475-97a5-40ce-90fe-a59a21aa1c08",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hjnd.0101.pw"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-52.38.25.63-da40028c714a298ca4ea2fbb69177621",
+            "server": "vpn-us-006.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-006.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-18.177.136.57-06253e0170993156b4c4a09510cafa99",
+            "server": "vpn-jp-018.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-018.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.44.3.179-4b7e0febf174188451ad41d880a422a9",
+            "server": "vpn-us-018.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-018.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-95.216.210.215-0e8217e7375afc027835c9d1f16f9ccd",
+            "server": "172.64.149.54",
+            "server_port": 2083,
+            "uuid": "dcc864d3-4a2e-42dd-b17c-4f8447fb449c",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-content/app.js",
+                "headers": {
+                    "Host": "FiN.ShAkHle.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "FiN.ShAkHle.ir."
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-7fafcbc2e6468d8cdd78116332650b2a",
+            "server": "82.26.155.199",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+            "server": "vpn3.rnmcnm.com",
+            "server_port": 443,
+            "uuid": "c3d4e5f6-7890-1234-5678-90abcdef1234",
+            "transport": {
+                "type": "ws",
+                "path": "/ray",
+                "headers": {
+                    "Host": "vpn3.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn3.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d23iuljn5k9z1j.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d23iuljn5k9z1j.cloudfront.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
