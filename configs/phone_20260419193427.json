@@ -1,0 +1,254 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-138.124.32.188-1e380d64d794fac6dbf24423bfdd673c",
+                "Los Angeles-154.44.3.227-00a2339fc2eeb2c8f8c3d8a73d1b67a3",
+                "San Jose-198.200.36.198-c2edc2c00ef363b19115af3979a99fe7",
+                "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+                "Osaka-56.155.89.207-5bfb7cb121a63dacb8ce0e058bc6ad09",
+                "Kerkrade-144.31.224.163-5c4979d3c99d063c07475ad1a8d62fc6",
+                "Frankfurt am Main-5.56.26.170-8614b1f3752c5166df48ae1f53478d97",
+                "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+                "Warsaw-185.241.208.70-d997eaef0d4e304ee81a338b1fccf7aa",
+                "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-138.124.32.188-1e380d64d794fac6dbf24423bfdd673c",
+                "Los Angeles-154.44.3.227-00a2339fc2eeb2c8f8c3d8a73d1b67a3",
+                "San Jose-198.200.36.198-c2edc2c00ef363b19115af3979a99fe7",
+                "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+                "Osaka-56.155.89.207-5bfb7cb121a63dacb8ce0e058bc6ad09",
+                "Kerkrade-144.31.224.163-5c4979d3c99d063c07475ad1a8d62fc6",
+                "Frankfurt am Main-5.56.26.170-8614b1f3752c5166df48ae1f53478d97",
+                "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+                "Warsaw-185.241.208.70-d997eaef0d4e304ee81a338b1fccf7aa",
+                "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-138.124.32.188-1e380d64d794fac6dbf24423bfdd673c",
+                "Los Angeles-154.44.3.227-00a2339fc2eeb2c8f8c3d8a73d1b67a3",
+                "San Jose-198.200.36.198-c2edc2c00ef363b19115af3979a99fe7",
+                "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+                "Osaka-56.155.89.207-5bfb7cb121a63dacb8ce0e058bc6ad09",
+                "Kerkrade-144.31.224.163-5c4979d3c99d063c07475ad1a8d62fc6",
+                "Frankfurt am Main-5.56.26.170-8614b1f3752c5166df48ae1f53478d97",
+                "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+                "Warsaw-185.241.208.70-d997eaef0d4e304ee81a338b1fccf7aa",
+                "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-138.124.32.188-1e380d64d794fac6dbf24423bfdd673c",
+            "server": "138.124.32.188",
+            "server_port": 30047,
+            "uuid": "caf9d5f7-77f2-4033-823e-d55a1996fc4a",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "138.124.32.188"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.44.3.227-00a2339fc2eeb2c8f8c3d8a73d1b67a3",
+            "server": "vpn-us-021.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-021.fastervpn.world"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "San Jose-198.200.36.198-c2edc2c00ef363b19115af3979a99fe7",
+            "server": "jp111cf.885397.xyz",
+            "server_port": 8080,
+            "uuid": "37eaa80f-a1d9-43bd-b1d9-5003f04c19d8",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "us1.885397.xyz"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+            "server": "hjnd.0101.pw",
+            "server_port": 8444,
+            "password": "6987a475-97a5-40ce-90fe-a59a21aa1c08",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hjnd.0101.pw"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Osaka-56.155.89.207-5bfb7cb121a63dacb8ce0e058bc6ad09",
+            "server": "56.155.89.207",
+            "server_port": 12308,
+            "password": "b5c64cdc-ec6b-47c6-83b3-732e6f31e150",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp02.ulifeai.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-144.31.224.163-5c4979d3c99d063c07475ad1a8d62fc6",
+            "server": "nrealistic.nn-foto.ru",
+            "server_port": 8932,
+            "password": "rstnnl:7ltZBmta4ahLenTIoywBy3R1Z1PV7ZGf",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nrealistic.nn-foto.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CvxXZnSth1bVJKGFP2cof4rI52ifHJ2W"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-8614b1f3752c5166df48ae1f53478d97",
+            "server": "82.26.155.199",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tung Chung-45.197.148.81-fb0cf85585aa6e8b77bba7972f158227",
+            "server": "vpn3.rnmcnm.com",
+            "server_port": 443,
+            "uuid": "c3d4e5f6-7890-1234-5678-90abcdef1234",
+            "transport": {
+                "type": "ws",
+                "path": "/ray",
+                "headers": {
+                    "Host": "vpn3.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn3.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-185.241.208.70-d997eaef0d4e304ee81a338b1fccf7aa",
+            "server": "185.241.208.70",
+            "server_port": 30047,
+            "uuid": "caf9d5f7-77f2-4033-823e-d55a1996fc4a",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "185.241.208.70"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-116.203.60.218-da47a1a023a29bb82c0a8bb5106b883b",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d23iuljn5k9z1j.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d23iuljn5k9z1j.cloudfront.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
