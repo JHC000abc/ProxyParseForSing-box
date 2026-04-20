@@ -1,0 +1,163 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-95.216.210.215-c832c3ebf1c5b04105646a1d0428d609",
+                "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+                "Kerkrade-144.31.224.163-70bee3e82718147a28286ccf27979837",
+                "Phoenix-129.146.23.252-186d8f20db723d218b70867fec69c869",
+                "Frankfurt am Main-5.56.26.170-b34656fab1b48415a92640790ab421d7",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-95.216.210.215-c832c3ebf1c5b04105646a1d0428d609",
+                "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+                "Kerkrade-144.31.224.163-70bee3e82718147a28286ccf27979837",
+                "Phoenix-129.146.23.252-186d8f20db723d218b70867fec69c869",
+                "Frankfurt am Main-5.56.26.170-b34656fab1b48415a92640790ab421d7",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-95.216.210.215-c832c3ebf1c5b04105646a1d0428d609",
+                "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+                "Kerkrade-144.31.224.163-70bee3e82718147a28286ccf27979837",
+                "Phoenix-129.146.23.252-186d8f20db723d218b70867fec69c869",
+                "Frankfurt am Main-5.56.26.170-b34656fab1b48415a92640790ab421d7",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-95.216.210.215-c832c3ebf1c5b04105646a1d0428d609",
+            "server": "172.64.149.54",
+            "server_port": 2083,
+            "uuid": "dcc864d3-4a2e-42dd-b17c-4f8447fb449c",
+            "transport": {
+                "type": "ws",
+                "path": "/ws-content/app.js",
+                "headers": {
+                    "Host": "FiN.ShAkHle.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "FiN.ShAkHle.ir."
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toronto-167.160.186.153-3e9b5a1dca19d35b10f66953b4e9c87c",
+            "server": "hjnd.0101.pw",
+            "server_port": 8444,
+            "password": "6987a475-97a5-40ce-90fe-a59a21aa1c08",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hjnd.0101.pw"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-144.31.224.163-70bee3e82718147a28286ccf27979837",
+            "server": "nrealistic.nn-foto.ru",
+            "server_port": 8932,
+            "password": "rstnnl:7ltZBmta4ahLenTIoywBy3R1Z1PV7ZGf",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nrealistic.nn-foto.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CvxXZnSth1bVJKGFP2cof4rI52ifHJ2W"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Phoenix-129.146.23.252-186d8f20db723d218b70867fec69c869",
+            "server": "129.153.90.9",
+            "server_port": 50000,
+            "password": "8e8f0173-6426-4fed-94f6-580847c744f1",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-b34656fab1b48415a92640790ab421d7",
+            "server": "82.26.155.199",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
