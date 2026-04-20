@@ -1,0 +1,122 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Boardman-35.161.20.236-a8ca109705d319282ba3d623630af662",
+                "Los Angeles-154.29.156.188-cd9279a9d777c2ffedd65c3a1a9fdf59",
+                "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Boardman-35.161.20.236-a8ca109705d319282ba3d623630af662",
+                "Los Angeles-154.29.156.188-cd9279a9d777c2ffedd65c3a1a9fdf59",
+                "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Boardman-35.161.20.236-a8ca109705d319282ba3d623630af662",
+                "Los Angeles-154.29.156.188-cd9279a9d777c2ffedd65c3a1a9fdf59",
+                "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-35.161.20.236-a8ca109705d319282ba3d623630af662",
+            "server": "vpn-us-006.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-006.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.156.188-cd9279a9d777c2ffedd65c3a1a9fdf59",
+            "server": "vpn-us-017.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-017.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+            "server": "vpn-uk-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
