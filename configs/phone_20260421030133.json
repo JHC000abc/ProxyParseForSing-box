@@ -1,0 +1,144 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Toronto-167.160.186.153-cf24f3855b97b1197a39eed2351b1923",
+                "Boardman-44.245.154.41-a8ca109705d319282ba3d623630af662",
+                "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+                "Frankfurt am Main-198.105.115.175-6043f5128c5301945e6366c9ab29302a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Toronto-167.160.186.153-cf24f3855b97b1197a39eed2351b1923",
+                "Boardman-44.245.154.41-a8ca109705d319282ba3d623630af662",
+                "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+                "Frankfurt am Main-198.105.115.175-6043f5128c5301945e6366c9ab29302a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Toronto-167.160.186.153-cf24f3855b97b1197a39eed2351b1923",
+                "Boardman-44.245.154.41-a8ca109705d319282ba3d623630af662",
+                "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+                "Frankfurt am Main-198.105.115.175-6043f5128c5301945e6366c9ab29302a",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toronto-167.160.186.153-cf24f3855b97b1197a39eed2351b1923",
+            "server": "hjnd.0101.pw",
+            "server_port": 8444,
+            "password": "6987a475-97a5-40ce-90fe-a59a21aa1c08",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hjnd.0101.pw"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-44.245.154.41-a8ca109705d319282ba3d623630af662",
+            "server": "vpn-us-006.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-006.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-194.147.16.179-cce8fd4b670a12a5d4f05dd9dde1aa1a",
+            "server": "vpn-uk-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-198.105.115.175-6043f5128c5301945e6366c9ab29302a",
+            "server": "172.64.149.54",
+            "server_port": 443,
+            "uuid": "77534396-dead-4a6c-8761-03939cd4fdc8",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "my.vulmart.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "my.vulmart.ir"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
