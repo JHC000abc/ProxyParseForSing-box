@@ -1,0 +1,171 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-35.72.3.82-7d5082d236c32d12f4d7a897428a6716",
+                "Tokyo-116.206.92.69-5b4171da3223ffe434fe2109290ca904",
+                "Tokyo-116.206.92.123-73f6417ffa9223c8623a4b5e5d36e6e2",
+                "Los Angeles-154.29.158.139-67323e07a717b80d7dc88d8830b8a451",
+                "Kerkrade-144.31.224.163-a272c20df0b2f6ce52c8dff27cce955b",
+                "Paris-195.154.200.13-ac91499528ffa931345b731d6c7be7ff",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-35.72.3.82-7d5082d236c32d12f4d7a897428a6716",
+                "Tokyo-116.206.92.69-5b4171da3223ffe434fe2109290ca904",
+                "Tokyo-116.206.92.123-73f6417ffa9223c8623a4b5e5d36e6e2",
+                "Los Angeles-154.29.158.139-67323e07a717b80d7dc88d8830b8a451",
+                "Kerkrade-144.31.224.163-a272c20df0b2f6ce52c8dff27cce955b",
+                "Paris-195.154.200.13-ac91499528ffa931345b731d6c7be7ff",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-35.72.3.82-7d5082d236c32d12f4d7a897428a6716",
+                "Tokyo-116.206.92.69-5b4171da3223ffe434fe2109290ca904",
+                "Tokyo-116.206.92.123-73f6417ffa9223c8623a4b5e5d36e6e2",
+                "Los Angeles-154.29.158.139-67323e07a717b80d7dc88d8830b8a451",
+                "Kerkrade-144.31.224.163-a272c20df0b2f6ce52c8dff27cce955b",
+                "Paris-195.154.200.13-ac91499528ffa931345b731d6c7be7ff",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-35.72.3.82-7d5082d236c32d12f4d7a897428a6716",
+            "server": "vpn-jp-018.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-018.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-116.206.92.69-5b4171da3223ffe434fe2109290ca904",
+            "server": "vpn-jp-005.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-005.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-116.206.92.123-73f6417ffa9223c8623a4b5e5d36e6e2",
+            "server": "vpn-jp-010.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-010.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.158.139-67323e07a717b80d7dc88d8830b8a451",
+            "server": "vpn-us-020.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-020.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-144.31.224.163-a272c20df0b2f6ce52c8dff27cce955b",
+            "server": "nrealistic.nn-foto.ru",
+            "server_port": 8932,
+            "password": "rstnnl:7ltZBmta4ahLenTIoywBy3R1Z1PV7ZGf",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nrealistic.nn-foto.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CvxXZnSth1bVJKGFP2cof4rI52ifHJ2W"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-195.154.200.13-ac91499528ffa931345b731d6c7be7ff",
+            "server": "163.172.113.118",
+            "server_port": 40022,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
