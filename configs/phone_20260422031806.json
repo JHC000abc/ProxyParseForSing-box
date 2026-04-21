@@ -1,0 +1,164 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+                "Toronto-167.160.186.153-86cb33761cd9eb9238d3a3aaf628a2bf",
+                "London-194.147.16.179-1e145fdbeabdb89c92eb68f8a1dcd959",
+                "Kaohsiung-218.173.201.127-cc67b4dba87420d265038bdaf60df5fc",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+                "Toronto-167.160.186.153-86cb33761cd9eb9238d3a3aaf628a2bf",
+                "London-194.147.16.179-1e145fdbeabdb89c92eb68f8a1dcd959",
+                "Kaohsiung-218.173.201.127-cc67b4dba87420d265038bdaf60df5fc",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+                "Toronto-167.160.186.153-86cb33761cd9eb9238d3a3aaf628a2bf",
+                "London-194.147.16.179-1e145fdbeabdb89c92eb68f8a1dcd959",
+                "Kaohsiung-218.173.201.127-cc67b4dba87420d265038bdaf60df5fc",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+            "server": "kr01.a0a.xyz",
+            "server_port": 19568,
+            "uuid": "641500bf-92f9-4720-e2e7-579a8f7dbb04",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "kr01.a0a.xyz"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toronto-167.160.186.153-86cb33761cd9eb9238d3a3aaf628a2bf",
+            "server": "hjnd.0101.pw",
+            "server_port": 8444,
+            "password": "6987a475-97a5-40ce-90fe-a59a21aa1c08",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hjnd.0101.pw"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-194.147.16.179-1e145fdbeabdb89c92eb68f8a1dcd959",
+            "server": "vpn-uk-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kaohsiung-218.173.201.127-cc67b4dba87420d265038bdaf60df5fc",
+            "server": "tvhinet.lajichang.xyz",
+            "server_port": 2096,
+            "password": "e5c22f63-e473-496a-beff-fdc5655008c1",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bing.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+            "server": "mangu1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "mangu1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mangu1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
