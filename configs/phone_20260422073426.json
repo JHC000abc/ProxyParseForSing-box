@@ -1,0 +1,189 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+                "Osaka-161.33.10.254-1cabdded03cdc70c1829175c8a9c6c23",
+                "Kerkrade-144.31.224.163-c661e38be6467ffd8956a23e2dbfc6ad",
+                "Taipei-160.187.100.84-f211ff98bb06b449ebe9c66dc376da80",
+                "Genève-83.228.228.44-0f90be017ef852f113815d52a0331cb1",
+                "Nürnberg-46.224.17.174-a70a64c8093b82552f7273000fa1e7c6",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+                "Osaka-161.33.10.254-1cabdded03cdc70c1829175c8a9c6c23",
+                "Kerkrade-144.31.224.163-c661e38be6467ffd8956a23e2dbfc6ad",
+                "Taipei-160.187.100.84-f211ff98bb06b449ebe9c66dc376da80",
+                "Genève-83.228.228.44-0f90be017ef852f113815d52a0331cb1",
+                "Nürnberg-46.224.17.174-a70a64c8093b82552f7273000fa1e7c6",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+                "Osaka-161.33.10.254-1cabdded03cdc70c1829175c8a9c6c23",
+                "Kerkrade-144.31.224.163-c661e38be6467ffd8956a23e2dbfc6ad",
+                "Taipei-160.187.100.84-f211ff98bb06b449ebe9c66dc376da80",
+                "Genève-83.228.228.44-0f90be017ef852f113815d52a0331cb1",
+                "Nürnberg-46.224.17.174-a70a64c8093b82552f7273000fa1e7c6",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Gangseo-gu-146.56.183.29-f1e2c3d66df0bdf58bea28f021d6c849",
+            "server": "kr01.a0a.xyz",
+            "server_port": 19568,
+            "uuid": "641500bf-92f9-4720-e2e7-579a8f7dbb04",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "kr01.a0a.xyz"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Osaka-161.33.10.254-1cabdded03cdc70c1829175c8a9c6c23",
+            "server": "jp-hy2.onetaplink.app",
+            "server_port": 5443,
+            "password": "48b36b6a-eaa6-4843-9231-0bb8b38b5da5",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "hy2-jp.onetaplink.app"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CF7WJGiw6r1c8imX"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-144.31.224.163-c661e38be6467ffd8956a23e2dbfc6ad",
+            "server": "nrealistic.nn-foto.ru",
+            "server_port": 8932,
+            "password": "rstnnl:7ltZBmta4ahLenTIoywBy3R1Z1PV7ZGf",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nrealistic.nn-foto.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CvxXZnSth1bVJKGFP2cof4rI52ifHJ2W"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Taipei-160.187.100.84-f211ff98bb06b449ebe9c66dc376da80",
+            "server": "vpn-tw-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-tw-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Genève-83.228.228.44-0f90be017ef852f113815d52a0331cb1",
+            "server": "172.65.111.43",
+            "server_port": 22,
+            "uuid": "monacoVPN",
+            "transport": {
+                "type": "http",
+                "path": "/@monacoVPN@monacoVPN@monacoVPN@monacoVPN",
+                "headers": {
+                    "Host": "172.65.111.43"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-46.224.17.174-a70a64c8093b82552f7273000fa1e7c6",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d24f6c9l7fxvak.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d24f6c9l7fxvak.cloudfront.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
