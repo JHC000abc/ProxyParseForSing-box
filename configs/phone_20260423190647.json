@@ -1,0 +1,252 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-63.178.9.254-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "London-194.147.16.179-7c835c7f40cc49ba0d1a7be62f8d6439",
+                "Mumbai-13.206.89.241-8da200387d0f18d11bc9ea6317738393",
+                "Manassas-152.53.54.139-738862ab34a3a3446a32f33cdb63ac26",
+                "Hanoi-180.93.128.92-5a8ce2ffc2b0cf6802bff290e915bc4c",
+                "Lelystad-45.92.1.37-650d9c89e2785fd63663bbcf95d26ed0",
+                "Frankfurt am Main-198.105.115.175-a554965107399ce9cc0f722e99ec52d6",
+                "Nürnberg-178.104.128.210-574b50893da3e2479c115bb7b3e0db1e",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-63.178.9.254-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "London-194.147.16.179-7c835c7f40cc49ba0d1a7be62f8d6439",
+                "Mumbai-13.206.89.241-8da200387d0f18d11bc9ea6317738393",
+                "Manassas-152.53.54.139-738862ab34a3a3446a32f33cdb63ac26",
+                "Hanoi-180.93.128.92-5a8ce2ffc2b0cf6802bff290e915bc4c",
+                "Lelystad-45.92.1.37-650d9c89e2785fd63663bbcf95d26ed0",
+                "Frankfurt am Main-198.105.115.175-a554965107399ce9cc0f722e99ec52d6",
+                "Nürnberg-178.104.128.210-574b50893da3e2479c115bb7b3e0db1e",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-63.178.9.254-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "London-194.147.16.179-7c835c7f40cc49ba0d1a7be62f8d6439",
+                "Mumbai-13.206.89.241-8da200387d0f18d11bc9ea6317738393",
+                "Manassas-152.53.54.139-738862ab34a3a3446a32f33cdb63ac26",
+                "Hanoi-180.93.128.92-5a8ce2ffc2b0cf6802bff290e915bc4c",
+                "Lelystad-45.92.1.37-650d9c89e2785fd63663bbcf95d26ed0",
+                "Frankfurt am Main-198.105.115.175-a554965107399ce9cc0f722e99ec52d6",
+                "Nürnberg-178.104.128.210-574b50893da3e2479c115bb7b3e0db1e",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+                "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+                "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-63.178.9.254-246f61366f3c0834ac5eaf4ed7a6cdef",
+            "server": "vpn-de-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-de-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-194.147.16.179-7c835c7f40cc49ba0d1a7be62f8d6439",
+            "server": "vpn-uk-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-13.206.89.241-8da200387d0f18d11bc9ea6317738393",
+            "server": "vpn-in-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-in-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Manassas-152.53.54.139-738862ab34a3a3446a32f33cdb63ac26",
+            "server": "152.53.54.139",
+            "server_port": 36002,
+            "password": "a50a83bd-1fe8-4dd4-ba55-48f80190f527",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hk1.zongyunti.site"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Hanoi-180.93.128.92-5a8ce2ffc2b0cf6802bff290e915bc4c",
+            "server": "vpn-vn-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-vn-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-45.92.1.37-650d9c89e2785fd63663bbcf95d26ed0",
+            "server": "45.92.1.37",
+            "server_port": 30047,
+            "uuid": "595ae3f9-5a91-4eaa-82a3-28a221cf8f7f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "45.92.1.37"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-198.105.115.175-a554965107399ce9cc0f722e99ec52d6",
+            "server": "172.64.149.54",
+            "server_port": 443,
+            "uuid": "77534396-dead-4a6c-8761-03939cd4fdc8",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "my.vulmart.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "my.vulmart.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.128.210-574b50893da3e2479c115bb7b3e0db1e",
+            "server": "151.101.1.55",
+            "server_port": 80,
+            "uuid": "74d47fb8-c057-49b1-85ff-447ecd6cfcd6",
+            "transport": {
+                "type": "ws",
+                "path": "/live",
+                "headers": {
+                    "Host": "plus-mobile1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-43.164.0.76-25ffb6d226391ef574233af4b0a8622b",
+            "server": "mangu1.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "mangu1.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mangu1.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Almere Stad-94.131.105.125-67b49c685608fc3a23629f0b9569b4a2",
+            "server": "94.131.105.125",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94.131.105.125"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
