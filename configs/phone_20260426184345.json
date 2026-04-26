@@ -1,0 +1,233 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-18.153.48.201-9ef47e36576600e7654afddf00e3352d",
+                "Taichung-175.182.36.216-e17a70211a7cea7a63ca4b47ac4601ad",
+                "Los Angeles-154.29.156.188-6dad083a6b8ba3e9fb404b1bf6442840",
+                "Boardman-35.92.100.88-86a2fa0e1234603d311eee6f1f8b181a",
+                "Columbus-18.218.205.92-7158d0e85c4402a913dec22fc4063166",
+                "Frankfurt am Main-138.124.32.188-ab4252253e6aeb0ac241830e7fd772ab",
+                "Columbus-3.147.89.126-604c0c6634dc3153384464e1d6dbfb25",
+                "Kerkrade-144.31.224.163-7e582296481899fce40e6a4a1a1e50dd",
+                "Incheon-54.180.148.170-f1d46a86441519840691d59821d4398e",
+                "Incheon-3.35.50.2-3e38c834011fabed3adb298627dc435a",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-18.153.48.201-9ef47e36576600e7654afddf00e3352d",
+                "Taichung-175.182.36.216-e17a70211a7cea7a63ca4b47ac4601ad",
+                "Los Angeles-154.29.156.188-6dad083a6b8ba3e9fb404b1bf6442840",
+                "Boardman-35.92.100.88-86a2fa0e1234603d311eee6f1f8b181a",
+                "Columbus-18.218.205.92-7158d0e85c4402a913dec22fc4063166",
+                "Frankfurt am Main-138.124.32.188-ab4252253e6aeb0ac241830e7fd772ab",
+                "Columbus-3.147.89.126-604c0c6634dc3153384464e1d6dbfb25",
+                "Kerkrade-144.31.224.163-7e582296481899fce40e6a4a1a1e50dd",
+                "Incheon-54.180.148.170-f1d46a86441519840691d59821d4398e",
+                "Incheon-3.35.50.2-3e38c834011fabed3adb298627dc435a",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-18.153.48.201-9ef47e36576600e7654afddf00e3352d",
+                "Taichung-175.182.36.216-e17a70211a7cea7a63ca4b47ac4601ad",
+                "Los Angeles-154.29.156.188-6dad083a6b8ba3e9fb404b1bf6442840",
+                "Boardman-35.92.100.88-86a2fa0e1234603d311eee6f1f8b181a",
+                "Columbus-18.218.205.92-7158d0e85c4402a913dec22fc4063166",
+                "Frankfurt am Main-138.124.32.188-ab4252253e6aeb0ac241830e7fd772ab",
+                "Columbus-3.147.89.126-604c0c6634dc3153384464e1d6dbfb25",
+                "Kerkrade-144.31.224.163-7e582296481899fce40e6a4a1a1e50dd",
+                "Incheon-54.180.148.170-f1d46a86441519840691d59821d4398e",
+                "Incheon-3.35.50.2-3e38c834011fabed3adb298627dc435a",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-18.153.48.201-9ef47e36576600e7654afddf00e3352d",
+            "server": "vpn-de-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-de-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Taichung-175.182.36.216-e17a70211a7cea7a63ca4b47ac4601ad",
+            "server": "seednet-2.388898.xyz",
+            "server_port": 13005,
+            "password": "992af1b9-8494-4d6e-8d41-4cf1a20ea618",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.29.156.188-6dad083a6b8ba3e9fb404b1bf6442840",
+            "server": "vpn-us-017.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-017.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-35.92.100.88-86a2fa0e1234603d311eee6f1f8b181a",
+            "server": "vpn-us-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.218.205.92-7158d0e85c4402a913dec22fc4063166",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-138.124.32.188-ab4252253e6aeb0ac241830e7fd772ab",
+            "server": "138.124.32.188",
+            "server_port": 30047,
+            "uuid": "595ae3f9-5a91-4eaa-82a3-28a221cf8f7f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "138.124.32.188"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.147.89.126-604c0c6634dc3153384464e1d6dbfb25",
+            "server": "vpn-us-003.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-144.31.224.163-7e582296481899fce40e6a4a1a1e50dd",
+            "server": "nrealistic.nn-foto.ru",
+            "server_port": 8932,
+            "password": "rstnnl:7ltZBmta4ahLenTIoywBy3R1Z1PV7ZGf",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nrealistic.nn-foto.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CvxXZnSth1bVJKGFP2cof4rI52ifHJ2W"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-54.180.148.170-f1d46a86441519840691d59821d4398e",
+            "server": "vpn-kr-003.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-3.35.50.2-3e38c834011fabed3adb298627dc435a",
+            "server": "vpn-kr-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008",
+            "server": "82.26.155.3",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra34.chasem2026sud.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
