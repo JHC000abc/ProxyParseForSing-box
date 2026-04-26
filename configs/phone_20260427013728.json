@@ -1,0 +1,152 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Taipei-160.187.100.84-0421f442d8e695bf4bbef7ab3176fcdc",
+                "Boardman-54.214.76.153-f236b609c82086c5c5dbf6dd3114b0ef",
+                "London-13.40.131.229-c46f61b73b37d625c37780d240374568",
+                "London-18.135.103.236-d742726176b093a80cdfbe62308a20fe",
+                "Boardman-54.202.175.223-4d14cf2de03c80475c9da967f50744c6",
+                "Columbus-3.135.187.15-7ca25341568fceff16cf1f582a7dd27e"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Taipei-160.187.100.84-0421f442d8e695bf4bbef7ab3176fcdc",
+                "Boardman-54.214.76.153-f236b609c82086c5c5dbf6dd3114b0ef",
+                "London-13.40.131.229-c46f61b73b37d625c37780d240374568",
+                "London-18.135.103.236-d742726176b093a80cdfbe62308a20fe",
+                "Boardman-54.202.175.223-4d14cf2de03c80475c9da967f50744c6",
+                "Columbus-3.135.187.15-7ca25341568fceff16cf1f582a7dd27e"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Taipei-160.187.100.84-0421f442d8e695bf4bbef7ab3176fcdc",
+                "Boardman-54.214.76.153-f236b609c82086c5c5dbf6dd3114b0ef",
+                "London-13.40.131.229-c46f61b73b37d625c37780d240374568",
+                "London-18.135.103.236-d742726176b093a80cdfbe62308a20fe",
+                "Boardman-54.202.175.223-4d14cf2de03c80475c9da967f50744c6",
+                "Columbus-3.135.187.15-7ca25341568fceff16cf1f582a7dd27e"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Taipei-160.187.100.84-0421f442d8e695bf4bbef7ab3176fcdc",
+            "server": "vpn-tw-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-tw-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-54.214.76.153-f236b609c82086c5c5dbf6dd3114b0ef",
+            "server": "vpn-us-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-13.40.131.229-c46f61b73b37d625c37780d240374568",
+            "server": "vpn-uk-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-18.135.103.236-d742726176b093a80cdfbe62308a20fe",
+            "server": "vpn-uk-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-54.202.175.223-4d14cf2de03c80475c9da967f50744c6",
+            "server": "vpn-us-005.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-005.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.135.187.15-7ca25341568fceff16cf1f582a7dd27e",
+            "server": "vpn-us-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-001.fastervpn.world"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
