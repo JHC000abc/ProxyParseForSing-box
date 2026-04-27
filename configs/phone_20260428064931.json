@@ -1,0 +1,225 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nürnberg-178.104.14.98-9be87fbb2e4409069b47ba6cadb00879",
+                "Mumbai-52.66.208.26-2a1cd7d64c1c03a67786c47df53b536e",
+                "Montréal-15.223.186.78-d9a6506437702eaa174796d75a4ceec6",
+                "Saint Petersburg-159.194.203.95-17fe89810c8e311cdf9d422b08e9143f",
+                "Saint Petersburg-87.228.122.98-7c3ed724fd9a84b52b6a8e99c560b841",
+                "Paris-13.38.248.91-423162d4fbb7e7d9d5b64a5bbb400843",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+                "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nürnberg-178.104.14.98-9be87fbb2e4409069b47ba6cadb00879",
+                "Mumbai-52.66.208.26-2a1cd7d64c1c03a67786c47df53b536e",
+                "Montréal-15.223.186.78-d9a6506437702eaa174796d75a4ceec6",
+                "Saint Petersburg-159.194.203.95-17fe89810c8e311cdf9d422b08e9143f",
+                "Saint Petersburg-87.228.122.98-7c3ed724fd9a84b52b6a8e99c560b841",
+                "Paris-13.38.248.91-423162d4fbb7e7d9d5b64a5bbb400843",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+                "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nürnberg-178.104.14.98-9be87fbb2e4409069b47ba6cadb00879",
+                "Mumbai-52.66.208.26-2a1cd7d64c1c03a67786c47df53b536e",
+                "Montréal-15.223.186.78-d9a6506437702eaa174796d75a4ceec6",
+                "Saint Petersburg-159.194.203.95-17fe89810c8e311cdf9d422b08e9143f",
+                "Saint Petersburg-87.228.122.98-7c3ed724fd9a84b52b6a8e99c560b841",
+                "Paris-13.38.248.91-423162d4fbb7e7d9d5b64a5bbb400843",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+                "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.14.98-9be87fbb2e4409069b47ba6cadb00879",
+            "server": "104.20.6.134",
+            "server_port": 2083,
+            "uuid": "b24484be-a335-472c-8dff-060ccd2b8f3b",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "xn-de.shakhle.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xn-de.shakhle.ir."
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-52.66.208.26-2a1cd7d64c1c03a67786c47df53b536e",
+            "server": "vpn-in-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-in-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Montréal-15.223.186.78-d9a6506437702eaa174796d75a4ceec6",
+            "server": "vpn-ca-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-ca-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Saint Petersburg-159.194.203.95-17fe89810c8e311cdf9d422b08e9143f",
+            "server": "tn.xbs54as9c6.ru",
+            "server_port": 443,
+            "password": "75356919-6ece-455c-ba7a-9f042a60d2c5",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "live.ok.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Saint Petersburg-87.228.122.98-7c3ed724fd9a84b52b6a8e99c560b841",
+            "server": "tg.xbs54as9c6.ru",
+            "server_port": 7081,
+            "password": "75356919-6ece-455c-ba7a-9f042a60d2c5",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rzd.ru"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-13.38.248.91-423162d4fbb7e7d9d5b64a5bbb400843",
+            "server": "13.38.248.91",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "13.38.248.91"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+            "server": "pq-india1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "05b544a4-d479-4ba4-8208-950bd4411453",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-india1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "pq-India1.09vpn.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008",
+            "server": "82.26.155.3",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra34.chasem2026sud.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
