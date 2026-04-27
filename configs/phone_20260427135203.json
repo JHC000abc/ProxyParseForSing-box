@@ -1,0 +1,167 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Boardman-16.146.7.46-db25a5e2e00401f80c948cafc2f00d53",
+                "Columbus-3.128.172.223-f9c2e034ad5bb46ca382b2db1dcd0582",
+                "Columbus-3.145.104.179-241f16e6679c83e7c8b93bfdb45dcd93",
+                "Tokyo-13.112.118.152-efec3a84d8d849519f6cee178a082764",
+                "Los Angeles-154.64.243.41-1ccdc67736d617a23a33d26de7ce2ab0",
+                "Los Angeles-154.44.3.227-c0206ba9c042810369faea50d4e14319",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Boardman-16.146.7.46-db25a5e2e00401f80c948cafc2f00d53",
+                "Columbus-3.128.172.223-f9c2e034ad5bb46ca382b2db1dcd0582",
+                "Columbus-3.145.104.179-241f16e6679c83e7c8b93bfdb45dcd93",
+                "Tokyo-13.112.118.152-efec3a84d8d849519f6cee178a082764",
+                "Los Angeles-154.64.243.41-1ccdc67736d617a23a33d26de7ce2ab0",
+                "Los Angeles-154.44.3.227-c0206ba9c042810369faea50d4e14319",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Boardman-16.146.7.46-db25a5e2e00401f80c948cafc2f00d53",
+                "Columbus-3.128.172.223-f9c2e034ad5bb46ca382b2db1dcd0582",
+                "Columbus-3.145.104.179-241f16e6679c83e7c8b93bfdb45dcd93",
+                "Tokyo-13.112.118.152-efec3a84d8d849519f6cee178a082764",
+                "Los Angeles-154.64.243.41-1ccdc67736d617a23a33d26de7ce2ab0",
+                "Los Angeles-154.44.3.227-c0206ba9c042810369faea50d4e14319",
+                "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-16.146.7.46-db25a5e2e00401f80c948cafc2f00d53",
+            "server": "vpn-us-005.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-005.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.128.172.223-f9c2e034ad5bb46ca382b2db1dcd0582",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.145.104.179-241f16e6679c83e7c8b93bfdb45dcd93",
+            "server": "vpn-us-003.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-13.112.118.152-efec3a84d8d849519f6cee178a082764",
+            "server": "vpn-jp-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.64.243.41-1ccdc67736d617a23a33d26de7ce2ab0",
+            "server": "vpn-us-016.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-016.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Los Angeles-154.44.3.227-c0206ba9c042810369faea50d4e14319",
+            "server": "vpn-us-021.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-021.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-5.56.26.170-993b0503f8d2c840b8ef4587a9a54008",
+            "server": "82.26.155.3",
+            "server_port": 10369,
+            "password": "n5ix4FcMQYENMQPL+YKbvyJ8nZ84+bNTsj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fra34.chasem2026sud.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
