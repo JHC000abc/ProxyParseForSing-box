@@ -1,0 +1,114 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Incheon-3.34.96.25-f2c1d7819e116d354cbb830de6ec81bd",
+                "Sydney-13.211.2.129-e7ee4364019311257444f7249a33b54e",
+                "Mumbai-45.89.105.56-fd4fe99019b257cbd60e18554b1e83e6"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Incheon-3.34.96.25-f2c1d7819e116d354cbb830de6ec81bd",
+                "Sydney-13.211.2.129-e7ee4364019311257444f7249a33b54e",
+                "Mumbai-45.89.105.56-fd4fe99019b257cbd60e18554b1e83e6"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Incheon-3.34.96.25-f2c1d7819e116d354cbb830de6ec81bd",
+                "Sydney-13.211.2.129-e7ee4364019311257444f7249a33b54e",
+                "Mumbai-45.89.105.56-fd4fe99019b257cbd60e18554b1e83e6"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-3.34.96.25-f2c1d7819e116d354cbb830de6ec81bd",
+            "server": "vpn-kr-003.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Sydney-13.211.2.129-e7ee4364019311257444f7249a33b54e",
+            "server": "vpn-au-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-au-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-45.89.105.56-fd4fe99019b257cbd60e18554b1e83e6",
+            "server": "pq-india1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "05b544a4-d479-4ba4-8208-950bd4411453",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-india1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "pq-India1.09vpn.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
