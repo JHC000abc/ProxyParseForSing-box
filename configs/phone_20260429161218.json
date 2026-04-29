@@ -1,0 +1,291 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "London-86.53.183.60-f07880177ffb0064d563d1822ce5a438",
+                "Kampong Loyang-168.138.184.67-776f95a6fef346efa916c94e9c41f744",
+                "Boardman-35.93.95.164-5178b4a9b6deba4805d05fc8281b4b0f",
+                "Frankfurt am Main-18.192.48.56-ad4039a9a8e2e1ff594a38ce2d0dfd07",
+                "Tokyo-151.248.68.194-ed81d9fde0d26836afdc3c9d39d323bd",
+                "Singapore-5.180.78.27-de3ee895af82e7e9f6b4323a7c517d3e",
+                "Paris-195.154.200.13-42501ccf2cde2268528f23ece8036f2c",
+                "Lille-51.178.112.65-9d54a89fd2c9bb3c8dd225b7f22161ca",
+                "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+                "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+                "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+                "Los Angeles-64.81.39.77-ac9f725fb73e5532238e7bf1e36f2796",
+                "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "London-86.53.183.60-f07880177ffb0064d563d1822ce5a438",
+                "Kampong Loyang-168.138.184.67-776f95a6fef346efa916c94e9c41f744",
+                "Boardman-35.93.95.164-5178b4a9b6deba4805d05fc8281b4b0f",
+                "Frankfurt am Main-18.192.48.56-ad4039a9a8e2e1ff594a38ce2d0dfd07",
+                "Tokyo-151.248.68.194-ed81d9fde0d26836afdc3c9d39d323bd",
+                "Singapore-5.180.78.27-de3ee895af82e7e9f6b4323a7c517d3e",
+                "Paris-195.154.200.13-42501ccf2cde2268528f23ece8036f2c",
+                "Lille-51.178.112.65-9d54a89fd2c9bb3c8dd225b7f22161ca",
+                "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+                "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+                "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+                "Los Angeles-64.81.39.77-ac9f725fb73e5532238e7bf1e36f2796",
+                "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "London-86.53.183.60-f07880177ffb0064d563d1822ce5a438",
+                "Kampong Loyang-168.138.184.67-776f95a6fef346efa916c94e9c41f744",
+                "Boardman-35.93.95.164-5178b4a9b6deba4805d05fc8281b4b0f",
+                "Frankfurt am Main-18.192.48.56-ad4039a9a8e2e1ff594a38ce2d0dfd07",
+                "Tokyo-151.248.68.194-ed81d9fde0d26836afdc3c9d39d323bd",
+                "Singapore-5.180.78.27-de3ee895af82e7e9f6b4323a7c517d3e",
+                "Paris-195.154.200.13-42501ccf2cde2268528f23ece8036f2c",
+                "Lille-51.178.112.65-9d54a89fd2c9bb3c8dd225b7f22161ca",
+                "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+                "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+                "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+                "Los Angeles-64.81.39.77-ac9f725fb73e5532238e7bf1e36f2796",
+                "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "London-86.53.183.60-f07880177ffb0064d563d1822ce5a438",
+            "server": "uk.baqi.indevs.in",
+            "server_port": 39001,
+            "uuid": "feca2089-d231-4f5f-9ec7-e745ab289518",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d0a6b4d945dbfc846b18fade7d631883.mobgslb.tbcache.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kampong Loyang-168.138.184.67-776f95a6fef346efa916c94e9c41f744",
+            "server": "sg.baqi.indevs.in",
+            "server_port": 39001,
+            "uuid": "feca2089-d231-4f5f-9ec7-e745ab289518",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d0a6b4d945dbfc846b18fade7d631883.mobgslb.tbcache.com"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-35.93.95.164-5178b4a9b6deba4805d05fc8281b4b0f",
+            "server": "vpn-us-006.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-006.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-18.192.48.56-ad4039a9a8e2e1ff594a38ce2d0dfd07",
+            "server": "vpn-de-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-de-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-151.248.68.194-ed81d9fde0d26836afdc3c9d39d323bd",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 6533,
+            "password": "f8af73ed-363a-4dfb-b99f-65bd8ad1a329",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jpdigital.ccwink.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-5.180.78.27-de3ee895af82e7e9f6b4323a7c517d3e",
+            "server": "hkaws.ccwink.photos",
+            "server_port": 52348,
+            "password": "f8af73ed-363a-4dfb-b99f-65bd8ad1a329",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sgdigital.ccwink.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-195.154.200.13-42501ccf2cde2268528f23ece8036f2c",
+            "server": "163.172.113.118",
+            "server_port": 41283,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lille-51.178.112.65-9d54a89fd2c9bb3c8dd225b7f22161ca",
+            "server": "104.20.6.134",
+            "server_port": 2053,
+            "uuid": "d80e6151-1f3b-49dd-b24c-332621246506",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "h1.multiroxynet.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "h1.multiroxynet.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ads.x5.ru"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+            "server": "144.24.126.26",
+            "server_port": 443,
+            "uuid": "1027b850-de79-4a94-b337-eccdac28e141",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "g.sandesh.qzz.io"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "g.sandesh.qzz.io"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d23iuljn5k9z1j.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d23iuljn5k9z1j.cloudfront.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-64.81.39.77-ac9f725fb73e5532238e7bf1e36f2796",
+            "server": "162.159.45.202",
+            "server_port": 8443,
+            "uuid": "dcda262b-0d36-4032-edd9-da4fd2d53711",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "zoro.jakesolo.eu.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "zoro.jakesolo.eu.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748",
+            "server": "141.193.213.21",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
