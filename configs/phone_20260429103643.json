@@ -1,0 +1,278 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Los Angeles-64.81.32.47-ac55e2024b7ee2bbd58948ce071d7c9c",
+                "London-3.8.78.29-ccbf95361078fccc5baa48f71061be21",
+                "Kerkrade-144.31.224.163-96a6567478b1e2832deffa121dcf6ee4",
+                "Columbus-3.145.35.153-523445d07c25d5e108d5c52054517562",
+                "Boardman-35.92.69.254-0aa4375feb11ddf7a101599d86da1692",
+                "Montréal-3.96.138.128-9719c15a0dec7631729dabcdf8c57e8b",
+                "Frankfurt am Main-63.179.1.34-4bb55b4ff128f8b22c1114d87a12752e",
+                "Tokyo-103.134.35.37-4a05edcae7c69350cddca58017b1b515",
+                "Saint Petersburg-178.72.186.76-01362fd97c48a3e3b5d7a048cb736fb9",
+                "Nürnberg-178.104.14.98-6e1d1a6674341351e2797db2f2ac2b17",
+                "Moscow-217.149.25.86-a3b2f3d1a87180623b8c53d4281da550",
+                "Saint Petersburg-80.90.185.102-4f258c0cd5f2508b4962cace7b34d103",
+                "Amsterdam-146.103.102.82-ae7095e3cbf54030a400b5ee812af22a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Los Angeles-64.81.32.47-ac55e2024b7ee2bbd58948ce071d7c9c",
+                "London-3.8.78.29-ccbf95361078fccc5baa48f71061be21",
+                "Kerkrade-144.31.224.163-96a6567478b1e2832deffa121dcf6ee4",
+                "Columbus-3.145.35.153-523445d07c25d5e108d5c52054517562",
+                "Boardman-35.92.69.254-0aa4375feb11ddf7a101599d86da1692",
+                "Montréal-3.96.138.128-9719c15a0dec7631729dabcdf8c57e8b",
+                "Frankfurt am Main-63.179.1.34-4bb55b4ff128f8b22c1114d87a12752e",
+                "Tokyo-103.134.35.37-4a05edcae7c69350cddca58017b1b515",
+                "Saint Petersburg-178.72.186.76-01362fd97c48a3e3b5d7a048cb736fb9",
+                "Nürnberg-178.104.14.98-6e1d1a6674341351e2797db2f2ac2b17",
+                "Moscow-217.149.25.86-a3b2f3d1a87180623b8c53d4281da550",
+                "Saint Petersburg-80.90.185.102-4f258c0cd5f2508b4962cace7b34d103",
+                "Amsterdam-146.103.102.82-ae7095e3cbf54030a400b5ee812af22a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Los Angeles-64.81.32.47-ac55e2024b7ee2bbd58948ce071d7c9c",
+                "London-3.8.78.29-ccbf95361078fccc5baa48f71061be21",
+                "Kerkrade-144.31.224.163-96a6567478b1e2832deffa121dcf6ee4",
+                "Columbus-3.145.35.153-523445d07c25d5e108d5c52054517562",
+                "Boardman-35.92.69.254-0aa4375feb11ddf7a101599d86da1692",
+                "Montréal-3.96.138.128-9719c15a0dec7631729dabcdf8c57e8b",
+                "Frankfurt am Main-63.179.1.34-4bb55b4ff128f8b22c1114d87a12752e",
+                "Tokyo-103.134.35.37-4a05edcae7c69350cddca58017b1b515",
+                "Saint Petersburg-178.72.186.76-01362fd97c48a3e3b5d7a048cb736fb9",
+                "Nürnberg-178.104.14.98-6e1d1a6674341351e2797db2f2ac2b17",
+                "Moscow-217.149.25.86-a3b2f3d1a87180623b8c53d4281da550",
+                "Saint Petersburg-80.90.185.102-4f258c0cd5f2508b4962cace7b34d103",
+                "Amsterdam-146.103.102.82-ae7095e3cbf54030a400b5ee812af22a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-64.81.32.47-ac55e2024b7ee2bbd58948ce071d7c9c",
+            "server": "64.81.32.47",
+            "server_port": 24409,
+            "uuid": "88803e4c-330f-4263-b31a-5a6db7329814",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "64.81.32.47"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-3.8.78.29-ccbf95361078fccc5baa48f71061be21",
+            "server": "vpn-uk-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-144.31.224.163-96a6567478b1e2832deffa121dcf6ee4",
+            "server": "nrealistic.nn-foto.ru",
+            "server_port": 8932,
+            "password": "rstnnl:7ltZBmta4ahLenTIoywBy3R1Z1PV7ZGf",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nrealistic.nn-foto.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CvxXZnSth1bVJKGFP2cof4rI52ifHJ2W"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.145.35.153-523445d07c25d5e108d5c52054517562",
+            "server": "vpn-us-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-35.92.69.254-0aa4375feb11ddf7a101599d86da1692",
+            "server": "vpn-us-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Montréal-3.96.138.128-9719c15a0dec7631729dabcdf8c57e8b",
+            "server": "vpn-ca-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-ca-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-63.179.1.34-4bb55b4ff128f8b22c1114d87a12752e",
+            "server": "vpn-de-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-de-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-103.134.35.37-4a05edcae7c69350cddca58017b1b515",
+            "server": "vpn-jp-016.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-016.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saint Petersburg-178.72.186.76-01362fd97c48a3e3b5d7a048cb736fb9",
+            "server": "178.72.186.76",
+            "server_port": 7000,
+            "uuid": "75356919-6ece-455c-ba7a-9f042a60d2c5",
+            "transport": {
+                "type": "ws",
+                "path": "/stream",
+                "headers": {
+                    "Host": "178.72.186.76"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.14.98-6e1d1a6674341351e2797db2f2ac2b17",
+            "server": "104.20.6.134",
+            "server_port": 2083,
+            "uuid": "b24484be-a335-472c-8dff-060ccd2b8f3b",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "xn-de.shakhle.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xn-de.shakhle.ir."
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-217.149.25.86-a3b2f3d1a87180623b8c53d4281da550",
+            "server": "217.149.25.86",
+            "server_port": 4100,
+            "uuid": "75356919-6ece-455c-ba7a-9f042a60d2c5",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "live.ok.ru"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saint Petersburg-80.90.185.102-4f258c0cd5f2508b4962cace7b34d103",
+            "server": "80.90.185.102",
+            "server_port": 4100,
+            "uuid": "75356919-6ece-455c-ba7a-9f042a60d2c5",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "live.ok.ru"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-146.103.102.82-ae7095e3cbf54030a400b5ee812af22a",
+            "server": "nl-90w-c.southnetworks.cloud",
+            "server_port": 80,
+            "uuid": "e08f1ad7-0c60-446d-baec-08b3b69bb3d0",
+            "transport": {
+                "type": "ws",
+                "path": "/getWorkerUpdates",
+                "headers": {
+                    "Host": "nl-90w-c.southnetworks.cloud"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
