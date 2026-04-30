@@ -1,0 +1,326 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-3.127.134.7-9ef47e36576600e7654afddf00e3352d",
+                "Frankfurt am Main-3.124.12.194-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "Nürnberg-178.104.14.98-17a0ee5194d3f73299989bd17afc0b04",
+                "Nürnberg-178.104.14.98-f210f6fb351fa8f4b156aae540240d32",
+                "Tokyo-13.115.118.137-ef4c25251dac08c1cde0fa0148365be6",
+                "Columbus-18.219.177.233-95c93b90589884522ef2ec7d120c2344",
+                "Boardman-44.249.250.40-154d89350c607a1bf52f84d1fc5697cd",
+                "Boardman-44.249.38.235-0c35c9b313ece0ecbeea31fc33514ef5",
+                "Paris-195.154.200.13-4d7337e49952f4cbe4127c6c1cb6424d",
+                "Saint Petersburg-178.72.186.76-186c72294046d262fd82fdd474ad0810",
+                "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+                "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+                "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+                "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+                "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-3.127.134.7-9ef47e36576600e7654afddf00e3352d",
+                "Frankfurt am Main-3.124.12.194-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "Nürnberg-178.104.14.98-17a0ee5194d3f73299989bd17afc0b04",
+                "Nürnberg-178.104.14.98-f210f6fb351fa8f4b156aae540240d32",
+                "Tokyo-13.115.118.137-ef4c25251dac08c1cde0fa0148365be6",
+                "Columbus-18.219.177.233-95c93b90589884522ef2ec7d120c2344",
+                "Boardman-44.249.250.40-154d89350c607a1bf52f84d1fc5697cd",
+                "Boardman-44.249.38.235-0c35c9b313ece0ecbeea31fc33514ef5",
+                "Paris-195.154.200.13-4d7337e49952f4cbe4127c6c1cb6424d",
+                "Saint Petersburg-178.72.186.76-186c72294046d262fd82fdd474ad0810",
+                "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+                "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+                "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+                "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+                "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-3.127.134.7-9ef47e36576600e7654afddf00e3352d",
+                "Frankfurt am Main-3.124.12.194-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "Nürnberg-178.104.14.98-17a0ee5194d3f73299989bd17afc0b04",
+                "Nürnberg-178.104.14.98-f210f6fb351fa8f4b156aae540240d32",
+                "Tokyo-13.115.118.137-ef4c25251dac08c1cde0fa0148365be6",
+                "Columbus-18.219.177.233-95c93b90589884522ef2ec7d120c2344",
+                "Boardman-44.249.250.40-154d89350c607a1bf52f84d1fc5697cd",
+                "Boardman-44.249.38.235-0c35c9b313ece0ecbeea31fc33514ef5",
+                "Paris-195.154.200.13-4d7337e49952f4cbe4127c6c1cb6424d",
+                "Saint Petersburg-178.72.186.76-186c72294046d262fd82fdd474ad0810",
+                "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+                "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+                "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+                "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+                "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-3.127.134.7-9ef47e36576600e7654afddf00e3352d",
+            "server": "vpn-de-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-de-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-3.124.12.194-246f61366f3c0834ac5eaf4ed7a6cdef",
+            "server": "vpn-de-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-de-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.14.98-17a0ee5194d3f73299989bd17afc0b04",
+            "server": "xn-dns.onlineblog.ir",
+            "server_port": 2083,
+            "uuid": "b24484be-a335-472c-8dff-060ccd2b8f3b",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "xn-de.shakhle.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xn-de.shakhle.ir."
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-178.104.14.98-f210f6fb351fa8f4b156aae540240d32",
+            "server": "104.20.6.134",
+            "server_port": 2083,
+            "uuid": "b24484be-a335-472c-8dff-060ccd2b8f3b",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "xn-de.shakhle.ir."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xn-de.shakhle.ir."
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-13.115.118.137-ef4c25251dac08c1cde0fa0148365be6",
+            "server": "vpn-jp-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.219.177.233-95c93b90589884522ef2ec7d120c2344",
+            "server": "vpn-us-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-44.249.250.40-154d89350c607a1bf52f84d1fc5697cd",
+            "server": "vpn-us-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-44.249.38.235-0c35c9b313ece0ecbeea31fc33514ef5",
+            "server": "vpn-us-005.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-005.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-195.154.200.13-4d7337e49952f4cbe4127c6c1cb6424d",
+            "server": "163.172.113.118",
+            "server_port": 41283,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saint Petersburg-178.72.186.76-186c72294046d262fd82fdd474ad0810",
+            "server": "st.xbs54as9c6.ru",
+            "server_port": 7000,
+            "uuid": "75356919-6ece-455c-ba7a-9f042a60d2c5",
+            "transport": {
+                "type": "ws",
+                "path": "/stream",
+                "headers": {
+                    "Host": "market.yandex.ru"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-11b53a94900e492c7f18de10d9c0d2d4",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ads.x5.ru"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-144.24.126.26-9d4a800e6d81dba5814f7d848e6a50db",
+            "server": "144.24.126.26",
+            "server_port": 443,
+            "uuid": "1027b850-de79-4a94-b337-eccdac28e141",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "g.sandesh.qzz.io"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "g.sandesh.qzz.io"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-116.203.60.218-2ca37f8326544823197f59382b16ce61",
+            "server": "18.245.54.3",
+            "server_port": 443,
+            "uuid": "97b2cd5b-b98d-494f-8f97-3a06e8c1bbd2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "d23iuljn5k9z1j.cloudfront.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "d23iuljn5k9z1j.cloudfront.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-178.128.16.189-bfcacd106e55da23122b1b933e86f748",
+            "server": "141.193.213.21",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
