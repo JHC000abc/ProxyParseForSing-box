@@ -1,0 +1,166 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-3.68.198.190-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "Mumbai-15.207.72.191-915a68cdfc96d8c4e14b48b5a1bd07b7",
+                "Singapore-5.180.78.27-e2eeecd80c00a37bccbedd9fdf02b033",
+                "Fremont-94.183.183.249-aebf00c662741de1dac2252b98b30d80",
+                "Tokyo-3.112.19.174-daa5b057fd6eb58e17c25a38d0129f88",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-3.68.198.190-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "Mumbai-15.207.72.191-915a68cdfc96d8c4e14b48b5a1bd07b7",
+                "Singapore-5.180.78.27-e2eeecd80c00a37bccbedd9fdf02b033",
+                "Fremont-94.183.183.249-aebf00c662741de1dac2252b98b30d80",
+                "Tokyo-3.112.19.174-daa5b057fd6eb58e17c25a38d0129f88",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-3.68.198.190-246f61366f3c0834ac5eaf4ed7a6cdef",
+                "Mumbai-15.207.72.191-915a68cdfc96d8c4e14b48b5a1bd07b7",
+                "Singapore-5.180.78.27-e2eeecd80c00a37bccbedd9fdf02b033",
+                "Fremont-94.183.183.249-aebf00c662741de1dac2252b98b30d80",
+                "Tokyo-3.112.19.174-daa5b057fd6eb58e17c25a38d0129f88",
+                "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-3.68.198.190-246f61366f3c0834ac5eaf4ed7a6cdef",
+            "server": "vpn-de-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-de-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-15.207.72.191-915a68cdfc96d8c4e14b48b5a1bd07b7",
+            "server": "vpn-in-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-in-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-5.180.78.27-e2eeecd80c00a37bccbedd9fdf02b033",
+            "server": "jpaws.ccwink.photos",
+            "server_port": 52348,
+            "password": "f8af73ed-363a-4dfb-b99f-65bd8ad1a329",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sgdigital.ccwink.cc"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Fremont-94.183.183.249-aebf00c662741de1dac2252b98b30d80",
+            "server": "104.18.16.56",
+            "server_port": 443,
+            "uuid": "b1ec4769-f5e9-46f1-8a03-ed90286a10a0",
+            "transport": {
+                "type": "httpupgrade",
+                "path": "/GofPxNv50UijTZejLBUAP7Pp",
+                "headers": {
+                    "Host": "wcc.teamv.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "wcc.teamv.ir"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-3.112.19.174-daa5b057fd6eb58e17c25a38d0129f88",
+            "server": "vpn-jp-018.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-018.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-257459eb580b8c26df7805d9b3d9465c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
