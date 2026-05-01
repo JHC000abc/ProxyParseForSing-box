@@ -1,0 +1,129 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Boardman-34.208.0.52-0e13744a7509d203582e26a1252e600c",
+                "Columbus-3.147.8.20-ffabdd3da93beb0bd5395b441a98d5d9",
+                "Paris-195.154.200.13-fc362873fe6ad9d564839ab50856fe14",
+                "Tokyo-151.245.104.182-aa24e0854915fe83f7c0034fe066444b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Boardman-34.208.0.52-0e13744a7509d203582e26a1252e600c",
+                "Columbus-3.147.8.20-ffabdd3da93beb0bd5395b441a98d5d9",
+                "Paris-195.154.200.13-fc362873fe6ad9d564839ab50856fe14",
+                "Tokyo-151.245.104.182-aa24e0854915fe83f7c0034fe066444b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Boardman-34.208.0.52-0e13744a7509d203582e26a1252e600c",
+                "Columbus-3.147.8.20-ffabdd3da93beb0bd5395b441a98d5d9",
+                "Paris-195.154.200.13-fc362873fe6ad9d564839ab50856fe14",
+                "Tokyo-151.245.104.182-aa24e0854915fe83f7c0034fe066444b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-34.208.0.52-0e13744a7509d203582e26a1252e600c",
+            "server": "vpn-us-006.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-006.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.147.8.20-ffabdd3da93beb0bd5395b441a98d5d9",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-195.154.200.13-fc362873fe6ad9d564839ab50856fe14",
+            "server": "163.172.113.118",
+            "server_port": 41273,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-aa24e0854915fe83f7c0034fe066444b",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
