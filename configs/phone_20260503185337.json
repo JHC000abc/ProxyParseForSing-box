@@ -1,0 +1,150 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-195.154.200.13-659fd5e6e299ad63a4d43fae619a6a05",
+                "Amsterdam-163.172.214.188-b3391d9e53807ce57dcd1b443ba98243",
+                "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Paris-195.154.200.13-659fd5e6e299ad63a4d43fae619a6a05",
+                "Amsterdam-163.172.214.188-b3391d9e53807ce57dcd1b443ba98243",
+                "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-195.154.200.13-659fd5e6e299ad63a4d43fae619a6a05",
+                "Amsterdam-163.172.214.188-b3391d9e53807ce57dcd1b443ba98243",
+                "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-195.154.200.13-659fd5e6e299ad63a4d43fae619a6a05",
+            "server": "163.172.113.118",
+            "server_port": 41484,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-b3391d9e53807ce57dcd1b443ba98243",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+            "server": "support.zoom.us",
+            "server_port": 8080,
+            "uuid": "759700eb-59a9-4523-9b65-1fe196e00b99",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "finite-node.rtxconfigz.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
