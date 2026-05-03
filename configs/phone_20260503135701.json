@@ -1,0 +1,184 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Hanoi-180.93.164.252-8d66ef2872260905d4751280f1cb1a88",
+                "Columbus-18.117.103.156-9343b42c675272fc093f8476f3f44abf",
+                "Hanoi-180.93.164.252-373c4c936afa0e7c6c0b7c54dd7fa41a",
+                "Gangseo-gu-132.145.80.230-a60ee7c2dd1694292921caa7543abe31",
+                "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Hanoi-180.93.164.252-8d66ef2872260905d4751280f1cb1a88",
+                "Columbus-18.117.103.156-9343b42c675272fc093f8476f3f44abf",
+                "Hanoi-180.93.164.252-373c4c936afa0e7c6c0b7c54dd7fa41a",
+                "Gangseo-gu-132.145.80.230-a60ee7c2dd1694292921caa7543abe31",
+                "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Hanoi-180.93.164.252-8d66ef2872260905d4751280f1cb1a88",
+                "Columbus-18.117.103.156-9343b42c675272fc093f8476f3f44abf",
+                "Hanoi-180.93.164.252-373c4c936afa0e7c6c0b7c54dd7fa41a",
+                "Gangseo-gu-132.145.80.230-a60ee7c2dd1694292921caa7543abe31",
+                "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Hanoi-180.93.164.252-8d66ef2872260905d4751280f1cb1a88",
+            "server": "vpn-vn-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-vn-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.117.103.156-9343b42c675272fc093f8476f3f44abf",
+            "server": "18.117.103.156",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Hanoi-180.93.164.252-373c4c936afa0e7c6c0b7c54dd7fa41a",
+            "server": "180.93.164.252",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-vn-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Gangseo-gu-132.145.80.230-a60ee7c2dd1694292921caa7543abe31",
+            "server": "kr02.a0a.xyz",
+            "server_port": 80,
+            "uuid": "5155860e-d07d-46c3-9128-3afbd84626c7",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "kr02.a0a.xyz"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-122.248.212.51-bd54f3c7bbc1adb524fe533ce67b226c",
+            "server": "support.zoom.us",
+            "server_port": 8080,
+            "uuid": "759700eb-59a9-4523-9b65-1fe196e00b99",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "finite-node.rtxconfigz.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
