@@ -1,0 +1,240 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "São Paulo-45.82.245.37-9c5199db2905f2d7c659729a3879962b",
+                "Mumbai-35.244.28.130-89b27ed959852bdb164a0cc9a9d0ef58",
+                "Columbus-18.222.168.14-95c93b90589884522ef2ec7d120c2344",
+                "Columbus-3.135.210.142-067fb8a53ce780eda57437ef5516d0a5",
+                "Columbus-18.225.75.67-e1d19749b562b6f04c2035eef5a076bb",
+                "Columbus-3.133.160.228-4b7662d4bf60105d0caa583eecdda0e2",
+                "Columbus-3.139.104.42-a7bb71c7bed9d09b13659bcb90f567f2",
+                "Lauterbourg-213.136.69.8-9fae718d832afae6d4122e59bae49de6",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6",
+                "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "São Paulo-45.82.245.37-9c5199db2905f2d7c659729a3879962b",
+                "Mumbai-35.244.28.130-89b27ed959852bdb164a0cc9a9d0ef58",
+                "Columbus-18.222.168.14-95c93b90589884522ef2ec7d120c2344",
+                "Columbus-3.135.210.142-067fb8a53ce780eda57437ef5516d0a5",
+                "Columbus-18.225.75.67-e1d19749b562b6f04c2035eef5a076bb",
+                "Columbus-3.133.160.228-4b7662d4bf60105d0caa583eecdda0e2",
+                "Columbus-3.139.104.42-a7bb71c7bed9d09b13659bcb90f567f2",
+                "Lauterbourg-213.136.69.8-9fae718d832afae6d4122e59bae49de6",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6",
+                "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "São Paulo-45.82.245.37-9c5199db2905f2d7c659729a3879962b",
+                "Mumbai-35.244.28.130-89b27ed959852bdb164a0cc9a9d0ef58",
+                "Columbus-18.222.168.14-95c93b90589884522ef2ec7d120c2344",
+                "Columbus-3.135.210.142-067fb8a53ce780eda57437ef5516d0a5",
+                "Columbus-18.225.75.67-e1d19749b562b6f04c2035eef5a076bb",
+                "Columbus-3.133.160.228-4b7662d4bf60105d0caa583eecdda0e2",
+                "Columbus-3.139.104.42-a7bb71c7bed9d09b13659bcb90f567f2",
+                "Lauterbourg-213.136.69.8-9fae718d832afae6d4122e59bae49de6",
+                "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+                "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6",
+                "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "São Paulo-45.82.245.37-9c5199db2905f2d7c659729a3879962b",
+            "server": "45.82.245.37",
+            "server_port": 4443,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Mumbai-35.244.28.130-89b27ed959852bdb164a0cc9a9d0ef58",
+            "server": "tttyder.wsone.icu",
+            "server_port": 443,
+            "password": "M7v%w11Se*",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tttyder.wsone.icu"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.222.168.14-95c93b90589884522ef2ec7d120c2344",
+            "server": "vpn-us-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.135.210.142-067fb8a53ce780eda57437ef5516d0a5",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.225.75.67-e1d19749b562b6f04c2035eef5a076bb",
+            "server": "18.225.75.67",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.133.160.228-4b7662d4bf60105d0caa583eecdda0e2",
+            "server": "3.133.160.228",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.139.104.42-a7bb71c7bed9d09b13659bcb90f567f2",
+            "server": "3.139.104.42",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-9fae718d832afae6d4122e59bae49de6",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-b5ec43f649cb14191945684259b35eb1",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-0fc21f73692932a8284009793f12e1a6",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4",
+            "server": "141.193.213.21",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
