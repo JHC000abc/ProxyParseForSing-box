@@ -1,0 +1,208 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Columbus-3.148.171.77-b03e849257f1ea879c11e3c9232fa94f",
+                "Mumbai-45.149.114.75-dad2692b1f163a483e46c31d8f5520cd",
+                "Amsterdam-146.103.102.82-f0f7ad5c3fce8e39f50d8b0a108adcab",
+                "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+                "Bangkok-116.206.124.228-0fa5b3ce6317f63e5c495dd5d2745e0a",
+                "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+                "Tokyo-47.79.144.103-24179109f44b894d17337da69eb65d66",
+                "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Columbus-3.148.171.77-b03e849257f1ea879c11e3c9232fa94f",
+                "Mumbai-45.149.114.75-dad2692b1f163a483e46c31d8f5520cd",
+                "Amsterdam-146.103.102.82-f0f7ad5c3fce8e39f50d8b0a108adcab",
+                "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+                "Bangkok-116.206.124.228-0fa5b3ce6317f63e5c495dd5d2745e0a",
+                "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+                "Tokyo-47.79.144.103-24179109f44b894d17337da69eb65d66",
+                "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Columbus-3.148.171.77-b03e849257f1ea879c11e3c9232fa94f",
+                "Mumbai-45.149.114.75-dad2692b1f163a483e46c31d8f5520cd",
+                "Amsterdam-146.103.102.82-f0f7ad5c3fce8e39f50d8b0a108adcab",
+                "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+                "Bangkok-116.206.124.228-0fa5b3ce6317f63e5c495dd5d2745e0a",
+                "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+                "Tokyo-47.79.144.103-24179109f44b894d17337da69eb65d66",
+                "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.148.171.77-b03e849257f1ea879c11e3c9232fa94f",
+            "server": "3.148.171.77",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-45.149.114.75-dad2692b1f163a483e46c31d8f5520cd",
+            "server": "45.149.114.75",
+            "server_port": 444,
+            "password": "strong-secret-pass-777",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "cry_me_a_r1ver_2026"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-146.103.102.82-f0f7ad5c3fce8e39f50d8b0a108adcab",
+            "server": "nl-90w-c.southnetworks.cloud",
+            "server_port": 80,
+            "uuid": "e08f1ad7-0c60-446d-baec-08b3b69bb3d0",
+            "transport": {
+                "type": "ws",
+                "path": "/getWorkerUpdates",
+                "headers": {
+                    "Host": "nl-90w-c.southnetworks.cloud"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Mumbai-45.89.105.56-bdd2dd8f5da3829f0d7e78ba974137cf",
+            "server": "pq-india1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "05b544a4-d479-4ba4-8208-950bd4411453",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-india1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "pq-India1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-0fa5b3ce6317f63e5c495dd5d2745e0a",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-f4284a004c1b632b9837fd2a0807eb96",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-24179109f44b894d17337da69eb65d66",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-68.183.226.113-8af9dc9dcac45268d6622c661ca521f4",
+            "server": "141.193.213.21",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
