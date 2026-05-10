@@ -1,0 +1,182 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Boardman-54.187.62.40-07e4ba854f42feeeeb94bf3d19a3cfb0",
+                "Sasayama-157.120.35.4-5120b432c73150d910b1bcc5fe22025c",
+                "Helsinki-2.26.97.21-91123470183c9e0dad21cc5e9307f2aa",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Boardman-54.187.62.40-07e4ba854f42feeeeb94bf3d19a3cfb0",
+                "Sasayama-157.120.35.4-5120b432c73150d910b1bcc5fe22025c",
+                "Helsinki-2.26.97.21-91123470183c9e0dad21cc5e9307f2aa",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Boardman-54.187.62.40-07e4ba854f42feeeeb94bf3d19a3cfb0",
+                "Sasayama-157.120.35.4-5120b432c73150d910b1bcc5fe22025c",
+                "Helsinki-2.26.97.21-91123470183c9e0dad21cc5e9307f2aa",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-54.187.62.40-07e4ba854f42feeeeb94bf3d19a3cfb0",
+            "server": "vpn-us-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Sasayama-157.120.35.4-5120b432c73150d910b1bcc5fe22025c",
+            "server": "54.64.30.114",
+            "server_port": 4099,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me%2Fripaojiedian"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-2.26.97.21-91123470183c9e0dad21cc5e9307f2aa",
+            "server": "musicclips.videolinks.ru",
+            "server_port": 8443,
+            "password": "rstnnl:XmFNUbpdnnIy7df1YtfLyzVgzt8U9GUv",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "musicclips.videolinks.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "hH0l2Acqz3RtodoSCNCpNJqDSZtp4Qw"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b",
+            "server": "91.244.70.205",
+            "server_port": 443,
+            "uuid": "f2a806c6-f36b-4cd9-8bb6-7addb218ad2d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "91.244.70.205"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
