@@ -1,0 +1,116 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Langenzersdorf-91.244.70.205-f78f10e629dd10f19d01be1e6ce3f6ad",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Langenzersdorf-91.244.70.205-f78f10e629dd10f19d01be1e6ce3f6ad",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Langenzersdorf-91.244.70.205-f78f10e629dd10f19d01be1e6ce3f6ad",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Langenzersdorf-91.244.70.205-f78f10e629dd10f19d01be1e6ce3f6ad",
+            "server": "91.244.70.205",
+            "server_port": 443,
+            "uuid": "f2a806c6-f36b-4cd9-8bb6-7addb218ad2d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "91.244.70.205"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
