@@ -1,0 +1,221 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Columbus-18.225.77.127-067fb8a53ce780eda57437ef5516d0a5",
+                "Tung Chung-50.7.250.82-aff0024f173ee59248cc094bab30f098",
+                "Boardman-35.87.238.159-97072d3590329a48b17b5aa406721828",
+                "Mumbai-15.206.158.12-82847c2340b616d852f2deb345b83f00",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Santiago de Querétaro-45.134.9.133-bd1c3bd19956b877d6385544ce9b34c3",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Columbus-18.225.77.127-067fb8a53ce780eda57437ef5516d0a5",
+                "Tung Chung-50.7.250.82-aff0024f173ee59248cc094bab30f098",
+                "Boardman-35.87.238.159-97072d3590329a48b17b5aa406721828",
+                "Mumbai-15.206.158.12-82847c2340b616d852f2deb345b83f00",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Santiago de Querétaro-45.134.9.133-bd1c3bd19956b877d6385544ce9b34c3",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Columbus-18.225.77.127-067fb8a53ce780eda57437ef5516d0a5",
+                "Tung Chung-50.7.250.82-aff0024f173ee59248cc094bab30f098",
+                "Boardman-35.87.238.159-97072d3590329a48b17b5aa406721828",
+                "Mumbai-15.206.158.12-82847c2340b616d852f2deb345b83f00",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Santiago de Querétaro-45.134.9.133-bd1c3bd19956b877d6385544ce9b34c3",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.225.77.127-067fb8a53ce780eda57437ef5516d0a5",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Tung Chung-50.7.250.82-aff0024f173ee59248cc094bab30f098",
+            "server": "gtm1.ktmwan.net",
+            "server_port": 12890,
+            "uuid": "2e528ca4-689b-411d-abc7-de516a7caa51",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "baidu.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-35.87.238.159-97072d3590329a48b17b5aa406721828",
+            "server": "vpn-us-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-15.206.158.12-82847c2340b616d852f2deb345b83f00",
+            "server": "vpn-in-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-in-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santiago de Querétaro-45.134.9.133-bd1c3bd19956b877d6385544ce9b34c3",
+            "server": "ul-mexico1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "a6d20e79-d326-42c1-bc20-f4cecc6dc42d",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ul-mexico1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ul-mexico1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b",
+            "server": "91.244.70.205",
+            "server_port": 443,
+            "uuid": "f2a806c6-f36b-4cd9-8bb6-7addb218ad2d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "91.244.70.205"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
