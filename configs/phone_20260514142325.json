@@ -1,0 +1,233 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-85.192.38.204-b9319122ccfd345b78453249c9f34ddc",
+                "Frankfurt am Main-74.220.27.192-f3d69d4fad655afb131ffe560e64d19b",
+                "Nagareyama-116.80.61.236-eabff63ad36f4d83d189cf311c84ef5c",
+                "Singapore-172.104.161.138-8c093fca40dcf5d27e88a1d040f43907",
+                "Bangkok-116.206.124.228-d0ac9f0013c537875ccfa76caffffe83",
+                "Frankfurt am Main-74.220.27.192-c24661047ce6458602f7b1e02f948514",
+                "Tokyo-151.245.104.182-9d50661ad014ff6688548c8b32f48df0",
+                "Langenzersdorf-91.244.70.205-524e8e65321747cbff2598d4ca3f5993",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-85.192.38.204-b9319122ccfd345b78453249c9f34ddc",
+                "Frankfurt am Main-74.220.27.192-f3d69d4fad655afb131ffe560e64d19b",
+                "Nagareyama-116.80.61.236-eabff63ad36f4d83d189cf311c84ef5c",
+                "Singapore-172.104.161.138-8c093fca40dcf5d27e88a1d040f43907",
+                "Bangkok-116.206.124.228-d0ac9f0013c537875ccfa76caffffe83",
+                "Frankfurt am Main-74.220.27.192-c24661047ce6458602f7b1e02f948514",
+                "Tokyo-151.245.104.182-9d50661ad014ff6688548c8b32f48df0",
+                "Langenzersdorf-91.244.70.205-524e8e65321747cbff2598d4ca3f5993",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-85.192.38.204-b9319122ccfd345b78453249c9f34ddc",
+                "Frankfurt am Main-74.220.27.192-f3d69d4fad655afb131ffe560e64d19b",
+                "Nagareyama-116.80.61.236-eabff63ad36f4d83d189cf311c84ef5c",
+                "Singapore-172.104.161.138-8c093fca40dcf5d27e88a1d040f43907",
+                "Bangkok-116.206.124.228-d0ac9f0013c537875ccfa76caffffe83",
+                "Frankfurt am Main-74.220.27.192-c24661047ce6458602f7b1e02f948514",
+                "Tokyo-151.245.104.182-9d50661ad014ff6688548c8b32f48df0",
+                "Langenzersdorf-91.244.70.205-524e8e65321747cbff2598d4ca3f5993",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-85.192.38.204-b9319122ccfd345b78453249c9f34ddc",
+            "server": "anten.ir",
+            "server_port": 8880,
+            "uuid": "1200eec7-1d18-49da-accf-8bc14096b5ae",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "het.sp-fast.site"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-f3d69d4fad655afb131ffe560e64d19b",
+            "server": "172.64.147.210",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Nagareyama-116.80.61.236-eabff63ad36f4d83d189cf311c84ef5c",
+            "server": "116.80.61.236",
+            "server_port": 443,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-172.104.161.138-8c093fca40dcf5d27e88a1d040f43907",
+            "server": "172.104.161.138",
+            "server_port": 27420,
+            "uuid": "39039c78-41a2-45f1-a64d-f6818efcae03",
+            "transport": {
+                "type": "ws",
+                "path": "/FREE By Tharuwa (0767597317)",
+                "headers": {
+                    "Host": "m.zoom.us"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-d0ac9f0013c537875ccfa76caffffe83",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-c24661047ce6458602f7b1e02f948514",
+            "server": "162.159.36.5",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-9d50661ad014ff6688548c8b32f48df0",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Langenzersdorf-91.244.70.205-524e8e65321747cbff2598d4ca3f5993",
+            "server": "91.244.70.205",
+            "server_port": 443,
+            "uuid": "f2a806c6-f36b-4cd9-8bb6-7addb218ad2d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "91.244.70.205"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
