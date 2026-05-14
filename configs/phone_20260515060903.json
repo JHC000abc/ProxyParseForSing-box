@@ -1,0 +1,415 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-18.183.166.232-31b0b8aac04d2969e1dd89edfdc7d365",
+                "London-18.130.131.67-e09e2d54c4beaaff98d0a8b8731ac606",
+                "San Jose-155.248.209.237-dca47a620be34e0dc109523bf772d752",
+                "London-78.141.244.102-5e690f5a5972a65d125b7352f0d577e3",
+                "Tokyo-156.246.90.62-0f4641a1e5ab911e122e91b0a291b752",
+                "Tokyo-156.246.90.62-dc4deb67e242cac935a5ca3dad0cb074",
+                "Tokyo-156.246.90.62-19a2c00feee6b1c95c640df447b9782d",
+                "Tokyo-156.246.90.62-3990acedeb0c8d33675748f8e58f2f01",
+                "Tokyo-156.246.90.62-2f292487834408240a2945fe64953299",
+                "Tokyo-156.246.90.62-2babc07edd042cb2f1a79f51805d4a57",
+                "Tokyo-156.246.90.62-00d711d1bc0d48dcf15ccaf09a4b4417",
+                "Tokyo-156.246.90.62-dd2f4799ac3c4ad8072bd7cfdd1b8652",
+                "Tokyo-156.246.90.62-2e04c7d9a48f94d2c8cd9bb797fb3cf2",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Bangkok-116.206.124.228-36392161468dfe1d9a5170ee4846b424",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-18.183.166.232-31b0b8aac04d2969e1dd89edfdc7d365",
+                "London-18.130.131.67-e09e2d54c4beaaff98d0a8b8731ac606",
+                "San Jose-155.248.209.237-dca47a620be34e0dc109523bf772d752",
+                "London-78.141.244.102-5e690f5a5972a65d125b7352f0d577e3",
+                "Tokyo-156.246.90.62-0f4641a1e5ab911e122e91b0a291b752",
+                "Tokyo-156.246.90.62-dc4deb67e242cac935a5ca3dad0cb074",
+                "Tokyo-156.246.90.62-19a2c00feee6b1c95c640df447b9782d",
+                "Tokyo-156.246.90.62-3990acedeb0c8d33675748f8e58f2f01",
+                "Tokyo-156.246.90.62-2f292487834408240a2945fe64953299",
+                "Tokyo-156.246.90.62-2babc07edd042cb2f1a79f51805d4a57",
+                "Tokyo-156.246.90.62-00d711d1bc0d48dcf15ccaf09a4b4417",
+                "Tokyo-156.246.90.62-dd2f4799ac3c4ad8072bd7cfdd1b8652",
+                "Tokyo-156.246.90.62-2e04c7d9a48f94d2c8cd9bb797fb3cf2",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Bangkok-116.206.124.228-36392161468dfe1d9a5170ee4846b424",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-18.183.166.232-31b0b8aac04d2969e1dd89edfdc7d365",
+                "London-18.130.131.67-e09e2d54c4beaaff98d0a8b8731ac606",
+                "San Jose-155.248.209.237-dca47a620be34e0dc109523bf772d752",
+                "London-78.141.244.102-5e690f5a5972a65d125b7352f0d577e3",
+                "Tokyo-156.246.90.62-0f4641a1e5ab911e122e91b0a291b752",
+                "Tokyo-156.246.90.62-dc4deb67e242cac935a5ca3dad0cb074",
+                "Tokyo-156.246.90.62-19a2c00feee6b1c95c640df447b9782d",
+                "Tokyo-156.246.90.62-3990acedeb0c8d33675748f8e58f2f01",
+                "Tokyo-156.246.90.62-2f292487834408240a2945fe64953299",
+                "Tokyo-156.246.90.62-2babc07edd042cb2f1a79f51805d4a57",
+                "Tokyo-156.246.90.62-00d711d1bc0d48dcf15ccaf09a4b4417",
+                "Tokyo-156.246.90.62-dd2f4799ac3c4ad8072bd7cfdd1b8652",
+                "Tokyo-156.246.90.62-2e04c7d9a48f94d2c8cd9bb797fb3cf2",
+                "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+                "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+                "Bangkok-116.206.124.228-36392161468dfe1d9a5170ee4846b424",
+                "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+                "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-18.183.166.232-31b0b8aac04d2969e1dd89edfdc7d365",
+            "server": "vpn-jp-003.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-18.130.131.67-e09e2d54c4beaaff98d0a8b8731ac606",
+            "server": "vpn-uk-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "San Jose-155.248.209.237-dca47a620be34e0dc109523bf772d752",
+            "server": "hy2.123266.xyz",
+            "server_port": 33333,
+            "password": "bce6c821-200d-421f-bf3d-7159e5246ea0",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hy2.123266.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "London-78.141.244.102-5e690f5a5972a65d125b7352f0d577e3",
+            "server": "s28233.cdn.ngenix.net",
+            "server_port": 443,
+            "uuid": "c3f112fc-1041-Fade-b85c-5ed478daeeb9",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "s28233.cdn.ngenix.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "s28233.cdn.ngenix.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-0f4641a1e5ab911e122e91b0a291b752",
+            "server": "219.76.13.166",
+            "server_port": 443,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-dc4deb67e242cac935a5ca3dad0cb074",
+            "server": "193.122.108.223",
+            "server_port": 443,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-19a2c00feee6b1c95c640df447b9782d",
+            "server": "210.183.12.194",
+            "server_port": 13720,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-3990acedeb0c8d33675748f8e58f2f01",
+            "server": "59.19.70.148",
+            "server_port": 10206,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-2f292487834408240a2945fe64953299",
+            "server": "14.39.208.40",
+            "server_port": 17000,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-2babc07edd042cb2f1a79f51805d4a57",
+            "server": "183.108.82.157",
+            "server_port": 10002,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-00d711d1bc0d48dcf15ccaf09a4b4417",
+            "server": "125.130.201.117",
+            "server_port": 10250,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-dd2f4799ac3c4ad8072bd7cfdd1b8652",
+            "server": "121.155.96.19",
+            "server_port": 25010,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.90.62-2e04c7d9a48f94d2c8cd9bb797fb3cf2",
+            "server": "222.113.136.246",
+            "server_port": 36876,
+            "uuid": "f5deb215-0e9e-4600-b231-3f737d0946ad",
+            "transport": {
+                "type": "ws",
+                "path": "/2mwmynj3fqzmy1xo",
+                "headers": {
+                    "Host": "vpn4.rnmcnm.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn4.rnmcnm.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-54c0fd7a6baab7d1cf83ddf07276032c",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lauterbourg-213.136.69.8-7ca3aac420cba58409618eafd3b743d3",
+            "server": "213.136.69.8",
+            "server_port": 80,
+            "uuid": "15cbab96-197e-46a5-9042-073b3980c798",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "fsdns.ectunnelvpn.me"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-36392161468dfe1d9a5170ee4846b424",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-00e69fec9a6d2bdb173047fc667d4b98",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Langenzersdorf-91.244.70.205-30feb59e5c4fc2d348b463bb5eb1197b",
+            "server": "91.244.70.205",
+            "server_port": 443,
+            "uuid": "f2a806c6-f36b-4cd9-8bb6-7addb218ad2d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "91.244.70.205"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
