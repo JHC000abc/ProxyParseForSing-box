@@ -1,0 +1,188 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-35.180.158.117-0a307d70dcfdd45ea59388d1e0e08219",
+                "Novosibirsk-195.133.53.33-7f6a74a97f42e376ed624d3b473217b0",
+                "Tokyo-18.182.63.55-9a6629bca00800272a3cf37819e55bbf",
+                "London-3.8.5.231-52e6d61573dc1c2d046f40d53c2f38de",
+                "Tokyo-54.238.153.231-4c8b85532e1c8d505d57a10055ca834d",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0",
+                "Langenzersdorf-91.244.70.205-a8959f2944b48ff599661ea94ef84dc1"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Paris-35.180.158.117-0a307d70dcfdd45ea59388d1e0e08219",
+                "Novosibirsk-195.133.53.33-7f6a74a97f42e376ed624d3b473217b0",
+                "Tokyo-18.182.63.55-9a6629bca00800272a3cf37819e55bbf",
+                "London-3.8.5.231-52e6d61573dc1c2d046f40d53c2f38de",
+                "Tokyo-54.238.153.231-4c8b85532e1c8d505d57a10055ca834d",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0",
+                "Langenzersdorf-91.244.70.205-a8959f2944b48ff599661ea94ef84dc1"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-35.180.158.117-0a307d70dcfdd45ea59388d1e0e08219",
+                "Novosibirsk-195.133.53.33-7f6a74a97f42e376ed624d3b473217b0",
+                "Tokyo-18.182.63.55-9a6629bca00800272a3cf37819e55bbf",
+                "London-3.8.5.231-52e6d61573dc1c2d046f40d53c2f38de",
+                "Tokyo-54.238.153.231-4c8b85532e1c8d505d57a10055ca834d",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0",
+                "Langenzersdorf-91.244.70.205-a8959f2944b48ff599661ea94ef84dc1"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.180.158.117-0a307d70dcfdd45ea59388d1e0e08219",
+            "server": "vpn-fr-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-fr-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Novosibirsk-195.133.53.33-7f6a74a97f42e376ed624d3b473217b0",
+            "server": "195.133.53.33",
+            "server_port": 443,
+            "password": "10550754-cf62-3d3b-ba6a-50be27a275d7",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "s516.okgfw.top"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-18.182.63.55-9a6629bca00800272a3cf37819e55bbf",
+            "server": "vpn-jp-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-3.8.5.231-52e6d61573dc1c2d046f40d53c2f38de",
+            "server": "vpn-uk-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-54.238.153.231-4c8b85532e1c8d505d57a10055ca834d",
+            "server": "vpn-jp-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Langenzersdorf-91.244.70.205-a8959f2944b48ff599661ea94ef84dc1",
+            "server": "91.244.70.205",
+            "server_port": 443,
+            "uuid": "f2a806c6-f36b-4cd9-8bb6-7addb218ad2d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "91.244.70.205"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
