@@ -1,0 +1,230 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-35.180.158.158-0a307d70dcfdd45ea59388d1e0e08219",
+                "Tokyo-13.231.125.190-31b0b8aac04d2969e1dd89edfdc7d365",
+                "Incheon-52.79.248.248-658fca162e6e605a924e68b1aaf24771",
+                "Sydney-3.107.6.213-bace422aed7f9c689bdd237bf48bbb6c",
+                "Nürnberg-159.195.75.185-217a97857d4b4000ee6d8733453f5dc8",
+                "Frankfurt am Main-3.77.116.109-b9a4fddb245f7e50b190ec8d70deaa42",
+                "Tokyo-13.112.255.118-9a6629bca00800272a3cf37819e55bbf",
+                "London-18.130.131.67-52e6d61573dc1c2d046f40d53c2f38de",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Paris-35.180.158.158-0a307d70dcfdd45ea59388d1e0e08219",
+                "Tokyo-13.231.125.190-31b0b8aac04d2969e1dd89edfdc7d365",
+                "Incheon-52.79.248.248-658fca162e6e605a924e68b1aaf24771",
+                "Sydney-3.107.6.213-bace422aed7f9c689bdd237bf48bbb6c",
+                "Nürnberg-159.195.75.185-217a97857d4b4000ee6d8733453f5dc8",
+                "Frankfurt am Main-3.77.116.109-b9a4fddb245f7e50b190ec8d70deaa42",
+                "Tokyo-13.112.255.118-9a6629bca00800272a3cf37819e55bbf",
+                "London-18.130.131.67-52e6d61573dc1c2d046f40d53c2f38de",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-35.180.158.158-0a307d70dcfdd45ea59388d1e0e08219",
+                "Tokyo-13.231.125.190-31b0b8aac04d2969e1dd89edfdc7d365",
+                "Incheon-52.79.248.248-658fca162e6e605a924e68b1aaf24771",
+                "Sydney-3.107.6.213-bace422aed7f9c689bdd237bf48bbb6c",
+                "Nürnberg-159.195.75.185-217a97857d4b4000ee6d8733453f5dc8",
+                "Frankfurt am Main-3.77.116.109-b9a4fddb245f7e50b190ec8d70deaa42",
+                "Tokyo-13.112.255.118-9a6629bca00800272a3cf37819e55bbf",
+                "London-18.130.131.67-52e6d61573dc1c2d046f40d53c2f38de",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.180.158.158-0a307d70dcfdd45ea59388d1e0e08219",
+            "server": "vpn-fr-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-fr-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-13.231.125.190-31b0b8aac04d2969e1dd89edfdc7d365",
+            "server": "vpn-jp-003.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-52.79.248.248-658fca162e6e605a924e68b1aaf24771",
+            "server": "vpn-kr-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Sydney-3.107.6.213-bace422aed7f9c689bdd237bf48bbb6c",
+            "server": "vpn-au-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-au-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.75.185-217a97857d4b4000ee6d8733453f5dc8",
+            "server": "s31588.asancall.cloud",
+            "server_port": 8443,
+            "uuid": "e550f63f-7975-455d-a5d8-e11a120a519d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/apps/zoomit",
+                "headers": {
+                    "Host": "s31588.asancall.cloud"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-3.77.116.109-b9a4fddb245f7e50b190ec8d70deaa42",
+            "server": "3.77.116.109",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "3.77.116.109"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-13.112.255.118-9a6629bca00800272a3cf37819e55bbf",
+            "server": "vpn-jp-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-18.130.131.67-52e6d61573dc1c2d046f40d53c2f38de",
+            "server": "vpn-uk-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-uk-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
