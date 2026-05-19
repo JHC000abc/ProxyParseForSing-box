@@ -1,0 +1,194 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-54.95.43.61-31b0b8aac04d2969e1dd89edfdc7d365",
+                "Singapore-152.42.169.34-97fdb32dc18a8e65e036d90e895432b9",
+                "Singapore-152.42.169.34-45a4689b70c4174b6c71a8135c11d444",
+                "Singapore-152.42.169.34-2c61c68effef98417fe48088abbd1dd3",
+                "Paris-52.47.138.221-48af3ef8594591b7c347ca55e42bea5a",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-54.95.43.61-31b0b8aac04d2969e1dd89edfdc7d365",
+                "Singapore-152.42.169.34-97fdb32dc18a8e65e036d90e895432b9",
+                "Singapore-152.42.169.34-45a4689b70c4174b6c71a8135c11d444",
+                "Singapore-152.42.169.34-2c61c68effef98417fe48088abbd1dd3",
+                "Paris-52.47.138.221-48af3ef8594591b7c347ca55e42bea5a",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-54.95.43.61-31b0b8aac04d2969e1dd89edfdc7d365",
+                "Singapore-152.42.169.34-97fdb32dc18a8e65e036d90e895432b9",
+                "Singapore-152.42.169.34-45a4689b70c4174b6c71a8135c11d444",
+                "Singapore-152.42.169.34-2c61c68effef98417fe48088abbd1dd3",
+                "Paris-52.47.138.221-48af3ef8594591b7c347ca55e42bea5a",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-54.95.43.61-31b0b8aac04d2969e1dd89edfdc7d365",
+            "server": "vpn-jp-003.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-jp-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-152.42.169.34-97fdb32dc18a8e65e036d90e895432b9",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-152.42.169.34-45a4689b70c4174b6c71a8135c11d444",
+            "server": "partner.zoom.us",
+            "server_port": 80,
+            "uuid": "fac62eac-1eec-4260-a991-0cac2f8745a3",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-152.42.169.34-2c61c68effef98417fe48088abbd1dd3",
+            "server": "webmail.eclass.lk",
+            "server_port": 2096,
+            "uuid": "b8ae3c37-37d6-4d4d-93fc-1ce0bc329ba0",
+            "transport": {
+                "type": "ws",
+                "path": "/@Tech_Sonic",
+                "headers": {
+                    "Host": "free-server.techsonic.ggff.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "free-server.techsonic.ggff.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-52.47.138.221-48af3ef8594591b7c347ca55e42bea5a",
+            "server": "52.47.138.221",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "52.47.138.221"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
