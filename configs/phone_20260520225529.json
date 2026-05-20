@@ -1,0 +1,123 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Phoenix-129.153.97.251-5f5b6cd97886f7290f7b18fd4c3d64dd",
+                "Los Angeles-192.3.91.200-2178da1d75e2f8985b7cea556548ee0e",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Phoenix-129.153.97.251-5f5b6cd97886f7290f7b18fd4c3d64dd",
+                "Los Angeles-192.3.91.200-2178da1d75e2f8985b7cea556548ee0e",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Phoenix-129.153.97.251-5f5b6cd97886f7290f7b18fd4c3d64dd",
+                "Los Angeles-192.3.91.200-2178da1d75e2f8985b7cea556548ee0e",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Phoenix-129.153.97.251-5f5b6cd97886f7290f7b18fd4c3d64dd",
+            "server": "63.141.128.158",
+            "server_port": 443,
+            "uuid": "e48cbd21-6431-468f-af52-ee183560e55b",
+            "transport": {
+                "type": "ws",
+                "path": "/ym/us1",
+                "headers": {
+                    "Host": "us1s.xn--mirrors-oj8km52txc7d.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us1s.xn--mirrors-oj8km52txc7d.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-192.3.91.200-2178da1d75e2f8985b7cea556548ee0e",
+            "server": "172.67.210.66",
+            "server_port": 443,
+            "uuid": "f9c2aa89-b0b1-4082-a0d3-06b5f68d8cf1",
+            "transport": {
+                "type": "ws",
+                "path": "/GyHA3S5bmYHtCgkIjRbGS",
+                "headers": {
+                    "Host": "v-t-u-6.000000500.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "v-t-u-6.000000500.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
