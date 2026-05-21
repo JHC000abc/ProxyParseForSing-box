@@ -1,0 +1,101 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
