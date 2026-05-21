@@ -1,0 +1,145 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-37.114.48.222-c389877b17ae95c846ffb3f19cd4a260",
+                "Frankfurt am Main-74.220.27.192-945b04c3200eb3da5992ec87cb768ef2",
+                "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+                "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+                "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.222-c389877b17ae95c846ffb3f19cd4a260",
+                "Frankfurt am Main-74.220.27.192-945b04c3200eb3da5992ec87cb768ef2",
+                "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+                "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+                "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-37.114.48.222-c389877b17ae95c846ffb3f19cd4a260",
+                "Frankfurt am Main-74.220.27.192-945b04c3200eb3da5992ec87cb768ef2",
+                "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+                "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+                "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-37.114.48.222-c389877b17ae95c846ffb3f19cd4a260",
+            "server": "flkf2.mangshe.xyz",
+            "server_port": 2056,
+            "password": "4d092122-268a-4a1a-b23f-83931c5abc3a",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "flkf2.mangshe.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-945b04c3200eb3da5992ec87cb768ef2",
+            "server": "162.159.36.5",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+            "server": "172.64.147.255",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+            "server": "172.64.146.211",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-52f2fee70f77bd32954001a85ff0b9b0",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
