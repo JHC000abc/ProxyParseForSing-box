@@ -1,0 +1,199 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Warsaw-176.98.186.97-e6db3704d6f13e7921f92cd8dd4936e0",
+                "Taipei-85.237.207.222-6ef44509f71c66341a256104fece21f1",
+                "Riga-138.124.182.202-5ba08e663c841b5644dd8e77fbfb26de",
+                "Frankfurt am Main-74.220.27.192-b9704146e3e294a6cd919c98e1d9c02e",
+                "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Warsaw-176.98.186.97-e6db3704d6f13e7921f92cd8dd4936e0",
+                "Taipei-85.237.207.222-6ef44509f71c66341a256104fece21f1",
+                "Riga-138.124.182.202-5ba08e663c841b5644dd8e77fbfb26de",
+                "Frankfurt am Main-74.220.27.192-b9704146e3e294a6cd919c98e1d9c02e",
+                "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Warsaw-176.98.186.97-e6db3704d6f13e7921f92cd8dd4936e0",
+                "Taipei-85.237.207.222-6ef44509f71c66341a256104fece21f1",
+                "Riga-138.124.182.202-5ba08e663c841b5644dd8e77fbfb26de",
+                "Frankfurt am Main-74.220.27.192-b9704146e3e294a6cd919c98e1d9c02e",
+                "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+                "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+                "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+                "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-176.98.186.97-e6db3704d6f13e7921f92cd8dd4936e0",
+            "server": "srv181.towersflowerss.com",
+            "server_port": 443,
+            "uuid": "b43a13be-150c-4a6a-8501-b71c1b6476fb",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "srv181.towersflowerss.com"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Taipei-85.237.207.222-6ef44509f71c66341a256104fece21f1",
+            "server": "cdntw.xhl666.top",
+            "server_port": 13456,
+            "password": "033634aa-43d9-4fc1-ab30-c2e28bb2e607",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdntw.xhl666.top"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Riga-138.124.182.202-5ba08e663c841b5644dd8e77fbfb26de",
+            "server": "138.124.182.202",
+            "server_port": 8443,
+            "password": "jOIItw1h4D",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "latviyaotpusk1.home.kg"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-b9704146e3e294a6cd919c98e1d9c02e",
+            "server": "162.159.36.5",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-35548108630f7ab3fa3717c5f8ab2856",
+            "server": "172.64.147.255",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bangkok-116.206.124.228-485f85fbe2aa3ab2ff22323919df91b2",
+            "server": "v2ray.simspeedup.com",
+            "server_port": 80,
+            "uuid": "3c52e091-6714-4915-949f-2149fe69951b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "aIs.SpEeDtEsT.nEt"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.27.192-61be7387dab2aa272344c2d13bc80c6f",
+            "server": "172.64.146.211",
+            "server_port": 80,
+            "uuid": "478cc26d-16b3-4fdd-be64-60d5a58c1622",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tt.andishehparenting.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-b4a6d00ac79565eeb2ffe0039dda6c68",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
