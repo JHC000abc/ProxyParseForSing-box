@@ -1,0 +1,182 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nürnberg-5.75.197.203-0f9d2adcd1846f876f7b214bc49c3caf",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+                "Frankfurt am Main-136.244.82.163-10a73fd1f83f17bcd5c508dc31f26519",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nürnberg-5.75.197.203-0f9d2adcd1846f876f7b214bc49c3caf",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+                "Frankfurt am Main-136.244.82.163-10a73fd1f83f17bcd5c508dc31f26519",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nürnberg-5.75.197.203-0f9d2adcd1846f876f7b214bc49c3caf",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+                "Frankfurt am Main-136.244.82.163-10a73fd1f83f17bcd5c508dc31f26519",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.75.197.203-0f9d2adcd1846f876f7b214bc49c3caf",
+            "server": "npmjs.com",
+            "server_port": 2096,
+            "uuid": "6c3852b6-138f-4235-bc75-0ad96f82cca7",
+            "transport": {
+                "type": "ws",
+                "path": "/metrics",
+                "headers": {
+                    "Host": "6956646388cdb23c971b4ec6.mmdbay.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "6956646388cdb23c971b4ec6.mmdbay.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+            "server": "beichuan.serv00.net",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-136.244.82.163-10a73fd1f83f17bcd5c508dc31f26519",
+            "server": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca",
+            "server_port": 80,
+            "uuid": "e2923bc6-8204-4768-98ea-379d48ea8a7a",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/1awNzxRSwKsdkPVKP0ZQqlHjt10sp",
+                "headers": {
+                    "Host": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f",
+            "server": "usaapp1.jisuyun.top",
+            "server_port": 2053,
+            "uuid": "4b80aa86-4354-40bb-d2a3-47126cff0bea",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/usavm",
+                "headers": {
+                    "Host": "usaapp1.jisuyun.top"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
