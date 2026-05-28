@@ -1,0 +1,221 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-65.109.180.55-afa0c685023c6533acd75317ff4bf2c9",
+                "Frankfurt am Main-46.165.202.114-aa7b34fd8bda425a6aecb5654ba26f6a",
+                "Nürnberg-5.75.197.203-f47fe3367d47ced618d5229746057b27",
+                "Frankfurt am Main-46.165.202.114-e995bd55a68f23429a364dfdfeaa53c2",
+                "Kerkrade-78.159.131.12-f811240ff8a30dabdc23c4a002fcbd3d",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+                "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-65.109.180.55-afa0c685023c6533acd75317ff4bf2c9",
+                "Frankfurt am Main-46.165.202.114-aa7b34fd8bda425a6aecb5654ba26f6a",
+                "Nürnberg-5.75.197.203-f47fe3367d47ced618d5229746057b27",
+                "Frankfurt am Main-46.165.202.114-e995bd55a68f23429a364dfdfeaa53c2",
+                "Kerkrade-78.159.131.12-f811240ff8a30dabdc23c4a002fcbd3d",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+                "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-65.109.180.55-afa0c685023c6533acd75317ff4bf2c9",
+                "Frankfurt am Main-46.165.202.114-aa7b34fd8bda425a6aecb5654ba26f6a",
+                "Nürnberg-5.75.197.203-f47fe3367d47ced618d5229746057b27",
+                "Frankfurt am Main-46.165.202.114-e995bd55a68f23429a364dfdfeaa53c2",
+                "Kerkrade-78.159.131.12-f811240ff8a30dabdc23c4a002fcbd3d",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+                "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.180.55-afa0c685023c6533acd75317ff4bf2c9",
+            "server": "185.18.250.127",
+            "server_port": 2096,
+            "uuid": "2ee26119-94e5-40b4-ba3a-16354021b600",
+            "transport": {
+                "type": "ws",
+                "path": "/graphql",
+                "headers": {
+                    "Host": "69565ce3109804e7813f98ee.mmdbay.blog"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "69565ce3109804e7813f98ee.mmdbay.blog"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-46.165.202.114-aa7b34fd8bda425a6aecb5654ba26f6a",
+            "server": "78.41.110.238",
+            "server_port": 443,
+            "uuid": "9ebab373-19fe-4535-aa95-4e348ea300f1",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "s28315.cdn.ngenix.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "s28315.cdn.ngenix.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.75.197.203-f47fe3367d47ced618d5229746057b27",
+            "server": "npmjs.com",
+            "server_port": 2096,
+            "uuid": "6c3852b6-138f-4235-bc75-0ad96f82cca7",
+            "transport": {
+                "type": "ws",
+                "path": "/metrics",
+                "headers": {
+                    "Host": "6956646388cdb23c971b4ec6.mmdbay.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "6956646388cdb23c971b4ec6.mmdbay.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-46.165.202.114-e995bd55a68f23429a364dfdfeaa53c2",
+            "server": "46.235.186.50",
+            "server_port": 443,
+            "uuid": "9ebab373-19fe-4535-aa95-4e348ea300f1",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "s28315.cdn.ngenix.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "s28315.cdn.ngenix.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-f811240ff8a30dabdc23c4a002fcbd3d",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+            "server": "beichuan.serv00.net",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-5d1fa92416240674efdcd8e653fe52f6",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
