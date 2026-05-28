@@ -1,0 +1,201 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nürnberg-5.75.198.45-a2db9428a6cfe4290d39896320508133",
+                "Istanbul-213.142.132.60-39d60f35a9a37c27bed494c3577b3ad5",
+                "Kerkrade-78.159.131.12-9729318ed234d97e8051b93bbbcd7729",
+                "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+                "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Frankfurt am Main-162.19.228.119-e6b0009629a350976f76bfb76c0d2093",
+                "Frankfurt am Main-162.19.228.119-87a4c49df8ec5b658def8066161c90a8"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nürnberg-5.75.198.45-a2db9428a6cfe4290d39896320508133",
+                "Istanbul-213.142.132.60-39d60f35a9a37c27bed494c3577b3ad5",
+                "Kerkrade-78.159.131.12-9729318ed234d97e8051b93bbbcd7729",
+                "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+                "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Frankfurt am Main-162.19.228.119-e6b0009629a350976f76bfb76c0d2093",
+                "Frankfurt am Main-162.19.228.119-87a4c49df8ec5b658def8066161c90a8"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nürnberg-5.75.198.45-a2db9428a6cfe4290d39896320508133",
+                "Istanbul-213.142.132.60-39d60f35a9a37c27bed494c3577b3ad5",
+                "Kerkrade-78.159.131.12-9729318ed234d97e8051b93bbbcd7729",
+                "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+                "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Frankfurt am Main-162.19.228.119-e6b0009629a350976f76bfb76c0d2093",
+                "Frankfurt am Main-162.19.228.119-87a4c49df8ec5b658def8066161c90a8"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-5.75.198.45-a2db9428a6cfe4290d39896320508133",
+            "server": "104.17.150.76",
+            "server_port": 2086,
+            "uuid": "de989f46-ce7c-4d94-9c58-5ccd80e8d7a1",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "war2.unlimiteddev-service2881.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Istanbul-213.142.132.60-39d60f35a9a37c27bed494c3577b3ad5",
+            "server": "104.18.139.67",
+            "server_port": 443,
+            "uuid": "c2f0a8f0-36fe-4a94-824b-bca271ca642b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "alphacdn.alphashops.shop"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "alphacdn.alphashops.shop"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-9729318ed234d97e8051b93bbbcd7729",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+            "server": "57.131.32.191",
+            "server_port": 80,
+            "uuid": "049e56d8-0ba0-49e3-b764-ee04122b9f00",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "57.131.32.191"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+            "server": "OV-France1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "OV-France1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-e6b0009629a350976f76bfb76c0d2093",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-87a4c49df8ec5b658def8066161c90a8",
+            "server": "de.vpnbase.net",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "de.vpnbase.net"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
