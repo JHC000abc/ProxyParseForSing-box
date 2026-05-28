@@ -1,0 +1,200 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Kerkrade-78.159.131.12-28496d607a24b9403721e2674a296f9e",
+                "Frankfurt am Main-57.129.41.216-80b7d870cafdbb06f77be72b7768f0b5",
+                "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+                "Warsaw-91.185.189.19-48d3edd481e4bbc3d70e6024b2cc81aa",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tirana-45.15.170.237-971cc99dc2cc75482faadff976646124",
+                "Tirana-45.15.170.237-d866a0afe352bf052a70922e804aca5f",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Kerkrade-78.159.131.12-28496d607a24b9403721e2674a296f9e",
+                "Frankfurt am Main-57.129.41.216-80b7d870cafdbb06f77be72b7768f0b5",
+                "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+                "Warsaw-91.185.189.19-48d3edd481e4bbc3d70e6024b2cc81aa",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tirana-45.15.170.237-971cc99dc2cc75482faadff976646124",
+                "Tirana-45.15.170.237-d866a0afe352bf052a70922e804aca5f",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Kerkrade-78.159.131.12-28496d607a24b9403721e2674a296f9e",
+                "Frankfurt am Main-57.129.41.216-80b7d870cafdbb06f77be72b7768f0b5",
+                "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+                "Warsaw-91.185.189.19-48d3edd481e4bbc3d70e6024b2cc81aa",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tirana-45.15.170.237-971cc99dc2cc75482faadff976646124",
+                "Tirana-45.15.170.237-d866a0afe352bf052a70922e804aca5f",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Kerkrade-78.159.131.12-28496d607a24b9403721e2674a296f9e",
+            "server": "78.159.131.12",
+            "server_port": 28259,
+            "password": "MeaDiUmPlkWbZJ2BON8tz",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "🔒"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.41.216-80b7d870cafdbb06f77be72b7768f0b5",
+            "server": "57.129.41.216",
+            "server_port": 80,
+            "uuid": "18535741-e8b3-4b43-9348-785b55936751",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "57.129.41.216"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-0685358185e60647ba25b1fc126bd830",
+            "server": "OV-France1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "OV-France1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-91.185.189.19-48d3edd481e4bbc3d70e6024b2cc81aa",
+            "server": "bsex.serv00.net",
+            "server_port": 50401,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bsex.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tirana-45.15.170.237-971cc99dc2cc75482faadff976646124",
+            "server": "pq-Albania1.09vpn.com",
+            "server_port": 80,
+            "uuid": "8910cbb3-33b1-4266-a243-ac780ac63394",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-Albania1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tirana-45.15.170.237-d866a0afe352bf052a70922e804aca5f",
+            "server": "pq-albania1.09vpn.com",
+            "server_port": 80,
+            "uuid": "b4819c49-6c7e-4b57-9b9b-c73031e1de11",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-albania1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f",
+            "server": "usaapp1.jisuyun.top",
+            "server_port": 2053,
+            "uuid": "4b80aa86-4354-40bb-d2a3-47126cff0bea",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/usavm",
+                "headers": {
+                    "Host": "usaapp1.jisuyun.top"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
