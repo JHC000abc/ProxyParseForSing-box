@@ -1,0 +1,217 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-162.252.199.64-5c772b40d4beac54cd346dd30522f4c8",
+                "Amsterdam-162.252.199.64-fc9732d4634f95c096e983a93981f62d",
+                "Istanbul-213.142.132.60-0ade1cba67eeeb257724600bdb7461a0",
+                "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-162.252.199.64-5c772b40d4beac54cd346dd30522f4c8",
+                "Amsterdam-162.252.199.64-fc9732d4634f95c096e983a93981f62d",
+                "Istanbul-213.142.132.60-0ade1cba67eeeb257724600bdb7461a0",
+                "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-162.252.199.64-5c772b40d4beac54cd346dd30522f4c8",
+                "Amsterdam-162.252.199.64-fc9732d4634f95c096e983a93981f62d",
+                "Istanbul-213.142.132.60-0ade1cba67eeeb257724600bdb7461a0",
+                "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+                "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+                "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+                "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034",
+                "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-162.252.199.64-5c772b40d4beac54cd346dd30522f4c8",
+            "server": "172.67.195.79",
+            "server_port": 443,
+            "uuid": "30980fc4-8789-42df-80d1-0c8e5cd26881",
+            "transport": {
+                "type": "httpupgrade",
+                "path": "/vpnhu",
+                "headers": {
+                    "Host": "cdn.veilvpn.fans"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdn.veilvpn.fans"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-162.252.199.64-fc9732d4634f95c096e983a93981f62d",
+            "server": "104.21.84.167",
+            "server_port": 443,
+            "uuid": "30980fc4-8789-42df-80d1-0c8e5cd26881",
+            "transport": {
+                "type": "httpupgrade",
+                "path": "/vpnhu",
+                "headers": {
+                    "Host": "cdn.veilvpn.fans"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdn.veilvpn.fans"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Istanbul-213.142.132.60-0ade1cba67eeeb257724600bdb7461a0",
+            "server": "104.18.139.67",
+            "server_port": 443,
+            "uuid": "c2f0a8f0-36fe-4a94-824b-bca271ca642b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "alphacdn.alphashops.shop"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "alphacdn.alphashops.shop"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-f5cf3cd5560df6400aef2309c0ac2cbe",
+            "server": "57.131.32.191",
+            "server_port": 80,
+            "uuid": "049e56d8-0ba0-49e3-b764-ee04122b9f00",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "57.131.32.191"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-5594021eddb4e274ad16e3fe7dfe41d9",
+            "server": "beichuan.serv00.net",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-e6385abae0729f54a731d1950644fd7d",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-47.79.144.103-3ea5976ee4eed6ec87a65615802ad034",
+            "server": "47.79.144.103",
+            "server_port": 25242,
+            "uuid": "a12b0d31-f599-498e-b76e-8558a14b766b",
+            "transport": {
+                "type": "ws",
+                "path": "/a12b0d31",
+                "headers": {
+                    "Host": "47.79.144.103"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-172.236.244.171-1fb7743608bf34eea39d97f1351fdf9f",
+            "server": "usaapp1.jisuyun.top",
+            "server_port": 2053,
+            "uuid": "4b80aa86-4354-40bb-d2a3-47126cff0bea",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/usavm",
+                "headers": {
+                    "Host": "usaapp1.jisuyun.top"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
