@@ -1,0 +1,157 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+            "server": "bab-6.site",
+            "server_port": 443,
+            "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+            "transport": {
+                "type": "ws",
+                "path": "/vws/",
+                "headers": {
+                    "Host": "bab-6.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bab-6.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+            "server": "128.204.223.94",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+            "server": "ul-mexico1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "a6d20e79-d326-42c1-bc20-f4cecc6dc42d",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ul-mexico1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ul-mexico1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+            "server": "s31588.asancall.cloud",
+            "server_port": 8443,
+            "uuid": "e550f63f-7975-455d-a5d8-e11a120a519d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/apps/zoomit",
+                "headers": {
+                    "Host": "s31588.asancall.cloud"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
