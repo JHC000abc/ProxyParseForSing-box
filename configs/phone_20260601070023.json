@@ -1,0 +1,339 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Istanbul-213.142.132.60-996ee2be70e6cfd5ff3eb56916c19ff4",
+                "Helsinki-65.109.188.142-47c076b2579d7e66c72a4585736d9d32",
+                "Helsinki-65.109.188.142-8a138ed2d00825bc88354c1a3f6a1098",
+                "Helsinki-65.109.188.142-82133e2772cea892b5e49c40c0cb35ef",
+                "Helsinki-65.109.188.142-9929c98a3b5c7daeddaa97bfaa6ef7b9",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Warsaw-91.185.189.19-8f50514b517b3da5ce02b549fd10419d",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+                "Copenhagen-45.148.31.0-2375eff12b0a622dc7865151e4f7198b",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+                "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Istanbul-213.142.132.60-996ee2be70e6cfd5ff3eb56916c19ff4",
+                "Helsinki-65.109.188.142-47c076b2579d7e66c72a4585736d9d32",
+                "Helsinki-65.109.188.142-8a138ed2d00825bc88354c1a3f6a1098",
+                "Helsinki-65.109.188.142-82133e2772cea892b5e49c40c0cb35ef",
+                "Helsinki-65.109.188.142-9929c98a3b5c7daeddaa97bfaa6ef7b9",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Warsaw-91.185.189.19-8f50514b517b3da5ce02b549fd10419d",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+                "Copenhagen-45.148.31.0-2375eff12b0a622dc7865151e4f7198b",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+                "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Istanbul-213.142.132.60-996ee2be70e6cfd5ff3eb56916c19ff4",
+                "Helsinki-65.109.188.142-47c076b2579d7e66c72a4585736d9d32",
+                "Helsinki-65.109.188.142-8a138ed2d00825bc88354c1a3f6a1098",
+                "Helsinki-65.109.188.142-82133e2772cea892b5e49c40c0cb35ef",
+                "Helsinki-65.109.188.142-9929c98a3b5c7daeddaa97bfaa6ef7b9",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Warsaw-91.185.189.19-8f50514b517b3da5ce02b549fd10419d",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+                "Copenhagen-45.148.31.0-2375eff12b0a622dc7865151e4f7198b",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+                "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+            "server": "bab-6.site",
+            "server_port": 443,
+            "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+            "transport": {
+                "type": "ws",
+                "path": "/vws/",
+                "headers": {
+                    "Host": "bab-6.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bab-6.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Istanbul-213.142.132.60-996ee2be70e6cfd5ff3eb56916c19ff4",
+            "server": "104.18.139.67",
+            "server_port": 443,
+            "uuid": "c2f0a8f0-36fe-4a94-824b-bca271ca642b",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "alphacdn.alphashops.shop"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "alphacdn.alphashops.shop"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.188.142-47c076b2579d7e66c72a4585736d9d32",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.188.142-8a138ed2d00825bc88354c1a3f6a1098",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.188.142-82133e2772cea892b5e49c40c0cb35ef",
+            "server": "172.64.147.137",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.188.142-9929c98a3b5c7daeddaa97bfaa6ef7b9",
+            "server": "172.64.146.138",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+            "server": "ov-italy1.09vpn.com",
+            "server_port": 80,
+            "uuid": "049e56d8-0ba0-49e3-b764-ee04122b9f00",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-italy1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-91.185.189.19-8f50514b517b3da5ce02b549fd10419d",
+            "server": "128.204.223.70",
+            "server_port": 50401,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "128.204.223.70"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+            "server": "128.204.223.94",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+            "server": "ul-mexico1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "a6d20e79-d326-42c1-bc20-f4cecc6dc42d",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ul-mexico1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ul-mexico1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+            "server": "de.vpnbase.net",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "de.vpnbase.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Copenhagen-45.148.31.0-2375eff12b0a622dc7865151e4f7198b",
+            "server": "45.148.31.0",
+            "server_port": 15855,
+            "uuid": "e4fc4761-154f-490e-bbaa-b4fa193f1073",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "45.148.31.0"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+            "server": "s31588.asancall.cloud",
+            "server_port": 8443,
+            "uuid": "e550f63f-7975-455d-a5d8-e11a120a519d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/apps/zoomit",
+                "headers": {
+                    "Host": "s31588.asancall.cloud"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4",
+            "server": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca",
+            "server_port": 80,
+            "uuid": "e2923bc6-8204-4768-98ea-379d48ea8a7a",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/1awNzxRSwKsdkPVKP0ZQqlHjt10sp",
+                "headers": {
+                    "Host": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
