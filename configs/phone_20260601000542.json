@@ -1,0 +1,135 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Calais-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Calais-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Calais-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Calais-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Calais-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Calais-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+            "server": "bab-6.site",
+            "server_port": 443,
+            "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+            "transport": {
+                "type": "ws",
+                "path": "/vws/",
+                "headers": {
+                    "Host": "bab-6.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bab-6.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+            "server": "152.228.162.19",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "152.228.162.19"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Calais-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+            "server": "OV-France1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "OV-France1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+            "server": "s31588.asancall.cloud",
+            "server_port": 8443,
+            "uuid": "e550f63f-7975-455d-a5d8-e11a120a519d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/apps/zoomit",
+                "headers": {
+                    "Host": "s31588.asancall.cloud"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
