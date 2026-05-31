@@ -1,0 +1,179 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+            "server": "185.18.250.127",
+            "server_port": 2096,
+            "uuid": "2ee26119-94e5-40b4-ba3a-16354021b600",
+            "transport": {
+                "type": "ws",
+                "path": "/graphql",
+                "headers": {
+                    "Host": "69565ce3109804e7813f98ee.mmdbay.blog"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "69565ce3109804e7813f98ee.mmdbay.blog"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+            "server": "bab-6.site",
+            "server_port": 443,
+            "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+            "transport": {
+                "type": "ws",
+                "path": "/vws/",
+                "headers": {
+                    "Host": "bab-6.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bab-6.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+            "server": "ov-canada1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "08f96221-9b7b-4e6f-8ffe-aee8b9c9b504",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-canada1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ov-canada1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+            "server": "128.204.223.94",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+            "server": "45.15.170.237",
+            "server_port": 80,
+            "uuid": "8910cbb3-33b1-4266-a243-ac780ac63394",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "45.15.170.237"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+            "server": "s31588.asancall.cloud",
+            "server_port": 8443,
+            "uuid": "e550f63f-7975-455d-a5d8-e11a120a519d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/apps/zoomit",
+                "headers": {
+                    "Host": "s31588.asancall.cloud"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
