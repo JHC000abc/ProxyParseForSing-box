@@ -1,0 +1,271 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Frankfurt am Main-136.244.91.42-f06319d4120e7f6c8805e5e9745d87c0",
+                "Frankfurt am Main-162.19.156.198-96ca30e5b340171d1bc92e679ae14009",
+                "Frankfurt am Main-162.19.156.181-c6157f710adc28171a2ddcb28effbf12",
+                "Frankfurt am Main-162.19.132.87-9b3043035e1708177daa572a77c37640",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+                "Frankfurt am Main-162.19.156.181-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Frankfurt am Main-136.244.91.42-f06319d4120e7f6c8805e5e9745d87c0",
+                "Frankfurt am Main-162.19.156.198-96ca30e5b340171d1bc92e679ae14009",
+                "Frankfurt am Main-162.19.156.181-c6157f710adc28171a2ddcb28effbf12",
+                "Frankfurt am Main-162.19.132.87-9b3043035e1708177daa572a77c37640",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+                "Frankfurt am Main-162.19.156.181-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+                "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+                "Frankfurt am Main-136.244.91.42-f06319d4120e7f6c8805e5e9745d87c0",
+                "Frankfurt am Main-162.19.156.198-96ca30e5b340171d1bc92e679ae14009",
+                "Frankfurt am Main-162.19.156.181-c6157f710adc28171a2ddcb28effbf12",
+                "Frankfurt am Main-162.19.132.87-9b3043035e1708177daa572a77c37640",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+                "Frankfurt am Main-162.19.156.181-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.180.55-5d8a03b0acf43e18d47f72c44cadc700",
+            "server": "185.18.250.127",
+            "server_port": 2096,
+            "uuid": "2ee26119-94e5-40b4-ba3a-16354021b600",
+            "transport": {
+                "type": "ws",
+                "path": "/graphql",
+                "headers": {
+                    "Host": "69565ce3109804e7813f98ee.mmdbay.blog"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "69565ce3109804e7813f98ee.mmdbay.blog"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkerque-149.202.58.99-2e1bc0514e656cf6b4df72259f0451f0",
+            "server": "bab-6.site",
+            "server_port": 443,
+            "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+            "transport": {
+                "type": "ws",
+                "path": "/vws/",
+                "headers": {
+                    "Host": "bab-6.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bab-6.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-136.244.91.42-f06319d4120e7f6c8805e5e9745d87c0",
+            "server": "germany.samanidempire.org",
+            "server_port": 443,
+            "uuid": "21f1af13-f6e9-4483-8a17-a521a665b335",
+            "transport": {
+                "type": "ws",
+                "path": "/reteweef",
+                "headers": {
+                    "Host": "germany.samanidempire.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "germany.samanidempire.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.156.198-96ca30e5b340171d1bc92e679ae14009",
+            "server": "172.64.33.162",
+            "server_port": 443,
+            "uuid": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+            "transport": {
+                "type": "ws",
+                "path": "/udfyfws",
+                "headers": {
+                    "Host": "octopusss5.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss5.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.156.181-c6157f710adc28171a2ddcb28effbf12",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.132.87-9b3043035e1708177daa572a77c37640",
+            "server": "185.184.121.101",
+            "server_port": 8443,
+            "uuid": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+            "transport": {
+                "type": "ws",
+                "path": "/udfyfws",
+                "headers": {
+                    "Host": "octopusss5.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss5.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+            "server": "ov-italy1.09vpn.com",
+            "server_port": 80,
+            "uuid": "049e56d8-0ba0-49e3-b764-ee04122b9f00",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-italy1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nürnberg-159.195.75.185-3d9d868577bf531b33fd4d88ceccbca5",
+            "server": "s31588.asancall.cloud",
+            "server_port": 8443,
+            "uuid": "e550f63f-7975-455d-a5d8-e11a120a519d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/apps/zoomit",
+                "headers": {
+                    "Host": "s31588.asancall.cloud"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.156.181-7aeb59725ca9abfdf9b02e3b8f26b142",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-136.244.82.163-495d8f0eb7c21b0db6b0e83d4927acb4",
+            "server": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca",
+            "server_port": 80,
+            "uuid": "e2923bc6-8204-4768-98ea-379d48ea8a7a",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/1awNzxRSwKsdkPVKP0ZQqlHjt10sp",
+                "headers": {
+                    "Host": "heu83ujieiwoeu83j2ewjehuwehu8.dentiscan.ca"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
