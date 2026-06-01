@@ -1,0 +1,261 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-89.124.78.248-54aef4e3450d0cdef1f9179c5f78e088",
+                "Frankfurt am Main-95.179.251.232-65c29c12765db49dfdba9d03a323cd6a",
+                "Frankfurt am Main-162.19.228.119-1cbdd1245e11e9be059c4210c758beb3",
+                "Dronten-91.198.77.242-21bd2fb6ebb14a689eb9a3d0eecce3d9",
+                "Helsinki-65.109.203.117-57971e747e8d7034bbdaac952ee31ffe",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+                "Helsinki-65.109.203.117-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-89.124.78.248-54aef4e3450d0cdef1f9179c5f78e088",
+                "Frankfurt am Main-95.179.251.232-65c29c12765db49dfdba9d03a323cd6a",
+                "Frankfurt am Main-162.19.228.119-1cbdd1245e11e9be059c4210c758beb3",
+                "Dronten-91.198.77.242-21bd2fb6ebb14a689eb9a3d0eecce3d9",
+                "Helsinki-65.109.203.117-57971e747e8d7034bbdaac952ee31ffe",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+                "Helsinki-65.109.203.117-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-89.124.78.248-54aef4e3450d0cdef1f9179c5f78e088",
+                "Frankfurt am Main-95.179.251.232-65c29c12765db49dfdba9d03a323cd6a",
+                "Frankfurt am Main-162.19.228.119-1cbdd1245e11e9be059c4210c758beb3",
+                "Dronten-91.198.77.242-21bd2fb6ebb14a689eb9a3d0eecce3d9",
+                "Helsinki-65.109.203.117-57971e747e8d7034bbdaac952ee31ffe",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+                "Helsinki-65.109.203.117-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-89.124.78.248-54aef4e3450d0cdef1f9179c5f78e088",
+            "server": "31.12.75.118",
+            "server_port": 443,
+            "uuid": "179718c1-27b3-449d-9626-98c2c854d010",
+            "transport": {
+                "type": "ws",
+                "path": "/@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia",
+                "headers": {
+                    "Host": "del.ccnnx.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "del.ccnnx.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-95.179.251.232-65c29c12765db49dfdba9d03a323cd6a",
+            "server": "germany2.samanidempire.org",
+            "server_port": 443,
+            "uuid": "54327070-1d45-42ac-9ebb-8dffcb343c93",
+            "transport": {
+                "type": "ws",
+                "path": "/hZvWArgsaxqa",
+                "headers": {
+                    "Host": "germany2.samanidempire.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "germany2.samanidempire.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-1cbdd1245e11e9be059c4210c758beb3",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dronten-91.198.77.242-21bd2fb6ebb14a689eb9a3d0eecce3d9",
+            "server": "food.artmisserver.site",
+            "server_port": 8443,
+            "uuid": "3e809b21-e29b-49ec-a7fb-5301ec7c1cee",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ap.isowli.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.203.117-57971e747e8d7034bbdaac952ee31ffe",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+            "server": "ov-italy1.09vpn.com",
+            "server_port": 80,
+            "uuid": "049e56d8-0ba0-49e3-b764-ee04122b9f00",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-italy1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+            "server": "ov-canada1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "08f96221-9b7b-4e6f-8ffe-aee8b9c9b504",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-canada1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ov-canada1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-f8fc6d79ce225a59121c830887eca0af",
+            "server": "de.vpnbase.net",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "de.vpnbase.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.203.117-7aeb59725ca9abfdf9b02e3b8f26b142",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c",
+            "server": "usaapp1.jisuyun.top",
+            "server_port": 2053,
+            "uuid": "4b80aa86-4354-40bb-d2a3-47126cff0bea",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/usavm",
+                "headers": {
+                    "Host": "usaapp1.jisuyun.top"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
