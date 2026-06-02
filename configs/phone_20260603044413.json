@@ -1,0 +1,233 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Aubervilliers-152.89.253.104-d1e496e3604fd09a5758099ad9b97e8b",
+                "Los Angeles-38.180.192.70-9660732de5a55bbb5d89fe09b4dae1c3",
+                "Tampa-149.33.7.173-8429c0fb0f93e3adf43536e13cae979f",
+                "Singapore-140.235.140.100-6ff48718de6d917b1a8dd76b7d057603",
+                "Paris-13.36.49.197-42386d988a1c7d83fff598ba7ebda31e",
+                "Helsinki-46.62.167.3-3615b7d98381d81155d34c1fed30657a",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Helsinki-46.62.167.3-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Aubervilliers-152.89.253.104-d1e496e3604fd09a5758099ad9b97e8b",
+                "Los Angeles-38.180.192.70-9660732de5a55bbb5d89fe09b4dae1c3",
+                "Tampa-149.33.7.173-8429c0fb0f93e3adf43536e13cae979f",
+                "Singapore-140.235.140.100-6ff48718de6d917b1a8dd76b7d057603",
+                "Paris-13.36.49.197-42386d988a1c7d83fff598ba7ebda31e",
+                "Helsinki-46.62.167.3-3615b7d98381d81155d34c1fed30657a",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Helsinki-46.62.167.3-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Aubervilliers-152.89.253.104-d1e496e3604fd09a5758099ad9b97e8b",
+                "Los Angeles-38.180.192.70-9660732de5a55bbb5d89fe09b4dae1c3",
+                "Tampa-149.33.7.173-8429c0fb0f93e3adf43536e13cae979f",
+                "Singapore-140.235.140.100-6ff48718de6d917b1a8dd76b7d057603",
+                "Paris-13.36.49.197-42386d988a1c7d83fff598ba7ebda31e",
+                "Helsinki-46.62.167.3-3615b7d98381d81155d34c1fed30657a",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Helsinki-46.62.167.3-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.104-d1e496e3604fd09a5758099ad9b97e8b",
+            "server": "kobe.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "e277ac9b-3225-4381-a9fb-3585419f7142",
+            "transport": {
+                "type": "ws",
+                "path": "/35cdnws",
+                "headers": {
+                    "Host": "35cdnws.frnstatic.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "35cdnws.frnstatic.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Los Angeles-38.180.192.70-9660732de5a55bbb5d89fe09b4dae1c3",
+            "server": "95.40.4.37",
+            "server_port": 2520,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tampa-149.33.7.173-8429c0fb0f93e3adf43536e13cae979f",
+            "server": "95.40.68.192",
+            "server_port": 17801,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-140.235.140.100-6ff48718de6d917b1a8dd76b7d057603",
+            "server": "18.181.199.223",
+            "server_port": 1180,
+            "password": "d84665c37878196ecf983cf6910e3b44",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-13.36.49.197-42386d988a1c7d83fff598ba7ebda31e",
+            "server": "13.36.49.197",
+            "server_port": 22224,
+            "uuid": "05519058-d2ac-4f28-9e4a-2b2a1386749e",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram-channel-vlessconfig",
+                "headers": {
+                    "Host": "13.36.49.197"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "trojan.burgerip.co.uk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-46.62.167.3-3615b7d98381d81155d34c1fed30657a",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+            "server": "128.204.223.94",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-46.62.167.3-7aeb59725ca9abfdf9b02e3b8f26b142",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-172.236.244.171-a308d814f8f231147ce75d759d70ce3c",
+            "server": "usaapp1.jisuyun.top",
+            "server_port": 2053,
+            "uuid": "4b80aa86-4354-40bb-d2a3-47126cff0bea",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/usavm",
+                "headers": {
+                    "Host": "usaapp1.jisuyun.top"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
