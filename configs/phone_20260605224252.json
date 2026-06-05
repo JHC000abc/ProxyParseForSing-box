@@ -1,0 +1,204 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-162.19.228.119-c6f6a7d3b2fb66192aba608213059cc3",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Tirana-45.15.170.237-ad8db905b7f8bcfcab30cdb0ae515a9a",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Helsinki-157.180.23.26-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-162.19.228.119-c6f6a7d3b2fb66192aba608213059cc3",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Tirana-45.15.170.237-ad8db905b7f8bcfcab30cdb0ae515a9a",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Helsinki-157.180.23.26-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-162.19.228.119-c6f6a7d3b2fb66192aba608213059cc3",
+                "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+                "Tirana-45.15.170.237-ad8db905b7f8bcfcab30cdb0ae515a9a",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Helsinki-157.180.23.26-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-c6f6a7d3b2fb66192aba608213059cc3",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "de.vpnbase.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Montréal-148.113.196.75-29aa81f0573f53158302716a18ba3600",
+            "server": "ov-canada1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "08f96221-9b7b-4e6f-8ffe-aee8b9c9b504",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-canada1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ov-canada1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tirana-45.15.170.237-ad8db905b7f8bcfcab30cdb0ae515a9a",
+            "server": "pq-Albania1.09vpn.com",
+            "server_port": 80,
+            "uuid": "8910cbb3-33b1-4266-a243-ac780ac63394",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "pq-Albania1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-157.180.23.26-9ad8131d2b4a97aa13d2924a9737bf0b",
+            "server": "172.64.33.162",
+            "server_port": 443,
+            "uuid": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+            "transport": {
+                "type": "ws",
+                "path": "/udfyfws",
+                "headers": {
+                    "Host": "octopusss5.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss5.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+            "server": "3h-kazakhstan1.09vpn.com",
+            "server_port": 80,
+            "uuid": "567f4be5-12ab-42e1-b8d9-db6fd1fdd31c",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess/",
+                "headers": {
+                    "Host": "3h-kazakhstan1.09vpn.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a",
+            "server": "jp02.a0a.xyz",
+            "server_port": 25686,
+            "uuid": "6733c357-ba11-4e9f-f00f-7d87f2776ff9",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "jp02.a0a.xyz"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
