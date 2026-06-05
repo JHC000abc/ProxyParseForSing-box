@@ -1,0 +1,217 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Helsinki-135.181.35.45-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Helsinki-135.181.35.45-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+                "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+                "Helsinki-135.181.35.45-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-63a890e4a3e91aa17497b42ef949f2a2",
+            "server": "ov-italy1.09vpn.com",
+            "server_port": 80,
+            "uuid": "049e56d8-0ba0-49e3-b764-ee04122b9f00",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-italy1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+            "server": "57.131.32.191",
+            "server_port": 80,
+            "uuid": "1e280316-0408-47c4-b058-05b8f1f17f02",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "57.131.32.191"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tirana-45.15.170.237-c4952692c5eff5e946ff6f3d88d592d9",
+            "server": "45.15.170.237",
+            "server_port": 80,
+            "uuid": "8910cbb3-33b1-4266-a243-ac780ac63394",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "45.15.170.237"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santiago de Querétaro-45.134.9.133-2bc4035f4702c7bc55c524da1f655814",
+            "server": "ul-mexico1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "a6d20e79-d326-42c1-bc20-f4cecc6dc42d",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ul-mexico1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ul-mexico1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-135.181.35.45-9ad8131d2b4a97aa13d2924a9737bf0b",
+            "server": "172.64.33.162",
+            "server_port": 443,
+            "uuid": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+            "transport": {
+                "type": "ws",
+                "path": "/udfyfws",
+                "headers": {
+                    "Host": "octopusss5.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss5.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a",
+            "server": "jp02.a0a.xyz",
+            "server_port": 25686,
+            "uuid": "6733c357-ba11-4e9f-f00f-7d87f2776ff9",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "jp02.a0a.xyz"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
