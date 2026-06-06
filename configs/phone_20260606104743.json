@@ -1,0 +1,315 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Kerkrade-144.31.224.163-13c3826414a5ffd765efd8b51ae038b6",
+                "Singapore-140.235.140.105-ec450787d1add649664ff700b37981b3",
+                "Eindhoven-45.43.92.134-221dedf25c827609f858380dbeafddd2",
+                "Los Angeles-172.235.63.252-0e51e54c7dff382de670d883289fba6a",
+                "Amsterdam-89.124.69.82-c21329395e94a4d669fa47291d078ec9",
+                "Helsinki-65.109.203.212-ce0ab204b122b06a37211739fa824303",
+                "Helsinki-65.109.203.212-4876c2c60e38436c9c132a029788a6c8",
+                "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Helsinki-65.109.187.6-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Helsinki-65.109.203.212-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Kerkrade-144.31.224.163-13c3826414a5ffd765efd8b51ae038b6",
+                "Singapore-140.235.140.105-ec450787d1add649664ff700b37981b3",
+                "Eindhoven-45.43.92.134-221dedf25c827609f858380dbeafddd2",
+                "Los Angeles-172.235.63.252-0e51e54c7dff382de670d883289fba6a",
+                "Amsterdam-89.124.69.82-c21329395e94a4d669fa47291d078ec9",
+                "Helsinki-65.109.203.212-ce0ab204b122b06a37211739fa824303",
+                "Helsinki-65.109.203.212-4876c2c60e38436c9c132a029788a6c8",
+                "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Helsinki-65.109.187.6-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Helsinki-65.109.203.212-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Kerkrade-144.31.224.163-13c3826414a5ffd765efd8b51ae038b6",
+                "Singapore-140.235.140.105-ec450787d1add649664ff700b37981b3",
+                "Eindhoven-45.43.92.134-221dedf25c827609f858380dbeafddd2",
+                "Los Angeles-172.235.63.252-0e51e54c7dff382de670d883289fba6a",
+                "Amsterdam-89.124.69.82-c21329395e94a4d669fa47291d078ec9",
+                "Helsinki-65.109.203.212-ce0ab204b122b06a37211739fa824303",
+                "Helsinki-65.109.203.212-4876c2c60e38436c9c132a029788a6c8",
+                "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Helsinki-65.109.187.6-9ad8131d2b4a97aa13d2924a9737bf0b",
+                "Helsinki-65.109.203.212-7aeb59725ca9abfdf9b02e3b8f26b142",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-144.31.224.163-13c3826414a5ffd765efd8b51ae038b6",
+            "server": "144.31.224.163",
+            "server_port": 8932,
+            "password": "rstnnl2705:ZmRjX7MkeEqZ5GQUIT5VO53ARuy6nrmQ",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nrealistic.nn-foto.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "CvxXZnSth1bVJKGFP2cof4rI52ifHJ2W"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-140.235.140.105-ec450787d1add649664ff700b37981b3",
+            "server": "140.235.140.105",
+            "server_port": 443,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.134-221dedf25c827609f858380dbeafddd2",
+            "server": "151.101.108.223",
+            "server_port": 443,
+            "uuid": "b4a00211-ae46-49bc-8f36-0c4425eb7e86",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "nesfsheshab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Los Angeles-172.235.63.252-0e51e54c7dff382de670d883289fba6a",
+            "server": "172.235.63.252",
+            "server_port": 443,
+            "password": "bX_lNHWoW6ywq82mI=KUr+8i__VSp0Hs_E",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-89.124.69.82-c21329395e94a4d669fa47291d078ec9",
+            "server": "89.124.69.82",
+            "server_port": 1310,
+            "uuid": "33bb6880-03c0-5ada-b3fe-4c5300cbd8b4",
+            "transport": {
+                "type": "ws",
+                "path": "/@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia--@v2raydia",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.203.212-ce0ab204b122b06a37211739fa824303",
+            "server": "141.193.213.10",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.203.212-4876c2c60e38436c9c132a029788a6c8",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+            "server": "OV-France1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "OV-France1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+            "server": "128.204.223.94",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.187.6-9ad8131d2b4a97aa13d2924a9737bf0b",
+            "server": "172.64.33.162",
+            "server_port": 443,
+            "uuid": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+            "transport": {
+                "type": "ws",
+                "path": "/udfyfws",
+                "headers": {
+                    "Host": "octopusss5.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss5.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.203.212-7aeb59725ca9abfdf9b02e3b8f26b142",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a",
+            "server": "jp02.a0a.xyz",
+            "server_port": 25686,
+            "uuid": "6733c357-ba11-4e9f-f00f-7d87f2776ff9",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "jp02.a0a.xyz"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
