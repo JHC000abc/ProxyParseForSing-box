@@ -1,0 +1,253 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+                "Charlotte-77.110.127.191-1d50efaba4b9f814c41141ed0fbb6ef2",
+                "Amsterdam-178.173.254.179-20300a3cb557dd35a142c8a7558c6308",
+                "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Milan-57.131.32.191-63fddf4835cd6a13fbce462a7d5eb492",
+                "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+                "Charlotte-77.110.127.191-1d50efaba4b9f814c41141ed0fbb6ef2",
+                "Amsterdam-178.173.254.179-20300a3cb557dd35a142c8a7558c6308",
+                "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Milan-57.131.32.191-63fddf4835cd6a13fbce462a7d5eb492",
+                "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+                "Charlotte-77.110.127.191-1d50efaba4b9f814c41141ed0fbb6ef2",
+                "Amsterdam-178.173.254.179-20300a3cb557dd35a142c8a7558c6308",
+                "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+                "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Milan-57.131.32.191-63fddf4835cd6a13fbce462a7d5eb492",
+                "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+            "server": "vps-orange-jpn.maze-maker.com",
+            "server_port": 37749,
+            "password": "C6TpRY6HyT",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "vps-orange-jpn.maze-maker.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-1d50efaba4b9f814c41141ed0fbb6ef2",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "931a0424-2ef4-44e0-9d9f-f957aab993ae",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-178.173.254.179-20300a3cb557dd35a142c8a7558c6308",
+            "server": "hyperlink-free.poweredproyuz.com",
+            "server_port": 443,
+            "uuid": "2be7b933-c720-4838-a35a-740ae50987ee",
+            "transport": {
+                "type": "ws",
+                "path": "/hyperlink-hyperlink-join-to-hyperlink-hyperlink_ch-hyperlink-hlink_robot-hyperlink",
+                "headers": {
+                    "Host": "hyperlink-free.poweredproyuz.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hyperlink-free.poweredproyuz.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+            "server": "152.228.162.19",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "152.228.162.19"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkirk-152.228.162.19-75a9a91990561b84656dda5ac5b8217f",
+            "server": "OV-France1.09vpn.com",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "OV-France1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-163.172.214.188-e465d13bd6c65d2bb65309782453ee81",
+            "server": "163.172.214.188",
+            "server_port": 80,
+            "uuid": "40cc9b52-25b8-4cd5-8b45-715ae26e6baf",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "163.172.214.188"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-63fddf4835cd6a13fbce462a7d5eb492",
+            "server": "ov-italy1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "dc0d0eda-2293-4001-aa03-bd6c9431ed24",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-italy1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ov-italy1.09vpn.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Almaty-38.107.234.57-98cd79927576531dc7320e4dc301c760",
+            "server": "3h-kazakhstan1.09vpn.com",
+            "server_port": 80,
+            "uuid": "567f4be5-12ab-42e1-b8d9-db6fd1fdd31c",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess/",
+                "headers": {
+                    "Host": "3h-kazakhstan1.09vpn.com"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a",
+            "server": "jp02.a0a.xyz",
+            "server_port": 25686,
+            "uuid": "6733c357-ba11-4e9f-f00f-7d87f2776ff9",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "jp02.a0a.xyz"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
