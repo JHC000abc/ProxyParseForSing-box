@@ -1,0 +1,237 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+                "Jakobsberg-217.212.217.113-b5ecd47e6702c5cf89f42b9d860ae313",
+                "Jakobsberg-217.212.217.113-1c641348466010aa5bee7f7beb0d7791",
+                "Jakobsberg-217.212.217.113-0c9f06245b5987881ed8fa2f11fd3e54",
+                "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+                "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+                "Jakobsberg-217.212.217.113-b5ecd47e6702c5cf89f42b9d860ae313",
+                "Jakobsberg-217.212.217.113-1c641348466010aa5bee7f7beb0d7791",
+                "Jakobsberg-217.212.217.113-0c9f06245b5987881ed8fa2f11fd3e54",
+                "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+                "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+                "Jakobsberg-217.212.217.113-b5ecd47e6702c5cf89f42b9d860ae313",
+                "Jakobsberg-217.212.217.113-1c641348466010aa5bee7f7beb0d7791",
+                "Jakobsberg-217.212.217.113-0c9f06245b5987881ed8fa2f11fd3e54",
+                "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+                "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+                "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+                "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+                "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kanda-jinbōchō-92.113.124.214-c4ea79aa0c5b1cea2b7bb0eb09094a0a",
+            "server": "vps-orange-jpn.maze-maker.com",
+            "server_port": 37749,
+            "password": "C6TpRY6HyT",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "vps-orange-jpn.maze-maker.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Jakobsberg-217.212.217.113-b5ecd47e6702c5cf89f42b9d860ae313",
+            "server": "188.114.96.143",
+            "server_port": 443,
+            "uuid": "8449887d7cd055d06646951bc8bc2d08",
+            "transport": {
+                "type": "ws",
+                "path": "/@JavidnamanIran/Javid-SHAH-KingRezaPahlavi/",
+                "headers": {
+                    "Host": "crm.lotussec.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "crm.lotussec.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Jakobsberg-217.212.217.113-1c641348466010aa5bee7f7beb0d7791",
+            "server": "188.114.96.115",
+            "server_port": 443,
+            "uuid": "8449887d7cd055d06646951bc8bc2d08",
+            "transport": {
+                "type": "ws",
+                "path": "/@JavidnamanIran/Javid-SHAH-KingRezaPahlavi/",
+                "headers": {
+                    "Host": "crm.lotussec.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "crm.lotussec.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Jakobsberg-217.212.217.113-0c9f06245b5987881ed8fa2f11fd3e54",
+            "server": "188.114.96.165",
+            "server_port": 443,
+            "uuid": "8449887d7cd055d06646951bc8bc2d08",
+            "transport": {
+                "type": "ws",
+                "path": "/@JavidnamanIran/Javid-SHAH-KingRezaPahlavi/",
+                "headers": {
+                    "Host": "crm.lotussec.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "crm.lotussec.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Milan-57.131.32.191-2e5110d1c99ce24e1c3bb6395b7aea64",
+            "server": "57.131.32.191",
+            "server_port": 80,
+            "uuid": "1e280316-0408-47c4-b058-05b8f1f17f02",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "57.131.32.191"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkirk-152.228.162.19-dd4a52838c11c9ab96098d74f4d676c4",
+            "server": "152.228.162.19",
+            "server_port": 80,
+            "uuid": "25f86cb1-2140-4085-abcb-c3a0ea7a4be0",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "152.228.162.19"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-213.189.52.181-dae6010966cc52b2087f9e59849dc2a3",
+            "server": "128.204.223.94",
+            "server_port": 9815,
+            "uuid": "37a0bd7c-8b9f-4693-8916-bd1e2da0a817",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "beichuan.serv00.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-151.245.104.182-f46d81870b734e9c8d32a3b877dcd69c",
+            "server": "dongjing4.zqjsqapi.com",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "dongjing4.zqjsqapi.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dongjing4.zqjsqapi.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Osaka-140.83.51.161-92f7a1155cb9db87d0d004af52f0e76a",
+            "server": "jp02.a0a.xyz",
+            "server_port": 25686,
+            "uuid": "6733c357-ba11-4e9f-f00f-7d87f2776ff9",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/cctv13.m3u8",
+                "headers": {
+                    "Host": "jp02.a0a.xyz"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
