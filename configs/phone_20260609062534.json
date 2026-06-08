@@ -1,0 +1,230 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-167.104.216.179-45c25ee65835aa51d574cff8154829ab",
+                "Falkenstein-178.105.247.214-04266723d1fcc5b9c9b178612f165736",
+                "Nuremberg-178.104.137.242-e4b60a3bb9b02722706eb2ece72d9ad1",
+                "Nuremberg-178.104.137.242-19407dc19d3a13d708e033db3ab1b9f4",
+                "Nuremberg-178.104.137.242-a5b7f428f002865893a90036187badfe",
+                "Nuremberg-178.104.137.242-c2d7f86c88937a46d36c297d67325bc3",
+                "Amsterdam-178.173.254.179-2ce85c8c08fb0f680b121f1c325e7f48",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Paris-167.104.216.179-45c25ee65835aa51d574cff8154829ab",
+                "Falkenstein-178.105.247.214-04266723d1fcc5b9c9b178612f165736",
+                "Nuremberg-178.104.137.242-e4b60a3bb9b02722706eb2ece72d9ad1",
+                "Nuremberg-178.104.137.242-19407dc19d3a13d708e033db3ab1b9f4",
+                "Nuremberg-178.104.137.242-a5b7f428f002865893a90036187badfe",
+                "Nuremberg-178.104.137.242-c2d7f86c88937a46d36c297d67325bc3",
+                "Amsterdam-178.173.254.179-2ce85c8c08fb0f680b121f1c325e7f48",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-167.104.216.179-45c25ee65835aa51d574cff8154829ab",
+                "Falkenstein-178.105.247.214-04266723d1fcc5b9c9b178612f165736",
+                "Nuremberg-178.104.137.242-e4b60a3bb9b02722706eb2ece72d9ad1",
+                "Nuremberg-178.104.137.242-19407dc19d3a13d708e033db3ab1b9f4",
+                "Nuremberg-178.104.137.242-a5b7f428f002865893a90036187badfe",
+                "Nuremberg-178.104.137.242-c2d7f86c88937a46d36c297d67325bc3",
+                "Amsterdam-178.173.254.179-2ce85c8c08fb0f680b121f1c325e7f48",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.179-45c25ee65835aa51d574cff8154829ab",
+            "server": "199.232.78.159",
+            "server_port": 443,
+            "uuid": "b2bfb4f3-f4c3-4323-9810-a086fef2f25d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "pan1.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-178.105.247.214-04266723d1fcc5b9c9b178612f165736",
+            "server": "199.232.197.131",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.104.137.242-e4b60a3bb9b02722706eb2ece72d9ad1",
+            "server": "104.16.0.0",
+            "server_port": 443,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tr-cd.sublink-vip2.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.104.137.242-19407dc19d3a13d708e033db3ab1b9f4",
+            "server": "speedtest.net",
+            "server_port": 80,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.104.137.242-a5b7f428f002865893a90036187badfe",
+            "server": "www.speedtest.org",
+            "server_port": 8080,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.104.137.242-c2d7f86c88937a46d36c297d67325bc3",
+            "server": "www.parsvds.com",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-178.173.254.179-2ce85c8c08fb0f680b121f1c325e7f48",
+            "server": "hyperlink-free.poweredproyuz.com",
+            "server_port": 443,
+            "uuid": "2be7b933-c720-4838-a35a-740ae50987ee",
+            "transport": {
+                "type": "ws",
+                "path": "/hyperlink-hyperlink-join-to-hyperlink-hyperlink_ch-hyperlink-hlink_robot-hyperlink",
+                "headers": {
+                    "Host": "hyperlink-free.poweredproyuz.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hyperlink-free.poweredproyuz.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba",
+            "server": "185.126.236.44",
+            "server_port": 443,
+            "password": "BSs5IAVMQdYuykvDsOYZoa6gNPSGBjAbLL",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.mesaly.click"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
