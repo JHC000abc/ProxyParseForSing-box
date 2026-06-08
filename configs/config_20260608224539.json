@@ -1,0 +1,256 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Montréal-3.96.152.83-a802fbd3bef3a0b0dad39646f9ad99fb",
+                "Taipei-36.230.61.197-2bee9313907f87aae93fd37291182be3",
+                "Falkenstein-49.13.3.249-6dc1f8cee2f4cd17d068e57c5dc55c6b",
+                "Bexley-51.75.168.50-7627e60558d8cebb7f60db2ec8ca07dd",
+                "Helsinki-62.238.31.93-d23aa7a2cead80bb465480a9df15b829",
+                "Stockholm-62.182.197.223-a11530e172a47e88a07b299a34ef8627",
+                "New York City-147.90.234.133-c0c012798f8f7791cf46d7f249ccead7",
+                "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+                "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+                "Banqiao-61.231.10.92-a69794e3cb0011a853fcdc60626b0674",
+                "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+                "Milan-57.131.28.246-ac6c7d74cfdf27412c485d608bce45d0",
+                "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+                "Arezzo-185.213.20.110-fd347e17663a9f1636dee1c6c7bc443b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Montréal-3.96.152.83-a802fbd3bef3a0b0dad39646f9ad99fb",
+                "Taipei-36.230.61.197-2bee9313907f87aae93fd37291182be3",
+                "Falkenstein-49.13.3.249-6dc1f8cee2f4cd17d068e57c5dc55c6b",
+                "Bexley-51.75.168.50-7627e60558d8cebb7f60db2ec8ca07dd",
+                "Helsinki-62.238.31.93-d23aa7a2cead80bb465480a9df15b829",
+                "Stockholm-62.182.197.223-a11530e172a47e88a07b299a34ef8627",
+                "New York City-147.90.234.133-c0c012798f8f7791cf46d7f249ccead7",
+                "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+                "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+                "Banqiao-61.231.10.92-a69794e3cb0011a853fcdc60626b0674",
+                "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+                "Milan-57.131.28.246-ac6c7d74cfdf27412c485d608bce45d0",
+                "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+                "Arezzo-185.213.20.110-fd347e17663a9f1636dee1c6c7bc443b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-3.96.152.83-a802fbd3bef3a0b0dad39646f9ad99fb",
+            "server": "3.96.152.83",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Taipei-36.230.61.197-2bee9313907f87aae93fd37291182be3",
+            "server": "r3mrcg001269pz2.cybervena.com",
+            "server_port": 50099,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Falkenstein-49.13.3.249-6dc1f8cee2f4cd17d068e57c5dc55c6b",
+            "server": "49.13.3.249",
+            "server_port": 23997,
+            "method": "2022-blake3-aes-256-gcm",
+            "password": "dyL+KqX8hIMn+UyADwSJOPm72A0A83TsDOFXBn6I2mA="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Bexley-51.75.168.50-7627e60558d8cebb7f60db2ec8ca07dd",
+            "server": "51.75.168.50",
+            "server_port": 26179,
+            "method": "chacha20-ietf-poly1305",
+            "password": "78b6e93e54225803"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-62.238.31.93-d23aa7a2cead80bb465480a9df15b829",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Stockholm-62.182.197.223-a11530e172a47e88a07b299a34ef8627",
+            "server": "hyperlink-free.poweredproyuz.com",
+            "server_port": 443,
+            "uuid": "2be7b933-c720-4838-a35a-740ae50987ee",
+            "transport": {
+                "type": "ws",
+                "path": "/hyperlink-hyperlink-join-to-hyperlink-hyperlink_ch-hyperlink-hlink_robot-hyperlink",
+                "headers": {
+                    "Host": "hyperlink-free.poweredproyuz.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hyperlink-free.poweredproyuz.com"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-147.90.234.133-c0c012798f8f7791cf46d7f249ccead7",
+            "server": "tinkered-pennies-puppies.freesocks.work",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "hbGrpfvNrJsUmKmPbR3iY2"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+            "server": "149.28.255.6",
+            "server_port": 816,
+            "method": "chacha20-ietf-poly1305",
+            "password": "GyZ5Xo0ht41vYmW3H4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+            "server": "62.146.231.112",
+            "server_port": 12012,
+            "method": "chacha20-ietf-poly1305",
+            "password": "4e287631dc4fc8fc"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Banqiao-61.231.10.92-a69794e3cb0011a853fcdc60626b0674",
+            "server": "r3mrcg001287h3p.cybervena.com",
+            "server_port": 50099,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+            "server": "149.104.109.74",
+            "server_port": 21273,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Ll6cYfXM5DzQbdtMMb72A_jqVnNljU3yqe"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Milan-57.131.28.246-ac6c7d74cfdf27412c485d608bce45d0",
+            "server": "57.131.28.246",
+            "server_port": 2083,
+            "method": "aes-256-gcm",
+            "password": "34fItyZyz69uIrxkJ+cLR1pdclvG628pv8+fzUNTIC0="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+            "server": "51.254.128.106",
+            "server_port": 2083,
+            "method": "aes-256-gcm",
+            "password": "FjG3IPbny+0ZYU4/p1vULP84GcKpGoZpWKAay16VhIw="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Arezzo-185.213.20.110-fd347e17663a9f1636dee1c6c7bc443b",
+            "server": "185.213.20.110",
+            "server_port": 7001,
+            "method": "aes-256-gcm",
+            "password": "RexnBgU7EV5ADxG"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}

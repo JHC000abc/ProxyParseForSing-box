@@ -1,0 +1,106 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-62.238.31.93-d23aa7a2cead80bb465480a9df15b829",
+                "Stockholm-62.182.197.223-a11530e172a47e88a07b299a34ef8627"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-62.238.31.93-d23aa7a2cead80bb465480a9df15b829",
+                "Stockholm-62.182.197.223-a11530e172a47e88a07b299a34ef8627"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-62.238.31.93-d23aa7a2cead80bb465480a9df15b829",
+                "Stockholm-62.182.197.223-a11530e172a47e88a07b299a34ef8627"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-62.238.31.93-d23aa7a2cead80bb465480a9df15b829",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Stockholm-62.182.197.223-a11530e172a47e88a07b299a34ef8627",
+            "server": "hyperlink-free.poweredproyuz.com",
+            "server_port": 443,
+            "uuid": "2be7b933-c720-4838-a35a-740ae50987ee",
+            "transport": {
+                "type": "ws",
+                "path": "/hyperlink-hyperlink-join-to-hyperlink-hyperlink_ch-hyperlink-hlink_robot-hyperlink",
+                "headers": {
+                    "Host": "hyperlink-free.poweredproyuz.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hyperlink-free.poweredproyuz.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
