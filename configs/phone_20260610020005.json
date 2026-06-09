@@ -1,0 +1,165 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+                "Kerkrade-89.23.103.150-5ad9577e14c9a017ff6e130278aca773",
+                "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+                "Amsterdam-206.71.158.9-681d4545f2ee36011f8d8b8c51632c88",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+                "Kerkrade-89.23.103.150-5ad9577e14c9a017ff6e130278aca773",
+                "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+                "Amsterdam-206.71.158.9-681d4545f2ee36011f8d8b8c51632c88",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+                "Kerkrade-89.23.103.150-5ad9577e14c9a017ff6e130278aca773",
+                "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+                "Amsterdam-206.71.158.9-681d4545f2ee36011f8d8b8c51632c88",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+            "server": "5.45.100.100",
+            "server_port": 51511,
+            "password": "miaoge110",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kerkrade-89.23.103.150-5ad9577e14c9a017ff6e130278aca773",
+            "server": "nl08.abvpn.ru",
+            "server_port": 443,
+            "uuid": "95e118b4-4352-4218-8493-f20cc7fc467a",
+            "transport": {
+                "type": "ws",
+                "path": "/websocket",
+                "headers": {
+                    "Host": "nl08.abvpn.ru"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nl08.abvpn.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+            "server": "devoracle.clarkpf.top",
+            "server_port": 443,
+            "password": "f4281a5fdfb44e0744d6f683",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "devoracle.clarkpf.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-206.71.158.9-681d4545f2ee36011f8d8b8c51632c88",
+            "server": "199.232.78.159",
+            "server_port": 443,
+            "uuid": "984fac58-576e-42bd-ab99-83db7074a729",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b",
+            "server": "193.233.23.196",
+            "server_port": 26048,
+            "uuid": "3007b043-acdf-43a4-900e-c7c015406f89"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
