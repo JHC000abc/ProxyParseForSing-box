@@ -1,0 +1,218 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+                "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+                "Helsinki-65.21.150.148-14db95b18ece4060df7f0926207e23d5",
+                "Helsinki-65.21.150.148-d8c87ed49822be3102d2370c9af0d1d2",
+                "Beauharnois-148.113.196.75-ef15a49aa1af2f2de2eb54990aeed710",
+                "Helsinki-65.21.150.148-f45094e8a9117d034d5617477a1f5e9b",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+                "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+                "Helsinki-65.21.150.148-14db95b18ece4060df7f0926207e23d5",
+                "Helsinki-65.21.150.148-d8c87ed49822be3102d2370c9af0d1d2",
+                "Beauharnois-148.113.196.75-ef15a49aa1af2f2de2eb54990aeed710",
+                "Helsinki-65.21.150.148-f45094e8a9117d034d5617477a1f5e9b",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+                "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+                "Helsinki-65.21.150.148-14db95b18ece4060df7f0926207e23d5",
+                "Helsinki-65.21.150.148-d8c87ed49822be3102d2370c9af0d1d2",
+                "Beauharnois-148.113.196.75-ef15a49aa1af2f2de2eb54990aeed710",
+                "Helsinki-65.21.150.148-f45094e8a9117d034d5617477a1f5e9b",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Nuremberg-5.45.100.100-b905ab8ebc33c2622cc62c710732306a",
+            "server": "5.45.100.100",
+            "server_port": 51511,
+            "password": "miaoge110",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Phoenix-144.24.25.162-50ae714646abe0fbcc53b8de30c1d19e",
+            "server": "devoracle.clarkpf.top",
+            "server_port": 443,
+            "password": "f4281a5fdfb44e0744d6f683",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "devoracle.clarkpf.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.21.150.148-14db95b18ece4060df7f0926207e23d5",
+            "server": "89.116.46.68",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.21.150.148-d8c87ed49822be3102d2370c9af0d1d2",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Beauharnois-148.113.196.75-ef15a49aa1af2f2de2eb54990aeed710",
+            "server": "ov-canada1.09vpn.com",
+            "server_port": 8443,
+            "uuid": "08f96221-9b7b-4e6f-8ffe-aee8b9c9b504",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "ov-canada1.09vpn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ov-canada1.09vpn.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.21.150.148-f45094e8a9117d034d5617477a1f5e9b",
+            "server": "208.103.161.170",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
