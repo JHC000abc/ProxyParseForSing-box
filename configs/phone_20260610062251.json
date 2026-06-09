@@ -1,0 +1,223 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Phoenix-144.24.25.162-560f318948306615c3e4371c84bf7978",
+                "Nuremberg-167.233.36.115-40afaa31c02df6c26a7dbe834581babc",
+                "Nuremberg-167.233.40.195-05ce405ffc138ebaabfe380a793130f0",
+                "Gunzenhausen-167.233.99.71-c709fd41d10938c6d5f6ca6d322d6ff4",
+                "Nuremberg-167.233.36.115-7878bc8f74b9b88e07e8fb7348b88ace",
+                "Nuremberg-167.233.36.115-903e956b90049f9f6fe6fc6adc04d9aa",
+                "Nuremberg-167.233.36.115-1347d14aac9ed6bb1b4de4cd19e5eaf4",
+                "Gunzenhausen-167.233.69.85-6801daa715b8570a7a850d0a8251cd4e",
+                "Helsinki-65.109.178.192-e848e4b3c552706ad0c4970f0bbc745f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Phoenix-144.24.25.162-560f318948306615c3e4371c84bf7978",
+                "Nuremberg-167.233.36.115-40afaa31c02df6c26a7dbe834581babc",
+                "Nuremberg-167.233.40.195-05ce405ffc138ebaabfe380a793130f0",
+                "Gunzenhausen-167.233.99.71-c709fd41d10938c6d5f6ca6d322d6ff4",
+                "Nuremberg-167.233.36.115-7878bc8f74b9b88e07e8fb7348b88ace",
+                "Nuremberg-167.233.36.115-903e956b90049f9f6fe6fc6adc04d9aa",
+                "Nuremberg-167.233.36.115-1347d14aac9ed6bb1b4de4cd19e5eaf4",
+                "Gunzenhausen-167.233.69.85-6801daa715b8570a7a850d0a8251cd4e",
+                "Helsinki-65.109.178.192-e848e4b3c552706ad0c4970f0bbc745f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Phoenix-144.24.25.162-560f318948306615c3e4371c84bf7978",
+                "Nuremberg-167.233.36.115-40afaa31c02df6c26a7dbe834581babc",
+                "Nuremberg-167.233.40.195-05ce405ffc138ebaabfe380a793130f0",
+                "Gunzenhausen-167.233.99.71-c709fd41d10938c6d5f6ca6d322d6ff4",
+                "Nuremberg-167.233.36.115-7878bc8f74b9b88e07e8fb7348b88ace",
+                "Nuremberg-167.233.36.115-903e956b90049f9f6fe6fc6adc04d9aa",
+                "Nuremberg-167.233.36.115-1347d14aac9ed6bb1b4de4cd19e5eaf4",
+                "Gunzenhausen-167.233.69.85-6801daa715b8570a7a850d0a8251cd4e",
+                "Helsinki-65.109.178.192-e848e4b3c552706ad0c4970f0bbc745f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Phoenix-144.24.25.162-560f318948306615c3e4371c84bf7978",
+            "server": "devoracle.clarkpf.top",
+            "server_port": 443,
+            "password": "f4281a5fdfb44e0744d6f683",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "devoracle.clarkpf.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.36.115-40afaa31c02df6c26a7dbe834581babc",
+            "server": "www.speedtest.org",
+            "server_port": 8080,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.40.195-05ce405ffc138ebaabfe380a793130f0",
+            "server": "speedtest.net",
+            "server_port": 80,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Gunzenhausen-167.233.99.71-c709fd41d10938c6d5f6ca6d322d6ff4",
+            "server": "167.82.0.1",
+            "server_port": 80,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.36.115-7878bc8f74b9b88e07e8fb7348b88ace",
+            "server": "199.232.197.131",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.36.115-903e956b90049f9f6fe6fc6adc04d9aa",
+            "server": "www.parsvds.com",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.36.115-1347d14aac9ed6bb1b4de4cd19e5eaf4",
+            "server": "104.16.0.0",
+            "server_port": 443,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tr-cd.sublink-vip2.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Gunzenhausen-167.233.69.85-6801daa715b8570a7a850d0a8251cd4e",
+            "server": "151.101.0.1",
+            "server_port": 80,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.178.192-e848e4b3c552706ad0c4970f0bbc745f",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
