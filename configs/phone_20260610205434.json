@@ -1,0 +1,188 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-141.11.43.66-cc3b1e802f114fecfcca2f91f1626842",
+                "Helsinki-2.26.97.21-833f1de50e24bb9deb6aa86afc247c7f",
+                "Helsinki-135.181.109.96-9fae6178a1bf6731cc698fd2d7f88af3",
+                "Helsinki-135.181.109.96-4cb1200f3fbc0c7c0d6f2d063b29ae8e",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-141.11.43.66-cc3b1e802f114fecfcca2f91f1626842",
+                "Helsinki-2.26.97.21-833f1de50e24bb9deb6aa86afc247c7f",
+                "Helsinki-135.181.109.96-9fae6178a1bf6731cc698fd2d7f88af3",
+                "Helsinki-135.181.109.96-4cb1200f3fbc0c7c0d6f2d063b29ae8e",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-141.11.43.66-cc3b1e802f114fecfcca2f91f1626842",
+                "Helsinki-2.26.97.21-833f1de50e24bb9deb6aa86afc247c7f",
+                "Helsinki-135.181.109.96-9fae6178a1bf6731cc698fd2d7f88af3",
+                "Helsinki-135.181.109.96-4cb1200f3fbc0c7c0d6f2d063b29ae8e",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-141.11.43.66-cc3b1e802f114fecfcca2f91f1626842",
+            "server": "43.198.203.3",
+            "server_port": 29642,
+            "password": "d02e3bb7e6b3333e818d36866d40de6e",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-2.26.97.21-833f1de50e24bb9deb6aa86afc247c7f",
+            "server": "2.26.97.21",
+            "server_port": 8443,
+            "password": "rstnnl2705:56Uhk1CcaR5mCmGpaN0AsOAmRscZSIaM",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "musicclips.videolinks.ru"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "hH0l2Acqz3RtodoSCNCpNJqDSZtp4Qw"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-135.181.109.96-9fae6178a1bf6731cc698fd2d7f88af3",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-135.181.109.96-4cb1200f3fbc0c7c0d6f2d063b29ae8e",
+            "server": "89.116.46.8",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b",
+            "server": "193.233.23.196",
+            "server_port": 26048,
+            "uuid": "3007b043-acdf-43a4-900e-c7c015406f89"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
