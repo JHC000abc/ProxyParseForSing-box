@@ -1,0 +1,100 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}

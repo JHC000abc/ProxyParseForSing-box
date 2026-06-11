@@ -1,0 +1,220 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Taipei-36.230.60.182-c2f63caea6aa05206f8b68b8bbc78869",
+                "Phoenix-173.244.56.9-ac128cdc12e038d6b33e284b8766b903",
+                "Bexley-51.75.168.50-af9386f063da983abc994d78a28bcfbd",
+                "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+                "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+                "Tokyo-47.79.144.115-7b57d97d1f038eeeef1d45ad56069321",
+                "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+                "Arezzo-185.213.20.110-fd347e17663a9f1636dee1c6c7bc443b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Taipei-36.230.60.182-c2f63caea6aa05206f8b68b8bbc78869",
+                "Phoenix-173.244.56.9-ac128cdc12e038d6b33e284b8766b903",
+                "Bexley-51.75.168.50-af9386f063da983abc994d78a28bcfbd",
+                "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+                "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+                "Tokyo-47.79.144.115-7b57d97d1f038eeeef1d45ad56069321",
+                "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+                "Arezzo-185.213.20.110-fd347e17663a9f1636dee1c6c7bc443b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Taipei-36.230.60.182-c2f63caea6aa05206f8b68b8bbc78869",
+            "server": "r3mrcg001269pz2.cybervena.com",
+            "server_port": 50099,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Phoenix-173.244.56.9-ac128cdc12e038d6b33e284b8766b903",
+            "server": "173.244.56.9",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Bexley-51.75.168.50-af9386f063da983abc994d78a28bcfbd",
+            "server": "51.75.168.50",
+            "server_port": 26179,
+            "method": "chacha20-ietf-poly1305",
+            "password": "78b6e93e54225803"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+            "server": "149.28.255.6",
+            "server_port": 816,
+            "method": "chacha20-ietf-poly1305",
+            "password": "GyZ5Xo0ht41vYmW3H4"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+            "server": "62.146.231.112",
+            "server_port": 12012,
+            "method": "chacha20-ietf-poly1305",
+            "password": "4e287631dc4fc8fc"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+            "server": "149.104.109.74",
+            "server_port": 21273,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Ll6cYfXM5DzQbdtMMb72A_jqVnNljU3yqe"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Tokyo-47.79.144.115-7b57d97d1f038eeeef1d45ad56069321",
+            "server": "47.79.144.115",
+            "server_port": 40003,
+            "method": "aes-256-gcm",
+            "password": "GTZI5AbjNAeWQG0oVNptvWJogHNKiiKA"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+            "server": "51.254.128.106",
+            "server_port": 2083,
+            "method": "aes-256-gcm",
+            "password": "FjG3IPbny+0ZYU4/p1vULP84GcKpGoZpWKAay16VhIw="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Arezzo-185.213.20.110-fd347e17663a9f1636dee1c6c7bc443b",
+            "server": "185.213.20.110",
+            "server_port": 7001,
+            "method": "aes-256-gcm",
+            "password": "RexnBgU7EV5ADxG"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
