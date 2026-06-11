@@ -1,0 +1,179 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nuremberg-46.225.226.77-569b89719ad24e3b9abb05be4e5ac4cd",
+                "Nuremberg-46.225.226.77-8f9b5b3857898287b0d23bd6d4c3a051",
+                "Falkenstein-178.105.243.46-d8c5f8144a41f9d68166fa92f7b0d793",
+                "Nuremberg-46.225.239.50-c5f6f8fb64316341a7801070b4fa8ab5",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nuremberg-46.225.226.77-569b89719ad24e3b9abb05be4e5ac4cd",
+                "Nuremberg-46.225.226.77-8f9b5b3857898287b0d23bd6d4c3a051",
+                "Falkenstein-178.105.243.46-d8c5f8144a41f9d68166fa92f7b0d793",
+                "Nuremberg-46.225.239.50-c5f6f8fb64316341a7801070b4fa8ab5",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nuremberg-46.225.226.77-569b89719ad24e3b9abb05be4e5ac4cd",
+                "Nuremberg-46.225.226.77-8f9b5b3857898287b0d23bd6d4c3a051",
+                "Falkenstein-178.105.243.46-d8c5f8144a41f9d68166fa92f7b0d793",
+                "Nuremberg-46.225.239.50-c5f6f8fb64316341a7801070b4fa8ab5",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-46.225.226.77-569b89719ad24e3b9abb05be4e5ac4cd",
+            "server": "speedtest.net",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-46.225.226.77-8f9b5b3857898287b0d23bd6d4c3a051",
+            "server": "167.82.0.1",
+            "server_port": 80,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-178.105.243.46-d8c5f8144a41f9d68166fa92f7b0d793",
+            "server": "104.16.6.70",
+            "server_port": 443,
+            "uuid": "30693e15-1014-443b-88dd-1232b55a06b6",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "mos.rfiksma.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sub.rfiksma.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-46.225.239.50-c5f6f8fb64316341a7801070b4fa8ab5",
+            "server": "151.101.109.223",
+            "server_port": 80,
+            "uuid": "cabbfe13-038b-4dbb-9c45-5079c829abfa",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba",
+            "server": "185.126.236.44",
+            "server_port": 443,
+            "password": "BSs5IAVMQdYuykvDsOYZoa6gNPSGBjAbLL",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.mesaly.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b",
+            "server": "193.233.23.196",
+            "server_port": 26048,
+            "uuid": "3007b043-acdf-43a4-900e-c7c015406f89"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
