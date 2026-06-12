@@ -1,0 +1,178 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+                "Amsterdam-206.71.158.9-7882d20915d278dba5bdfc4b79be786b",
+                "Helsinki-62.238.31.93-eb2462f80c318d72d0532743c8791885",
+                "Frankfurt am Main-185.189.58.195-71474796507dbe4e84a9349b32bba89f",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+                "Amsterdam-206.71.158.9-7882d20915d278dba5bdfc4b79be786b",
+                "Helsinki-62.238.31.93-eb2462f80c318d72d0532743c8791885",
+                "Frankfurt am Main-185.189.58.195-71474796507dbe4e84a9349b32bba89f",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+                "Amsterdam-206.71.158.9-7882d20915d278dba5bdfc4b79be786b",
+                "Helsinki-62.238.31.93-eb2462f80c318d72d0532743c8791885",
+                "Frankfurt am Main-185.189.58.195-71474796507dbe4e84a9349b32bba89f",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+            "server": "172.86.109.206",
+            "server_port": 55380,
+            "uuid": "5e1f8cb7-5509-43c9-a417-1c65c0df5959",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "172.86.109.206"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-206.71.158.9-7882d20915d278dba5bdfc4b79be786b",
+            "server": "151.101.109.223",
+            "server_port": 443,
+            "uuid": "060cd76b-72e1-478f-b6c9-8e6d2bdc5517",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-62.238.31.93-eb2462f80c318d72d0532743c8791885",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-185.189.58.195-71474796507dbe4e84a9349b32bba89f",
+            "server": "185.189.58.195",
+            "server_port": 29703,
+            "uuid": "53707df1-4a41-4b9f-82b1-84e3ee6c76d8",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "185.189.58.195"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
