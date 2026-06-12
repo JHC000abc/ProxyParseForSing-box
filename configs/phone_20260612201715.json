@@ -1,0 +1,171 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-162.252.199.64-51e5b4088dc85b24b83cb04662074f35",
+                "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+                "Amsterdam-162.252.199.64-8fa4d880ae677cdde15cb10f929dc418",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-162.252.199.64-51e5b4088dc85b24b83cb04662074f35",
+                "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+                "Amsterdam-162.252.199.64-8fa4d880ae677cdde15cb10f929dc418",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-162.252.199.64-51e5b4088dc85b24b83cb04662074f35",
+                "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+                "Amsterdam-162.252.199.64-8fa4d880ae677cdde15cb10f929dc418",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-162.252.199.64-51e5b4088dc85b24b83cb04662074f35",
+            "server": "cdn.veilvpn.fans",
+            "server_port": 443,
+            "uuid": "30980fc4-8789-42df-80d1-0c8e5cd26881",
+            "transport": {
+                "type": "httpupgrade",
+                "path": "/vpnhu",
+                "headers": {
+                    "Host": "cdn.veilvpn.fans"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdn.veilvpn.fans"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-172.86.109.206-e4d747d8d52270c06a16e499c66c8903",
+            "server": "172.86.109.206",
+            "server_port": 55380,
+            "uuid": "5e1f8cb7-5509-43c9-a417-1c65c0df5959",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "172.86.109.206"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-162.252.199.64-8fa4d880ae677cdde15cb10f929dc418",
+            "server": "104.21.84.167",
+            "server_port": 443,
+            "uuid": "30980fc4-8789-42df-80d1-0c8e5cd26881",
+            "transport": {
+                "type": "httpupgrade",
+                "path": "/vpnhu",
+                "headers": {
+                    "Host": "cdn.veilvpn.fans"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cdn.veilvpn.fans"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-195.133.2.45-0c37a28fa9381c913e25612f775ef16b",
+            "server": "193.233.23.196",
+            "server_port": 26048,
+            "uuid": "3007b043-acdf-43a4-900e-c7c015406f89"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
