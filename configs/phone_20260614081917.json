@@ -1,0 +1,246 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "London-193.149.185.17-cbb92d95967fbaae515e31c316b8b94a",
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Stockholm-46.246.97.218-51a5273d853b0cd9160f471180d1a19a",
+                "Nuremberg-167.233.44.39-d461a08b2ceac5b13daeba336bb77390",
+                "Berlin-82.165.133.113-226f5dc9bbd00b063689b8b72f4a9f4c",
+                "Nuremberg-167.233.44.39-04035d5da09ebf5e6752c2804ca95263",
+                "Istanbul-143.246.136.243-3f6aa6bcadab4544a055696e13e44ef1",
+                "Nuremberg-167.233.44.39-c2d5d2fd4afe27b61c68d9c8f9d72473",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "London-193.149.185.17-cbb92d95967fbaae515e31c316b8b94a",
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Stockholm-46.246.97.218-51a5273d853b0cd9160f471180d1a19a",
+                "Nuremberg-167.233.44.39-d461a08b2ceac5b13daeba336bb77390",
+                "Berlin-82.165.133.113-226f5dc9bbd00b063689b8b72f4a9f4c",
+                "Nuremberg-167.233.44.39-04035d5da09ebf5e6752c2804ca95263",
+                "Istanbul-143.246.136.243-3f6aa6bcadab4544a055696e13e44ef1",
+                "Nuremberg-167.233.44.39-c2d5d2fd4afe27b61c68d9c8f9d72473",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "London-193.149.185.17-cbb92d95967fbaae515e31c316b8b94a",
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Stockholm-46.246.97.218-51a5273d853b0cd9160f471180d1a19a",
+                "Nuremberg-167.233.44.39-d461a08b2ceac5b13daeba336bb77390",
+                "Berlin-82.165.133.113-226f5dc9bbd00b063689b8b72f4a9f4c",
+                "Nuremberg-167.233.44.39-04035d5da09ebf5e6752c2804ca95263",
+                "Istanbul-143.246.136.243-3f6aa6bcadab4544a055696e13e44ef1",
+                "Nuremberg-167.233.44.39-c2d5d2fd4afe27b61c68d9c8f9d72473",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "London-193.149.185.17-cbb92d95967fbaae515e31c316b8b94a",
+            "server": "193.149.185.17",
+            "server_port": 41510,
+            "uuid": "0599ca07-cc1c-4e42-b637-6e286f43beb2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "193.149.185.17"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+            "server": "188.114.97.6",
+            "server_port": 2096,
+            "uuid": "70252937-5c61-4fb0-8656-d1a16261b795",
+            "transport": {
+                "type": "ws",
+                "path": "/shalana",
+                "headers": {
+                    "Host": "group.shalana.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "group.shalana.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Stockholm-46.246.97.218-51a5273d853b0cd9160f471180d1a19a",
+            "server": "46.246.97.218",
+            "server_port": 2052,
+            "uuid": "037b730a-ea28-5191-ad7c-3424be5efe2e",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "46.246.97.218"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-d461a08b2ceac5b13daeba336bb77390",
+            "server": "104.21.65.173",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Berlin-82.165.133.113-226f5dc9bbd00b063689b8b72f4a9f4c",
+            "server": "de2.niekotin.de",
+            "server_port": 80,
+            "uuid": "12e2b366-6426-4e09-9c6f-9c894262b923",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "de2.niekotin.de"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-04035d5da09ebf5e6752c2804ca95263",
+            "server": "104.16.0.0",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Istanbul-143.246.136.243-3f6aa6bcadab4544a055696e13e44ef1",
+            "server": "185.184.121.101",
+            "server_port": 8443,
+            "uuid": "c35050ce-01ab-45a9-91b8-54cec637d0a8",
+            "transport": {
+                "type": "ws",
+                "path": "/udfyfws",
+                "headers": {
+                    "Host": "octopusss5.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss5.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-c2d5d2fd4afe27b61c68d9c8f9d72473",
+            "server": "www.parsvds.com",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
