@@ -1,0 +1,255 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Frankfurt am Main-63.183.200.172-ad2b1d2d5eac215496d7cfc71f762a9a",
+                "Nuremberg-167.233.44.39-71ede00d57b1ab8c3b8575629fa95465",
+                "Nuremberg-167.233.44.39-9464a479859ebd1b066d226d40ec9e70",
+                "Nuremberg-167.233.44.39-3321e3b731729017e4ee45ad10c349b5",
+                "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+                "Banqiao-36.224.147.24-788f6ff0c85f621e10a48f33a4f87a51",
+                "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+                "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Frankfurt am Main-63.183.200.172-ad2b1d2d5eac215496d7cfc71f762a9a",
+                "Nuremberg-167.233.44.39-71ede00d57b1ab8c3b8575629fa95465",
+                "Nuremberg-167.233.44.39-9464a479859ebd1b066d226d40ec9e70",
+                "Nuremberg-167.233.44.39-3321e3b731729017e4ee45ad10c349b5",
+                "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+                "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+                "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+                "Banqiao-36.224.147.24-788f6ff0c85f621e10a48f33a4f87a51",
+                "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+                "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+            "server": "188.114.97.6",
+            "server_port": 2096,
+            "uuid": "70252937-5c61-4fb0-8656-d1a16261b795",
+            "transport": {
+                "type": "ws",
+                "path": "/shalana",
+                "headers": {
+                    "Host": "group.shalana.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "group.shalana.xyz"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-63.183.200.172-ad2b1d2d5eac215496d7cfc71f762a9a",
+            "server": "63.183.200.172",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-71ede00d57b1ab8c3b8575629fa95465",
+            "server": "www.parsvds.com",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-9464a479859ebd1b066d226d40ec9e70",
+            "server": "104.21.65.173",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-3321e3b731729017e4ee45ad10c349b5",
+            "server": "104.16.0.0",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dallas-149.28.255.6-8d1e1153e17faf11eb8f4ee13c54698d",
+            "server": "149.28.255.6",
+            "server_port": 816,
+            "method": "chacha20-ietf-poly1305",
+            "password": "GyZ5Xo0ht41vYmW3H4"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-fee90ae25257466a2227f03e7b113262",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Orangeburg-62.146.231.112-197abb08b565e83e4a604ba2dd5fe32a",
+            "server": "62.146.231.112",
+            "server_port": 12012,
+            "method": "chacha20-ietf-poly1305",
+            "password": "4e287631dc4fc8fc"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Banqiao-36.224.147.24-788f6ff0c85f621e10a48f33a4f87a51",
+            "server": "r3mrcg00129437x.cybervena.com",
+            "server_port": 50099,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Manila-149.104.109.74-b77564c32f415860d740fdb9d863eb64",
+            "server": "149.104.109.74",
+            "server_port": 21273,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Ll6cYfXM5DzQbdtMMb72A_jqVnNljU3yqe"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dunkirk-51.254.128.106-c98f397a2edc5bbde85bd98cc1af9a8b",
+            "server": "51.254.128.106",
+            "server_port": 2083,
+            "method": "aes-256-gcm",
+            "password": "FjG3IPbny+0ZYU4/p1vULP84GcKpGoZpWKAay16VhIw="
+        },
+        {
+            "type": "trojan",
+            "tag": "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba",
+            "server": "185.126.236.44",
+            "server_port": 443,
+            "password": "BSs5IAVMQdYuykvDsOYZoa6gNPSGBjAbLL",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.mesaly.click"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
