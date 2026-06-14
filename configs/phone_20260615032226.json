@@ -1,0 +1,140 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Helsinki-65.109.181.199-309b9117b6c7ed06575a82606d266a76",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Helsinki-65.109.181.199-309b9117b6c7ed06575a82606d266a76",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+                "Helsinki-65.109.181.199-309b9117b6c7ed06575a82606d266a76",
+                "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+                "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-172.105.114.133-a8f049d0e238e226fd35d1cebcd54456",
+            "server": "188.114.97.6",
+            "server_port": 2096,
+            "uuid": "70252937-5c61-4fb0-8656-d1a16261b795",
+            "transport": {
+                "type": "ws",
+                "path": "/shalana",
+                "headers": {
+                    "Host": "group.shalana.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "group.shalana.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.181.199-309b9117b6c7ed06575a82606d266a76",
+            "server": "89.116.46.68",
+            "server_port": 443,
+            "uuid": "fc965ad9-bdd7-4815-ad71-b39ec5972dc1",
+            "transport": {
+                "type": "ws",
+                "path": "/tsghdws",
+                "headers": {
+                    "Host": "octopusss4.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss4.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Jurong Town-38.127.216.195-901c9a89ff1ad45eeba085ee01db72d2",
+            "server": "sg2.yuntong.click",
+            "server_port": 443,
+            "password": "f7cb07a0-e6f9-4d22-a60e-c61854450c89",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg2.yuntong.click"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "eNM/NfxTsBqQIKcN0ezARS1z0f5mIxRd9GSwhVsyJlo="
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Vienna-185.126.236.44-c756012df6cffa9373777ae8028b1eba",
+            "server": "185.126.236.44",
+            "server_port": 443,
+            "password": "BSs5IAVMQdYuykvDsOYZoa6gNPSGBjAbLL",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.mesaly.click"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
