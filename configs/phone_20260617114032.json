@@ -1,0 +1,226 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-3.70.127.37-49279ebab44e9349b1ba9f1077d061e0",
+                "Helsinki-65.109.189.3-b002c3e16bdbfa96357ae2412e1ff2f9",
+                "Amsterdam-206.71.158.6-6b679b43677a2fe9c500119f9dac22cb",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Honolulu-208.83.234.167-97669e8dd5c4662e73d4bd1ab6a47cf9",
+                "Honolulu-208.83.234.167-8ba1d6e2ce8e43828b20be12fc4433f2",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-3.70.127.37-49279ebab44e9349b1ba9f1077d061e0",
+                "Helsinki-65.109.189.3-b002c3e16bdbfa96357ae2412e1ff2f9",
+                "Amsterdam-206.71.158.6-6b679b43677a2fe9c500119f9dac22cb",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Honolulu-208.83.234.167-97669e8dd5c4662e73d4bd1ab6a47cf9",
+                "Honolulu-208.83.234.167-8ba1d6e2ce8e43828b20be12fc4433f2",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-3.70.127.37-49279ebab44e9349b1ba9f1077d061e0",
+                "Helsinki-65.109.189.3-b002c3e16bdbfa96357ae2412e1ff2f9",
+                "Amsterdam-206.71.158.6-6b679b43677a2fe9c500119f9dac22cb",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Honolulu-208.83.234.167-97669e8dd5c4662e73d4bd1ab6a47cf9",
+                "Honolulu-208.83.234.167-8ba1d6e2ce8e43828b20be12fc4433f2",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-3.70.127.37-49279ebab44e9349b1ba9f1077d061e0",
+            "server": "vpn-de-002.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.189.3-b002c3e16bdbfa96357ae2412e1ff2f9",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-206.71.158.6-6b679b43677a2fe9c500119f9dac22cb",
+            "server": "fast.cd-tur4.ir",
+            "server_port": 443,
+            "uuid": "9a1ca418-134f-4750-b97a-55ea81135742",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "pan1.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+            "server": "89.251.26.111",
+            "server_port": 55555,
+            "password": "e3a5bb40be52de65",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apps.apple.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Honolulu-208.83.234.167-97669e8dd5c4662e73d4bd1ab6a47cf9",
+            "server": "108.162.195.45",
+            "server_port": 443,
+            "uuid": "7270612b-49f6-4b04-999c-34d8263da767",
+            "transport": {
+                "type": "ws",
+                "path": "/aymdlws",
+                "headers": {
+                    "Host": "picassooo.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "picassooo.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Honolulu-208.83.234.167-8ba1d6e2ce8e43828b20be12fc4433f2",
+            "server": "cosmin.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "7270612b-49f6-4b04-999c-34d8263da767",
+            "transport": {
+                "type": "ws",
+                "path": "/aymdlws",
+                "headers": {
+                    "Host": "picassooo.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "picassooo.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
