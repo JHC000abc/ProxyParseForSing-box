@@ -1,0 +1,175 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-194.5.193.150-2349890bf3f1b7f785c9d8a3b6e0cb5b",
+                "Paris-185.171.202.81-c571238b36ca48749931d2371ac6218d",
+                "Singapore-206.189.37.187-a43a5a9838c052e7b143c3a2974d6aa9",
+                "Singapore-206.189.37.187-20221a4483c03f41a7c8cccd221209df",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-194.5.193.150-2349890bf3f1b7f785c9d8a3b6e0cb5b",
+                "Paris-185.171.202.81-c571238b36ca48749931d2371ac6218d",
+                "Singapore-206.189.37.187-a43a5a9838c052e7b143c3a2974d6aa9",
+                "Singapore-206.189.37.187-20221a4483c03f41a7c8cccd221209df",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-194.5.193.150-2349890bf3f1b7f785c9d8a3b6e0cb5b",
+                "Paris-185.171.202.81-c571238b36ca48749931d2371ac6218d",
+                "Singapore-206.189.37.187-a43a5a9838c052e7b143c3a2974d6aa9",
+                "Singapore-206.189.37.187-20221a4483c03f41a7c8cccd221209df",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-194.5.193.150-2349890bf3f1b7f785c9d8a3b6e0cb5b",
+            "server": "194.5.193.150",
+            "server_port": 42549,
+            "password": "SoftNetConnect",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.speedtest.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-185.171.202.81-c571238b36ca48749931d2371ac6218d",
+            "server": "188.114.97.6",
+            "server_port": 8443,
+            "uuid": "Migambiaargovpn",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "argoovpn.imanaghapour.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "argoovpn.imanaghapour.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-206.189.37.187-a43a5a9838c052e7b143c3a2974d6aa9",
+            "server": "141.193.213.20",
+            "server_port": 2096,
+            "uuid": "afbe9207-eb8f-4e39-898a-d78fb3eddd0a",
+            "transport": {
+                "type": "ws",
+                "path": "/xprolk-primeline",
+                "headers": {
+                    "Host": "primelinelk.me"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "primelinelk.me"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-206.189.37.187-20221a4483c03f41a7c8cccd221209df",
+            "server": "141.193.213.21",
+            "server_port": 2096,
+            "uuid": "afbe9207-eb8f-4e39-898a-d78fb3eddd0a",
+            "transport": {
+                "type": "ws",
+                "path": "/xprolk-primeline",
+                "headers": {
+                    "Host": "primelinelk.me"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "primelinelk.me"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
