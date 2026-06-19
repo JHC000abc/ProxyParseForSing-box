@@ -1,0 +1,175 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-152.55.184.119-64650e38b49d0914c617342b51cfa077",
+                "Amsterdam-152.55.184.119-475f1d371f791c3d6e2cf4ed919faf66",
+                "Eschborn-85.234.69.227-d37c0d522d48f0d7a25efdfe663246fd",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-152.55.184.119-64650e38b49d0914c617342b51cfa077",
+                "Amsterdam-152.55.184.119-475f1d371f791c3d6e2cf4ed919faf66",
+                "Eschborn-85.234.69.227-d37c0d522d48f0d7a25efdfe663246fd",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-152.55.184.119-64650e38b49d0914c617342b51cfa077",
+                "Amsterdam-152.55.184.119-475f1d371f791c3d6e2cf4ed919faf66",
+                "Eschborn-85.234.69.227-d37c0d522d48f0d7a25efdfe663246fd",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.119-64650e38b49d0914c617342b51cfa077",
+            "server": "tmesubgift.up.railway.app",
+            "server_port": 443,
+            "uuid": "4bb063ef-12db-26d5-57c4-0af616c5fb87",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/4bb063ef-12db-26d5-57c4-0af616c5fb87",
+                "headers": {
+                    "Host": "tmesubgift.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tmesubgift.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.119-475f1d371f791c3d6e2cf4ed919faf66",
+            "server": "66.33.23.63",
+            "server_port": 443,
+            "uuid": "4bb063ef-12db-26d5-57c4-0af616c5fb87",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/4bb063ef-12db-26d5-57c4-0af616c5fb87",
+                "headers": {
+                    "Host": "tmesubgift.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tmesubgift.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eschborn-85.234.69.227-d37c0d522d48f0d7a25efdfe663246fd",
+            "server": "g-de2-x9cr8bwsquaj.radshim.com",
+            "server_port": 443,
+            "uuid": "dc109a0f-04e7-4e27-8df0-4decdc4fc90c",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "g-de2-x9cr8bwsquaj.radshim.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "g-de2-x9cr8bwsquaj.radshim.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
