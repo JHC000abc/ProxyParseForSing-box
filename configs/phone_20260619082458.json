@@ -1,0 +1,214 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Eschborn-85.234.69.227-b911b68eb58f866d74060d3979603b71",
+                "Hyderabad-152.70.72.249-4ca819c0dab00f170ae82327b49efcc8",
+                "Rotterdam-91.124.209.57-29e4fb24966c9fc6d6825d475fbc7a1f",
+                "Eindhoven-45.43.92.134-71a438ebceb151d82468ea855ffd5a5b",
+                "Amsterdam-206.71.158.17-410b50bb2f069da560fe2b1f2983830f",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Eschborn-85.234.69.227-b911b68eb58f866d74060d3979603b71",
+                "Hyderabad-152.70.72.249-4ca819c0dab00f170ae82327b49efcc8",
+                "Rotterdam-91.124.209.57-29e4fb24966c9fc6d6825d475fbc7a1f",
+                "Eindhoven-45.43.92.134-71a438ebceb151d82468ea855ffd5a5b",
+                "Amsterdam-206.71.158.17-410b50bb2f069da560fe2b1f2983830f",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Eschborn-85.234.69.227-b911b68eb58f866d74060d3979603b71",
+                "Hyderabad-152.70.72.249-4ca819c0dab00f170ae82327b49efcc8",
+                "Rotterdam-91.124.209.57-29e4fb24966c9fc6d6825d475fbc7a1f",
+                "Eindhoven-45.43.92.134-71a438ebceb151d82468ea855ffd5a5b",
+                "Amsterdam-206.71.158.17-410b50bb2f069da560fe2b1f2983830f",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Eschborn-85.234.69.227-b911b68eb58f866d74060d3979603b71",
+            "server": "g-de2-x9cr8bwsquaj.radshim.com",
+            "server_port": 443,
+            "uuid": "dc109a0f-04e7-4e27-8df0-4decdc4fc90c",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "g-de2-x9cr8bwsquaj.radshim.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "g-de2-x9cr8bwsquaj.radshim.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hyderabad-152.70.72.249-4ca819c0dab00f170ae82327b49efcc8",
+            "server": "152.70.72.249",
+            "server_port": 80,
+            "uuid": "d8dabd75-ae26-4c27-993e-75a00ff72185",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "152.70.72.249"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Rotterdam-91.124.209.57-29e4fb24966c9fc6d6825d475fbc7a1f",
+            "server": "client.jison.ir",
+            "server_port": 443,
+            "uuid": "06a368f4-e62e-4486-97a1-4c60bb7a0eed",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "sdt.jison.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fty.jison.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.134-71a438ebceb151d82468ea855ffd5a5b",
+            "server": "fast.cd-tur4.ir",
+            "server_port": 443,
+            "uuid": "1df05cde-34a0-44ce-8059-44a7b1e7782b",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-206.71.158.17-410b50bb2f069da560fe2b1f2983830f",
+            "server": "167.82.101.251",
+            "server_port": 443,
+            "uuid": "9a1ca418-134f-4750-b97a-55ea81135742",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "pan1.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
