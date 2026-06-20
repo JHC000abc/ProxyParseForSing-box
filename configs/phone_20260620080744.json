@@ -1,0 +1,175 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-81.28.6.107-b4c142605c7bd13d5f9e6283459f6112",
+                "Fremont-95.182.92.47-db2d8dd4cfb308e73e3eee89f93527a6",
+                "Reading-163.5.94.232-3feeb8be6cf4df6687d21c0d9a729b44",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-81.28.6.107-b4c142605c7bd13d5f9e6283459f6112",
+                "Fremont-95.182.92.47-db2d8dd4cfb308e73e3eee89f93527a6",
+                "Reading-163.5.94.232-3feeb8be6cf4df6687d21c0d9a729b44",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-81.28.6.107-b4c142605c7bd13d5f9e6283459f6112",
+                "Fremont-95.182.92.47-db2d8dd4cfb308e73e3eee89f93527a6",
+                "Reading-163.5.94.232-3feeb8be6cf4df6687d21c0d9a729b44",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-81.28.6.107-b4c142605c7bd13d5f9e6283459f6112",
+            "server": "cctvhikvision.center",
+            "server_port": 2052,
+            "uuid": "cadb3fa0-71b7-4af5-b2cf-7fa70356d22c",
+            "transport": {
+                "type": "ws",
+                "path": "/api-v1",
+                "headers": {
+                    "Host": "uwu.blueknightnet.qzz.io"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Fremont-95.182.92.47-db2d8dd4cfb308e73e3eee89f93527a6",
+            "server": "newus.mmrknight.app",
+            "server_port": 80,
+            "uuid": "5a802fbb-00ed-4447-bece-3e0faf45e213",
+            "transport": {
+                "type": "ws",
+                "path": "/Telegram-Raiv2mmr.php",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Reading-163.5.94.232-3feeb8be6cf4df6687d21c0d9a729b44",
+            "server": "hikvision-plus.com",
+            "server_port": 2052,
+            "uuid": "d1759b8c-8176-4c57-961c-5cfdb38b0a9f",
+            "transport": {
+                "type": "ws",
+                "path": "/api-v1",
+                "headers": {
+                    "Host": "pl.meeowww.qzz.io"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+            "server": "89.251.26.111",
+            "server_port": 55555,
+            "password": "e3a5bb40be52de65",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apps.apple.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
