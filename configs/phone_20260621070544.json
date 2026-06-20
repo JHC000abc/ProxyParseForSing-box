@@ -1,0 +1,190 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-141.11.43.66-726e81eae19e305f47003f19b80e122b",
+                "Paris-62.210.172.148-01821115b96e29e276fff6b0af314f18",
+                "Eindhoven-45.43.92.134-09a9ceb47809fc37dc075be6e36f2cbd",
+                "Aubervilliers-217.179.6.56-db85eeca762564d63d0250118d9ca07e",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-141.11.43.66-726e81eae19e305f47003f19b80e122b",
+                "Paris-62.210.172.148-01821115b96e29e276fff6b0af314f18",
+                "Eindhoven-45.43.92.134-09a9ceb47809fc37dc075be6e36f2cbd",
+                "Aubervilliers-217.179.6.56-db85eeca762564d63d0250118d9ca07e",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-141.11.43.66-726e81eae19e305f47003f19b80e122b",
+                "Paris-62.210.172.148-01821115b96e29e276fff6b0af314f18",
+                "Eindhoven-45.43.92.134-09a9ceb47809fc37dc075be6e36f2cbd",
+                "Aubervilliers-217.179.6.56-db85eeca762564d63d0250118d9ca07e",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-141.11.43.66-726e81eae19e305f47003f19b80e122b",
+            "server": "35.77.34.38",
+            "server_port": 29642,
+            "password": "e0195c73018d597b1c2f0ea89d8676ae",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-62.210.172.148-01821115b96e29e276fff6b0af314f18",
+            "server": "t-panel.wasmer.app",
+            "server_port": 443,
+            "uuid": "9cd65844-3f28-4081-8d70-b5c61815f45d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/9cd65844-3f28-4081-8d70-b5c61815f45d",
+                "headers": {
+                    "Host": "t-panel.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t-panel.wasmer.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.134-09a9ceb47809fc37dc075be6e36f2cbd",
+            "server": "fast.cd-tur4.ir",
+            "server_port": 443,
+            "uuid": "cb7b5122-7030-4d3d-9590-da00fafe1c05",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.56-db85eeca762564d63d0250118d9ca07e",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
