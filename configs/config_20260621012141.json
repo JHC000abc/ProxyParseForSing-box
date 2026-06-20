@@ -1,0 +1,268 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Ebara-23.162.24.120-9031aebe5afc9a7796e47513a5ee1780",
+                "Singapore-141.11.43.66-343bef67d04405c9076e3e9a763c05db",
+                "Los Angeles-186.241.75.40-f9a8adcdb599cc563155ccfb40c57664",
+                "Paris-185.171.202.81-75b6ead0c9828b82ef391c622944e4df",
+                "Barcelona-108.181.70.65-9d362e61ceeb19f7b6e2e7d8c5e77ab9",
+                "Johannesburg-4.168.196.7-1c54c2bdc918fb66114cca58219e77f7",
+                "Aubervilliers-45.67.139.157-2fd20f84e7f0e58e79d20ff0ca27af36",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Taipei-36.230.16.90-69ff0b2278093a3102639e4044486201",
+                "Kampong Loyang-168.138.175.92-bc378f9e6ea83c4ac0e8d18cf951969e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Ebara-23.162.24.120-9031aebe5afc9a7796e47513a5ee1780",
+                "Singapore-141.11.43.66-343bef67d04405c9076e3e9a763c05db",
+                "Los Angeles-186.241.75.40-f9a8adcdb599cc563155ccfb40c57664",
+                "Paris-185.171.202.81-75b6ead0c9828b82ef391c622944e4df",
+                "Barcelona-108.181.70.65-9d362e61ceeb19f7b6e2e7d8c5e77ab9",
+                "Johannesburg-4.168.196.7-1c54c2bdc918fb66114cca58219e77f7",
+                "Aubervilliers-45.67.139.157-2fd20f84e7f0e58e79d20ff0ca27af36",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Taipei-36.230.16.90-69ff0b2278093a3102639e4044486201",
+                "Kampong Loyang-168.138.175.92-bc378f9e6ea83c4ac0e8d18cf951969e",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Ebara-23.162.24.120-9031aebe5afc9a7796e47513a5ee1780",
+            "server": "43.198.206.201",
+            "server_port": 37973,
+            "password": "e0195c73018d597b1c2f0ea89d8676ae",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-141.11.43.66-343bef67d04405c9076e3e9a763c05db",
+            "server": "35.77.34.38",
+            "server_port": 29642,
+            "password": "e0195c73018d597b1c2f0ea89d8676ae",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-186.241.75.40-f9a8adcdb599cc563155ccfb40c57664",
+            "server": "186.241.75.40.sslip.io",
+            "server_port": 443,
+            "uuid": "a28cdd41-6795-4c5b-86f7-15a05a5d60f7",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/f76f8e3dcb66b6d94b59f3ad",
+                "headers": {
+                    "Host": "186.241.75.40.sslip.io"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-185.171.202.81-75b6ead0c9828b82ef391c622944e4df",
+            "server": "188.114.97.6",
+            "server_port": 8443,
+            "uuid": "Joinarggoovpnsho",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "argoovpn.imanaghapour.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "argoovpn.imanaghapour.ir"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Barcelona-108.181.70.65-9d362e61ceeb19f7b6e2e7d8c5e77ab9",
+            "server": "108.181.121.226",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "WSyL4XTwNsdv"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Johannesburg-4.168.196.7-1c54c2bdc918fb66114cca58219e77f7",
+            "server": "4.168.196.7",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "8iW2GElOLWl9Ztjj"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.67.139.157-2fd20f84e7f0e58e79d20ff0ca27af36",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+            "server": "89.251.26.111",
+            "server_port": 55555,
+            "password": "e3a5bb40be52de65",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apps.apple.com"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Taipei-36.230.16.90-69ff0b2278093a3102639e4044486201",
+            "server": "r3mrcg001269pz2.cybervena.com",
+            "server_port": 50099,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Kampong Loyang-168.138.175.92-bc378f9e6ea83c4ac0e8d18cf951969e",
+            "server": "168.138.175.92",
+            "server_port": 9888,
+            "method": "aes-128-gcm",
+            "password": "JVSuuib4ydvY8m7u6jElTYbeRO8ygJ4Hi8Iq733BqAkF"
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
