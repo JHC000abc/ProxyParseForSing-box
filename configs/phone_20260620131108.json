@@ -1,0 +1,161 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Geneva-83.228.230.226-36f5977fce6f57b391bae6d7741337e5",
+                "Amsterdam-208.77.244.156-5a63f133ab546ba3f728fa7c5b866933",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Geneva-83.228.230.226-36f5977fce6f57b391bae6d7741337e5",
+                "Amsterdam-208.77.244.156-5a63f133ab546ba3f728fa7c5b866933",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Geneva-83.228.230.226-36f5977fce6f57b391bae6d7741337e5",
+                "Amsterdam-208.77.244.156-5a63f133ab546ba3f728fa7c5b866933",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Geneva-83.228.230.226-36f5977fce6f57b391bae6d7741337e5",
+            "server": "83.228.230.226",
+            "server_port": 42549,
+            "password": "SoftNetConnect",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.speedtest.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-208.77.244.156-5a63f133ab546ba3f728fa7c5b866933",
+            "server": "66.33.23.63",
+            "server_port": 443,
+            "uuid": "b8f58a98-313c-6882-1c90-a01d46418eb5",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/b8f58a98-313c-6882-1c90-a01d46418eb5",
+                "headers": {
+                    "Host": "tmesubgift.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tmesubgift.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+            "server": "89.251.26.111",
+            "server_port": 55555,
+            "password": "e3a5bb40be52de65",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apps.apple.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
