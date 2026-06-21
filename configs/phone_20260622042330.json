@@ -1,0 +1,270 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Eindhoven-45.43.92.134-c6d27cd232c1fa5384558ea6df0098b1",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Madrid-193.148.19.210-d8e615b03d00961a42e784220db323ab",
+                "Falkenstein-167.233.99.71-d84ff2433664e7fa12c617ad2a292bda",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Nuremberg-178.104.29.84-4a82ba7f97ebc8458caa04d501444497",
+                "Falkenstein-167.233.99.71-25874476f068237e55e9e89462e27fda",
+                "Nuremberg-167.233.40.195-f4aec8f9f1eda92c35048ef6815f2ff1",
+                "Falkenstein-167.233.99.71-af592271a7296460ea2157e5ee9352fd",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+                "Amsterdam-2.27.7.116-6dcfbb9cdcc80a342ccafb5d95ed10de"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Eindhoven-45.43.92.134-c6d27cd232c1fa5384558ea6df0098b1",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Madrid-193.148.19.210-d8e615b03d00961a42e784220db323ab",
+                "Falkenstein-167.233.99.71-d84ff2433664e7fa12c617ad2a292bda",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Nuremberg-178.104.29.84-4a82ba7f97ebc8458caa04d501444497",
+                "Falkenstein-167.233.99.71-25874476f068237e55e9e89462e27fda",
+                "Nuremberg-167.233.40.195-f4aec8f9f1eda92c35048ef6815f2ff1",
+                "Falkenstein-167.233.99.71-af592271a7296460ea2157e5ee9352fd",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+                "Amsterdam-2.27.7.116-6dcfbb9cdcc80a342ccafb5d95ed10de"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Eindhoven-45.43.92.134-c6d27cd232c1fa5384558ea6df0098b1",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Madrid-193.148.19.210-d8e615b03d00961a42e784220db323ab",
+                "Falkenstein-167.233.99.71-d84ff2433664e7fa12c617ad2a292bda",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Nuremberg-178.104.29.84-4a82ba7f97ebc8458caa04d501444497",
+                "Falkenstein-167.233.99.71-25874476f068237e55e9e89462e27fda",
+                "Nuremberg-167.233.40.195-f4aec8f9f1eda92c35048ef6815f2ff1",
+                "Falkenstein-167.233.99.71-af592271a7296460ea2157e5ee9352fd",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+                "Amsterdam-2.27.7.116-6dcfbb9cdcc80a342ccafb5d95ed10de"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.134-c6d27cd232c1fa5384558ea6df0098b1",
+            "server": "fast.cd-tur4.ir",
+            "server_port": 443,
+            "uuid": "cb7b5122-7030-4d3d-9590-da00fafe1c05",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Madrid-193.148.19.210-d8e615b03d00961a42e784220db323ab",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-167.233.99.71-d84ff2433664e7fa12c617ad2a292bda",
+            "server": "199.232.197.131",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.104.29.84-4a82ba7f97ebc8458caa04d501444497",
+            "server": "151.101.194.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-167.233.99.71-25874476f068237e55e9e89462e27fda",
+            "server": "151.101.130.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.40.195-f4aec8f9f1eda92c35048ef6815f2ff1",
+            "server": "151.101.2.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-167.233.99.71-af592271a7296460ea2157e5ee9352fd",
+            "server": "www.parsvds.com",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-2.27.7.116-6dcfbb9cdcc80a342ccafb5d95ed10de",
+            "server": "2.27.7.116",
+            "server_port": 80,
+            "uuid": "e592c66c-7dda-0920-b26d-93a365b431c3",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "2.27.7.116"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
