@@ -1,0 +1,274 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Orem-140.235.142.20-af8183f9a2ec55d5f306e0a9ce60b858",
+                "Geneva-83.228.224.161-adfd5e4b8e5da6b6c091fbf359054f52",
+                "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+                "Santa Clara-152.55.177.20-a6a2c4be86195fd6b75271a16c918b86",
+                "Amsterdam-148.224.25.144-c6d27cd232c1fa5384558ea6df0098b1",
+                "Başakşehir-64.49.15.201-b4d683ed7faf264d76cf9442dfac046c",
+                "Singapore-140.235.140.118-487cde95c5b4a6665b61bdcc3a1099cd",
+                "Aubervilliers-45.67.139.21-5a499aa0e5c2d3ac8e5571e83202d529",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Orem-140.235.142.20-af8183f9a2ec55d5f306e0a9ce60b858",
+                "Geneva-83.228.224.161-adfd5e4b8e5da6b6c091fbf359054f52",
+                "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+                "Santa Clara-152.55.177.20-a6a2c4be86195fd6b75271a16c918b86",
+                "Amsterdam-148.224.25.144-c6d27cd232c1fa5384558ea6df0098b1",
+                "Başakşehir-64.49.15.201-b4d683ed7faf264d76cf9442dfac046c",
+                "Singapore-140.235.140.118-487cde95c5b4a6665b61bdcc3a1099cd",
+                "Aubervilliers-45.67.139.21-5a499aa0e5c2d3ac8e5571e83202d529",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Orem-140.235.142.20-af8183f9a2ec55d5f306e0a9ce60b858",
+                "Geneva-83.228.224.161-adfd5e4b8e5da6b6c091fbf359054f52",
+                "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+                "Santa Clara-152.55.177.20-a6a2c4be86195fd6b75271a16c918b86",
+                "Amsterdam-148.224.25.144-c6d27cd232c1fa5384558ea6df0098b1",
+                "Başakşehir-64.49.15.201-b4d683ed7faf264d76cf9442dfac046c",
+                "Singapore-140.235.140.118-487cde95c5b4a6665b61bdcc3a1099cd",
+                "Aubervilliers-45.67.139.21-5a499aa0e5c2d3ac8e5571e83202d529",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Orem-140.235.142.20-af8183f9a2ec55d5f306e0a9ce60b858",
+            "server": "35.77.34.38",
+            "server_port": 49277,
+            "password": "e0195c73018d597b1c2f0ea89d8676ae",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.nintendogames.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Geneva-83.228.224.161-adfd5e4b8e5da6b6c091fbf359054f52",
+            "server": "83.228.224.161",
+            "server_port": 42549,
+            "password": "SoftNetConnect",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.speedtest.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+            "server": "104.19.229.21",
+            "server_port": 443,
+            "uuid": "0d27ab04-4523-4ae0-94b0-3e14c2089756",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "hadi.getfreecp.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hadi.getfreecp.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.177.20-a6a2c4be86195fd6b75271a16c918b86",
+            "server": "rvg-production-3182.up.railway.app",
+            "server_port": 443,
+            "uuid": "9229da01-d8d4-0d1a-0e33-eb59a8b25234",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/9229da01-d8d4-0d1a-0e33-eb59a8b25234",
+                "headers": {
+                    "Host": "rvg-production-3182.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rvg-production-3182.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-148.224.25.144-c6d27cd232c1fa5384558ea6df0098b1",
+            "server": "fast.cd-tur4.ir",
+            "server_port": 443,
+            "uuid": "cb7b5122-7030-4d3d-9590-da00fafe1c05",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Başakşehir-64.49.15.201-b4d683ed7faf264d76cf9442dfac046c",
+            "server": "sv2.azparadox.ir",
+            "server_port": 8880,
+            "uuid": "d9307ab3-1ed0-4b6d-bfd0-e104c7ccc25a",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "azsv2.ir5ive.ir"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-140.235.140.118-487cde95c5b4a6665b61bdcc3a1099cd",
+            "server": "18.162.50.252",
+            "server_port": 9149,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.67.139.21-5a499aa0e5c2d3ac8e5571e83202d529",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tsuen Wan-89.251.26.111-df1b51f604f7bb7343197850072d6e43",
+            "server": "89.251.26.111",
+            "server_port": 55555,
+            "password": "e3a5bb40be52de65",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apps.apple.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
