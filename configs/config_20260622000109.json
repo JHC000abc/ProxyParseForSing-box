@@ -1,0 +1,338 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-148.224.25.144-c6d27cd232c1fa5384558ea6df0098b1",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Johannesburg-102.37.156.224-c185cfaf0827ad949472eee6d9a99a73",
+                "Johannesburg-4.222.217.240-313cc42ab65b90e6c1b79d9f7d80919c",
+                "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+                "Nuremberg-167.233.44.39-4e3473611cc64402dfaf2083b0849365",
+                "Geneva-37.156.45.237-ec5cdc47454c70e77f5492fed583b256",
+                "Madrid-193.148.19.210-39d63ce9e7960f8357b7e4f54f986170",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Nuremberg-167.233.40.195-4a82ba7f97ebc8458caa04d501444497",
+                "Falkenstein-167.233.99.71-25874476f068237e55e9e89462e27fda",
+                "Falkenstein-167.233.99.71-f4aec8f9f1eda92c35048ef6815f2ff1",
+                "Taipei-36.230.16.90-69ff0b2278093a3102639e4044486201",
+                "Kampong Loyang-168.138.175.92-bc378f9e6ea83c4ac0e8d18cf951969e",
+                "Nuremberg-178.104.29.84-af592271a7296460ea2157e5ee9352fd",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-148.224.25.144-c6d27cd232c1fa5384558ea6df0098b1",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Johannesburg-102.37.156.224-c185cfaf0827ad949472eee6d9a99a73",
+                "Johannesburg-4.222.217.240-313cc42ab65b90e6c1b79d9f7d80919c",
+                "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+                "Nuremberg-167.233.44.39-4e3473611cc64402dfaf2083b0849365",
+                "Geneva-37.156.45.237-ec5cdc47454c70e77f5492fed583b256",
+                "Madrid-193.148.19.210-39d63ce9e7960f8357b7e4f54f986170",
+                "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+                "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+                "Nuremberg-167.233.40.195-4a82ba7f97ebc8458caa04d501444497",
+                "Falkenstein-167.233.99.71-25874476f068237e55e9e89462e27fda",
+                "Falkenstein-167.233.99.71-f4aec8f9f1eda92c35048ef6815f2ff1",
+                "Taipei-36.230.16.90-69ff0b2278093a3102639e4044486201",
+                "Kampong Loyang-168.138.175.92-bc378f9e6ea83c4ac0e8d18cf951969e",
+                "Nuremberg-178.104.29.84-af592271a7296460ea2157e5ee9352fd",
+                "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-148.224.25.144-c6d27cd232c1fa5384558ea6df0098b1",
+            "server": "fast.cd-tur4.ir",
+            "server_port": 443,
+            "uuid": "cb7b5122-7030-4d3d-9590-da00fafe1c05",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Johannesburg-102.37.156.224-c185cfaf0827ad949472eee6d9a99a73",
+            "server": "102.37.156.224",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "aduB9HGxQHjA2SBMRjkHX6"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Johannesburg-4.222.217.240-313cc42ab65b90e6c1b79d9f7d80919c",
+            "server": "102.133.165.160",
+            "server_port": 16233,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Xsy8Ox4yOV3xLlpxtjzs3X"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+            "server": "141.98.101.179",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-4e3473611cc64402dfaf2083b0849365",
+            "server": "199.232.197.131",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Geneva-37.156.45.237-ec5cdc47454c70e77f5492fed583b256",
+            "server": "37.156.45.237",
+            "server_port": 42549,
+            "password": "SoftNetConnect",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.speedtest.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Madrid-193.148.19.210-39d63ce9e7960f8357b7e4f54f986170",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-144.24.109.215-8642b3e50502f113e9c50cebe477d8d3",
+            "server": "140.245.27.220",
+            "server_port": 51000,
+            "password": "940f51d6-e0a4-4add-b96b-328e4a84b642",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Toongabbie West-159.13.40.81-8980d8cff7684d0d53833778bad0cc8e",
+            "server": "192.9.165.40",
+            "server_port": 51000,
+            "password": "d1db0080-669a-4357-ab9f-ab16719ed736",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cn.cremedelamer.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.40.195-4a82ba7f97ebc8458caa04d501444497",
+            "server": "151.101.194.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-167.233.99.71-25874476f068237e55e9e89462e27fda",
+            "server": "151.101.130.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-167.233.99.71-f4aec8f9f1eda92c35048ef6815f2ff1",
+            "server": "151.101.2.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Taipei-36.230.16.90-69ff0b2278093a3102639e4044486201",
+            "server": "r3mrcg001269pz2.cybervena.com",
+            "server_port": 50099,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7e731ec3-f8e1-43f6-92cf-3978d14705c4"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Kampong Loyang-168.138.175.92-bc378f9e6ea83c4ac0e8d18cf951969e",
+            "server": "168.138.175.92",
+            "server_port": 9888,
+            "method": "aes-128-gcm",
+            "password": "JVSuuib4ydvY8m7u6jElTYbeRO8ygJ4Hi8Iq733BqAkF"
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.104.29.84-af592271a7296460ea2157e5ee9352fd",
+            "server": "www.parsvds.com",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Charlotte-77.110.127.191-aa6f380db39374d20db01adfbd536b22",
+            "server": "77.110.127.191",
+            "server_port": 9443,
+            "uuid": "e0de62c9-f317-4275-b7e5-8da7b7fa9bc6",
+            "transport": {
+                "type": "ws",
+                "path": "/pourya",
+                "headers": {
+                    "Host": "77.110.127.191"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
