@@ -1,0 +1,200 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Madrid-193.148.19.210-70d2af4bce8a7cc1ef7ce9fde3d5cc4a",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Madrid-193.148.19.210-70d2af4bce8a7cc1ef7ce9fde3d5cc4a",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Madrid-193.148.19.210-70d2af4bce8a7cc1ef7ce9fde3d5cc4a",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Madrid-193.148.19.210-70d2af4bce8a7cc1ef7ce9fde3d5cc4a",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+            "server": "207.126.167.241",
+            "server_port": 443,
+            "password": "GTCCjtvCtuy03-aV1mwF0OkG2q6yL+Fc5K",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "207.126.167.241"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+            "server": "185.126.236.190",
+            "server_port": 443,
+            "password": "VGBzLm49=M_i02Az30tIeonkQw180t-edg",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "185.126.236.190"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+            "server": "5.45.184.133",
+            "server_port": 13379,
+            "uuid": "c6e7823a-a3b3-42af-ae75-7882c2d6c5b3",
+            "transport": {
+                "type": "ws",
+                "path": "/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN",
+                "headers": {
+                    "Host": "5.45.184.133"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
