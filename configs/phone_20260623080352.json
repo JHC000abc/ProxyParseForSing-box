@@ -1,0 +1,280 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Falkenstein-167.233.104.128-589512129466683acf9317559c1baffa",
+                "Nuremberg-167.233.44.39-cc282d9302c9da330925934e689a1263",
+                "Nuremberg-167.233.36.115-5fea1f488f024f69660995ab89b4ae77",
+                "London-79.72.69.90-2c705bb7d6d8ace5f2b98cdc19d947c1",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Falkenstein-167.233.104.128-589512129466683acf9317559c1baffa",
+                "Nuremberg-167.233.44.39-cc282d9302c9da330925934e689a1263",
+                "Nuremberg-167.233.36.115-5fea1f488f024f69660995ab89b4ae77",
+                "London-79.72.69.90-2c705bb7d6d8ace5f2b98cdc19d947c1",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Falkenstein-167.233.104.128-589512129466683acf9317559c1baffa",
+                "Nuremberg-167.233.44.39-cc282d9302c9da330925934e689a1263",
+                "Nuremberg-167.233.36.115-5fea1f488f024f69660995ab89b4ae77",
+                "London-79.72.69.90-2c705bb7d6d8ace5f2b98cdc19d947c1",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Ursynów-62.112.222.15-c0d62d6a20bede173a87d74f05569439",
+            "server": "104.19.229.21",
+            "server_port": 443,
+            "uuid": "0d27ab04-4523-4ae0-94b0-3e14c2089756",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "hadi.getfreecp.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hadi.getfreecp.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-167.233.104.128-589512129466683acf9317559c1baffa",
+            "server": "151.101.2.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-cc282d9302c9da330925934e689a1263",
+            "server": "172.67.69.236",
+            "server_port": 8080,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "tr-cd.sublink-vip2.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.36.115-5fea1f488f024f69660995ab89b4ae77",
+            "server": "199.232.197.131",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "London-79.72.69.90-2c705bb7d6d8ace5f2b98cdc19d947c1",
+            "server": "another-cf.dnsyes.kawaii520.icu",
+            "server_port": 443,
+            "uuid": "31fc82da-1136-4a84-a596-7fbba8026c1d",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "4gf45fdg45fd542g2in.kawaii520.icu"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "4gf45fdg45fd542g2in.kawaii520.icu"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+            "server": "207.126.167.241",
+            "server_port": 443,
+            "password": "GTCCjtvCtuy03-aV1mwF0OkG2q6yL+Fc5K",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "207.126.167.241"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+            "server": "185.137.157.59",
+            "server_port": 443,
+            "password": "fFj7MAGy1VlAWmB_gMBG_27oPYTSHvV6MX",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.lateralio.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+            "server": "5.45.184.133",
+            "server_port": 13379,
+            "uuid": "c6e7823a-a3b3-42af-ae75-7882c2d6c5b3",
+            "transport": {
+                "type": "ws",
+                "path": "/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN",
+                "headers": {
+                    "Host": "5.45.184.133"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
