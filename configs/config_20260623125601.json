@@ -1,0 +1,435 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nuremberg-178.105.239.144-7c43b709d1df1ab24931a6f131fa88cc",
+                "Falkenstein-167.233.99.71-6a5ed7061451485be63ec5038e0a680c",
+                "Nuremberg-178.105.239.144-a06e8cf8d22901d45695a092bb419969",
+                "Nuremberg-167.233.36.115-fe8c40274a8830e9677937815ee2a907",
+                "Nuremberg-167.233.44.39-569b89719ad24e3b9abb05be4e5ac4cd",
+                "Nuremberg-167.233.40.195-dfd4384d2abbf9a39653645059fb18d9",
+                "Moscow-45.10.41.129-ac5da78adf5aabbcb88cd548a14e69e5",
+                "New York City-37.19.198.160-f004c2361946b04016330ddbddc279e6",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Johannesburg-102.37.156.224-c185cfaf0827ad949472eee6d9a99a73",
+                "Johannesburg-4.222.217.240-313cc42ab65b90e6c1b79d9f7d80919c",
+                "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+                "Nuremberg-167.233.36.115-0b2fba2ac82733f5bb319bdfe44e6272",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Barcelona-108.181.70.65-9ec833c0cf8501b87440b59997ff1a0b",
+                "New York City-198.98.53.130-94f63e84bb6b4851a99dee2e11e1fb51",
+                "Frankfurt am Main-213.226.68.8-54a42121fa11da8526564bfe26f5db91",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nuremberg-178.105.239.144-7c43b709d1df1ab24931a6f131fa88cc",
+                "Falkenstein-167.233.99.71-6a5ed7061451485be63ec5038e0a680c",
+                "Nuremberg-178.105.239.144-a06e8cf8d22901d45695a092bb419969",
+                "Nuremberg-167.233.36.115-fe8c40274a8830e9677937815ee2a907",
+                "Nuremberg-167.233.44.39-569b89719ad24e3b9abb05be4e5ac4cd",
+                "Nuremberg-167.233.40.195-dfd4384d2abbf9a39653645059fb18d9",
+                "Moscow-45.10.41.129-ac5da78adf5aabbcb88cd548a14e69e5",
+                "New York City-37.19.198.160-f004c2361946b04016330ddbddc279e6",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Johannesburg-102.37.156.224-c185cfaf0827ad949472eee6d9a99a73",
+                "Johannesburg-4.222.217.240-313cc42ab65b90e6c1b79d9f7d80919c",
+                "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+                "Nuremberg-167.233.36.115-0b2fba2ac82733f5bb319bdfe44e6272",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Barcelona-108.181.70.65-9ec833c0cf8501b87440b59997ff1a0b",
+                "New York City-198.98.53.130-94f63e84bb6b4851a99dee2e11e1fb51",
+                "Frankfurt am Main-213.226.68.8-54a42121fa11da8526564bfe26f5db91",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.105.239.144-7c43b709d1df1ab24931a6f131fa88cc",
+            "server": "199.232.197.131",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-167.233.99.71-6a5ed7061451485be63ec5038e0a680c",
+            "server": "151.101.194.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-178.105.239.144-a06e8cf8d22901d45695a092bb419969",
+            "server": "151.101.109.223",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.36.115-fe8c40274a8830e9677937815ee2a907",
+            "server": "167.82.0.1",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.44.39-569b89719ad24e3b9abb05be4e5ac4cd",
+            "server": "speedtest.net",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.40.195-dfd4384d2abbf9a39653645059fb18d9",
+            "server": "151.101.0.1",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Moscow-45.10.41.129-ac5da78adf5aabbcb88cd548a14e69e5",
+            "server": "ru.moktana.app",
+            "server_port": 51523,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7SEstdmLhf-aFK_G9eaYHKT_YpSov58B"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-37.19.198.160-f004c2361946b04016330ddbddc279e6",
+            "server": "37.19.198.160",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Johannesburg-102.37.156.224-c185cfaf0827ad949472eee6d9a99a73",
+            "server": "102.37.156.224",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "aduB9HGxQHjA2SBMRjkHX6"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Johannesburg-4.222.217.240-313cc42ab65b90e6c1b79d9f7d80919c",
+            "server": "102.133.165.160",
+            "server_port": 16233,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Xsy8Ox4yOV3xLlpxtjzs3X"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+            "server": "141.98.101.179",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-167.233.36.115-0b2fba2ac82733f5bb319bdfe44e6272",
+            "server": "151.101.2.219",
+            "server_port": 80,
+            "uuid": "0058c215-ab1e-400c-a403-b5b2fda7e846",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "max-gb1.global.ssl.fastly.net"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Barcelona-108.181.70.65-9ec833c0cf8501b87440b59997ff1a0b",
+            "server": "108.181.121.226",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "WSyL4XTwNsdv"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-198.98.53.130-94f63e84bb6b4851a99dee2e11e1fb51",
+            "server": "198.98.53.130",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "eDfN7SODQceIOmIAbtJJtK"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-213.226.68.8-54a42121fa11da8526564bfe26f5db91",
+            "server": "213.226.68.8",
+            "server_port": 31348,
+            "method": "chacha20-ietf-poly1305",
+            "password": "hkasb5cVrs4jE18jCEJxB4Gr55hVGW24y35gU9GIIeyT31Fw"
+        },
+        {
+            "type": "trojan",
+            "tag": "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+            "server": "207.126.167.241",
+            "server_port": 443,
+            "password": "GTCCjtvCtuy03-aV1mwF0OkG2q6yL+Fc5K",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "207.126.167.241"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+            "server": "185.126.236.190",
+            "server_port": 443,
+            "password": "VGBzLm49=M_i02Az30tIeonkQw180t-edg",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "185.126.236.190"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+            "server": "185.137.157.59",
+            "server_port": 443,
+            "password": "fFj7MAGy1VlAWmB_gMBG_27oPYTSHvV6MX",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.lateralio.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.92.218.150-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+            "server": "5.45.184.133",
+            "server_port": 13379,
+            "uuid": "c6e7823a-a3b3-42af-ae75-7882c2d6c5b3",
+            "transport": {
+                "type": "ws",
+                "path": "/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN",
+                "headers": {
+                    "Host": "5.45.184.133"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b",
+            "server": "myvpshosting.name.ng",
+            "server_port": 80,
+            "uuid": "96408f9a-df03-448b-b7e4-ec8e2c216682",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess",
+                "headers": {
+                    "Host": "myvpshosting.name.ng"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
