@@ -1,0 +1,220 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Columbus-18.119.166.104-5015d22dd3ea03c01be86561212d9cbf",
+                "Boardman-54.212.230.130-b5e49bc55b78365384aeda833300396a",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Bexley-51.195.233.102-33170a25977ebb8cbd1df4abb76fa922",
+                "Barcelona-193.148.19.210-629907c0582624611177df608215da73",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Columbus-18.119.166.104-5015d22dd3ea03c01be86561212d9cbf",
+                "Boardman-54.212.230.130-b5e49bc55b78365384aeda833300396a",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Bexley-51.195.233.102-33170a25977ebb8cbd1df4abb76fa922",
+                "Barcelona-193.148.19.210-629907c0582624611177df608215da73",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Columbus-18.119.166.104-5015d22dd3ea03c01be86561212d9cbf",
+                "Boardman-54.212.230.130-b5e49bc55b78365384aeda833300396a",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Bexley-51.195.233.102-33170a25977ebb8cbd1df4abb76fa922",
+                "Barcelona-193.148.19.210-629907c0582624611177df608215da73",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.119.166.104-5015d22dd3ea03c01be86561212d9cbf",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-54.212.230.130-b5e49bc55b78365384aeda833300396a",
+            "server": "vpn-us-006.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-006.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bexley-51.195.233.102-33170a25977ebb8cbd1df4abb76fa922",
+            "server": "love.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "8ad6f598-cd8d-4fca-848e-05fc9be15ff3",
+            "transport": {
+                "type": "ws",
+                "path": "/sea",
+                "headers": {
+                    "Host": "imblo.fastcitylab-byte.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "imblo.fastcitylab-byte.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Barcelona-193.148.19.210-629907c0582624611177df608215da73",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eschborn-5.45.184.133-62586aa9ee7f612688fee40216cf5927",
+            "server": "5.45.184.133",
+            "server_port": 13379,
+            "uuid": "c6e7823a-a3b3-42af-ae75-7882c2d6c5b3",
+            "transport": {
+                "type": "ws",
+                "path": "/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN/Begoo_VPN",
+                "headers": {
+                    "Host": "5.45.184.133"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b",
+            "server": "myvpshosting.name.ng",
+            "server_port": 80,
+            "uuid": "96408f9a-df03-448b-b7e4-ec8e2c216682",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess",
+                "headers": {
+                    "Host": "myvpshosting.name.ng"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
