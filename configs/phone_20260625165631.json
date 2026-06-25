@@ -1,0 +1,285 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Columbus-52.14.254.85-5015d22dd3ea03c01be86561212d9cbf",
+                "Boardman-54.188.175.45-b5e49bc55b78365384aeda833300396a",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Iskandar Puteri-208.84.103.60-20b5bd5dea10869bcb2dcafa5bb145a7",
+                "Bexley-198.244.141.141-178e95a6e6ae110751059d5a88fc67a4",
+                "Barcelona-193.148.19.210-a066555effbd932ff89b66ba54281337",
+                "North Kansas City-65.110.40.200-7ab8fe916fb5b119cc8fc9f884b62682",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Columbus-52.14.254.85-5015d22dd3ea03c01be86561212d9cbf",
+                "Boardman-54.188.175.45-b5e49bc55b78365384aeda833300396a",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Iskandar Puteri-208.84.103.60-20b5bd5dea10869bcb2dcafa5bb145a7",
+                "Bexley-198.244.141.141-178e95a6e6ae110751059d5a88fc67a4",
+                "Barcelona-193.148.19.210-a066555effbd932ff89b66ba54281337",
+                "North Kansas City-65.110.40.200-7ab8fe916fb5b119cc8fc9f884b62682",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Columbus-52.14.254.85-5015d22dd3ea03c01be86561212d9cbf",
+                "Boardman-54.188.175.45-b5e49bc55b78365384aeda833300396a",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Iskandar Puteri-208.84.103.60-20b5bd5dea10869bcb2dcafa5bb145a7",
+                "Bexley-198.244.141.141-178e95a6e6ae110751059d5a88fc67a4",
+                "Barcelona-193.148.19.210-a066555effbd932ff89b66ba54281337",
+                "North Kansas City-65.110.40.200-7ab8fe916fb5b119cc8fc9f884b62682",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-52.14.254.85-5015d22dd3ea03c01be86561212d9cbf",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-54.188.175.45-b5e49bc55b78365384aeda833300396a",
+            "server": "vpn-us-006.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-006.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Iskandar Puteri-208.84.103.60-20b5bd5dea10869bcb2dcafa5bb145a7",
+            "server": "sexi.carderrr.com",
+            "server_port": 443,
+            "uuid": "SoonTeam",
+            "transport": {
+                "type": "ws",
+                "path": "/telegram@SoonTeam",
+                "headers": {
+                    "Host": "anten.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bexley-198.244.141.141-178e95a6e6ae110751059d5a88fc67a4",
+            "server": "love.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "8ad6f598-cd8d-4fca-848e-05fc9be15ff3",
+            "transport": {
+                "type": "ws",
+                "path": "/sea",
+                "headers": {
+                    "Host": "imblo.fastcitylab-byte.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "imblo.fastcitylab-byte.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Barcelona-193.148.19.210-a066555effbd932ff89b66ba54281337",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "North Kansas City-65.110.40.200-7ab8fe916fb5b119cc8fc9f884b62682",
+            "server": "167.82.101.251",
+            "server_port": 443,
+            "uuid": "d27a232b-de94-4204-9bae-b0c243c6b93c",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "newip.global.ssl.fastly.neT."
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b",
+            "server": "myvpshosting.name.ng",
+            "server_port": 80,
+            "uuid": "96408f9a-df03-448b-b7e4-ec8e2c216682",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess",
+                "headers": {
+                    "Host": "myvpshosting.name.ng"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
