@@ -1,0 +1,277 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Columbus-18.190.238.205-5015d22dd3ea03c01be86561212d9cbf",
+                "Barcelona-193.148.19.210-4e3c0714ef55b8eb32a4e89f3aefa601",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Columbus-18.190.238.205-5015d22dd3ea03c01be86561212d9cbf",
+                "Barcelona-193.148.19.210-4e3c0714ef55b8eb32a4e89f3aefa601",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Columbus-18.190.238.205-5015d22dd3ea03c01be86561212d9cbf",
+                "Barcelona-193.148.19.210-4e3c0714ef55b8eb32a4e89f3aefa601",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+                "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+                "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.190.238.205-5015d22dd3ea03c01be86561212d9cbf",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Barcelona-193.148.19.210-4e3c0714ef55b8eb32a4e89f3aefa601",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+            "server": "skk.moe",
+            "server_port": 80,
+            "uuid": "65b17c0b-0a52-4b54-9bc9-60e31397b841",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/65b17c0b-0a52-4b54-9bc9-60e31397b841-vmess",
+                "headers": {
+                    "Host": "accklsj.bufu.us.ci"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+            "server": "59.125.69.19",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+            "server": "60.248.219.76",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Redondo Beach-198.52.244.10-08a6675d627330b06288622aed184c2d",
+            "server": "207.126.167.241",
+            "server_port": 443,
+            "password": "GTCCjtvCtuy03-aV1mwF0OkG2q6yL+Fc5K",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "207.126.167.241"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Vienna-185.126.236.190-45a7aa4fc4316308491988edbb764e40",
+            "server": "185.126.236.190",
+            "server_port": 443,
+            "password": "VGBzLm49=M_i02Az30tIeonkQw180t-edg",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "185.126.236.190"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-23.251.51.21-982e1733d89428b2490ce4e23b98f99f",
+            "server": "185.137.157.59",
+            "server_port": 443,
+            "password": "fFj7MAGy1VlAWmB_gMBG_27oPYTSHvV6MX",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.lateralio.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
