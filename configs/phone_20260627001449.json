@@ -1,0 +1,277 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Columbus-3.22.181.147-5015d22dd3ea03c01be86561212d9cbf",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Paris-95.182.88.161-2ce2faebc435f80e1c22ea00b1dcc47a",
+                "Barcelona-193.148.19.210-141ca1100240ee603505683ba3fc929f",
+                "Paris-167.104.216.76-cd2851f6b00282ffd70dfc3d0dbf3fc1",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.223-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Columbus-3.22.181.147-5015d22dd3ea03c01be86561212d9cbf",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Paris-95.182.88.161-2ce2faebc435f80e1c22ea00b1dcc47a",
+                "Barcelona-193.148.19.210-141ca1100240ee603505683ba3fc929f",
+                "Paris-167.104.216.76-cd2851f6b00282ffd70dfc3d0dbf3fc1",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.223-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Columbus-3.22.181.147-5015d22dd3ea03c01be86561212d9cbf",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Paris-95.182.88.161-2ce2faebc435f80e1c22ea00b1dcc47a",
+                "Barcelona-193.148.19.210-141ca1100240ee603505683ba3fc929f",
+                "Paris-167.104.216.76-cd2851f6b00282ffd70dfc3d0dbf3fc1",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.223-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.22.181.147-5015d22dd3ea03c01be86561212d9cbf",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-95.182.88.161-2ce2faebc435f80e1c22ea00b1dcc47a",
+            "server": "167.82.101.251",
+            "server_port": 443,
+            "uuid": "e461afdd-7c8e-473e-815d-88b72960c6b1",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fancii.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Barcelona-193.148.19.210-141ca1100240ee603505683ba3fc929f",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.76-cd2851f6b00282ffd70dfc3d0dbf3fc1",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+            "server": "59.125.69.19",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+            "server": "60.248.219.76",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.223-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
