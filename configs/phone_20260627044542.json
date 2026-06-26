@@ -1,0 +1,194 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Columbus-13.59.81.37-5015d22dd3ea03c01be86561212d9cbf",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Barcelona-193.148.19.210-dd605cbb0cfe31d9d79f572a24b57341",
+                "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Columbus-13.59.81.37-5015d22dd3ea03c01be86561212d9cbf",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Barcelona-193.148.19.210-dd605cbb0cfe31d9d79f572a24b57341",
+                "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Columbus-13.59.81.37-5015d22dd3ea03c01be86561212d9cbf",
+                "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+                "Barcelona-193.148.19.210-dd605cbb0cfe31d9d79f572a24b57341",
+                "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-13.59.81.37-5015d22dd3ea03c01be86561212d9cbf",
+            "server": "vpn-us-004.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-004.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Hillsboro-5.78.138.69-542386d9253168012f5a9112c8d16d19",
+            "server": "python-graysongon.wasmer.app",
+            "server_port": 443,
+            "uuid": "7bd180e8-1142-4387-93f5-03e8d750a896",
+            "transport": {
+                "type": "ws",
+                "path": "/7bd180e8",
+                "headers": {
+                    "Host": "python-graysongon.wasmer.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "python-graysongon.wasmer.app"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Barcelona-193.148.19.210-dd605cbb0cfe31d9d79f572a24b57341",
+            "server": "193.148.19.210",
+            "server_port": 52794,
+            "password": "2eutknankxtbgkwcajzt",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.vk.com"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-72.249.200.142-8f3949003750e29b1747771d117a8f1a",
+            "server": "skk.moe",
+            "server_port": 80,
+            "uuid": "65b17c0b-0a52-4b54-9bc9-60e31397b841",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/65b17c0b-0a52-4b54-9bc9-60e31397b841-vmess",
+                "headers": {
+                    "Host": "accklsj.bufu.us.ci"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+            "server": "59.125.69.19",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+            "server": "60.248.219.76",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
