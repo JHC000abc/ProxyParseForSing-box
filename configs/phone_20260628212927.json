@@ -1,0 +1,241 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Dunkirk-149.202.58.99-982990f217c00c8f107cbab91c2129cf",
+                "Aubervilliers-217.179.6.48-0b70c8eebf84ad993aef7b4123d166e9",
+                "Zürich-107.189.5.203-d5e8e6bbbc127d16c46467b78d2ff498",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Dunkirk-149.202.58.99-982990f217c00c8f107cbab91c2129cf",
+                "Aubervilliers-217.179.6.48-0b70c8eebf84ad993aef7b4123d166e9",
+                "Zürich-107.189.5.203-d5e8e6bbbc127d16c46467b78d2ff498",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Dunkirk-149.202.58.99-982990f217c00c8f107cbab91c2129cf",
+                "Aubervilliers-217.179.6.48-0b70c8eebf84ad993aef7b4123d166e9",
+                "Zürich-107.189.5.203-d5e8e6bbbc127d16c46467b78d2ff498",
+                "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+                "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+                "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkirk-149.202.58.99-982990f217c00c8f107cbab91c2129cf",
+            "server": "149.202.58.99",
+            "server_port": 443,
+            "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+            "transport": {
+                "type": "ws",
+                "path": "/vws/",
+                "headers": {
+                    "Host": "bab-6.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bab-6.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.48-0b70c8eebf84ad993aef7b4123d166e9",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-107.189.5.203-d5e8e6bbbc127d16c46467b78d2ff498",
+            "server": "car2.carcloudsix.site",
+            "server_port": 444,
+            "uuid": "2bbcaede-7820-4a21-8357-c86aec278c4e",
+            "transport": {
+                "type": "ws",
+                "path": "/A2",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-78bf5278a738633ed39a77d94aca8ec4",
+            "server": "59.125.69.19",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Chang-hua-60.248.219.52-326a454a3b037f2bec060c481a67f9f0",
+            "server": "60.248.219.76",
+            "server_port": 443,
+            "uuid": "e5ce79f9-fdac-4e80-8286-a15b96fded72",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.215-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Amsterdam-148.135.207.142-f2554cb657dfd26b738be0c7f76ec08b",
+            "server": "myvpshosting.name.ng",
+            "server_port": 80,
+            "uuid": "96408f9a-df03-448b-b7e4-ec8e2c216682",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/vmess",
+                "headers": {
+                    "Host": "myvpshosting.name.ng"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
