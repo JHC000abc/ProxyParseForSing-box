@@ -1,0 +1,237 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "San Jose-50.18.85.20-92fea98544cab2270c1eb294a1c54cde",
+                "Aubervilliers-45.67.139.204-a1c5c0e972dad3bdcc0de6f3ed940910",
+                "Zürich-107.189.5.203-6657d6cc18babd212d0f3a6155c67bd1",
+                "Frankfurt am Main-162.19.228.119-d6a0e0c8bb8230b68942a3754c61d5bc",
+                "Dunkirk-149.202.58.99-fc6d6a6c64f2e8ecc006593a9492d71b",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.213-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "San Jose-50.18.85.20-92fea98544cab2270c1eb294a1c54cde",
+                "Aubervilliers-45.67.139.204-a1c5c0e972dad3bdcc0de6f3ed940910",
+                "Zürich-107.189.5.203-6657d6cc18babd212d0f3a6155c67bd1",
+                "Frankfurt am Main-162.19.228.119-d6a0e0c8bb8230b68942a3754c61d5bc",
+                "Dunkirk-149.202.58.99-fc6d6a6c64f2e8ecc006593a9492d71b",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.213-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "San Jose-50.18.85.20-92fea98544cab2270c1eb294a1c54cde",
+                "Aubervilliers-45.67.139.204-a1c5c0e972dad3bdcc0de6f3ed940910",
+                "Zürich-107.189.5.203-6657d6cc18babd212d0f3a6155c67bd1",
+                "Frankfurt am Main-162.19.228.119-d6a0e0c8bb8230b68942a3754c61d5bc",
+                "Dunkirk-149.202.58.99-fc6d6a6c64f2e8ecc006593a9492d71b",
+                "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.213-51d4ef6312308d59c787f799365d5845",
+                "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-50.18.85.20-92fea98544cab2270c1eb294a1c54cde",
+            "server": "rvg-production-b337.up.railway.app",
+            "server_port": 443,
+            "uuid": "3195e102-c157-eed6-eaa5-13ae596360e2",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/3195e102-c157-eed6-eaa5-13ae596360e2",
+                "headers": {
+                    "Host": "rvg-production-b337.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rvg-production-b337.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.67.139.204-a1c5c0e972dad3bdcc0de6f3ed940910",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-107.189.5.203-6657d6cc18babd212d0f3a6155c67bd1",
+            "server": "car2.carcloudsix.site",
+            "server_port": 444,
+            "uuid": "2bbcaede-7820-4a21-8357-c86aec278c4e",
+            "transport": {
+                "type": "ws",
+                "path": "/A2",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-d6a0e0c8bb8230b68942a3754c61d5bc",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dunkirk-149.202.58.99-fc6d6a6c64f2e8ecc006593a9492d71b",
+            "server": "149.202.58.99",
+            "server_port": 443,
+            "uuid": "b585dc5e-55bf-4a8b-913a-27c9ccac05c3",
+            "transport": {
+                "type": "ws",
+                "path": "/vws/",
+                "headers": {
+                    "Host": "bab-6.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bab-6.site"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-bfebe6f50099686fa5bc68bfe5ff1b65",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.213-51d4ef6312308d59c787f799365d5845",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-31.76.82.3-849c2a7f1c17ad45bb7d11f9e0b82a0c",
+            "server": "31.76.82.3",
+            "server_port": 8080,
+            "uuid": "c9ec8f14-3e9b-44a0-a1cd-0b1d270c4556",
+            "transport": {
+                "type": "ws",
+                "path": "/dda12c57317ed12178061db1b799ebd2",
+                "headers": {
+                    "Host": "progressiya-vpn.online"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
