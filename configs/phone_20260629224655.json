@@ -1,0 +1,227 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "General Lázaro Cárdenas-216.238.93.160-865d63372e90d2520c89c310867b787a",
+                "Singapore-13.250.18.178-b59c1d3a3c346ffc2a9d6f5f673ccae3",
+                "Zürich-107.189.5.203-2458ddbc5092fdf9f8340df0e3f369f0",
+                "Paris-167.104.216.235-8661d20ee4025984640ca698b7375b23",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.235-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Paris-167.104.216.235-90b9a26b19e2b7b90f7d824c9984b986",
+                "Frankfurt am Main-18.153.81.34-da731f761b10eb5d1e79091e8e467f8a",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "General Lázaro Cárdenas-216.238.93.160-865d63372e90d2520c89c310867b787a",
+                "Singapore-13.250.18.178-b59c1d3a3c346ffc2a9d6f5f673ccae3",
+                "Zürich-107.189.5.203-2458ddbc5092fdf9f8340df0e3f369f0",
+                "Paris-167.104.216.235-8661d20ee4025984640ca698b7375b23",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.235-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Paris-167.104.216.235-90b9a26b19e2b7b90f7d824c9984b986",
+                "Frankfurt am Main-18.153.81.34-da731f761b10eb5d1e79091e8e467f8a",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "General Lázaro Cárdenas-216.238.93.160-865d63372e90d2520c89c310867b787a",
+                "Singapore-13.250.18.178-b59c1d3a3c346ffc2a9d6f5f673ccae3",
+                "Zürich-107.189.5.203-2458ddbc5092fdf9f8340df0e3f369f0",
+                "Paris-167.104.216.235-8661d20ee4025984640ca698b7375b23",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Paris-167.104.216.235-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Paris-167.104.216.235-90b9a26b19e2b7b90f7d824c9984b986",
+                "Frankfurt am Main-18.153.81.34-da731f761b10eb5d1e79091e8e467f8a",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "General Lázaro Cárdenas-216.238.93.160-865d63372e90d2520c89c310867b787a",
+            "server": "love.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "8ad6f598-cd8d-4fca-848e-05fc9be15ff3",
+            "transport": {
+                "type": "ws",
+                "path": "/sea",
+                "headers": {
+                    "Host": "xcegj.redpixelport-zen.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "xcegj.redpixelport-zen.info"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-13.250.18.178-b59c1d3a3c346ffc2a9d6f5f673ccae3",
+            "server": "vpn-sg-003.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-107.189.5.203-2458ddbc5092fdf9f8340df0e3f369f0",
+            "server": "car2.carcloudsix.site",
+            "server_port": 444,
+            "uuid": "2bbcaede-7820-4a21-8357-c86aec278c4e",
+            "transport": {
+                "type": "ws",
+                "path": "/A2",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.235-8661d20ee4025984640ca698b7375b23",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.235-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+            "server": "159.112.235.52",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-167.104.216.235-90b9a26b19e2b7b90f7d824c9984b986",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-18.153.81.34-da731f761b10eb5d1e79091e8e467f8a",
+            "server": "18.153.81.34",
+            "server_port": 443,
+            "uuid": "ad73ff14-a0e3-46d1-adc0-02ca29a32485"
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
