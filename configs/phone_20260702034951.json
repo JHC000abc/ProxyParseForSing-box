@@ -1,0 +1,236 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-54.255.180.226-d328853957a47745fa9df307bc765687",
+                "Arnavutköy-188.132.141.113-e2d958f5ac8506d97ed6e732cec3255c",
+                "Zürich-107.189.5.203-fed5f1295bb9cf231348863e42e9d660",
+                "Aubervilliers-217.179.6.48-e94dbd0390563a0984323ad3528890c8",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-152.89.253.81-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.81-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.96-f6999ef5218c8358121f3caa188b7379",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-54.255.180.226-d328853957a47745fa9df307bc765687",
+                "Arnavutköy-188.132.141.113-e2d958f5ac8506d97ed6e732cec3255c",
+                "Zürich-107.189.5.203-fed5f1295bb9cf231348863e42e9d660",
+                "Aubervilliers-217.179.6.48-e94dbd0390563a0984323ad3528890c8",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-152.89.253.81-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.81-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.96-f6999ef5218c8358121f3caa188b7379",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-54.255.180.226-d328853957a47745fa9df307bc765687",
+                "Arnavutköy-188.132.141.113-e2d958f5ac8506d97ed6e732cec3255c",
+                "Zürich-107.189.5.203-fed5f1295bb9cf231348863e42e9d660",
+                "Aubervilliers-217.179.6.48-e94dbd0390563a0984323ad3528890c8",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-152.89.253.81-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.81-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.96-f6999ef5218c8358121f3caa188b7379",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-54.255.180.226-d328853957a47745fa9df307bc765687",
+            "server": "54.255.180.226",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Arnavutköy-188.132.141.113-e2d958f5ac8506d97ed6e732cec3255c",
+            "server": "tr-1.metsima.com",
+            "server_port": 52067,
+            "password": "zru63dr6vokx56iy",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tr-1.metsima.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "60wvbymjlc9zw3gk"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-107.189.5.203-fed5f1295bb9cf231348863e42e9d660",
+            "server": "car2.carcloudsix.site",
+            "server_port": 444,
+            "uuid": "2bbcaede-7820-4a21-8357-c86aec278c4e",
+            "transport": {
+                "type": "ws",
+                "path": "/A2",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.48-e94dbd0390563a0984323ad3528890c8",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.81-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+            "server": "159.112.235.52",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.81-90b9a26b19e2b7b90f7d824c9984b986",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.96-f6999ef5218c8358121f3caa188b7379",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
