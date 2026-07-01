@@ -1,0 +1,204 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Zürich-107.189.5.203-f324e09b222ceaaf3415b4c59f7c7bd4",
+                "Aubervilliers-167.104.216.240-d9b14de04008e87da6c0961096bee6b7",
+                "Frankfurt am Main-204.11.2.131-1e54bed17da49f482c02f5c3196933bc",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-152.89.253.20-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.20-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.130-f6999ef5218c8358121f3caa188b7379"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Zürich-107.189.5.203-f324e09b222ceaaf3415b4c59f7c7bd4",
+                "Aubervilliers-167.104.216.240-d9b14de04008e87da6c0961096bee6b7",
+                "Frankfurt am Main-204.11.2.131-1e54bed17da49f482c02f5c3196933bc",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-152.89.253.20-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.20-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.130-f6999ef5218c8358121f3caa188b7379"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Zürich-107.189.5.203-f324e09b222ceaaf3415b4c59f7c7bd4",
+                "Aubervilliers-167.104.216.240-d9b14de04008e87da6c0961096bee6b7",
+                "Frankfurt am Main-204.11.2.131-1e54bed17da49f482c02f5c3196933bc",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-152.89.253.20-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.20-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.130-f6999ef5218c8358121f3caa188b7379"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-107.189.5.203-f324e09b222ceaaf3415b4c59f7c7bd4",
+            "server": "car2.carcloudsix.site",
+            "server_port": 444,
+            "uuid": "2bbcaede-7820-4a21-8357-c86aec278c4e",
+            "transport": {
+                "type": "ws",
+                "path": "/A2",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.240-d9b14de04008e87da6c0961096bee6b7",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-204.11.2.131-1e54bed17da49f482c02f5c3196933bc",
+            "server": "freesocks.work",
+            "server_port": 2087,
+            "uuid": "85c40985-f109-410c-9657-4a2f52140bf0",
+            "transport": {
+                "type": "ws",
+                "path": "/BlueKnight_Net",
+                "headers": {
+                    "Host": "sg.blueknightnety.qzz.io"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sg.blueknightnety.qzz.io"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.20-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+            "server": "159.112.235.52",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.20-90b9a26b19e2b7b90f7d824c9984b986",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.130-f6999ef5218c8358121f3caa188b7379",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
