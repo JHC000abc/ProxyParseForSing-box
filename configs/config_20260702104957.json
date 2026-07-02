@@ -1,0 +1,492 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-35.181.4.41-a2b34ccce4e2e6f6ee988aff3856b448",
+                "Santa Clara-152.55.177.46-3b625c212a8be96a852afbcf56af2cb1",
+                "Paris-62.210.124.146-e8d0085b0de51a1e6db52197c8c248db",
+                "New York City-37.19.198.160-f004c2361946b04016330ddbddc279e6",
+                "Düsseldorf-213.202.208.199-26af96693106a3e904b2bb353b33784e",
+                "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+                "Dunkirk-137.74.119.18-14b25e2d38020300e754547a9b245f80",
+                "Aubervilliers-167.104.216.238-8f060479ffd4bf1c8530946dd1e73fbe",
+                "Lille-164.132.5.55-e112a78fdec8852350c85d64bc49421e",
+                "Zürich-107.189.5.203-9d83f7d4a798fd874a65807e4767dbbb",
+                "Dublin-168.63.68.5-38ce240419aa16d09f1d93fc3e2c92bf",
+                "Amsterdam-92.112.126.90-ebf474f05b374d12d2a2a7812567053c",
+                "Singapore-149.28.159.128-4b05ed8df7a06cb87b2f6572141b36fb",
+                "São Paulo-38.180.221.134-4319d25148dc2511e87bed2b0ca541ac",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Moscow-45.10.41.129-bf08e1901eb8b229df91f71e09a2103e",
+                "Melbourne-139.84.196.32-b5b298fd5bc1a66beea1098f118ba927",
+                "Sydney-45.77.232.213-e099620cd2f27946b7849260adb44999",
+                "Milan-103.240.147.113-27ec5503101483acd94a651b41412b0a",
+                "Sydney-104.156.233.234-4f604bf9c78be63a07878615826f35aa",
+                "São Paulo-38.180.221.134-972212e11e529e6ad33267293e388ad5",
+                "New York City-198.98.53.130-77bed0622b8eb778c89c68f8886558aa",
+                "Falkenstein-46.224.2.35-5bb6133f05f49e4f9bd99c3cd73cf5bf",
+                "Chicago-172.234.202.34-bde743ba177d7b2ba37d98ff07aaba56",
+                "Frankfurt am Main-213.226.68.8-325b94baa44e3f743ca13546e55cbd35",
+                "London-158.173.24.73-e2cc5cabfc6035cd7547ebdd4b909d47",
+                "Bogotá-154.223.16.96-a2bd3ea65a3c8e7dd0b40f45e3c7a557",
+                "Sydney-103.106.231.82-81ad333276f6baa7649a2046b718f443",
+                "Aubervilliers-152.89.253.81-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.81-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.96-f6999ef5218c8358121f3caa188b7379",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-35.181.4.41-a2b34ccce4e2e6f6ee988aff3856b448",
+                "Santa Clara-152.55.177.46-3b625c212a8be96a852afbcf56af2cb1",
+                "Paris-62.210.124.146-e8d0085b0de51a1e6db52197c8c248db",
+                "New York City-37.19.198.160-f004c2361946b04016330ddbddc279e6",
+                "Düsseldorf-213.202.208.199-26af96693106a3e904b2bb353b33784e",
+                "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+                "Dunkirk-137.74.119.18-14b25e2d38020300e754547a9b245f80",
+                "Aubervilliers-167.104.216.238-8f060479ffd4bf1c8530946dd1e73fbe",
+                "Lille-164.132.5.55-e112a78fdec8852350c85d64bc49421e",
+                "Zürich-107.189.5.203-9d83f7d4a798fd874a65807e4767dbbb",
+                "Dublin-168.63.68.5-38ce240419aa16d09f1d93fc3e2c92bf",
+                "Amsterdam-92.112.126.90-ebf474f05b374d12d2a2a7812567053c",
+                "Singapore-149.28.159.128-4b05ed8df7a06cb87b2f6572141b36fb",
+                "São Paulo-38.180.221.134-4319d25148dc2511e87bed2b0ca541ac",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Moscow-45.10.41.129-bf08e1901eb8b229df91f71e09a2103e",
+                "Melbourne-139.84.196.32-b5b298fd5bc1a66beea1098f118ba927",
+                "Sydney-45.77.232.213-e099620cd2f27946b7849260adb44999",
+                "Milan-103.240.147.113-27ec5503101483acd94a651b41412b0a",
+                "Sydney-104.156.233.234-4f604bf9c78be63a07878615826f35aa",
+                "São Paulo-38.180.221.134-972212e11e529e6ad33267293e388ad5",
+                "New York City-198.98.53.130-77bed0622b8eb778c89c68f8886558aa",
+                "Falkenstein-46.224.2.35-5bb6133f05f49e4f9bd99c3cd73cf5bf",
+                "Chicago-172.234.202.34-bde743ba177d7b2ba37d98ff07aaba56",
+                "Frankfurt am Main-213.226.68.8-325b94baa44e3f743ca13546e55cbd35",
+                "London-158.173.24.73-e2cc5cabfc6035cd7547ebdd4b909d47",
+                "Bogotá-154.223.16.96-a2bd3ea65a3c8e7dd0b40f45e3c7a557",
+                "Sydney-103.106.231.82-81ad333276f6baa7649a2046b718f443",
+                "Aubervilliers-152.89.253.81-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+                "Aubervilliers-152.89.253.81-90b9a26b19e2b7b90f7d824c9984b986",
+                "Aubervilliers-152.89.253.96-f6999ef5218c8358121f3caa188b7379",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Paris-35.181.4.41-a2b34ccce4e2e6f6ee988aff3856b448",
+            "server": "35.181.4.41",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.177.46-3b625c212a8be96a852afbcf56af2cb1",
+            "server": "ansooyefilter-channel.up.railway.app",
+            "server_port": 443,
+            "uuid": "3aff2f4c-cbe7-b6f1-d1b2-86ad0a8d78c2",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/3aff2f4c-cbe7-b6f1-d1b2-86ad0a8d78c2",
+                "headers": {
+                    "Host": "ansooyefilter-channel.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ansooyefilter-channel.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-62.210.124.146-e8d0085b0de51a1e6db52197c8c248db",
+            "server": "www.838491.xyz",
+            "server_port": 13377,
+            "password": "dongtaiwang.com",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "www.838491.xyz"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-37.19.198.160-f004c2361946b04016330ddbddc279e6",
+            "server": "37.19.198.160",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Düsseldorf-213.202.208.199-26af96693106a3e904b2bb353b33784e",
+            "server": "213.202.208.199",
+            "server_port": 7001,
+            "method": "aes-256-gcm",
+            "password": "RexnBgU7EV5ADxG"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Manchester-141.98.101.179-4444ca9bd725ad9a7ae4ace2e38fd04c",
+            "server": "141.98.101.179",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dunkirk-137.74.119.18-14b25e2d38020300e754547a9b245f80",
+            "server": "137.74.119.18",
+            "server_port": 10443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "diOMBU5IDvJcFqyNPbRjYR"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.238-8f060479ffd4bf1c8530946dd1e73fbe",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Lille-164.132.5.55-e112a78fdec8852350c85d64bc49421e",
+            "server": "185.84.158.13",
+            "server_port": 19964,
+            "method": "chacha20-ietf-poly1305",
+            "password": "XROTjCK7AfqLu8dPP+ib2V/0C0J2bpRxIDeIMk/i/I8="
+        },
+        {
+            "type": "vless",
+            "tag": "Zürich-107.189.5.203-9d83f7d4a798fd874a65807e4767dbbb",
+            "server": "car2.carcloudsix.site",
+            "server_port": 444,
+            "uuid": "2bbcaede-7820-4a21-8357-c86aec278c4e",
+            "transport": {
+                "type": "ws",
+                "path": "/A2",
+                "headers": {
+                    "Host": "play.google.com"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dublin-168.63.68.5-38ce240419aa16d09f1d93fc3e2c92bf",
+            "server": "168.63.68.5",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "ntxb1jHgYlCB6Cm2"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Amsterdam-92.112.126.90-ebf474f05b374d12d2a2a7812567053c",
+            "server": "switcher-nick-croquet.freesocks.work",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "9tqhMdIrTkgQ46PvhyAtMH"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Singapore-149.28.159.128-4b05ed8df7a06cb87b2f6572141b36fb",
+            "server": "45.32.122.179",
+            "server_port": 23027,
+            "method": "chacha20-ietf-poly1305",
+            "password": "I-bP3lFh.dTG3XitF7XtVK83CZ7rI2Ut=n"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "São Paulo-38.180.221.134-4319d25148dc2511e87bed2b0ca541ac",
+            "server": "38.180.221.143",
+            "server_port": 17283,
+            "method": "chacha20-ietf-poly1305",
+            "password": "bwjNPcwgz5+1gCyi+rB+nfqugw38B7tqVa"
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Moscow-45.10.41.129-bf08e1901eb8b229df91f71e09a2103e",
+            "server": "ru.moktana.app",
+            "server_port": 51523,
+            "method": "chacha20-ietf-poly1305",
+            "password": "7SEstdmLhf-aFK_G9eaYHKT_YpSov58B"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Melbourne-139.84.196.32-b5b298fd5bc1a66beea1098f118ba927",
+            "server": "67.219.106.119",
+            "server_port": 26286,
+            "method": "chacha20-ietf-poly1305",
+            "password": "xfscSDcb-SeEqqRb.omzVGgVgNpXh3bA1u"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Sydney-45.77.232.213-e099620cd2f27946b7849260adb44999",
+            "server": "45.77.232.213",
+            "server_port": 15675,
+            "method": "chacha20-ietf-poly1305",
+            "password": "TWG7J1KR5KsPaV5qZI+rieueKxxafZSpCH"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Milan-103.240.147.113-27ec5503101483acd94a651b41412b0a",
+            "server": "103.241.66.76",
+            "server_port": 14605,
+            "method": "chacha20-ietf-poly1305",
+            "password": "Uk8lfmvhYnx5rJvXxKrRqGRynd9gIpJ.iY"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Sydney-104.156.233.234-4f604bf9c78be63a07878615826f35aa",
+            "server": "104.156.233.234",
+            "server_port": 27116,
+            "method": "chacha20-ietf-poly1305",
+            "password": "bIOoi5TuImG2KccxV7-jcA7Cez+vun-c_E"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "São Paulo-38.180.221.134-972212e11e529e6ad33267293e388ad5",
+            "server": "38.180.221.145",
+            "server_port": 17283,
+            "method": "chacha20-ietf-poly1305",
+            "password": "bwjNPcwgz5+1gCyi+rB+nfqugw38B7tqVa"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-198.98.53.130-77bed0622b8eb778c89c68f8886558aa",
+            "server": "198.98.53.130",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "eDfN7SODQceIOmIAbtJJtK"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Falkenstein-46.224.2.35-5bb6133f05f49e4f9bd99c3cd73cf5bf",
+            "server": "46.224.2.35",
+            "server_port": 47199,
+            "method": "chacha20-ietf-poly1305",
+            "password": "h2GNP6xzss0xQ5kf7BNcJI"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Chicago-172.234.202.34-bde743ba177d7b2ba37d98ff07aaba56",
+            "server": "172.234.202.34",
+            "server_port": 24833,
+            "method": "chacha20-ietf-poly1305",
+            "password": "hRd=IXkjozMEKLeGR_0q09jtwly5J2la2O"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-213.226.68.8-325b94baa44e3f743ca13546e55cbd35",
+            "server": "213.226.68.8",
+            "server_port": 31348,
+            "method": "chacha20-ietf-poly1305",
+            "password": "hkasb5cVrs4jE18jCEJxB4Gr55hVGW24y35gU9GIIeyT31Fw"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-158.173.24.73-e2cc5cabfc6035cd7547ebdd4b909d47",
+            "server": "158.173.24.73",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Bogotá-154.223.16.96-a2bd3ea65a3c8e7dd0b40f45e3c7a557",
+            "server": "154.223.16.96",
+            "server_port": 6697,
+            "method": "aes-256-gcm",
+            "password": "TEzjfAYq2IjtuoS"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Sydney-103.106.231.82-81ad333276f6baa7649a2046b718f443",
+            "server": "103.106.231.82",
+            "server_port": 5600,
+            "method": "aes-256-gcm",
+            "password": "Y6R9pAtvxxzmGC"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.81-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+            "server": "159.112.235.52",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.81-90b9a26b19e2b7b90f7d824c9984b986",
+            "server": "172.64.32.75",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.96-f6999ef5218c8358121f3caa188b7379",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
