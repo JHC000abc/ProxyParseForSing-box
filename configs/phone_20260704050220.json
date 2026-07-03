@@ -1,0 +1,136 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-103.106.228.187-3382c5058c276682b7fed4387cb9e013",
+                "Amsterdam-206.71.158.17-6f98f310ed771a67fe3e224fbb215bae",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-167.104.216.177-ddad7fd4711ab2bc9ccaa55683b3dc9d"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-103.106.228.187-3382c5058c276682b7fed4387cb9e013",
+                "Amsterdam-206.71.158.17-6f98f310ed771a67fe3e224fbb215bae",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-167.104.216.177-ddad7fd4711ab2bc9ccaa55683b3dc9d"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-103.106.228.187-3382c5058c276682b7fed4387cb9e013",
+                "Amsterdam-206.71.158.17-6f98f310ed771a67fe3e224fbb215bae",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Aubervilliers-167.104.216.177-ddad7fd4711ab2bc9ccaa55683b3dc9d"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-103.106.228.187-3382c5058c276682b7fed4387cb9e013",
+            "server": "103.106.228.187",
+            "server_port": 54603,
+            "password": "u2sVknrSIFjDojeqAUjgYkCnh9szHcMQ",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "103.106.228.187"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-206.71.158.17-6f98f310ed771a67fe3e224fbb215bae",
+            "server": "fast.motorbazan.com",
+            "server_port": 443,
+            "uuid": "06462f62-5f9c-4632-9041-d35fedd0df97",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bazaryabab.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ssl.fastly.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.177-ddad7fd4711ab2bc9ccaa55683b3dc9d",
+            "server": "159.112.235.52",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
