@@ -1,0 +1,168 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Umraniye-45.74.159.146-c761911048fe2552e9e95c4a53265ba0",
+                "Amsterdam-152.55.184.67-7c03e14ee727259ad6651835af41be10",
+                "Orem-140.235.142.27-c1ec651877b4c691b50b8a0866292026",
+                "Helsinki-65.108.204.78-c936fdb04296dc8038d5b5bc3929a37e",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Umraniye-45.74.159.146-c761911048fe2552e9e95c4a53265ba0",
+                "Amsterdam-152.55.184.67-7c03e14ee727259ad6651835af41be10",
+                "Orem-140.235.142.27-c1ec651877b4c691b50b8a0866292026",
+                "Helsinki-65.108.204.78-c936fdb04296dc8038d5b5bc3929a37e",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Umraniye-45.74.159.146-c761911048fe2552e9e95c4a53265ba0",
+                "Amsterdam-152.55.184.67-7c03e14ee727259ad6651835af41be10",
+                "Orem-140.235.142.27-c1ec651877b4c691b50b8a0866292026",
+                "Helsinki-65.108.204.78-c936fdb04296dc8038d5b5bc3929a37e",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Umraniye-45.74.159.146-c761911048fe2552e9e95c4a53265ba0",
+            "server": "45.74.159.146",
+            "server_port": 32845,
+            "uuid": "31ed0ed1-746a-46aa-bb54-7a3c30b90c3e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "45.74.159.146"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.67-7c03e14ee727259ad6651835af41be10",
+            "server": "rvg-production-5268.up.railway.app",
+            "server_port": 443,
+            "uuid": "abdcbea1-3aee-10e4-8ae6-098edc1d5956",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/abdcbea1-3aee-10e4-8ae6-098edc1d5956",
+                "headers": {
+                    "Host": "rvg-production-5268.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rvg-production-5268.up.railway.app"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Orem-140.235.142.27-c1ec651877b4c691b50b8a0866292026",
+            "server": "18.162.53.72",
+            "server_port": 34638,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.108.204.78-c936fdb04296dc8038d5b5bc3929a37e",
+            "server": "66.81.247.209",
+            "server_port": 8880,
+            "uuid": "e52fedb7-befe-4615-a53e-89d446f74bf4",
+            "transport": {
+                "type": "ws",
+                "path": "/cdn/assets/stream",
+                "headers": {
+                    "Host": "cnd.finland2.nexusdataroute.com"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
