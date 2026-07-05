@@ -1,0 +1,258 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-152.55.184.120-9df46113465645ad73c2fa48f323ec88",
+                "Santa Clara-152.55.176.235-572041efd0079cc9ef9274d8c6b23e44",
+                "Lelystad-192.76.160.200-1b5357daccba4eacb2d616902e65757e",
+                "London-164.37.101.114-4207cde2525bf76fdedb5b2eb31ac951",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Frankfurt am Main-162.19.228.119-e265aa4bd0f883e5fc01158298558b19",
+                "Aubervilliers-152.89.253.19-614eb6e6fde3d6646a8777d694303017",
+                "Amsterdam-152.55.184.65-64ca330348fffff0ffbb79a297c562f7",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-152.55.184.120-9df46113465645ad73c2fa48f323ec88",
+                "Santa Clara-152.55.176.235-572041efd0079cc9ef9274d8c6b23e44",
+                "Lelystad-192.76.160.200-1b5357daccba4eacb2d616902e65757e",
+                "London-164.37.101.114-4207cde2525bf76fdedb5b2eb31ac951",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Frankfurt am Main-162.19.228.119-e265aa4bd0f883e5fc01158298558b19",
+                "Aubervilliers-152.89.253.19-614eb6e6fde3d6646a8777d694303017",
+                "Amsterdam-152.55.184.65-64ca330348fffff0ffbb79a297c562f7",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-152.55.184.120-9df46113465645ad73c2fa48f323ec88",
+                "Santa Clara-152.55.176.235-572041efd0079cc9ef9274d8c6b23e44",
+                "Lelystad-192.76.160.200-1b5357daccba4eacb2d616902e65757e",
+                "London-164.37.101.114-4207cde2525bf76fdedb5b2eb31ac951",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Frankfurt am Main-162.19.228.119-e265aa4bd0f883e5fc01158298558b19",
+                "Aubervilliers-152.89.253.19-614eb6e6fde3d6646a8777d694303017",
+                "Amsterdam-152.55.184.65-64ca330348fffff0ffbb79a297c562f7",
+                "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+                "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.120-9df46113465645ad73c2fa48f323ec88",
+            "server": "rvg-production-0fab.up.railway.app",
+            "server_port": 443,
+            "uuid": "ab181813-5879-e2b9-1534-70aac9770fb7",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/ab181813-5879-e2b9-1534-70aac9770fb7",
+                "headers": {
+                    "Host": "rvg-production-0fab.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rvg-production-0fab.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.235-572041efd0079cc9ef9274d8c6b23e44",
+            "server": "tel-timazadi-mimi.up.railway.app",
+            "server_port": 443,
+            "uuid": "72ffdff3-610d-b6d1-9d44-8fe430fe569f",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/72ffdff3-610d-b6d1-9d44-8fe430fe569f",
+                "headers": {
+                    "Host": "tel-timazadi-mimi.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "tel-timazadi-mimi.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.200-1b5357daccba4eacb2d616902e65757e",
+            "server": "199.232.9.94",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "speedtest.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-164.37.101.114-4207cde2525bf76fdedb5b2eb31ac951",
+            "server": "velikhis.normbot.ru",
+            "server_port": 443,
+            "password": "16de749f-ce86-4ccd-9743-7a0ff2556185",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "velikhis.normbot.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-e265aa4bd0f883e5fc01158298558b19",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.19-614eb6e6fde3d6646a8777d694303017",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.65-64ca330348fffff0ffbb79a297c562f7",
+            "server": "69.46.46.65",
+            "server_port": 443,
+            "uuid": "4de8fd70-8b0e-b5eb-4b0a-e95e08087a89",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/4de8fd70-8b0e-b5eb-4b0a-e95e08087a89",
+                "headers": {
+                    "Host": "x4g-production-5d3a.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-5d3a.up.railway.app"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-53fa16c3d4b7ea407310ad743e8cf4c1",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "146.70.90.198"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Bexley-57.128.164.21-31f7f3445eff340838f7f19972ad9a85",
+            "server": "69.84.182.49",
+            "server_port": 80,
+            "uuid": "f8975871-a7a0-4906-8835-a23c1258ca1e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "google.whatsapp.snapp.torob.basalam.zula.uplaod-music.ir."
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
