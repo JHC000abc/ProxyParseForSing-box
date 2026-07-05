@@ -1,0 +1,184 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-208.77.244.24-01c688545be4d3ba852127c9c63b8d9d",
+                "Limburg an der Lahn-178.83.46.237-74f12db9f6965ac91f6d9b987416de95",
+                "Sydney-103.106.231.238-48641d8f6541571e6987a5e5b0050642",
+                "Singapore-167.99.70.106-2ec02782fdc1cbaff1b7272f03d10feb",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Amsterdam-152.55.184.65-02e9deaad71a1f475c8e8219d29e4120"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-208.77.244.24-01c688545be4d3ba852127c9c63b8d9d",
+                "Limburg an der Lahn-178.83.46.237-74f12db9f6965ac91f6d9b987416de95",
+                "Sydney-103.106.231.238-48641d8f6541571e6987a5e5b0050642",
+                "Singapore-167.99.70.106-2ec02782fdc1cbaff1b7272f03d10feb",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Amsterdam-152.55.184.65-02e9deaad71a1f475c8e8219d29e4120"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-208.77.244.24-01c688545be4d3ba852127c9c63b8d9d",
+                "Limburg an der Lahn-178.83.46.237-74f12db9f6965ac91f6d9b987416de95",
+                "Sydney-103.106.231.238-48641d8f6541571e6987a5e5b0050642",
+                "Singapore-167.99.70.106-2ec02782fdc1cbaff1b7272f03d10feb",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Amsterdam-152.55.184.65-02e9deaad71a1f475c8e8219d29e4120"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-208.77.244.24-01c688545be4d3ba852127c9c63b8d9d",
+            "server": "rvg-production-d47c.up.railway.app",
+            "server_port": 443,
+            "uuid": "fb5aa911-17d6-a163-ba08-34deaa2b883a",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/fb5aa911-17d6-a163-ba08-34deaa2b883a",
+                "headers": {
+                    "Host": "rvg-production-d47c.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rvg-production-d47c.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Limburg an der Lahn-178.83.46.237-74f12db9f6965ac91f6d9b987416de95",
+            "server": "germanyserver.nizeo.ir",
+            "server_port": 8443,
+            "uuid": "53510d6b-47e0-43d0-bd47-6934c1b26bbb",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "germanyserver.nizeo.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "germanyserver.nizeo.ir"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Sydney-103.106.231.238-48641d8f6541571e6987a5e5b0050642",
+            "server": "103.106.231.238",
+            "server_port": 55000,
+            "password": "3213f4a7-4817-45b8-bfff-59e5836a78bc",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-167.99.70.106-2ec02782fdc1cbaff1b7272f03d10feb",
+            "server": "124.243.189.195",
+            "server_port": 443,
+            "uuid": "18e65438-6095-4430-f258-ad68be5133b6",
+            "transport": {
+                "type": "ws",
+                "path": "/bing",
+                "headers": {
+                    "Host": "sga.okkeo.me"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sga.okkeo.me"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.65-02e9deaad71a1f475c8e8219d29e4120",
+            "server": "69.46.46.65",
+            "server_port": 443,
+            "uuid": "4de8fd70-8b0e-b5eb-4b0a-e95e08087a89",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/4de8fd70-8b0e-b5eb-4b0a-e95e08087a89",
+                "headers": {
+                    "Host": "x4g-production-5d3a.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-5d3a.up.railway.app"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
