@@ -1,0 +1,160 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Dronten-5.255.102.165-109be306be8b9d557954fda58c9b58d6",
+                "Los Angeles-23.177.40.100-fcf4bb8ec53f7f836cc69419507c1a2e",
+                "Singapore-47.131.248.82-9ba088e834d7bfb888438be795eac211",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Frankfurt am Main-162.19.228.119-058facb514eaff697fd9d895d31149bd",
+                "Frankfurt am Main-162.19.228.216-6b27f1b051588409a7315c590e0929e2"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Dronten-5.255.102.165-109be306be8b9d557954fda58c9b58d6",
+                "Los Angeles-23.177.40.100-fcf4bb8ec53f7f836cc69419507c1a2e",
+                "Singapore-47.131.248.82-9ba088e834d7bfb888438be795eac211",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Frankfurt am Main-162.19.228.119-058facb514eaff697fd9d895d31149bd",
+                "Frankfurt am Main-162.19.228.216-6b27f1b051588409a7315c590e0929e2"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Dronten-5.255.102.165-109be306be8b9d557954fda58c9b58d6",
+                "Los Angeles-23.177.40.100-fcf4bb8ec53f7f836cc69419507c1a2e",
+                "Singapore-47.131.248.82-9ba088e834d7bfb888438be795eac211",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+                "Frankfurt am Main-162.19.228.119-058facb514eaff697fd9d895d31149bd",
+                "Frankfurt am Main-162.19.228.216-6b27f1b051588409a7315c590e0929e2"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Dronten-5.255.102.165-109be306be8b9d557954fda58c9b58d6",
+            "server": "5.255.102.165",
+            "server_port": 443,
+            "password": "LzMWgm6LaNWCm11bFTbynDPq2TqQj03t",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Los Angeles-23.177.40.100-fcf4bb8ec53f7f836cc69419507c1a2e",
+            "server": "18.163.116.155",
+            "server_port": 44265,
+            "password": "BxceQaOe",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "t.me/ripaojiedian"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-47.131.248.82-9ba088e834d7bfb888438be795eac211",
+            "server": "47.131.248.82",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-058facb514eaff697fd9d895d31149bd",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.216-6b27f1b051588409a7315c590e0929e2",
+            "server": "de4.niekotin.de",
+            "server_port": 80,
+            "uuid": "2415cbdc-e5fc-453e-91ad-0e2e532afb7c",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "de4.niekotin.de"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
