@@ -1,0 +1,213 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Dronten-5.255.102.165-342c6e91f201879c00e635c55ef8d4b7",
+                "Singapore-139.162.58.27-2c46fee94660d15e2ea666a8af516469",
+                "Aubervilliers-217.179.6.246-344684f8cd64efb1aa755be5f6f44e35",
+                "Aubervilliers-217.179.6.246-afd4d7fed12b25439e7c2918831bd2ab",
+                "Frankfurt am Main-162.19.228.119-1824693c4352257ab71e9b2aa4b55136",
+                "Frankfurt am Main-162.19.228.216-bc27c5068eab889bf500b8f51b25ca5a",
+                "Singapore-103.106.229.69-90fe8e7da12a9a9185d327e5f6d03b04"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Dronten-5.255.102.165-342c6e91f201879c00e635c55ef8d4b7",
+                "Singapore-139.162.58.27-2c46fee94660d15e2ea666a8af516469",
+                "Aubervilliers-217.179.6.246-344684f8cd64efb1aa755be5f6f44e35",
+                "Aubervilliers-217.179.6.246-afd4d7fed12b25439e7c2918831bd2ab",
+                "Frankfurt am Main-162.19.228.119-1824693c4352257ab71e9b2aa4b55136",
+                "Frankfurt am Main-162.19.228.216-bc27c5068eab889bf500b8f51b25ca5a",
+                "Singapore-103.106.229.69-90fe8e7da12a9a9185d327e5f6d03b04"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Dronten-5.255.102.165-342c6e91f201879c00e635c55ef8d4b7",
+            "server": "5.255.102.165",
+            "server_port": 443,
+            "password": "LzMWgm6LaNWCm11bFTbynDPq2TqQj03t",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-139.162.58.27-2c46fee94660d15e2ea666a8af516469",
+            "server": "news.zoom.us",
+            "server_port": 8443,
+            "uuid": "00cb997f-aebb-4c0b-93de-616962738aa0",
+            "transport": {
+                "type": "ws",
+                "path": "/apexcloud.ggff.net",
+                "headers": {
+                    "Host": "apexcloud.ggff.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "apexcloud.ggff.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.246-344684f8cd64efb1aa755be5f6f44e35",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.246-afd4d7fed12b25439e7c2918831bd2ab",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-1824693c4352257ab71e9b2aa4b55136",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.216-bc27c5068eab889bf500b8f51b25ca5a",
+            "server": "de4.niekotin.de",
+            "server_port": 80,
+            "uuid": "2415cbdc-e5fc-453e-91ad-0e2e532afb7c",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "de4.niekotin.de"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Singapore-103.106.229.69-90fe8e7da12a9a9185d327e5f6d03b04",
+            "server": "103.106.229.69",
+            "server_port": 9090,
+            "method": "aes-256-gcm",
+            "password": "Y6R9pAtvxxzmGC"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
