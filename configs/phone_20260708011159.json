@@ -1,0 +1,145 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-206.71.158.116-15f07e894b815bda9bb8e2b6835eb283",
+                "Frankfurt am Main-162.19.228.119-a836b9cfb1e249aee1d67e3c4b0785ec",
+                "Aubervilliers-167.104.216.36-83b8ee61025a6a772e45bd4490e9c334",
+                "Aubervilliers-167.104.216.36-9d3760178e357cc201a9c9534817e7e4"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-206.71.158.116-15f07e894b815bda9bb8e2b6835eb283",
+                "Frankfurt am Main-162.19.228.119-a836b9cfb1e249aee1d67e3c4b0785ec",
+                "Aubervilliers-167.104.216.36-83b8ee61025a6a772e45bd4490e9c334",
+                "Aubervilliers-167.104.216.36-9d3760178e357cc201a9c9534817e7e4"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-206.71.158.116-15f07e894b815bda9bb8e2b6835eb283",
+                "Frankfurt am Main-162.19.228.119-a836b9cfb1e249aee1d67e3c4b0785ec",
+                "Aubervilliers-167.104.216.36-83b8ee61025a6a772e45bd4490e9c334",
+                "Aubervilliers-167.104.216.36-9d3760178e357cc201a9c9534817e7e4"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-206.71.158.116-15f07e894b815bda9bb8e2b6835eb283",
+            "server": "151.101.57.134",
+            "server_port": 443,
+            "uuid": "XpnTeam-65",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "Appxdn.global.ssl.fastly.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "default.ssl.fastly.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-a836b9cfb1e249aee1d67e3c4b0785ec",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.36-83b8ee61025a6a772e45bd4490e9c334",
+            "server": "104.19.134.235",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.36-9d3760178e357cc201a9c9534817e7e4",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
