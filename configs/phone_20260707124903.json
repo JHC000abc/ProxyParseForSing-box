@@ -1,0 +1,257 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-204.11.2.131-9c273db2d2bd12baba0f2c35c21219e3",
+                "Santa Clara-162.220.232.28-30f335ed9bd3f25d92513a3cd502dfd8",
+                "Santa Clara-152.55.177.69-3f1c5f0a1fccc4e510039483211fb286",
+                "Frankfurt am Main-204.11.2.131-e414f410ded07e7636601ae214ef6eb2",
+                "Frankfurt am Main-204.11.2.131-49313457f2cfa3f4bae9d1d8ebef41df",
+                "Frankfurt am Main-204.11.2.131-a3edd6209590adb8fa1a6268e32020a8",
+                "Lelystad-192.76.160.200-6fd4b0339811a57d57ccc06459d0cf3b",
+                "Lelystad-192.76.160.200-1be335d0347b9b42a5858c2f7dae5038",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-204.11.2.131-9c273db2d2bd12baba0f2c35c21219e3",
+                "Santa Clara-162.220.232.28-30f335ed9bd3f25d92513a3cd502dfd8",
+                "Santa Clara-152.55.177.69-3f1c5f0a1fccc4e510039483211fb286",
+                "Frankfurt am Main-204.11.2.131-e414f410ded07e7636601ae214ef6eb2",
+                "Frankfurt am Main-204.11.2.131-49313457f2cfa3f4bae9d1d8ebef41df",
+                "Frankfurt am Main-204.11.2.131-a3edd6209590adb8fa1a6268e32020a8",
+                "Lelystad-192.76.160.200-6fd4b0339811a57d57ccc06459d0cf3b",
+                "Lelystad-192.76.160.200-1be335d0347b9b42a5858c2f7dae5038",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-204.11.2.131-9c273db2d2bd12baba0f2c35c21219e3",
+                "Santa Clara-162.220.232.28-30f335ed9bd3f25d92513a3cd502dfd8",
+                "Santa Clara-152.55.177.69-3f1c5f0a1fccc4e510039483211fb286",
+                "Frankfurt am Main-204.11.2.131-e414f410ded07e7636601ae214ef6eb2",
+                "Frankfurt am Main-204.11.2.131-49313457f2cfa3f4bae9d1d8ebef41df",
+                "Frankfurt am Main-204.11.2.131-a3edd6209590adb8fa1a6268e32020a8",
+                "Lelystad-192.76.160.200-6fd4b0339811a57d57ccc06459d0cf3b",
+                "Lelystad-192.76.160.200-1be335d0347b9b42a5858c2f7dae5038",
+                "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-204.11.2.131-9c273db2d2bd12baba0f2c35c21219e3",
+            "server": "openai.com",
+            "server_port": 443,
+            "uuid": "cee8c30c-fb13-4a89-abb4-5a32cf716c97",
+            "transport": {
+                "type": "ws",
+                "path": "/api-api",
+                "headers": {
+                    "Host": "api.mozestan.dpdns.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.mozestan.dpdns.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-162.220.232.28-30f335ed9bd3f25d92513a3cd502dfd8",
+            "server": "ansooyefilter6.up.railway.app",
+            "server_port": 443,
+            "uuid": "0b0dd312-eecb-cb9d-fe12-6d0c1df30ae4",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/0b0dd312-eecb-cb9d-fe12-6d0c1df30ae4",
+                "headers": {
+                    "Host": "ansooyefilter6.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ansooyefilter6.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.177.69-3f1c5f0a1fccc4e510039483211fb286",
+            "server": "x4g-production-feb9.up.railway.app",
+            "server_port": 443,
+            "uuid": "deb25908-0621-646c-8ff1-d757115ba6f1",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/deb25908-0621-646c-8ff1-d757115ba6f1",
+                "headers": {
+                    "Host": "x4g-production-feb9.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-feb9.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-204.11.2.131-e414f410ded07e7636601ae214ef6eb2",
+            "server": "assets.fiverr.com",
+            "server_port": 443,
+            "uuid": "cee8c30c-fb13-4a89-abb4-5a32cf716c97",
+            "transport": {
+                "type": "ws",
+                "path": "/api-api",
+                "headers": {
+                    "Host": "api.mozestan.dpdns.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.mozestan.dpdns.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-204.11.2.131-49313457f2cfa3f4bae9d1d8ebef41df",
+            "server": "news.zoom.us",
+            "server_port": 443,
+            "uuid": "cee8c30c-fb13-4a89-abb4-5a32cf716c97",
+            "transport": {
+                "type": "ws",
+                "path": "/api-api",
+                "headers": {
+                    "Host": "api.mozestan.dpdns.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.mozestan.dpdns.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-204.11.2.131-a3edd6209590adb8fa1a6268e32020a8",
+            "server": "cctvhikvision.center",
+            "server_port": 443,
+            "uuid": "cee8c30c-fb13-4a89-abb4-5a32cf716c97",
+            "transport": {
+                "type": "ws",
+                "path": "/api-api",
+                "headers": {
+                    "Host": "api.mozestan.dpdns.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "api.mozestan.dpdns.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.200-6fd4b0339811a57d57ccc06459d0cf3b",
+            "server": "140.248.180.30",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "speedtest.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.200-1be335d0347b9b42a5858c2f7dae5038",
+            "server": "199.232.9.94",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "speedtest.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-9cebe4f07894be90d74e5e1d0172bfcf",
+            "server": "80.66.81.78",
+            "server_port": 9443,
+            "password": "rs2mR3g9bZiMloftx6lZQ59Um1Ld",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "tunel1.washing.help"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "oMgvuBy5Lj5kYM57sGsnjpjNcSEQ"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
