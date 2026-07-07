@@ -1,0 +1,121 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-152.55.184.36-69015b6baf160567828361436ace0586",
+                "Mumbai-52.66.8.237-8cd872e575965a219fd4b68dba2ac6bc",
+                "Aubervilliers-152.89.253.96-85ddf05ee23d1901de366f521a72e92a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-152.55.184.36-69015b6baf160567828361436ace0586",
+                "Mumbai-52.66.8.237-8cd872e575965a219fd4b68dba2ac6bc",
+                "Aubervilliers-152.89.253.96-85ddf05ee23d1901de366f521a72e92a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-152.55.184.36-69015b6baf160567828361436ace0586",
+                "Mumbai-52.66.8.237-8cd872e575965a219fd4b68dba2ac6bc",
+                "Aubervilliers-152.89.253.96-85ddf05ee23d1901de366f521a72e92a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.36-69015b6baf160567828361436ace0586",
+            "server": "ansooyefilter88.up.railway.app",
+            "server_port": 443,
+            "uuid": "a219d501-b239-24e0-352a-553180e0de84",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/a219d501-b239-24e0-352a-553180e0de84",
+                "headers": {
+                    "Host": "ansooyefilter88.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ansooyefilter88.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-52.66.8.237-8cd872e575965a219fd4b68dba2ac6bc",
+            "server": "vpn-in-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-in-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.96-85ddf05ee23d1901de366f521a72e92a",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}

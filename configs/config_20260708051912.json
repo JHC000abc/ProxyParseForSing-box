@@ -1,0 +1,180 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-152.55.184.36-69015b6baf160567828361436ace0586",
+                "Mumbai-52.66.8.237-8cd872e575965a219fd4b68dba2ac6bc",
+                "Columbus-3.147.78.9-5b8f0423c6dcf753196270908b159d5d",
+                "Los Angeles-104.238.222.30-61500688c194badc0524d66d430db4fe",
+                "Aubervilliers-152.89.253.96-85ddf05ee23d1901de366f521a72e92a",
+                "Amsterdam-92.112.126.90-ebf474f05b374d12d2a2a7812567053c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-152.55.184.36-69015b6baf160567828361436ace0586",
+                "Mumbai-52.66.8.237-8cd872e575965a219fd4b68dba2ac6bc",
+                "Columbus-3.147.78.9-5b8f0423c6dcf753196270908b159d5d",
+                "Los Angeles-104.238.222.30-61500688c194badc0524d66d430db4fe",
+                "Aubervilliers-152.89.253.96-85ddf05ee23d1901de366f521a72e92a",
+                "Amsterdam-92.112.126.90-ebf474f05b374d12d2a2a7812567053c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.36-69015b6baf160567828361436ace0586",
+            "server": "ansooyefilter88.up.railway.app",
+            "server_port": 443,
+            "uuid": "a219d501-b239-24e0-352a-553180e0de84",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/a219d501-b239-24e0-352a-553180e0de84",
+                "headers": {
+                    "Host": "ansooyefilter88.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ansooyefilter88.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Mumbai-52.66.8.237-8cd872e575965a219fd4b68dba2ac6bc",
+            "server": "vpn-in-001.fastervpn.world",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-in-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Columbus-3.147.78.9-5b8f0423c6dcf753196270908b159d5d",
+            "server": "3.147.78.9",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Los Angeles-104.238.222.30-61500688c194badc0524d66d430db4fe",
+            "server": "permission_level_01.unclemanco.com",
+            "server_port": 40032,
+            "method": "aes-128-gcm",
+            "password": "ba2a429e-dcaa-4d94-a651-99b0a920ee38"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.96-85ddf05ee23d1901de366f521a72e92a",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Amsterdam-92.112.126.90-ebf474f05b374d12d2a2a7812567053c",
+            "server": "switcher-nick-croquet.freesocks.work",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "9tqhMdIrTkgQ46PvhyAtMH"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
