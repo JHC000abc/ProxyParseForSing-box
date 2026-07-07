@@ -1,0 +1,136 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-51.44.167.227-994d3da36c4cca1432d5a240c085929f",
+                "Santa Clara-152.55.177.129-208e4ad2c4e9e3bd0a8842ed0808e878",
+                "Amsterdam-208.77.244.96-c95f7500c1cdf7c84b0ce2ff2f24f8b3",
+                "Columbus-18.221.163.56-ba84b9a8f1ea8095d8b8e0466dcf7aea"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Paris-51.44.167.227-994d3da36c4cca1432d5a240c085929f",
+                "Santa Clara-152.55.177.129-208e4ad2c4e9e3bd0a8842ed0808e878",
+                "Amsterdam-208.77.244.96-c95f7500c1cdf7c84b0ce2ff2f24f8b3",
+                "Columbus-18.221.163.56-ba84b9a8f1ea8095d8b8e0466dcf7aea"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-51.44.167.227-994d3da36c4cca1432d5a240c085929f",
+                "Santa Clara-152.55.177.129-208e4ad2c4e9e3bd0a8842ed0808e878",
+                "Amsterdam-208.77.244.96-c95f7500c1cdf7c84b0ce2ff2f24f8b3",
+                "Columbus-18.221.163.56-ba84b9a8f1ea8095d8b8e0466dcf7aea"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-51.44.167.227-994d3da36c4cca1432d5a240c085929f",
+            "server": "vpn-fr-001.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-fr-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.177.129-208e4ad2c4e9e3bd0a8842ed0808e878",
+            "server": "x4g-production-40db.up.railway.app",
+            "server_port": 443,
+            "uuid": "25f15077-35b1-aa19-aa5d-f52e2ddd2a6d",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/25f15077-35b1-aa19-aa5d-f52e2ddd2a6d",
+                "headers": {
+                    "Host": "x4g-production-40db.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-40db.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-208.77.244.96-c95f7500c1cdf7c84b0ce2ff2f24f8b3",
+            "server": "itx-bags.up.railway.app",
+            "server_port": 443,
+            "uuid": "Ali",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/Ali",
+                "headers": {
+                    "Host": "itx-bags.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "itx-bags.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.221.163.56-ba84b9a8f1ea8095d8b8e0466dcf7aea",
+            "server": "18.221.163.56",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-us-003.fastervpn.world"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
