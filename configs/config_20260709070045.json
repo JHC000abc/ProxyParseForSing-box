@@ -1,0 +1,438 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-13.113.193.176-e7ff4a25194872e71695a014a94e1603",
+                "Tokyo-18.183.75.119-1d1b0492c08276ab74608e8a4f8526cd",
+                "Tokyo-54.199.167.138-cc5455639137542ea4242fa97828f6bc",
+                "Tokyo-13.230.74.181-bfd045a181243cf9c01d8a001890f99c",
+                "Tokyo-18.183.248.78-ba0dfe7b559c6888a5533917d6c76a66",
+                "Tokyo-54.64.88.167-44d75bdc163d89fd9d7f3adff967d2a1",
+                "Tokyo-54.238.91.194-8bb9c20b23e69c8aff554c88f614294c",
+                "Tokyo-3.112.243.164-819d3a0ea2570f98805ee9d3eb77d5a7",
+                "Tokyo-52.69.243.153-0a64c81921961a5bd7ee8f0fa53ed283",
+                "Tokyo-57.180.47.232-63732c60cf0c9db2b4a285fdd0caed29",
+                "Tokyo-18.181.162.171-c634a4033922ce9364d151abc3b43626",
+                "Tokyo-18.183.70.215-4c42dafb32ec7c9ebad77c2fed034cfc",
+                "Singapore-54.169.83.212-7fc3df0dca232e763ba10d1de5bab5a4",
+                "Singapore-54.254.241.24-1af560efd35be69d19fcee7926ff92ae",
+                "Singapore-13.212.180.138-4c24a644c584aa9443d1f0236b30b519",
+                "Santa Clara-152.55.176.187-6281a1fb384942eff2037d6c4c7d9837",
+                "Boardman-18.236.111.168-83759a3edb5f730b02770d802b8fc432",
+                "Boardman-34.215.174.204-dcc2379d05ea4fdecdb33ef22daf078d",
+                "Sofia-146.70.53.50-f8a24c892f13222cbf761ee63fec6d50",
+                "Ballerup-135.136.33.134-8a1399e7585d1f319a31e2b868cf3312",
+                "Montréal-72.10.173.66-10b8523bdbeaf2319b49486794a0ebd6",
+                "Frankfurt am Main-185.226.172.8-bbd2cfabf3617bd6119f97018152cb2c",
+                "Amsterdam-158.173.20.171-4354f4a4a795727a6330fbb2535bb2c5",
+                "Aubervilliers-152.89.253.139-0d23febe93728abf9c2d315a6c33274c",
+                "Tokyo-18.179.20.183-6152380ca02e2777b000289265a934eb"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-13.113.193.176-e7ff4a25194872e71695a014a94e1603",
+                "Tokyo-18.183.75.119-1d1b0492c08276ab74608e8a4f8526cd",
+                "Tokyo-54.199.167.138-cc5455639137542ea4242fa97828f6bc",
+                "Tokyo-13.230.74.181-bfd045a181243cf9c01d8a001890f99c",
+                "Tokyo-18.183.248.78-ba0dfe7b559c6888a5533917d6c76a66",
+                "Tokyo-54.64.88.167-44d75bdc163d89fd9d7f3adff967d2a1",
+                "Tokyo-54.238.91.194-8bb9c20b23e69c8aff554c88f614294c",
+                "Tokyo-3.112.243.164-819d3a0ea2570f98805ee9d3eb77d5a7",
+                "Tokyo-52.69.243.153-0a64c81921961a5bd7ee8f0fa53ed283",
+                "Tokyo-57.180.47.232-63732c60cf0c9db2b4a285fdd0caed29",
+                "Tokyo-18.181.162.171-c634a4033922ce9364d151abc3b43626",
+                "Tokyo-18.183.70.215-4c42dafb32ec7c9ebad77c2fed034cfc",
+                "Singapore-54.169.83.212-7fc3df0dca232e763ba10d1de5bab5a4",
+                "Singapore-54.254.241.24-1af560efd35be69d19fcee7926ff92ae",
+                "Singapore-13.212.180.138-4c24a644c584aa9443d1f0236b30b519",
+                "Santa Clara-152.55.176.187-6281a1fb384942eff2037d6c4c7d9837",
+                "Boardman-18.236.111.168-83759a3edb5f730b02770d802b8fc432",
+                "Boardman-34.215.174.204-dcc2379d05ea4fdecdb33ef22daf078d",
+                "Sofia-146.70.53.50-f8a24c892f13222cbf761ee63fec6d50",
+                "Ballerup-135.136.33.134-8a1399e7585d1f319a31e2b868cf3312",
+                "Montréal-72.10.173.66-10b8523bdbeaf2319b49486794a0ebd6",
+                "Frankfurt am Main-185.226.172.8-bbd2cfabf3617bd6119f97018152cb2c",
+                "Amsterdam-158.173.20.171-4354f4a4a795727a6330fbb2535bb2c5",
+                "Aubervilliers-152.89.253.139-0d23febe93728abf9c2d315a6c33274c",
+                "Tokyo-18.179.20.183-6152380ca02e2777b000289265a934eb"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.113.193.176-e7ff4a25194872e71695a014a94e1603",
+            "server": "dashing-bedbug.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.183.75.119-1d1b0492c08276ab74608e8a4f8526cd",
+            "server": "moved-bluegill.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-54.199.167.138-cc5455639137542ea4242fa97828f6bc",
+            "server": "relaxing-mayfly.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.230.74.181-bfd045a181243cf9c01d8a001890f99c",
+            "server": "prepared-hawk.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.183.248.78-ba0dfe7b559c6888a5533917d6c76a66",
+            "server": "united-grouse.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-54.64.88.167-44d75bdc163d89fd9d7f3adff967d2a1",
+            "server": "firm-krill.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-54.238.91.194-8bb9c20b23e69c8aff554c88f614294c",
+            "server": "mature-lamprey.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-3.112.243.164-819d3a0ea2570f98805ee9d3eb77d5a7",
+            "server": "assuring-werewolf.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-52.69.243.153-0a64c81921961a5bd7ee8f0fa53ed283",
+            "server": "smooth-sculpin.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-57.180.47.232-63732c60cf0c9db2b4a285fdd0caed29",
+            "server": "tops-puma.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.181.162.171-c634a4033922ce9364d151abc3b43626",
+            "server": "peaceful-muskrat.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.183.70.215-4c42dafb32ec7c9ebad77c2fed034cfc",
+            "server": "modest-coral.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-54.169.83.212-7fc3df0dca232e763ba10d1de5bab5a4",
+            "server": "elegant-marten.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-54.254.241.24-1af560efd35be69d19fcee7926ff92ae",
+            "server": "tough-shark.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-13.212.180.138-4c24a644c584aa9443d1f0236b30b519",
+            "server": "shining-piranha.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.187-6281a1fb384942eff2037d6c4c7d9837",
+            "server": "x4g-production-5110.up.railway.app",
+            "server_port": 443,
+            "uuid": "7726f5f8-eded-a25f-d5c4-55e48ae096ea",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/7726f5f8-eded-a25f-d5c4-55e48ae096ea",
+                "headers": {
+                    "Host": "x4g-production-5110.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-5110.up.railway.app"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Boardman-18.236.111.168-83759a3edb5f730b02770d802b8fc432",
+            "server": "novel-bat.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "novel-bat.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Boardman-34.215.174.204-dcc2379d05ea4fdecdb33ef22daf078d",
+            "server": "frank-piranha.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "frank-piranha.rooster465.autos"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Sofia-146.70.53.50-f8a24c892f13222cbf761ee63fec6d50",
+            "server": "146.70.53.62",
+            "server_port": 1080,
+            "method": "chacha20-ietf-poly1305",
+            "password": "gelwvU9mUR0orEFS5D6u7A"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Ballerup-135.136.33.134-8a1399e7585d1f319a31e2b868cf3312",
+            "server": "135.136.33.134",
+            "server_port": 1080,
+            "method": "chacha20-ietf-poly1305",
+            "password": "gelwvU9mUR0orEFS5D6u7A"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-72.10.173.66-10b8523bdbeaf2319b49486794a0ebd6",
+            "server": "72.10.173.91",
+            "server_port": 1080,
+            "method": "chacha20-ietf-poly1305",
+            "password": "gelwvU9mUR0orEFS5D6u7A"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-185.226.172.8-bbd2cfabf3617bd6119f97018152cb2c",
+            "server": "185.226.172.8",
+            "server_port": 8008,
+            "method": "aes-256-gcm",
+            "password": "XKFKl2rULjIp74"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Amsterdam-158.173.20.171-4354f4a4a795727a6330fbb2535bb2c5",
+            "server": "158.173.20.171",
+            "server_port": 443,
+            "method": "aes-128-gcm",
+            "password": "shadowsocks"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.139-0d23febe93728abf9c2d315a6c33274c",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.179.20.183-6152380ca02e2777b000289265a934eb",
+            "server": "rational-joey.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
