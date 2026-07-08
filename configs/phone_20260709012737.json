@@ -1,0 +1,225 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-18.183.248.78-0f8f7e8068ce8cdc3e2a05d60afbbd0f",
+                "Singapore-47.129.0.40-60cbc9067797a98bfe5280ca1648e04f",
+                "Tokyo-18.179.20.183-38008e4282a25cac80a18d9b358c9b53",
+                "Tokyo-13.112.47.96-ada1e5ac94f8728f735baffa220b68c4",
+                "Tokyo-54.199.82.162-f14a4312cc0d0a731727bd9307684a74",
+                "Tokyo-52.197.156.186-69b24303b316226bb3b273b3f4476987",
+                "Tokyo-13.113.193.176-77098f2b9cf59adc5c8a8d0e78b2ce0e",
+                "Boardman-54.245.180.117-eda9d2e8da8477e7eff1f1b3651ab771",
+                "Aubervilliers-152.89.253.139-edb5d3ad33fec345032a1ae4877b2d16",
+                "Aubervilliers-152.89.253.139-0575eb1421301e4d685f5edebf546adb"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-18.183.248.78-0f8f7e8068ce8cdc3e2a05d60afbbd0f",
+                "Singapore-47.129.0.40-60cbc9067797a98bfe5280ca1648e04f",
+                "Tokyo-18.179.20.183-38008e4282a25cac80a18d9b358c9b53",
+                "Tokyo-13.112.47.96-ada1e5ac94f8728f735baffa220b68c4",
+                "Tokyo-54.199.82.162-f14a4312cc0d0a731727bd9307684a74",
+                "Tokyo-52.197.156.186-69b24303b316226bb3b273b3f4476987",
+                "Tokyo-13.113.193.176-77098f2b9cf59adc5c8a8d0e78b2ce0e",
+                "Boardman-54.245.180.117-eda9d2e8da8477e7eff1f1b3651ab771",
+                "Aubervilliers-152.89.253.139-edb5d3ad33fec345032a1ae4877b2d16",
+                "Aubervilliers-152.89.253.139-0575eb1421301e4d685f5edebf546adb"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-18.183.248.78-0f8f7e8068ce8cdc3e2a05d60afbbd0f",
+                "Singapore-47.129.0.40-60cbc9067797a98bfe5280ca1648e04f",
+                "Tokyo-18.179.20.183-38008e4282a25cac80a18d9b358c9b53",
+                "Tokyo-13.112.47.96-ada1e5ac94f8728f735baffa220b68c4",
+                "Tokyo-54.199.82.162-f14a4312cc0d0a731727bd9307684a74",
+                "Tokyo-52.197.156.186-69b24303b316226bb3b273b3f4476987",
+                "Tokyo-13.113.193.176-77098f2b9cf59adc5c8a8d0e78b2ce0e",
+                "Boardman-54.245.180.117-eda9d2e8da8477e7eff1f1b3651ab771",
+                "Aubervilliers-152.89.253.139-edb5d3ad33fec345032a1ae4877b2d16",
+                "Aubervilliers-152.89.253.139-0575eb1421301e4d685f5edebf546adb"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.183.248.78-0f8f7e8068ce8cdc3e2a05d60afbbd0f",
+            "server": "united-grouse.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "united-grouse.rooster465.autos"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-47.129.0.40-60cbc9067797a98bfe5280ca1648e04f",
+            "server": "47.129.0.40",
+            "server_port": 443,
+            "password": "qQe1z5kU8kN6SlKnDt9Ru3Qp",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-sg-001.fastervpn.world"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.179.20.183-38008e4282a25cac80a18d9b358c9b53",
+            "server": "rational-joey.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "rational-joey.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.112.47.96-ada1e5ac94f8728f735baffa220b68c4",
+            "server": "wise-rhino.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "wise-rhino.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-54.199.82.162-f14a4312cc0d0a731727bd9307684a74",
+            "server": "immense-eagle.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "immense-eagle.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-52.197.156.186-69b24303b316226bb3b273b3f4476987",
+            "server": "allowing-ram.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "allowing-ram.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.113.193.176-77098f2b9cf59adc5c8a8d0e78b2ce0e",
+            "server": "dashing-bedbug.rooster465.autos",
+            "server_port": 443,
+            "password": "XG59623478",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "dashing-bedbug.rooster465.autos"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-54.245.180.117-eda9d2e8da8477e7eff1f1b3651ab771",
+            "server": "54.245.180.117",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.139-edb5d3ad33fec345032a1ae4877b2d16",
+            "server": "188.114.97.6",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.139-0575eb1421301e4d685f5edebf546adb",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
