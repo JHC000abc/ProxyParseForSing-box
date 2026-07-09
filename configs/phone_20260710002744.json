@@ -1,0 +1,257 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "San Jose-172.184.210.51-119099a2ae98be06e5bfec2345cb1187",
+                "Incheon-3.36.89.239-a3be6d66e880747d30991c77ae652248",
+                "Singapore-18.141.232.182-0dd03e2d6f040718b6b27b844a1de836",
+                "Boardman-34.212.146.99-8e58df06aa4a49e260bfa8bd8ac328fd",
+                "Boardman-44.245.99.184-48e380d782ff977835e14e22c07b050e",
+                "Boardman-44.249.61.233-7d981fe66bb3d2de0f410a6069e8676e",
+                "Singapore-54.254.22.28-60416d2fedb867406cc029145fec7afd",
+                "Aubervilliers-107.161.160.48-d513154623a1b8b993410b83f104fb6c",
+                "Amsterdam-152.55.184.170-3eedc49a8480549f71a2a33e4dbc2910",
+                "Aubervilliers-217.179.6.70-4921c3bd567664494c6d76a63454f92c",
+                "Aubervilliers-107.161.160.48-f55c39669634feb4a353efc8e0b45c68"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "San Jose-172.184.210.51-119099a2ae98be06e5bfec2345cb1187",
+                "Incheon-3.36.89.239-a3be6d66e880747d30991c77ae652248",
+                "Singapore-18.141.232.182-0dd03e2d6f040718b6b27b844a1de836",
+                "Boardman-34.212.146.99-8e58df06aa4a49e260bfa8bd8ac328fd",
+                "Boardman-44.245.99.184-48e380d782ff977835e14e22c07b050e",
+                "Boardman-44.249.61.233-7d981fe66bb3d2de0f410a6069e8676e",
+                "Singapore-54.254.22.28-60416d2fedb867406cc029145fec7afd",
+                "Aubervilliers-107.161.160.48-d513154623a1b8b993410b83f104fb6c",
+                "Amsterdam-152.55.184.170-3eedc49a8480549f71a2a33e4dbc2910",
+                "Aubervilliers-217.179.6.70-4921c3bd567664494c6d76a63454f92c",
+                "Aubervilliers-107.161.160.48-f55c39669634feb4a353efc8e0b45c68"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "San Jose-172.184.210.51-119099a2ae98be06e5bfec2345cb1187",
+                "Incheon-3.36.89.239-a3be6d66e880747d30991c77ae652248",
+                "Singapore-18.141.232.182-0dd03e2d6f040718b6b27b844a1de836",
+                "Boardman-34.212.146.99-8e58df06aa4a49e260bfa8bd8ac328fd",
+                "Boardman-44.245.99.184-48e380d782ff977835e14e22c07b050e",
+                "Boardman-44.249.61.233-7d981fe66bb3d2de0f410a6069e8676e",
+                "Singapore-54.254.22.28-60416d2fedb867406cc029145fec7afd",
+                "Aubervilliers-107.161.160.48-d513154623a1b8b993410b83f104fb6c",
+                "Amsterdam-152.55.184.170-3eedc49a8480549f71a2a33e4dbc2910",
+                "Aubervilliers-217.179.6.70-4921c3bd567664494c6d76a63454f92c",
+                "Aubervilliers-107.161.160.48-f55c39669634feb4a353efc8e0b45c68"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-172.184.210.51-119099a2ae98be06e5bfec2345cb1187",
+            "server": "104.18.42.163",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "download.pusytroller.gq"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-3.36.89.239-a3be6d66e880747d30991c77ae652248",
+            "server": "vpn-kr-003.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-18.141.232.182-0dd03e2d6f040718b6b27b844a1de836",
+            "server": "18.141.232.182",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "https://t.me/WangCai2🇨🇳"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-34.212.146.99-8e58df06aa4a49e260bfa8bd8ac328fd",
+            "server": "34.212.146.99",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "https://t.me/WangCai2🇨🇳"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-44.245.99.184-48e380d782ff977835e14e22c07b050e",
+            "server": "44.245.99.184",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "https://t.me/WangCai2🇨🇳"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Boardman-44.249.61.233-7d981fe66bb3d2de0f410a6069e8676e",
+            "server": "44.249.61.233",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "https://t.me/WangCai2🇨🇳"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-54.254.22.28-60416d2fedb867406cc029145fec7afd",
+            "server": "54.254.22.28",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "https://t.me/WangCai2🇨🇳"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.48-d513154623a1b8b993410b83f104fb6c",
+            "server": "104.16.72.101",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.170-3eedc49a8480549f71a2a33e4dbc2910",
+            "server": "x4g-production-213b.up.railway.app",
+            "server_port": 443,
+            "uuid": "6e475ace-9410-5f61-8ea9-f05fadd1f604",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/6e475ace-9410-5f61-8ea9-f05fadd1f604",
+                "headers": {
+                    "Host": "x4g-production-213b.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-213b.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.70-4921c3bd567664494c6d76a63454f92c",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.48-f55c39669634feb4a353efc8e0b45c68",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
