@@ -1,0 +1,333 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Santa Clara-152.55.176.190-08f55a62309c540dffb98ba2894e651c",
+                "Paris-88.218.196.114-95527a86f557718a0f71a310206ca5cb",
+                "Columbus-3.14.249.239-f174f8127d5b471db2c6adb01e7c81f5",
+                "Paris-51.44.170.232-a8ba765ddb3bced0074929a2b58fb4af",
+                "Tokyo-54.238.164.53-b2ca6cdea36a08154da45c0ab136399f",
+                "Paris-88.218.196.131-30548fa157e4841c41f50343b9ec2a4e",
+                "Paris-88.218.196.114-4a9c84e9ff452219259d48a560ca7220",
+                "Aubervilliers-167.104.216.57-8f61141e41d7aef05f83d857c2849e18",
+                "Paris-88.218.196.114-92c5f786972cd07825f5c34007e721d1",
+                "Amsterdam-108.181.58.239-519aa0d21407e8510402376467b8fecc",
+                "Paris-88.218.196.114-ee00c1c47bee79db29474122770601c6",
+                "Aubervilliers-167.104.216.233-a59cbcbd9aae5f21a0a6941bb5363da7",
+                "Frankfurt am Main-185.226.172.8-70d2bf531f3b3863c91bc519499683bd",
+                "Paris-88.218.196.131-88ddeb9d48dff909752fb82a27189627"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Santa Clara-152.55.176.190-08f55a62309c540dffb98ba2894e651c",
+                "Paris-88.218.196.114-95527a86f557718a0f71a310206ca5cb",
+                "Columbus-3.14.249.239-f174f8127d5b471db2c6adb01e7c81f5",
+                "Paris-51.44.170.232-a8ba765ddb3bced0074929a2b58fb4af",
+                "Tokyo-54.238.164.53-b2ca6cdea36a08154da45c0ab136399f",
+                "Paris-88.218.196.131-30548fa157e4841c41f50343b9ec2a4e",
+                "Paris-88.218.196.114-4a9c84e9ff452219259d48a560ca7220",
+                "Aubervilliers-167.104.216.57-8f61141e41d7aef05f83d857c2849e18",
+                "Paris-88.218.196.114-92c5f786972cd07825f5c34007e721d1",
+                "Amsterdam-108.181.58.239-519aa0d21407e8510402376467b8fecc",
+                "Paris-88.218.196.114-ee00c1c47bee79db29474122770601c6",
+                "Aubervilliers-167.104.216.233-a59cbcbd9aae5f21a0a6941bb5363da7",
+                "Frankfurt am Main-185.226.172.8-70d2bf531f3b3863c91bc519499683bd",
+                "Paris-88.218.196.131-88ddeb9d48dff909752fb82a27189627"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.190-08f55a62309c540dffb98ba2894e651c",
+            "server": "x4g-production-06e2.up.railway.app",
+            "server_port": 443,
+            "uuid": "14dc1390-2efc-724d-9dfa-1bc02bc644bc",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/14dc1390-2efc-724d-9dfa-1bc02bc644bc",
+                "headers": {
+                    "Host": "x4g-production-06e2.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-06e2.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.114-95527a86f557718a0f71a310206ca5cb",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Columbus-3.14.249.239-f174f8127d5b471db2c6adb01e7c81f5",
+            "server": "3.14.249.239",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Paris-51.44.170.232-a8ba765ddb3bced0074929a2b58fb4af",
+            "server": "51.44.170.232",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Tokyo-54.238.164.53-b2ca6cdea36a08154da45c0ab136399f",
+            "server": "54.238.164.53",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.131-30548fa157e4841c41f50343b9ec2a4e",
+            "server": "104.16.72.101",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.114-4a9c84e9ff452219259d48a560ca7220",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.57-8f61141e41d7aef05f83d857c2849e18",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.114-92c5f786972cd07825f5c34007e721d1",
+            "server": "104.16.72.139",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Amsterdam-108.181.58.239-519aa0d21407e8510402376467b8fecc",
+            "server": "108.181.58.239",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "CJmTCCx7Ltud"
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.114-ee00c1c47bee79db29474122770601c6",
+            "server": "188.114.97.6",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.233-a59cbcbd9aae5f21a0a6941bb5363da7",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-185.226.172.8-70d2bf531f3b3863c91bc519499683bd",
+            "server": "185.226.172.8",
+            "server_port": 8008,
+            "method": "aes-256-gcm",
+            "password": "XKFKl2rULjIp74"
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.131-88ddeb9d48dff909752fb82a27189627",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
