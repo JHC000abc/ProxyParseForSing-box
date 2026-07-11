@@ -1,0 +1,338 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-195.63.167.220-769de1c7af95ad88fd7431d97ce0b759",
+                "Aubervilliers-167.104.216.119-2e2a7c46364467e74830ba3541152d8f",
+                "Amsterdam-62.84.98.106-9b59469bcf0ac6fce2176776490616e5",
+                "Amsterdam-208.77.244.144-b34bb5da69260c680b8e26cf7855eb82",
+                "Singapore-140.245.55.211-803e39f5328713e7e3773333d3895ccb",
+                "Amsterdam-152.55.184.24-a328c691c32fdcc64fcb7994a95f54ab",
+                "Santa Clara-152.55.176.190-44850d43e3a25ae8779a4306244ce354",
+                "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+                "Aubervilliers-217.179.6.228-414935129ec3e7f9874a021f0bcb63d7",
+                "Aubervilliers-152.89.253.201-b16d1f9659269a9e680bfc6ccb8cc051",
+                "Lille-91.134.102.60-196b59e74a5eac2b9a674c43bf1c4515",
+                "Aubervilliers-167.104.216.154-74c2bd66cd050fa94ff054ceb835a6e1",
+                "Aubervilliers-217.179.6.228-621f57f3884e747f55df296167fd6c7f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-195.63.167.220-769de1c7af95ad88fd7431d97ce0b759",
+                "Aubervilliers-167.104.216.119-2e2a7c46364467e74830ba3541152d8f",
+                "Amsterdam-62.84.98.106-9b59469bcf0ac6fce2176776490616e5",
+                "Amsterdam-208.77.244.144-b34bb5da69260c680b8e26cf7855eb82",
+                "Singapore-140.245.55.211-803e39f5328713e7e3773333d3895ccb",
+                "Amsterdam-152.55.184.24-a328c691c32fdcc64fcb7994a95f54ab",
+                "Santa Clara-152.55.176.190-44850d43e3a25ae8779a4306244ce354",
+                "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+                "Aubervilliers-217.179.6.228-414935129ec3e7f9874a021f0bcb63d7",
+                "Aubervilliers-152.89.253.201-b16d1f9659269a9e680bfc6ccb8cc051",
+                "Lille-91.134.102.60-196b59e74a5eac2b9a674c43bf1c4515",
+                "Aubervilliers-167.104.216.154-74c2bd66cd050fa94ff054ceb835a6e1",
+                "Aubervilliers-217.179.6.228-621f57f3884e747f55df296167fd6c7f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-195.63.167.220-769de1c7af95ad88fd7431d97ce0b759",
+                "Aubervilliers-167.104.216.119-2e2a7c46364467e74830ba3541152d8f",
+                "Amsterdam-62.84.98.106-9b59469bcf0ac6fce2176776490616e5",
+                "Amsterdam-208.77.244.144-b34bb5da69260c680b8e26cf7855eb82",
+                "Singapore-140.245.55.211-803e39f5328713e7e3773333d3895ccb",
+                "Amsterdam-152.55.184.24-a328c691c32fdcc64fcb7994a95f54ab",
+                "Santa Clara-152.55.176.190-44850d43e3a25ae8779a4306244ce354",
+                "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+                "Aubervilliers-217.179.6.228-414935129ec3e7f9874a021f0bcb63d7",
+                "Aubervilliers-152.89.253.201-b16d1f9659269a9e680bfc6ccb8cc051",
+                "Lille-91.134.102.60-196b59e74a5eac2b9a674c43bf1c4515",
+                "Aubervilliers-167.104.216.154-74c2bd66cd050fa94ff054ceb835a6e1",
+                "Aubervilliers-217.179.6.228-621f57f3884e747f55df296167fd6c7f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-195.63.167.220-769de1c7af95ad88fd7431d97ce0b759",
+            "server": "195.63.167.220",
+            "server_port": 8090,
+            "uuid": "ef14c532-b69a-4f46-ae29-272f2fdaf673",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "rukr.speedload.ru"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.119-2e2a7c46364467e74830ba3541152d8f",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-62.84.98.106-9b59469bcf0ac6fce2176776490616e5",
+            "server": "62.84.98.106",
+            "server_port": 8090,
+            "uuid": "ef14c532-b69a-4f46-ae29-272f2fdaf673",
+            "transport": {
+                "type": "ws",
+                "path": "/ws",
+                "headers": {
+                    "Host": "rukr.speedload.ru"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-208.77.244.144-b34bb5da69260c680b8e26cf7855eb82",
+            "server": "x4g-production-ffd1.up.railway.app",
+            "server_port": 443,
+            "uuid": "e878eed7-c3f7-cd5c-bb10-468bad9b936c",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/e878eed7-c3f7-cd5c-bb10-468bad9b936c",
+                "headers": {
+                    "Host": "x4g-production-ffd1.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-ffd1.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-140.245.55.211-803e39f5328713e7e3773333d3895ccb",
+            "server": "news.zoom.us",
+            "server_port": 2096,
+            "uuid": "afbe9207-eb8f-4e39-898a-d78fb3eddd0a",
+            "transport": {
+                "type": "ws",
+                "path": "/xprolk-primeline",
+                "headers": {
+                    "Host": "primelinelk.me"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "primelinelk.me"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.24-a328c691c32fdcc64fcb7994a95f54ab",
+            "server": "1405-4-19-ansooyefilter-telegram.up.railway.app",
+            "server_port": 443,
+            "uuid": "fd410906-cb49-760c-8c7b-64e230f8d4d4",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/fd410906-cb49-760c-8c7b-64e230f8d4d4",
+                "headers": {
+                    "Host": "1405-4-19-ansooyefilter-telegram.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "1405-4-19-ansooyefilter-telegram.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.190-44850d43e3a25ae8779a4306244ce354",
+            "server": "x4g-production-06e2.up.railway.app",
+            "server_port": 443,
+            "uuid": "14dc1390-2efc-724d-9dfa-1bc02bc644bc",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/14dc1390-2efc-724d-9dfa-1bc02bc644bc",
+                "headers": {
+                    "Host": "x4g-production-06e2.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-06e2.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+            "server": "ans-channel-production-b262.up.railway.app",
+            "server_port": 443,
+            "uuid": "f753c98a-bb23-e85a-d174-ebbeabcd7626",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/f753c98a-bb23-e85a-d174-ebbeabcd7626",
+                "headers": {
+                    "Host": "ans-channel-production-b262.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ans-channel-production-b262.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.228-414935129ec3e7f9874a021f0bcb63d7",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.201-b16d1f9659269a9e680bfc6ccb8cc051",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lille-91.134.102.60-196b59e74a5eac2b9a674c43bf1c4515",
+            "server": "104.21.52.100",
+            "server_port": 8443,
+            "uuid": "475823b6-71f6-4a63-a7de-0ecf0958f8db",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "ad-011.signalo3gjj.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ad-011.signalo3gjj.site"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.154-74c2bd66cd050fa94ff054ceb835a6e1",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.228-621f57f3884e747f55df296167fd6c7f",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
