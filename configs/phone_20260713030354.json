@@ -1,0 +1,197 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-2.27.23.191-75d5584d389b8f1ab8134de19ac2a7be",
+                "Santa Clara-152.55.176.161-36d9de718ea9db08cb14bce7dd8a7b0b",
+                "Santa Clara-162.220.232.11-5c76826050490835174cea8af7f60085",
+                "Helsinki-65.109.215.50-4c27bc59397c4b216de05fd79942a82f",
+                "San Jose-54.193.175.225-0b66e5def4c736637556c022a96126f0",
+                "Aubervilliers-167.104.216.213-407995b8faf587ca4499023aed900a4c",
+                "Aubervilliers-45.67.139.157-38f3fd5d388fe77739ce9aa9e0ab93b9"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-2.27.23.191-75d5584d389b8f1ab8134de19ac2a7be",
+                "Santa Clara-152.55.176.161-36d9de718ea9db08cb14bce7dd8a7b0b",
+                "Santa Clara-162.220.232.11-5c76826050490835174cea8af7f60085",
+                "Helsinki-65.109.215.50-4c27bc59397c4b216de05fd79942a82f",
+                "San Jose-54.193.175.225-0b66e5def4c736637556c022a96126f0",
+                "Aubervilliers-167.104.216.213-407995b8faf587ca4499023aed900a4c",
+                "Aubervilliers-45.67.139.157-38f3fd5d388fe77739ce9aa9e0ab93b9"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-2.27.23.191-75d5584d389b8f1ab8134de19ac2a7be",
+                "Santa Clara-152.55.176.161-36d9de718ea9db08cb14bce7dd8a7b0b",
+                "Santa Clara-162.220.232.11-5c76826050490835174cea8af7f60085",
+                "Helsinki-65.109.215.50-4c27bc59397c4b216de05fd79942a82f",
+                "San Jose-54.193.175.225-0b66e5def4c736637556c022a96126f0",
+                "Aubervilliers-167.104.216.213-407995b8faf587ca4499023aed900a4c",
+                "Aubervilliers-45.67.139.157-38f3fd5d388fe77739ce9aa9e0ab93b9"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-2.27.23.191-75d5584d389b8f1ab8134de19ac2a7be",
+            "server": "sh02.auragg.org",
+            "server_port": 443,
+            "password": "8bc63720-5ec8-45b5-b6a6-9a21ffb490e8",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sh02.auragg.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.161-36d9de718ea9db08cb14bce7dd8a7b0b",
+            "server": "x4g-production-0a61.up.railway.app",
+            "server_port": 443,
+            "uuid": "1725bfd6-5c74-759f-64d1-2f442f1c5992",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/1725bfd6-5c74-759f-64d1-2f442f1c5992",
+                "headers": {
+                    "Host": "x4g-production-0a61.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-0a61.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-162.220.232.11-5c76826050490835174cea8af7f60085",
+            "server": "x4g-production-0a45.up.railway.app",
+            "server_port": 443,
+            "uuid": "778220c8-646a-b3d2-3d41-be2fe98e9e23",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/778220c8-646a-b3d2-3d41-be2fe98e9e23",
+                "headers": {
+                    "Host": "x4g-production-0a45.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-0a45.up.railway.app"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Helsinki-65.109.215.50-4c27bc59397c4b216de05fd79942a82f",
+            "server": "65.109.215.50",
+            "server_port": 54673,
+            "password": "Ldbgt4IUYv0S+5cFrG4vcWEbvdf8RgPGmoIXhnnOEh4="
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-54.193.175.225-0b66e5def4c736637556c022a96126f0",
+            "server": "x4g-production-1e7a.up.railway.app",
+            "server_port": 443,
+            "uuid": "65bed288-9602-d3aa-f7ef-752da3683677",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/65bed288-9602-d3aa-f7ef-752da3683677",
+                "headers": {
+                    "Host": "x4g-production-1e7a.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-1e7a.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.213-407995b8faf587ca4499023aed900a4c",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.67.139.157-38f3fd5d388fe77739ce9aa9e0ab93b9",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
