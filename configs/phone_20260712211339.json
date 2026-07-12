@@ -1,0 +1,271 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Aubervilliers-167.104.216.223-2e2a7c46364467e74830ba3541152d8f",
+                "Santa Clara-152.55.176.42-c54b2f9f045e44a0d98d24bc46319a43",
+                "Aubervilliers-167.104.216.223-53f38b7076104f658de3e0105e4e3922",
+                "Stockholm-185.65.135.176-7ee565ed59c83393b82ef78815f9f79b",
+                "Frankfurt am Main-140.233.177.48-c0f011f3509022a5d8081a851a305094",
+                "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+                "Amsterdam-152.55.184.91-9d078300f4afe81b8bb9320482653025",
+                "Frankfurt am Main-162.19.228.119-6ce6068f1806d0a38f0dc464a0197f9a",
+                "San Jose-54.193.175.225-9d35d1966eb5420daa6984d668f7eb45",
+                "Singapore-34.142.240.125-81b769838ef2d6ecf0bb9256a36e81e5"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Aubervilliers-167.104.216.223-2e2a7c46364467e74830ba3541152d8f",
+                "Santa Clara-152.55.176.42-c54b2f9f045e44a0d98d24bc46319a43",
+                "Aubervilliers-167.104.216.223-53f38b7076104f658de3e0105e4e3922",
+                "Stockholm-185.65.135.176-7ee565ed59c83393b82ef78815f9f79b",
+                "Frankfurt am Main-140.233.177.48-c0f011f3509022a5d8081a851a305094",
+                "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+                "Amsterdam-152.55.184.91-9d078300f4afe81b8bb9320482653025",
+                "Frankfurt am Main-162.19.228.119-6ce6068f1806d0a38f0dc464a0197f9a",
+                "San Jose-54.193.175.225-9d35d1966eb5420daa6984d668f7eb45",
+                "Singapore-34.142.240.125-81b769838ef2d6ecf0bb9256a36e81e5"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Aubervilliers-167.104.216.223-2e2a7c46364467e74830ba3541152d8f",
+                "Santa Clara-152.55.176.42-c54b2f9f045e44a0d98d24bc46319a43",
+                "Aubervilliers-167.104.216.223-53f38b7076104f658de3e0105e4e3922",
+                "Stockholm-185.65.135.176-7ee565ed59c83393b82ef78815f9f79b",
+                "Frankfurt am Main-140.233.177.48-c0f011f3509022a5d8081a851a305094",
+                "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+                "Amsterdam-152.55.184.91-9d078300f4afe81b8bb9320482653025",
+                "Frankfurt am Main-162.19.228.119-6ce6068f1806d0a38f0dc464a0197f9a",
+                "San Jose-54.193.175.225-9d35d1966eb5420daa6984d668f7eb45",
+                "Singapore-34.142.240.125-81b769838ef2d6ecf0bb9256a36e81e5"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.223-2e2a7c46364467e74830ba3541152d8f",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.42-c54b2f9f045e44a0d98d24bc46319a43",
+            "server": "ansooyefilter-channel-production-f50d.up.railway.app",
+            "server_port": 443,
+            "uuid": "2107d017-9bb3-d249-0938-c0ad831fb011",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/2107d017-9bb3-d249-0938-c0ad831fb011",
+                "headers": {
+                    "Host": "ansooyefilter-channel-production-f50d.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ansooyefilter-channel-production-f50d.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.223-53f38b7076104f658de3e0105e4e3922",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Stockholm-185.65.135.176-7ee565ed59c83393b82ef78815f9f79b",
+            "server": "assets.gateway-stream.com",
+            "server_port": 52018,
+            "password": "elknam6l7izf3z71",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "assets.gateway-stream.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "53cgqwhojoxri5lr"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-140.233.177.48-c0f011f3509022a5d8081a851a305094",
+            "server": "140.233.177.48",
+            "server_port": 33884,
+            "password": "uQUfGOf9Mx",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.oracle.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "t-me-V2RayyNGvpn"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.98-de617ed82bb20a574a42e9c7a0b4d0c9",
+            "server": "ans-channel-production-b262.up.railway.app",
+            "server_port": 443,
+            "uuid": "f753c98a-bb23-e85a-d174-ebbeabcd7626",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/f753c98a-bb23-e85a-d174-ebbeabcd7626",
+                "headers": {
+                    "Host": "ans-channel-production-b262.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ans-channel-production-b262.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.91-9d078300f4afe81b8bb9320482653025",
+            "server": "x4g-production-b148.up.railway.app",
+            "server_port": 443,
+            "uuid": "e004cd21-d55b-a5cf-b0e2-af27acc7ec83",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/e004cd21-d55b-a5cf-b0e2-af27acc7ec83",
+                "headers": {
+                    "Host": "x4g-production-b148.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-b148.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-6ce6068f1806d0a38f0dc464a0197f9a",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-54.193.175.225-9d35d1966eb5420daa6984d668f7eb45",
+            "server": "x4g-production-1e7a.up.railway.app",
+            "server_port": 443,
+            "uuid": "65bed288-9602-d3aa-f7ef-752da3683677",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/65bed288-9602-d3aa-f7ef-752da3683677",
+                "headers": {
+                    "Host": "x4g-production-1e7a.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "x4g-production-1e7a.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-34.142.240.125-81b769838ef2d6ecf0bb9256a36e81e5",
+            "server": "69.46.46.77",
+            "server_port": 443,
+            "uuid": "16f3dd21-8664-4ece-af5d-3b70061ee97d",
+            "transport": {
+                "type": "ws",
+                "path": "/unicorn",
+                "headers": {
+                    "Host": "uni04.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "uni04.up.railway.app"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
