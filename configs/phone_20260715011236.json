@@ -1,0 +1,238 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Aubervilliers-152.89.253.147-140a9bfcced2158eec7eeab03ee64cfa",
+                "Aubervilliers-152.89.253.147-b82b0007e11da3e490f16bdb11b72020",
+                "Aubervilliers-152.89.253.147-5869a6aac6d33ed926c4c8025665d076",
+                "Paris-88.218.196.78-6724f16d00d92495b1c24fb17b04c166",
+                "Frankfurt am Main-217.179.5.135-15f712ce509a13cb752ca8742e9dc5a5",
+                "Paris-88.218.196.78-982fdd55b904ef1663188345175f42d1",
+                "Aubervilliers-152.89.253.96-509388db620d863aa32d45a2d5227aef",
+                "Aubervilliers-152.89.253.147-95936833a3217716236de52f11590db0"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Aubervilliers-152.89.253.147-140a9bfcced2158eec7eeab03ee64cfa",
+                "Aubervilliers-152.89.253.147-b82b0007e11da3e490f16bdb11b72020",
+                "Aubervilliers-152.89.253.147-5869a6aac6d33ed926c4c8025665d076",
+                "Paris-88.218.196.78-6724f16d00d92495b1c24fb17b04c166",
+                "Frankfurt am Main-217.179.5.135-15f712ce509a13cb752ca8742e9dc5a5",
+                "Paris-88.218.196.78-982fdd55b904ef1663188345175f42d1",
+                "Aubervilliers-152.89.253.96-509388db620d863aa32d45a2d5227aef",
+                "Aubervilliers-152.89.253.147-95936833a3217716236de52f11590db0"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Aubervilliers-152.89.253.147-140a9bfcced2158eec7eeab03ee64cfa",
+                "Aubervilliers-152.89.253.147-b82b0007e11da3e490f16bdb11b72020",
+                "Aubervilliers-152.89.253.147-5869a6aac6d33ed926c4c8025665d076",
+                "Paris-88.218.196.78-6724f16d00d92495b1c24fb17b04c166",
+                "Frankfurt am Main-217.179.5.135-15f712ce509a13cb752ca8742e9dc5a5",
+                "Paris-88.218.196.78-982fdd55b904ef1663188345175f42d1",
+                "Aubervilliers-152.89.253.96-509388db620d863aa32d45a2d5227aef",
+                "Aubervilliers-152.89.253.147-95936833a3217716236de52f11590db0"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.147-140a9bfcced2158eec7eeab03ee64cfa",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.147-b82b0007e11da3e490f16bdb11b72020",
+            "server": "162.159.38.119",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.147-5869a6aac6d33ed926c4c8025665d076",
+            "server": "104.16.72.101",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.78-6724f16d00d92495b1c24fb17b04c166",
+            "server": "104.16.72.41",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-217.179.5.135-15f712ce509a13cb752ca8742e9dc5a5",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.78-982fdd55b904ef1663188345175f42d1",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.96-509388db620d863aa32d45a2d5227aef",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.147-95936833a3217716236de52f11590db0",
+            "server": "104.16.72.139",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
