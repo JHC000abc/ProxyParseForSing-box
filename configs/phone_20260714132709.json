@@ -1,0 +1,220 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Kwai Chung-45.134.38.97-1cb474d286bbca3de1438791c4ce116c",
+                "Helsinki-204.168.228.11-1344d0a174789ef547dd4cf2a2ab57fa",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Los Angeles-185.132.54.224-a6e714f0ec61313d2ed7cef88d00a2c3",
+                "Los Angeles-23.27.186.142-f018c1157a43d71c1168ab74472d04e4",
+                "New York City-157.254.227.58-e9d7db7dc053b4caa8df4fe6a4d911d1",
+                "Aubervilliers-152.89.253.216-97f33e61e4112b3d3790bb0b507fca24",
+                "Kwai Chung-45.134.38.97-6f3d386a9efa17e0a1a48967d72263b1"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Kwai Chung-45.134.38.97-1cb474d286bbca3de1438791c4ce116c",
+                "Helsinki-204.168.228.11-1344d0a174789ef547dd4cf2a2ab57fa",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Los Angeles-185.132.54.224-a6e714f0ec61313d2ed7cef88d00a2c3",
+                "Los Angeles-23.27.186.142-f018c1157a43d71c1168ab74472d04e4",
+                "New York City-157.254.227.58-e9d7db7dc053b4caa8df4fe6a4d911d1",
+                "Aubervilliers-152.89.253.216-97f33e61e4112b3d3790bb0b507fca24",
+                "Kwai Chung-45.134.38.97-6f3d386a9efa17e0a1a48967d72263b1"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Kwai Chung-45.134.38.97-1cb474d286bbca3de1438791c4ce116c",
+                "Helsinki-204.168.228.11-1344d0a174789ef547dd4cf2a2ab57fa",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Los Angeles-185.132.54.224-a6e714f0ec61313d2ed7cef88d00a2c3",
+                "Los Angeles-23.27.186.142-f018c1157a43d71c1168ab74472d04e4",
+                "New York City-157.254.227.58-e9d7db7dc053b4caa8df4fe6a4d911d1",
+                "Aubervilliers-152.89.253.216-97f33e61e4112b3d3790bb0b507fca24",
+                "Kwai Chung-45.134.38.97-6f3d386a9efa17e0a1a48967d72263b1"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Kwai Chung-45.134.38.97-1cb474d286bbca3de1438791c4ce116c",
+            "server": "betty.ns.cloudflare.com",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-204.168.228.11-1344d0a174789ef547dd4cf2a2ab57fa",
+            "server": "fast88.screw.page",
+            "server_port": 443,
+            "password": "c0aa0cee-e855-4bcc-9afc-46241cb17990",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fast88.screw.page"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "e7b178da-65e8-45ad-8550-de40eb0a7835",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "sahanwickramasinghevip.shop"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-185.132.54.224-a6e714f0ec61313d2ed7cef88d00a2c3",
+            "server": "b32-16.cmj0502.cn",
+            "server_port": 45979,
+            "uuid": "23bdf6df-c482-46d0-c0f4-5a98d534ea11",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/test",
+                "headers": {
+                    "Host": "b32-16.cmj0502.cn"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Los Angeles-23.27.186.142-f018c1157a43d71c1168ab74472d04e4",
+            "server": "b32-14.cmj0502.cn",
+            "server_port": 45979,
+            "uuid": "23bdf6df-c482-46d0-c0f4-5a98d534ea11",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/test",
+                "headers": {
+                    "Host": "b32-14.cmj0502.cn"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "New York City-157.254.227.58-e9d7db7dc053b4caa8df4fe6a4d911d1",
+            "server": "xsj004-10.facai2024.com",
+            "server_port": 443,
+            "uuid": "1f1aa362-2576-4989-8fdb-7cf1c2c96490",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/1f1aa362-25",
+                "headers": {
+                    "Host": "xsj004-10.facai2024.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-152.89.253.216-97f33e61e4112b3d3790bb0b507fca24",
+            "server": "188.114.97.6",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kwai Chung-45.134.38.97-6f3d386a9efa17e0a1a48967d72263b1",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
