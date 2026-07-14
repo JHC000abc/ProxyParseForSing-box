@@ -1,0 +1,263 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Kansas City-45.39.12.165-bcd4cd16d1ceca66dd77e2b79b13fa1a",
+                "Aubervilliers-107.161.160.48-b20122b99ed51410202c5bc154739bfa",
+                "Aubervilliers-167.104.216.213-4cc1dc5ffe732b0b687fcd1ce4473819",
+                "Aubervilliers-107.161.160.48-0a5e6b301c5a26fe66157b36113bf184",
+                "Aubervilliers-107.161.160.48-713a01c439c781796bb7db15fbd4f0c3",
+                "Frankfurt am Main-57.129.41.216-e6c5c7052312c332f3b944c6c3edbfd2",
+                "Aubervilliers-107.161.160.48-5b54c11c504fa36bdfaf82b9e1fc00a2",
+                "Falkenstein-46.4.162.50-41657714c8436b0479ac7482839ab760"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Kansas City-45.39.12.165-bcd4cd16d1ceca66dd77e2b79b13fa1a",
+                "Aubervilliers-107.161.160.48-b20122b99ed51410202c5bc154739bfa",
+                "Aubervilliers-167.104.216.213-4cc1dc5ffe732b0b687fcd1ce4473819",
+                "Aubervilliers-107.161.160.48-0a5e6b301c5a26fe66157b36113bf184",
+                "Aubervilliers-107.161.160.48-713a01c439c781796bb7db15fbd4f0c3",
+                "Frankfurt am Main-57.129.41.216-e6c5c7052312c332f3b944c6c3edbfd2",
+                "Aubervilliers-107.161.160.48-5b54c11c504fa36bdfaf82b9e1fc00a2",
+                "Falkenstein-46.4.162.50-41657714c8436b0479ac7482839ab760"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "e7b178da-65e8-45ad-8550-de40eb0a7835",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "sahanwickramasinghevip.shop"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kansas City-45.39.12.165-bcd4cd16d1ceca66dd77e2b79b13fa1a",
+            "server": "45.39.12.165",
+            "server_port": 8442,
+            "uuid": "e0bced99-604f-41d1-8c0c-467e5838c33f",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "45.39.12.165"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.48-b20122b99ed51410202c5bc154739bfa",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.213-4cc1dc5ffe732b0b687fcd1ce4473819",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.48-0a5e6b301c5a26fe66157b36113bf184",
+            "server": "104.16.72.41",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.48-713a01c439c781796bb7db15fbd4f0c3",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-57.129.41.216-e6c5c7052312c332f3b944c6c3edbfd2",
+            "server": "57.129.41.216",
+            "server_port": 80,
+            "uuid": "7d74eae4-8a06-4306-a923-ad686f30bf26",
+            "transport": {
+                "type": "ws",
+                "path": "/vless/",
+                "headers": {
+                    "Host": "OV-Germany1.09vpn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.48-5b54c11c504fa36bdfaf82b9e1fc00a2",
+            "server": "104.16.72.101",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-46.4.162.50-41657714c8436b0479ac7482839ab760",
+            "server": "ser.coolfrog-bot.ir",
+            "server_port": 8080,
+            "uuid": "adc04443-bbef-4434-b77c-3255d8be6ef3",
+            "transport": {
+                "type": "ws",
+                "path": "/steam",
+                "headers": {
+                    "Host": "ser.coolfrog-bot.ir"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
