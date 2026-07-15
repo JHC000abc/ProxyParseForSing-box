@@ -1,0 +1,358 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "New York City-147.90.234.133-ad2072ffbd99aa22483200462f74e4f8",
+                "Lelystad-192.76.160.203-fd9b968b627128fcab137cc374e2c687",
+                "Chuncheon-140.245.74.46-5bedce4ae38e9adde3fecd921967426c",
+                "Tallinn-109.206.241.10-2b89939e61dd3b5984f33c9be019c3db",
+                "Dallas-154.16.137.194-6e1c3291f0ddacf277492fe470b9db51",
+                "Aubervilliers-217.179.6.182-cc4244b9db3fe05b900aa4a7e13d128f",
+                "Aubervilliers-167.104.216.119-d81910db5c4c5081e13940c870c96d2b",
+                "Aubervilliers-217.179.6.182-4042f14b1fb5c8456012b91c01980257",
+                "Aubervilliers-107.161.160.31-584430bb061d6c3d42355d1bd9a22f04",
+                "Aubervilliers-217.179.6.182-d77f2ebc146735c8046472be080cb261",
+                "Aubervilliers-107.161.160.31-572f4a6a733e5bbfc5e1829ed71254c0",
+                "Aubervilliers-217.179.6.182-5f6fb0369ee6c87a1156cdab31fdd770",
+                "Kwai Chung-45.134.38.63-58bcd54e7173d9063f759afd62fe241f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "New York City-147.90.234.133-ad2072ffbd99aa22483200462f74e4f8",
+                "Lelystad-192.76.160.203-fd9b968b627128fcab137cc374e2c687",
+                "Chuncheon-140.245.74.46-5bedce4ae38e9adde3fecd921967426c",
+                "Tallinn-109.206.241.10-2b89939e61dd3b5984f33c9be019c3db",
+                "Dallas-154.16.137.194-6e1c3291f0ddacf277492fe470b9db51",
+                "Aubervilliers-217.179.6.182-cc4244b9db3fe05b900aa4a7e13d128f",
+                "Aubervilliers-167.104.216.119-d81910db5c4c5081e13940c870c96d2b",
+                "Aubervilliers-217.179.6.182-4042f14b1fb5c8456012b91c01980257",
+                "Aubervilliers-107.161.160.31-584430bb061d6c3d42355d1bd9a22f04",
+                "Aubervilliers-217.179.6.182-d77f2ebc146735c8046472be080cb261",
+                "Aubervilliers-107.161.160.31-572f4a6a733e5bbfc5e1829ed71254c0",
+                "Aubervilliers-217.179.6.182-5f6fb0369ee6c87a1156cdab31fdd770",
+                "Kwai Chung-45.134.38.63-58bcd54e7173d9063f759afd62fe241f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "e7b178da-65e8-45ad-8550-de40eb0a7835",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "sahanwickramasinghevip.shop"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-147.90.234.133-ad2072ffbd99aa22483200462f74e4f8",
+            "server": "tinkered-pennies-puppies.freesocks.work",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "gaM3vd5zfR1ay1v7hfn4X6"
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.203-fd9b968b627128fcab137cc374e2c687",
+            "server": "140.248.180.30",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hamshahriesfahan.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-140.245.74.46-5bedce4ae38e9adde3fecd921967426c",
+            "server": "138.2.116.23",
+            "server_port": 55020,
+            "password": "d5m-5bGOsVbFgRlxsEyO3pCF",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "140.245.74.46.sslip.io"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tallinn-109.206.241.10-2b89939e61dd3b5984f33c9be019c3db",
+            "server": "109.206.241.10",
+            "server_port": 8443,
+            "password": "oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "russiapower.accesscam.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dallas-154.16.137.194-6e1c3291f0ddacf277492fe470b9db51",
+            "server": "108.162.198.249",
+            "server_port": 443,
+            "uuid": "07c87117-8472-41f6-bea8-ddcb012b9b41",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "edge-267487d0.pages.dev"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "edge-267487d0.pages.dev"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.182-cc4244b9db3fe05b900aa4a7e13d128f",
+            "server": "104.16.72.101",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.119-d81910db5c4c5081e13940c870c96d2b",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.182-4042f14b1fb5c8456012b91c01980257",
+            "server": "104.16.72.139",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.31-584430bb061d6c3d42355d1bd9a22f04",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.182-d77f2ebc146735c8046472be080cb261",
+            "server": "162.159.38.119",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-107.161.160.31-572f4a6a733e5bbfc5e1829ed71254c0",
+            "server": "104.16.72.41",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-217.179.6.182-5f6fb0369ee6c87a1156cdab31fdd770",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kwai Chung-45.134.38.63-58bcd54e7173d9063f759afd62fe241f",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
