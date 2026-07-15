@@ -1,0 +1,237 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-204.168.228.11-1344d0a174789ef547dd4cf2a2ab57fa",
+                "New York City-147.90.234.133-ad2072ffbd99aa22483200462f74e4f8",
+                "Lelystad-192.76.160.203-fd9b968b627128fcab137cc374e2c687",
+                "Tallinn-109.206.241.10-2b89939e61dd3b5984f33c9be019c3db",
+                "Paris-88.218.196.153-cfe856e3dac9c68a5624c0b5ce671ca8",
+                "Frankfurt am Main-111.235.151.234-1b209c36ef8726c43cc5c654108b5e05",
+                "Paris-88.218.196.153-02e55900bc8c830f70951978991f1a36",
+                "Aubervilliers-45.67.139.33-40dadac82a2ecc035133ff6faee964f7"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-204.168.228.11-1344d0a174789ef547dd4cf2a2ab57fa",
+                "New York City-147.90.234.133-ad2072ffbd99aa22483200462f74e4f8",
+                "Lelystad-192.76.160.203-fd9b968b627128fcab137cc374e2c687",
+                "Tallinn-109.206.241.10-2b89939e61dd3b5984f33c9be019c3db",
+                "Paris-88.218.196.153-cfe856e3dac9c68a5624c0b5ce671ca8",
+                "Frankfurt am Main-111.235.151.234-1b209c36ef8726c43cc5c654108b5e05",
+                "Paris-88.218.196.153-02e55900bc8c830f70951978991f1a36",
+                "Aubervilliers-45.67.139.33-40dadac82a2ecc035133ff6faee964f7"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-204.168.228.11-1344d0a174789ef547dd4cf2a2ab57fa",
+            "server": "fast88.screw.page",
+            "server_port": 443,
+            "password": "c0aa0cee-e855-4bcc-9afc-46241cb17990",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fast88.screw.page"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-147.90.234.133-ad2072ffbd99aa22483200462f74e4f8",
+            "server": "tinkered-pennies-puppies.freesocks.work",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "gaM3vd5zfR1ay1v7hfn4X6"
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.203-fd9b968b627128fcab137cc374e2c687",
+            "server": "140.248.180.30",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hamshahriesfahan.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tallinn-109.206.241.10-2b89939e61dd3b5984f33c9be019c3db",
+            "server": "109.206.241.10",
+            "server_port": 8443,
+            "password": "oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "russiapower.accesscam.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.153-cfe856e3dac9c68a5624c0b5ce671ca8",
+            "server": "162.159.38.119",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-111.235.151.234-1b209c36ef8726c43cc5c654108b5e05",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-88.218.196.153-02e55900bc8c830f70951978991f1a36",
+            "server": "104.16.72.139",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.67.139.33-40dadac82a2ecc035133ff6faee964f7",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
