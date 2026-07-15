@@ -1,0 +1,167 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Singapore-172.104.191.205-67244f6542a53d9485d6037e8d033bac",
+                "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+                "Aubervilliers-167.104.216.57-c68dfd3e5aa18a7cf732d39a9f69f4d5",
+                "Frankfurt am Main-111.235.151.248-ce1440e5648be77b2438ec9eece4bc50",
+                "Lelystad-192.76.160.203-52e0c2810ea4f1b13f7631100fa3d238"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Singapore-172.104.191.205-67244f6542a53d9485d6037e8d033bac",
+                "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+                "Aubervilliers-167.104.216.57-c68dfd3e5aa18a7cf732d39a9f69f4d5",
+                "Frankfurt am Main-111.235.151.248-ce1440e5648be77b2438ec9eece4bc50",
+                "Lelystad-192.76.160.203-52e0c2810ea4f1b13f7631100fa3d238"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Singapore-172.104.191.205-67244f6542a53d9485d6037e8d033bac",
+                "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+                "Aubervilliers-167.104.216.57-c68dfd3e5aa18a7cf732d39a9f69f4d5",
+                "Frankfurt am Main-111.235.151.248-ce1440e5648be77b2438ec9eece4bc50",
+                "Lelystad-192.76.160.203-52e0c2810ea4f1b13f7631100fa3d238"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-172.104.191.205-67244f6542a53d9485d6037e8d033bac",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "cac6ec8f-99f0-44c5-814f-2f3f65e4db74",
+            "transport": {
+                "type": "ws",
+                "path": "/dula",
+                "headers": {
+                    "Host": "speed.dulacloud.store"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+            "server": "104.17.70.206",
+            "server_port": 2096,
+            "uuid": "395d040e-a04a-43d7-a1e9-8635f545879a",
+            "transport": {
+                "type": "ws",
+                "path": "/shalana",
+                "headers": {
+                    "Host": "shalana.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shalana.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-167.104.216.57-c68dfd3e5aa18a7cf732d39a9f69f4d5",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-111.235.151.248-ce1440e5648be77b2438ec9eece4bc50",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.203-52e0c2810ea4f1b13f7631100fa3d238",
+            "server": "140.248.180.30",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "speedtest.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
