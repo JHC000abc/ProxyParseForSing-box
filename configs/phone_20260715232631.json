@@ -1,0 +1,238 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Aubervilliers-45.67.139.205-2e2a7c46364467e74830ba3541152d8f",
+                "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+                "Eindhoven-45.43.92.223-b62a33eff9fa67ed36c0f2d0b490f47c",
+                "Eindhoven-45.43.92.223-c7d84a8675329efca2cb34fb30818458",
+                "Kwai Chung-45.134.38.65-366d0c870b67235ab99bdf0a3ced302f",
+                "Eindhoven-45.43.92.223-ba3bf2011ba7e829e22f0647c5848092",
+                "Eindhoven-45.43.92.142-e41e0468de9f2917cc2fb504514376c5",
+                "Eindhoven-45.43.92.142-1705ece2b0401d6d00ce6c146572859b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Aubervilliers-45.67.139.205-2e2a7c46364467e74830ba3541152d8f",
+                "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+                "Eindhoven-45.43.92.223-b62a33eff9fa67ed36c0f2d0b490f47c",
+                "Eindhoven-45.43.92.223-c7d84a8675329efca2cb34fb30818458",
+                "Kwai Chung-45.134.38.65-366d0c870b67235ab99bdf0a3ced302f",
+                "Eindhoven-45.43.92.223-ba3bf2011ba7e829e22f0647c5848092",
+                "Eindhoven-45.43.92.142-e41e0468de9f2917cc2fb504514376c5",
+                "Eindhoven-45.43.92.142-1705ece2b0401d6d00ce6c146572859b"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Aubervilliers-45.67.139.205-2e2a7c46364467e74830ba3541152d8f",
+                "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+                "Eindhoven-45.43.92.223-b62a33eff9fa67ed36c0f2d0b490f47c",
+                "Eindhoven-45.43.92.223-c7d84a8675329efca2cb34fb30818458",
+                "Kwai Chung-45.134.38.65-366d0c870b67235ab99bdf0a3ced302f",
+                "Eindhoven-45.43.92.223-ba3bf2011ba7e829e22f0647c5848092",
+                "Eindhoven-45.43.92.142-e41e0468de9f2917cc2fb504514376c5",
+                "Eindhoven-45.43.92.142-1705ece2b0401d6d00ce6c146572859b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.67.139.205-2e2a7c46364467e74830ba3541152d8f",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-152.42.218.4-c5cbcc74d592d2a41a27479a81dc7e8e",
+            "server": "104.17.70.206",
+            "server_port": 2096,
+            "uuid": "395d040e-a04a-43d7-a1e9-8635f545879a",
+            "transport": {
+                "type": "ws",
+                "path": "/shalana",
+                "headers": {
+                    "Host": "shalana.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shalana.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.223-b62a33eff9fa67ed36c0f2d0b490f47c",
+            "server": "104.16.72.41",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.223-c7d84a8675329efca2cb34fb30818458",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kwai Chung-45.134.38.65-366d0c870b67235ab99bdf0a3ced302f",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.223-ba3bf2011ba7e829e22f0647c5848092",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.142-e41e0468de9f2917cc2fb504514376c5",
+            "server": "188.114.97.6",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-45.43.92.142-1705ece2b0401d6d00ce6c146572859b",
+            "server": "162.159.38.119",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
