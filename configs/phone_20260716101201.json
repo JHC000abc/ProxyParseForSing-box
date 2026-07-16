@@ -1,0 +1,314 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Aubervilliers-45.92.218.150-2e2a7c46364467e74830ba3541152d8f",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Singapore-47.131.229.111-e9d85f6d18a4a86292f696444e63df56",
+                "Eygelshoven-217.60.24.32-e069795b858384639acc56a923bf1cff",
+                "Frankfurt am Main-204.11.2.131-ae757ee812749d19d71c230c9f3ced07",
+                "Frankfurt am Main-43.165.2.200-e1abbd7220ec7eba96b523afc6592b93",
+                "Frankfurt am Main-204.11.2.53-d443233c34defe33c2e36161c830ea2d",
+                "Eindhoven-185.117.0.218-a256fb62855d42bba4befeab473a657c",
+                "Eindhoven-198.105.112.125-c586bd2c1effa286ddcf2ea0db072372",
+                "Eindhoven-198.105.112.125-3811ccb76aac0a1453e8e5a3e9a61d7b",
+                "Eindhoven-198.105.112.125-1892c0db1b284dee1234502180809a88",
+                "Lelystad-192.76.160.203-0862372d324e5b9141ac818486ef6d33"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Aubervilliers-45.92.218.150-2e2a7c46364467e74830ba3541152d8f",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Singapore-47.131.229.111-e9d85f6d18a4a86292f696444e63df56",
+                "Eygelshoven-217.60.24.32-e069795b858384639acc56a923bf1cff",
+                "Frankfurt am Main-204.11.2.131-ae757ee812749d19d71c230c9f3ced07",
+                "Frankfurt am Main-43.165.2.200-e1abbd7220ec7eba96b523afc6592b93",
+                "Frankfurt am Main-204.11.2.53-d443233c34defe33c2e36161c830ea2d",
+                "Eindhoven-185.117.0.218-a256fb62855d42bba4befeab473a657c",
+                "Eindhoven-198.105.112.125-c586bd2c1effa286ddcf2ea0db072372",
+                "Eindhoven-198.105.112.125-3811ccb76aac0a1453e8e5a3e9a61d7b",
+                "Eindhoven-198.105.112.125-1892c0db1b284dee1234502180809a88",
+                "Lelystad-192.76.160.203-0862372d324e5b9141ac818486ef6d33"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Aubervilliers-45.92.218.150-2e2a7c46364467e74830ba3541152d8f",
+                "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+                "Singapore-47.131.229.111-e9d85f6d18a4a86292f696444e63df56",
+                "Eygelshoven-217.60.24.32-e069795b858384639acc56a923bf1cff",
+                "Frankfurt am Main-204.11.2.131-ae757ee812749d19d71c230c9f3ced07",
+                "Frankfurt am Main-43.165.2.200-e1abbd7220ec7eba96b523afc6592b93",
+                "Frankfurt am Main-204.11.2.53-d443233c34defe33c2e36161c830ea2d",
+                "Eindhoven-185.117.0.218-a256fb62855d42bba4befeab473a657c",
+                "Eindhoven-198.105.112.125-c586bd2c1effa286ddcf2ea0db072372",
+                "Eindhoven-198.105.112.125-3811ccb76aac0a1453e8e5a3e9a61d7b",
+                "Eindhoven-198.105.112.125-1892c0db1b284dee1234502180809a88",
+                "Lelystad-192.76.160.203-0862372d324e5b9141ac818486ef6d33"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.92.218.150-2e2a7c46364467e74830ba3541152d8f",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "b2f6aa3a-2550-4a1c-b2c0-1c94b1207217",
+            "transport": {
+                "type": "ws",
+                "path": "/hdgrbws",
+                "headers": {
+                    "Host": "terazhediii.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "terazhediii.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-178.128.22.27-26f33a64558ef332491832168ea99b77",
+            "server": "support.zoom.us",
+            "server_port": 80,
+            "uuid": "e7b178da-65e8-45ad-8550-de40eb0a7835",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "sahanwickramasinghevip.shop"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-47.131.229.111-e9d85f6d18a4a86292f696444e63df56",
+            "server": "normal-macaque.rooster465.autos",
+            "server_port": 443,
+            "password": "CF68213490",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "normal-macaque.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eygelshoven-217.60.24.32-e069795b858384639acc56a923bf1cff",
+            "server": "195.209.88.182",
+            "server_port": 443,
+            "uuid": "45c8814c-c06f-4444-acda-1b745e74d33e",
+            "transport": {
+                "type": "ws",
+                "path": "/v1/data/sync/",
+                "headers": {
+                    "Host": "s76276.cdn.ngenix.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "s76276.cdn.ngenix.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-204.11.2.131-ae757ee812749d19d71c230c9f3ced07",
+            "server": "hikvision-plus.com",
+            "server_port": 2083,
+            "uuid": "85c40985-f109-410c-9657-4a2f52140bf0",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "moz.boaza.dpdns.org"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "moz.boaza.dpdns.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-43.165.2.200-e1abbd7220ec7eba96b523afc6592b93",
+            "server": "43.165.2.200",
+            "server_port": 443,
+            "uuid": "8d5e7f2a-3c1b-4d9e-a6f8-2b5c0e7d4a19",
+            "transport": {
+                "type": "ws",
+                "path": "/proxy",
+                "headers": {
+                    "Host": "43.165.2.200"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "43.165.2.200"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-204.11.2.53-d443233c34defe33c2e36161c830ea2d",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-185.117.0.218-a256fb62855d42bba4befeab473a657c",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-198.105.112.125-c586bd2c1effa286ddcf2ea0db072372",
+            "server": "162.159.38.119",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-198.105.112.125-3811ccb76aac0a1453e8e5a3e9a61d7b",
+            "server": "8.47.69.0",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-198.105.112.125-1892c0db1b284dee1234502180809a88",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.203-0862372d324e5b9141ac818486ef6d33",
+            "server": "140.248.180.30",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "speedtest.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
