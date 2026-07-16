@@ -1,0 +1,238 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Falkenstein-157.90.15.180-7780213711dadd2a80b6db00b83ec175",
+                "Eindhoven-198.105.112.204-13480cba91b27bbfbef61f83955d2884",
+                "Eindhoven-185.117.0.242-7c99e1269f62cb218db2681bb8e3e55c",
+                "Lelystad-192.76.160.203-7be10dddb768509848379e6730d29ae9",
+                "Eindhoven-185.117.0.242-fb886880f89dea7fc4b3138d00fbfd0c",
+                "Eindhoven-198.105.112.204-16e91a90c6109a371690014d00c91bc3",
+                "Frankfurt am Main-217.179.5.226-48aed7a8bf56e7a4fe7d2af55ae1de50",
+                "Eindhoven-198.105.112.204-1b6d8fb04d514fce5af553116b67e8ef"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Falkenstein-157.90.15.180-7780213711dadd2a80b6db00b83ec175",
+                "Eindhoven-198.105.112.204-13480cba91b27bbfbef61f83955d2884",
+                "Eindhoven-185.117.0.242-7c99e1269f62cb218db2681bb8e3e55c",
+                "Lelystad-192.76.160.203-7be10dddb768509848379e6730d29ae9",
+                "Eindhoven-185.117.0.242-fb886880f89dea7fc4b3138d00fbfd0c",
+                "Eindhoven-198.105.112.204-16e91a90c6109a371690014d00c91bc3",
+                "Frankfurt am Main-217.179.5.226-48aed7a8bf56e7a4fe7d2af55ae1de50",
+                "Eindhoven-198.105.112.204-1b6d8fb04d514fce5af553116b67e8ef"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Falkenstein-157.90.15.180-7780213711dadd2a80b6db00b83ec175",
+                "Eindhoven-198.105.112.204-13480cba91b27bbfbef61f83955d2884",
+                "Eindhoven-185.117.0.242-7c99e1269f62cb218db2681bb8e3e55c",
+                "Lelystad-192.76.160.203-7be10dddb768509848379e6730d29ae9",
+                "Eindhoven-185.117.0.242-fb886880f89dea7fc4b3138d00fbfd0c",
+                "Eindhoven-198.105.112.204-16e91a90c6109a371690014d00c91bc3",
+                "Frankfurt am Main-217.179.5.226-48aed7a8bf56e7a4fe7d2af55ae1de50",
+                "Eindhoven-198.105.112.204-1b6d8fb04d514fce5af553116b67e8ef"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenstein-157.90.15.180-7780213711dadd2a80b6db00b83ec175",
+            "server": "43.174.246.46",
+            "server_port": 443,
+            "uuid": "78294bc4-89a2-4a4e-c116-0cd177fd556d",
+            "transport": {
+                "type": "ws",
+                "path": "/48831/api",
+                "headers": {
+                    "Host": "a.irandoc.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sni.irandoc.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-198.105.112.204-13480cba91b27bbfbef61f83955d2884",
+            "server": "104.16.72.41",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-185.117.0.242-7c99e1269f62cb218db2681bb8e3e55c",
+            "server": "45.131.208.61",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Lelystad-192.76.160.203-7be10dddb768509848379e6730d29ae9",
+            "server": "140.248.180.30",
+            "server_port": 443,
+            "uuid": "86fdb625-1a7f-4784-99a6-a96b3a80fc6d",
+            "transport": {
+                "type": "ws",
+                "path": "/vip1",
+                "headers": {
+                    "Host": "hamshahriesfahan.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "speedtest.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-185.117.0.242-fb886880f89dea7fc4b3138d00fbfd0c",
+            "server": "104.16.72.2",
+            "server_port": 443,
+            "uuid": "14b59caf-a196-4ec2-8c70-c7b388062f5b",
+            "transport": {
+                "type": "ws",
+                "path": "/rdfgtws",
+                "headers": {
+                    "Host": "vangoghhh.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vangoghhh.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-198.105.112.204-16e91a90c6109a371690014d00c91bc3",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-217.179.5.226-48aed7a8bf56e7a4fe7d2af55ae1de50",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-198.105.112.204-1b6d8fb04d514fce5af553116b67e8ef",
+            "server": "8.47.69.0",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
