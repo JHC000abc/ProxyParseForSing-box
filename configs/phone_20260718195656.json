@@ -1,0 +1,543 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Sydney-82.117.225.212-a9675f9aabc8f22b0acc76bf04d22f42",
+                "Tokyo-106.161.70.64-5b0596224d31d6dc35f63b09c47fcea6",
+                "Tokyo-18.177.143.219-5e6ec827d1d319d3d377c5714f59f7de",
+                "Tokyo-13.192.162.24-b0e0983cefe5a1bec135b6c97ada4bd8",
+                "Tokyo-13.114.229.175-120fbd8a4bc223c179d5f9524b25dce7",
+                "Tokyo-52.194.254.148-a365f4138d6a1afe90b41b60e63d6844",
+                "Tokyo-13.192.166.15-faf4e057a25d3f6a986771a3b554d506",
+                "Tokyo-52.192.146.88-fc45293b0bdc306c6ea4f92aeec3f495",
+                "Tokyo-13.230.156.114-cb4da44e7481c9a0414193cecc440a6a",
+                "Incheon-43.201.48.222-45a385742e443b4e888b61ca889f0675",
+                "Incheon-3.36.73.172-72d05088682eb00ecdb87d14ed1dd0e5",
+                "Incheon-54.180.162.176-26ed3010cec5769dd1c4597a06516f49",
+                "Rotterdam-94.183.224.55-ab36f99282079b18bee0d915e154f5c7",
+                "Amsterdam-85.234.65.26-00897552b7e360b71eb1dbc27246925f",
+                "Warsaw-81.27.102.215-eda82509b0c01de6274c608ad2c2eaad",
+                "Helsinki-2.26.101.0-d25b0dd385d23b68fae09347be0317d6",
+                "Singapore-54.179.78.173-c9ee11c7747d1f5c3c99c32806c8b6c1",
+                "Singapore-54.251.100.79-8c6da82b8616790eceb49536d0442853",
+                "Singapore-52.77.255.208-2577815d1a749437ce45a152a9c3684f",
+                "Singapore-54.169.71.201-a56e6bb3a68a32b15cd57bcf3b522377",
+                "Aubervilliers-45.67.139.230-88b0291d60aa8c47758331772e48cee5",
+                "Boardman-44.251.47.151-54b326e15fd3c9cd60bf52284198ac6e",
+                "Eindhoven-107.161.175.34-0d326f027128476eec49eae3bf8322e5",
+                "Eindhoven-107.161.175.34-1c5bd874a275804cd6d7a05ea2258f61",
+                "Phoenix-172.182.193.134-90c2696011032e33cb61c93682cf045b",
+                "Eindhoven-107.161.175.34-3379ba77397bb7fd7f23aee95c23a4f2",
+                "Frankfurt am Main-111.235.151.249-58be0372e8615871f036767b65f7efce",
+                "Frankfurt am Main-162.19.228.119-a059e7e1e9733cb7d6b2faed8669e613",
+                "Dublin-146.70.90.194-9002016a18602f1abc4796974be8adc0"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Sydney-82.117.225.212-a9675f9aabc8f22b0acc76bf04d22f42",
+                "Tokyo-106.161.70.64-5b0596224d31d6dc35f63b09c47fcea6",
+                "Tokyo-18.177.143.219-5e6ec827d1d319d3d377c5714f59f7de",
+                "Tokyo-13.192.162.24-b0e0983cefe5a1bec135b6c97ada4bd8",
+                "Tokyo-13.114.229.175-120fbd8a4bc223c179d5f9524b25dce7",
+                "Tokyo-52.194.254.148-a365f4138d6a1afe90b41b60e63d6844",
+                "Tokyo-13.192.166.15-faf4e057a25d3f6a986771a3b554d506",
+                "Tokyo-52.192.146.88-fc45293b0bdc306c6ea4f92aeec3f495",
+                "Tokyo-13.230.156.114-cb4da44e7481c9a0414193cecc440a6a",
+                "Incheon-43.201.48.222-45a385742e443b4e888b61ca889f0675",
+                "Incheon-3.36.73.172-72d05088682eb00ecdb87d14ed1dd0e5",
+                "Incheon-54.180.162.176-26ed3010cec5769dd1c4597a06516f49",
+                "Rotterdam-94.183.224.55-ab36f99282079b18bee0d915e154f5c7",
+                "Amsterdam-85.234.65.26-00897552b7e360b71eb1dbc27246925f",
+                "Warsaw-81.27.102.215-eda82509b0c01de6274c608ad2c2eaad",
+                "Helsinki-2.26.101.0-d25b0dd385d23b68fae09347be0317d6",
+                "Singapore-54.179.78.173-c9ee11c7747d1f5c3c99c32806c8b6c1",
+                "Singapore-54.251.100.79-8c6da82b8616790eceb49536d0442853",
+                "Singapore-52.77.255.208-2577815d1a749437ce45a152a9c3684f",
+                "Singapore-54.169.71.201-a56e6bb3a68a32b15cd57bcf3b522377",
+                "Aubervilliers-45.67.139.230-88b0291d60aa8c47758331772e48cee5",
+                "Boardman-44.251.47.151-54b326e15fd3c9cd60bf52284198ac6e",
+                "Eindhoven-107.161.175.34-0d326f027128476eec49eae3bf8322e5",
+                "Eindhoven-107.161.175.34-1c5bd874a275804cd6d7a05ea2258f61",
+                "Phoenix-172.182.193.134-90c2696011032e33cb61c93682cf045b",
+                "Eindhoven-107.161.175.34-3379ba77397bb7fd7f23aee95c23a4f2",
+                "Frankfurt am Main-111.235.151.249-58be0372e8615871f036767b65f7efce",
+                "Frankfurt am Main-162.19.228.119-a059e7e1e9733cb7d6b2faed8669e613",
+                "Dublin-146.70.90.194-9002016a18602f1abc4796974be8adc0"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Sydney-82.117.225.212-a9675f9aabc8f22b0acc76bf04d22f42",
+                "Tokyo-106.161.70.64-5b0596224d31d6dc35f63b09c47fcea6",
+                "Tokyo-18.177.143.219-5e6ec827d1d319d3d377c5714f59f7de",
+                "Tokyo-13.192.162.24-b0e0983cefe5a1bec135b6c97ada4bd8",
+                "Tokyo-13.114.229.175-120fbd8a4bc223c179d5f9524b25dce7",
+                "Tokyo-52.194.254.148-a365f4138d6a1afe90b41b60e63d6844",
+                "Tokyo-13.192.166.15-faf4e057a25d3f6a986771a3b554d506",
+                "Tokyo-52.192.146.88-fc45293b0bdc306c6ea4f92aeec3f495",
+                "Tokyo-13.230.156.114-cb4da44e7481c9a0414193cecc440a6a",
+                "Incheon-43.201.48.222-45a385742e443b4e888b61ca889f0675",
+                "Incheon-3.36.73.172-72d05088682eb00ecdb87d14ed1dd0e5",
+                "Incheon-54.180.162.176-26ed3010cec5769dd1c4597a06516f49",
+                "Rotterdam-94.183.224.55-ab36f99282079b18bee0d915e154f5c7",
+                "Amsterdam-85.234.65.26-00897552b7e360b71eb1dbc27246925f",
+                "Warsaw-81.27.102.215-eda82509b0c01de6274c608ad2c2eaad",
+                "Helsinki-2.26.101.0-d25b0dd385d23b68fae09347be0317d6",
+                "Singapore-54.179.78.173-c9ee11c7747d1f5c3c99c32806c8b6c1",
+                "Singapore-54.251.100.79-8c6da82b8616790eceb49536d0442853",
+                "Singapore-52.77.255.208-2577815d1a749437ce45a152a9c3684f",
+                "Singapore-54.169.71.201-a56e6bb3a68a32b15cd57bcf3b522377",
+                "Aubervilliers-45.67.139.230-88b0291d60aa8c47758331772e48cee5",
+                "Boardman-44.251.47.151-54b326e15fd3c9cd60bf52284198ac6e",
+                "Eindhoven-107.161.175.34-0d326f027128476eec49eae3bf8322e5",
+                "Eindhoven-107.161.175.34-1c5bd874a275804cd6d7a05ea2258f61",
+                "Phoenix-172.182.193.134-90c2696011032e33cb61c93682cf045b",
+                "Eindhoven-107.161.175.34-3379ba77397bb7fd7f23aee95c23a4f2",
+                "Frankfurt am Main-111.235.151.249-58be0372e8615871f036767b65f7efce",
+                "Frankfurt am Main-162.19.228.119-a059e7e1e9733cb7d6b2faed8669e613",
+                "Dublin-146.70.90.194-9002016a18602f1abc4796974be8adc0"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Sydney-82.117.225.212-a9675f9aabc8f22b0acc76bf04d22f42",
+            "server": "true-pony.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "true-pony.rooster465.autos"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-106.161.70.64-5b0596224d31d6dc35f63b09c47fcea6",
+            "server": "57.181.33.93",
+            "server_port": 64900,
+            "password": "2n8QPNzHhWI0bDnv",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bing.com"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-18.177.143.219-5e6ec827d1d319d3d377c5714f59f7de",
+            "server": "outgoing-eagle.rooster465.autos",
+            "server_port": 443,
+            "password": "HW85960347",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "outgoing-eagle.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.192.162.24-b0e0983cefe5a1bec135b6c97ada4bd8",
+            "server": "frank-turtle.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "frank-turtle.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.114.229.175-120fbd8a4bc223c179d5f9524b25dce7",
+            "server": "pumped-sailfish.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "pumped-sailfish.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-52.194.254.148-a365f4138d6a1afe90b41b60e63d6844",
+            "server": "certain-egret.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "certain-egret.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.192.166.15-faf4e057a25d3f6a986771a3b554d506",
+            "server": "on-roughy.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "on-roughy.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-52.192.146.88-fc45293b0bdc306c6ea4f92aeec3f495",
+            "server": "key-pony.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "key-pony.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tokyo-13.230.156.114-cb4da44e7481c9a0414193cecc440a6a",
+            "server": "normal-dory.rooster465.autos",
+            "server_port": 443,
+            "password": "HW85960347",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "normal-dory.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-43.201.48.222-45a385742e443b4e888b61ca889f0675",
+            "server": "together-amoeba.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "together-amoeba.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-3.36.73.172-72d05088682eb00ecdb87d14ed1dd0e5",
+            "server": "excited-ghoul.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "excited-ghoul.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Incheon-54.180.162.176-26ed3010cec5769dd1c4597a06516f49",
+            "server": "main-fawn.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "main-fawn.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Rotterdam-94.183.224.55-ab36f99282079b18bee0d915e154f5c7",
+            "server": "94-183-224-55.sslip.io",
+            "server_port": 8443,
+            "uuid": "3820aab5-ffaf-43b7-8741-af720c6690a4",
+            "transport": {
+                "type": "ws",
+                "path": "/yt",
+                "headers": {
+                    "Host": "94-183-224-55.sslip.io"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "94-183-224-55.sslip.io"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Amsterdam-85.234.65.26-00897552b7e360b71eb1dbc27246925f",
+            "server": "pro-crane.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "pro-crane.rooster465.autos"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Warsaw-81.27.102.215-eda82509b0c01de6274c608ad2c2eaad",
+            "server": "81.27.102.215",
+            "server_port": 8443,
+            "password": "Apt1923_N9x234gn_Nal5Nx3j_s",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "grape-power-pl.ddnsguru.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-2.26.101.0-d25b0dd385d23b68fae09347be0317d6",
+            "server": "swe-one.quiet-rogue.site",
+            "server_port": 443,
+            "password": "71cada65-d23e-418c-88e4-a06188d14689",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "swe-one.quiet-rogue.site"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-54.179.78.173-c9ee11c7747d1f5c3c99c32806c8b6c1",
+            "server": "excited-sole.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "excited-sole.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-54.251.100.79-8c6da82b8616790eceb49536d0442853",
+            "server": "learning-ladybug.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "learning-ladybug.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-52.77.255.208-2577815d1a749437ce45a152a9c3684f",
+            "server": "national-dingo.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "national-dingo.rooster465.autos"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Singapore-54.169.71.201-a56e6bb3a68a32b15cd57bcf3b522377",
+            "server": "hopeful-burro.rooster465.autos",
+            "server_port": 443,
+            "password": "PD07395842",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hopeful-burro.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Aubervilliers-45.67.139.230-88b0291d60aa8c47758331772e48cee5",
+            "server": "173.245.58.75",
+            "server_port": 443,
+            "uuid": "073d1d50-8478-47bf-a828-7a1b381931d5",
+            "transport": {
+                "type": "ws",
+                "path": "/odiyfws",
+                "headers": {
+                    "Host": "octopusss.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "octopusss.net"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Boardman-44.251.47.151-54b326e15fd3c9cd60bf52284198ac6e",
+            "server": "primary-mallard.rooster465.autos",
+            "server_port": 443,
+            "password": "JA96378052",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "primary-mallard.rooster465.autos"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-107.161.175.34-0d326f027128476eec49eae3bf8322e5",
+            "server": "104.26.15.137",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-107.161.175.34-1c5bd874a275804cd6d7a05ea2258f61",
+            "server": "104.16.72.101",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Phoenix-172.182.193.134-90c2696011032e33cb61c93682cf045b",
+            "server": "104.18.42.163",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "download.pusytroller.gq"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Eindhoven-107.161.175.34-3379ba77397bb7fd7f23aee95c23a4f2",
+            "server": "8.47.69.0",
+            "server_port": 443,
+            "uuid": "7e544a9d-7667-413b-bbb0-b3bb1aac6d77",
+            "transport": {
+                "type": "ws",
+                "path": "/rsedgws",
+                "headers": {
+                    "Host": "shegeftihaaa.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shegeftihaaa.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-111.235.151.249-58be0372e8615871f036767b65f7efce",
+            "server": "104.21.74.63",
+            "server_port": 443,
+            "uuid": "72d1797c-cef8-410a-b8fd-db9104dc3cb0",
+            "transport": {
+                "type": "ws",
+                "path": "/jdhfyws",
+                "headers": {
+                    "Host": "amooaliii.net"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "amooaliii.net"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.19.228.119-a059e7e1e9733cb7d6b2faed8669e613",
+            "server": "162.19.228.119",
+            "server_port": 80,
+            "uuid": "dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51",
+            "transport": {
+                "type": "ws",
+                "path": "/http",
+                "headers": {
+                    "Host": "162.19.228.119"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Dublin-146.70.90.194-9002016a18602f1abc4796974be8adc0",
+            "server": "146.70.90.198",
+            "server_port": 57452,
+            "password": "t1k169n5zmvvwn96r9ft",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": null
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
