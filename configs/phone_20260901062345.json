@@ -1,0 +1,206 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+                "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+                "New York City-185.116.236.153-c872543d1208c7676e49da55ebe17858",
+                "New York City-185.116.236.153-48070a896d88cf7ec886d77a40660137",
+                "Berlin-2.27.205.59-dcbc8291bf328e0909db7334c4518882",
+                "Tung Chung-178.83.206.13-7917549f77daeb6e7adb95732ad61b92",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+                "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+                "New York City-185.116.236.153-c872543d1208c7676e49da55ebe17858",
+                "New York City-185.116.236.153-48070a896d88cf7ec886d77a40660137",
+                "Berlin-2.27.205.59-dcbc8291bf328e0909db7334c4518882",
+                "Tung Chung-178.83.206.13-7917549f77daeb6e7adb95732ad61b92",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+                "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+                "New York City-185.116.236.153-c872543d1208c7676e49da55ebe17858",
+                "New York City-185.116.236.153-48070a896d88cf7ec886d77a40660137",
+                "Berlin-2.27.205.59-dcbc8291bf328e0909db7334c4518882",
+                "Tung Chung-178.83.206.13-7917549f77daeb6e7adb95732ad61b92",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+            "server": "144.31.135.204",
+            "server_port": 1935,
+            "password": "hysteria2_fastlane_eoa3x0r8k:6GudDh3lTuhL0Ma2RlGP1MOcHTPASzK4",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nl2.h.fastlanehosting.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+            "server": "47.241.108.227",
+            "server_port": 50160,
+            "password": "436114b5f36b2e704bdfa0927d57b6cd",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.153-c872543d1208c7676e49da55ebe17858",
+            "server": "172.67.198.236",
+            "server_port": 443,
+            "uuid": "7e26fd8f-d75a-473d-84ba-9f4e3f47d086",
+            "transport": {
+                "type": "ws",
+                "path": "/8qMLgNapWf6SBxo8fhQlVPYO",
+                "headers": {
+                    "Host": "1-m20.c8e0fc76-a6e4-4464-86b7-703a4f338c3a.kdns.fr"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "1-m20.c8e0fc76-a6e4-4464-86b7-703a4f338c3a.kdns.fr"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.153-48070a896d88cf7ec886d77a40660137",
+            "server": "172.67.205.153",
+            "server_port": 443,
+            "uuid": "7e26fd8f-d75a-473d-84ba-9f4e3f47d086",
+            "transport": {
+                "type": "ws",
+                "path": "/8qMLgNapWf6SBxo8fhQlVPYO",
+                "headers": {
+                    "Host": "6-m20.c98a10b6-5ab2-4974-8750-c24cffb2c622.kdns.fr"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "6-m20.c98a10b6-5ab2-4974-8750-c24cffb2c622.kdns.fr"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Berlin-2.27.205.59-dcbc8291bf328e0909db7334c4518882",
+            "server": "neth8.lunariai.ru",
+            "server_port": 443,
+            "uuid": "c21631d5-36c9-4664-b575-97eca17456be",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "neth8.lunariai.ru"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Tung Chung-178.83.206.13-7917549f77daeb6e7adb95732ad61b92",
+            "server": "jp.6807251.xyz",
+            "server_port": 34228,
+            "uuid": "7aa3a024-e333-4b63-99a2-3db9d3b2054e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "a.189.cn"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+            "server": "201.24.49.237",
+            "server_port": 2200,
+            "uuid": "af412668-578c-4296-bc8c-8fac6a8d9003",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.237"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
