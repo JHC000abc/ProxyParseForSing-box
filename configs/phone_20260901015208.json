@@ -1,0 +1,145 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+                "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Frankfurt am Main-104.105.6.167-d64c4e5c8b3c6588895af01e6c9bff4f"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+                "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Frankfurt am Main-104.105.6.167-d64c4e5c8b3c6588895af01e6c9bff4f"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+                "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Frankfurt am Main-104.105.6.167-d64c4e5c8b3c6588895af01e6c9bff4f"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-144.31.135.204-c6ad859731ea8533373b9eeca6091a59",
+            "server": "144.31.135.204",
+            "server_port": 1935,
+            "password": "hysteria2_fastlane_eoa3x0r8k:6GudDh3lTuhL0Ma2RlGP1MOcHTPASzK4",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nl2.h.fastlanehosting.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-47.241.108.227-8bdc038d93add4991548abbffed2d3c3",
+            "server": "47.241.108.227",
+            "server_port": 50160,
+            "password": "436114b5f36b2e704bdfa0927d57b6cd",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+            "server": "201.24.49.237",
+            "server_port": 2200,
+            "uuid": "af412668-578c-4296-bc8c-8fac6a8d9003",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.237"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-104.105.6.167-d64c4e5c8b3c6588895af01e6c9bff4f",
+            "server": "deapp.jisuyun.top",
+            "server_port": 2053,
+            "uuid": "9a1a05d9-69be-45d3-e326-c6621edf7b31",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/devm",
+                "headers": {
+                    "Host": "deapp.jisuyun.top"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
