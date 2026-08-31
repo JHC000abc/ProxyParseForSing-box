@@ -1,0 +1,163 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-65.109.187.51-1de9c67866ae87443f73fa810b2d34e7",
+                "Frankfurt am Main-78.31.249.175-bf614886ec51dca5b23eb831b9310017",
+                "Tokyo-156.246.95.248-1fcbe5cb549da0860e161df782f1b557",
+                "Helsinki-78.17.187.184-9c659c374f73104efb5728c7cebf1165",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-65.109.187.51-1de9c67866ae87443f73fa810b2d34e7",
+                "Frankfurt am Main-78.31.249.175-bf614886ec51dca5b23eb831b9310017",
+                "Tokyo-156.246.95.248-1fcbe5cb549da0860e161df782f1b557",
+                "Helsinki-78.17.187.184-9c659c374f73104efb5728c7cebf1165",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-65.109.187.51-1de9c67866ae87443f73fa810b2d34e7",
+                "Frankfurt am Main-78.31.249.175-bf614886ec51dca5b23eb831b9310017",
+                "Tokyo-156.246.95.248-1fcbe5cb549da0860e161df782f1b557",
+                "Helsinki-78.17.187.184-9c659c374f73104efb5728c7cebf1165",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-65.109.187.51-1de9c67866ae87443f73fa810b2d34e7",
+            "server": "31.76.4.128",
+            "server_port": 5002,
+            "password": "1206bad5-dcc9-410e-9595-d9fe9ee54085",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "fi.aeternavpn.space"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-78.31.249.175-bf614886ec51dca5b23eb831b9310017",
+            "server": "78.31.249.175",
+            "server_port": 65531,
+            "uuid": "7aa3a024-e333-4b63-99a2-3db9d3b2054e",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "gw.alicdn.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-156.246.95.248-1fcbe5cb549da0860e161df782f1b557",
+            "server": "hks.008819.xyz",
+            "server_port": 30701,
+            "uuid": "7aa3a024-e333-4b63-99a2-3db9d3b2054e",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "hks.008819.xyz"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-9c659c374f73104efb5728c7cebf1165",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+            "server": "201.24.49.237",
+            "server_port": 2200,
+            "uuid": "af412668-578c-4296-bc8c-8fac6a8d9003",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.237"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32",
+            "server": "201.34.137.15",
+            "server_port": 4100,
+            "uuid": "716903b1-e6bf-4420-9e27-65e4451692e9",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.34.137.15"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
