@@ -1,0 +1,269 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Montréal-3.96.124.46-07b77a3a847b97d19a223ca778f618cc",
+                "Cardiff-129.151.85.181-3cbe1d077d3243d1ccd49c9c52cec156",
+                "Cardiff-129.151.74.97-cbdbf090e99667da079fe24ae5948cae",
+                "Tokyo-161.248.113.38-b3c98b35900240955822ad15c1897297",
+                "Incheon-3.36.93.74-48fa80b766eeb27057693a18304a560a",
+                "Amsterdam-201.51.23.5-80ca4e0d0bee910c88255c7feefccfba",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Almaty-46.247.41.120-e5d5714abeadab06b42be51d9e0c89d1",
+                "Paris-89.208.113.105-19cbcdc000c2a8deea1de12507a7abdd",
+                "London-13.40.94.70-2f63542fbd31204e58464954961be062",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Boydton-20.109.36.226-52c5ab16b0a66fc5d2ed4ff9c84200ee",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Montréal-3.96.124.46-07b77a3a847b97d19a223ca778f618cc",
+                "Cardiff-129.151.85.181-3cbe1d077d3243d1ccd49c9c52cec156",
+                "Cardiff-129.151.74.97-cbdbf090e99667da079fe24ae5948cae",
+                "Tokyo-161.248.113.38-b3c98b35900240955822ad15c1897297",
+                "Incheon-3.36.93.74-48fa80b766eeb27057693a18304a560a",
+                "Amsterdam-201.51.23.5-80ca4e0d0bee910c88255c7feefccfba",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Almaty-46.247.41.120-e5d5714abeadab06b42be51d9e0c89d1",
+                "Paris-89.208.113.105-19cbcdc000c2a8deea1de12507a7abdd",
+                "London-13.40.94.70-2f63542fbd31204e58464954961be062",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Boydton-20.109.36.226-52c5ab16b0a66fc5d2ed4ff9c84200ee",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-3.96.124.46-07b77a3a847b97d19a223ca778f618cc",
+            "server": "3.96.124.46",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cardiff-129.151.85.181-3cbe1d077d3243d1ccd49c9c52cec156",
+            "server": "129.151.85.181",
+            "server_port": 61312,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "oVtaQMKcs4RHe6leo+ecPpjnr7mJsXGF8+6cmBo7efY="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cardiff-129.151.74.97-cbdbf090e99667da079fe24ae5948cae",
+            "server": "129.151.74.97",
+            "server_port": 61312,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "JkX5mXsK8V11Sf+2oT/ECiDbHWwqEvLcKculVhtmHAo="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Tokyo-161.248.113.38-b3c98b35900240955822ad15c1897297",
+            "server": "121.46.230.137",
+            "server_port": 65443,
+            "method": "aes-256-cfb",
+            "password": "7eadc6dbe2ae"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-3.36.93.74-48fa80b766eeb27057693a18304a560a",
+            "server": "vpn-kr-003.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-201.51.23.5-80ca4e0d0bee910c88255c7feefccfba",
+            "server": "wsnl4.wba-pn.ru",
+            "server_port": 443,
+            "uuid": "3d059048-8857-4101-a275-f55142159b5c",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "wsnl4.wba-pn.ru"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "wsnl4.wba-pn.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+            "server": "2.26.148.207",
+            "server_port": 443,
+            "password": "146e49e3-c86d-4607-b5ac-acc1997f025e",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "yula.ultimagamest.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Almaty-46.247.41.120-e5d5714abeadab06b42be51d9e0c89d1",
+            "server": "kz03hy01.tcp-reset-club.net",
+            "server_port": 443,
+            "password": "aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "kz03hy01.tcp-reset-club.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-89.208.113.105-19cbcdc000c2a8deea1de12507a7abdd",
+            "server": "2.27.28.106",
+            "server_port": 1935,
+            "password": "hysteria2_fastlane_qn9oi6zlt:tMwvjfEDLoeLqtsLBGu1tp871gx0Jtyt",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "de8.h.fastlanehosting.ru"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-13.40.94.70-2f63542fbd31204e58464954961be062",
+            "server": "13.40.94.70",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Boydton-20.109.36.226-52c5ab16b0a66fc5d2ed4ff9c84200ee",
+            "server": "support.cloudflare.com",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "update.asshole.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
