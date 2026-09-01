@@ -1,0 +1,283 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Incheon-3.36.111.166-48fa80b766eeb27057693a18304a560a",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Columbus-18.220.128.8-b1a3e42c639a6901606944fdd888b179",
+                "Tokyo-138.2.8.249-ddcc6dfcda3a1eef50e70bff7026aff9",
+                "Amsterdam-152.55.184.122-e9f2414be408eba736af26e9dd23a768",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Moscow-201.24.49.69-6e446a3628ee2504a2174fbd6ab25861",
+                "San Jose-40.65.56.225-52c5ab16b0a66fc5d2ed4ff9c84200ee",
+                "Helsinki-65.109.209.17-6bb9349fa776bbbde70c3cdc75f4ab1d",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Incheon-3.36.111.166-48fa80b766eeb27057693a18304a560a",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Columbus-18.220.128.8-b1a3e42c639a6901606944fdd888b179",
+                "Tokyo-138.2.8.249-ddcc6dfcda3a1eef50e70bff7026aff9",
+                "Amsterdam-152.55.184.122-e9f2414be408eba736af26e9dd23a768",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Moscow-201.24.49.69-6e446a3628ee2504a2174fbd6ab25861",
+                "San Jose-40.65.56.225-52c5ab16b0a66fc5d2ed4ff9c84200ee",
+                "Helsinki-65.109.209.17-6bb9349fa776bbbde70c3cdc75f4ab1d",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Incheon-3.36.111.166-48fa80b766eeb27057693a18304a560a",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Columbus-18.220.128.8-b1a3e42c639a6901606944fdd888b179",
+                "Tokyo-138.2.8.249-ddcc6dfcda3a1eef50e70bff7026aff9",
+                "Amsterdam-152.55.184.122-e9f2414be408eba736af26e9dd23a768",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Moscow-201.24.49.69-6e446a3628ee2504a2174fbd6ab25861",
+                "San Jose-40.65.56.225-52c5ab16b0a66fc5d2ed4ff9c84200ee",
+                "Helsinki-65.109.209.17-6bb9349fa776bbbde70c3cdc75f4ab1d",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-3.36.111.166-48fa80b766eeb27057693a18304a560a",
+            "server": "vpn-kr-003.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+            "server": "2.26.148.207",
+            "server_port": 443,
+            "password": "146e49e3-c86d-4607-b5ac-acc1997f025e",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "yula.ultimagamest.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-18.220.128.8-b1a3e42c639a6901606944fdd888b179",
+            "server": "vpn-us-003.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "127.0.0.1"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-138.2.8.249-ddcc6dfcda3a1eef50e70bff7026aff9",
+            "server": "138.2.8.249",
+            "server_port": 50160,
+            "password": "4d6d97a82ddf959252e2ada36c3c3053",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.184.122-e9f2414be408eba736af26e9dd23a768",
+            "server": "web-production-3b1c1.up.railway.app",
+            "server_port": 443,
+            "uuid": "ff2eda48-42a0-4214-bd1f-a969d0c46964",
+            "transport": {
+                "type": "ws",
+                "path": "/vl-ws",
+                "headers": {
+                    "Host": "web-production-3b1c1.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "web-production-3b1c1.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.69-6e446a3628ee2504a2174fbd6ab25861",
+            "server": "201.24.49.69",
+            "server_port": 4100,
+            "uuid": "2cd5f052-6455-4153-b7d3-0545184dc64c",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.69"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-40.65.56.225-52c5ab16b0a66fc5d2ed4ff9c84200ee",
+            "server": "support.cloudflare.com",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "update.asshole.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.209.17-6bb9349fa776bbbde70c3cdc75f4ab1d",
+            "server": "a2.arshia-nova.ir",
+            "server_port": 443,
+            "uuid": "86c2939c-4506-4028-cdc9-6fe073890e81",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "c12.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ssl.fastly.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+            "server": "201.24.49.237",
+            "server_port": 2200,
+            "uuid": "af412668-578c-4296-bc8c-8fac6a8d9003",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.237"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.34.137.15-c7b5313159539b7a93036b27c4ffce32",
+            "server": "201.34.137.15",
+            "server_port": 4100,
+            "uuid": "716903b1-e6bf-4420-9e27-65e4451692e9",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.34.137.15"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
