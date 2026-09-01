@@ -1,0 +1,237 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Incheon-43.203.252.104-48fa80b766eeb27057693a18304a560a",
+                "Amsterdam-201.51.23.5-80ca4e0d0bee910c88255c7feefccfba",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Columbus-3.144.8.49-b1a3e42c639a6901606944fdd888b179",
+                "Ashburn-152.55.180.165-18538f49ac12ac46ef8e1d4f51c018e7",
+                "Falkenberg-202.155.11.249-bbda6104b54877a9927a9092bd34742b",
+                "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+                "Almaty-46.247.41.120-bccc056c99298c16af83fd20bd976716",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Incheon-43.203.252.104-48fa80b766eeb27057693a18304a560a",
+                "Amsterdam-201.51.23.5-80ca4e0d0bee910c88255c7feefccfba",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Columbus-3.144.8.49-b1a3e42c639a6901606944fdd888b179",
+                "Ashburn-152.55.180.165-18538f49ac12ac46ef8e1d4f51c018e7",
+                "Falkenberg-202.155.11.249-bbda6104b54877a9927a9092bd34742b",
+                "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+                "Almaty-46.247.41.120-bccc056c99298c16af83fd20bd976716",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Incheon-43.203.252.104-48fa80b766eeb27057693a18304a560a",
+                "Amsterdam-201.51.23.5-80ca4e0d0bee910c88255c7feefccfba",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Columbus-3.144.8.49-b1a3e42c639a6901606944fdd888b179",
+                "Ashburn-152.55.180.165-18538f49ac12ac46ef8e1d4f51c018e7",
+                "Falkenberg-202.155.11.249-bbda6104b54877a9927a9092bd34742b",
+                "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+                "Almaty-46.247.41.120-bccc056c99298c16af83fd20bd976716",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Incheon-43.203.252.104-48fa80b766eeb27057693a18304a560a",
+            "server": "vpn-kr-003.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-kr-003.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-201.51.23.5-80ca4e0d0bee910c88255c7feefccfba",
+            "server": "wsnl4.wba-pn.ru",
+            "server_port": 443,
+            "uuid": "3d059048-8857-4101-a275-f55142159b5c",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "wsnl4.wba-pn.ru"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "wsnl4.wba-pn.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+            "server": "2.26.148.207",
+            "server_port": 443,
+            "password": "146e49e3-c86d-4607-b5ac-acc1997f025e",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "yula.ultimagamest.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Columbus-3.144.8.49-b1a3e42c639a6901606944fdd888b179",
+            "server": "vpn-us-003.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "127.0.0.1"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Ashburn-152.55.180.165-18538f49ac12ac46ef8e1d4f51c018e7",
+            "server": "marzban-node-production-70e40.up.railway.app",
+            "server_port": 443,
+            "uuid": "56594501-61e1-4a9d-b628-ad0c60bbfb74",
+            "transport": {
+                "type": "ws",
+                "path": "/vless",
+                "headers": {
+                    "Host": "marzban-node-production-70e40.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "marzban-node-production-70e40.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Falkenberg-202.155.11.249-bbda6104b54877a9927a9092bd34742b",
+            "server": "202.155.11.249",
+            "server_port": 443,
+            "uuid": "0a2dde28-70da-4863-a06f-35d007d94d35",
+            "transport": {
+                "type": "ws",
+                "path": "/cdn/v3/live",
+                "headers": {
+                    "Host": "cf2.rumedia-cdn.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "cf2.rumedia-cdn.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+            "server": "92.118.112.132",
+            "server_port": 1935,
+            "password": "usa_2_hysteria2_fastlane_7xd97qbds:ZO9NsnzCMk5WDLYrLMFJi8V2Dg3HRSpv",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us3.h.fastlanehosting.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Almaty-46.247.41.120-bccc056c99298c16af83fd20bd976716",
+            "server": "kz03hy01.tcp-reset-club.net",
+            "server_port": 443,
+            "password": "aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "kz03hy01.tcp-reset-club.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
