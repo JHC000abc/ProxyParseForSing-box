@@ -1,0 +1,206 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+                "Santa Clara-162.220.232.107-ac5d7fe089268798e3eb0282b5c3e67d",
+                "Santa Clara-152.55.176.106-78aebe8b1d1342e544598bae82df00ce",
+                "Frankfurt am Main-179.61.138.124-1c046e0fedf0fcd782151ff7a614bdeb",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+                "Santa Clara-162.220.232.107-ac5d7fe089268798e3eb0282b5c3e67d",
+                "Santa Clara-152.55.176.106-78aebe8b1d1342e544598bae82df00ce",
+                "Frankfurt am Main-179.61.138.124-1c046e0fedf0fcd782151ff7a614bdeb",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+                "Santa Clara-162.220.232.107-ac5d7fe089268798e3eb0282b5c3e67d",
+                "Santa Clara-152.55.176.106-78aebe8b1d1342e544598bae82df00ce",
+                "Frankfurt am Main-179.61.138.124-1c046e0fedf0fcd782151ff7a614bdeb",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+            "server": "us6.lunariai.ru",
+            "server_port": 443,
+            "uuid": "170e1be8-e51b-4a82-a779-3ad27b78607c",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "us6.lunariai.ru"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-162.220.232.107-ac5d7fe089268798e3eb0282b5c3e67d",
+            "server": "69.46.46.103",
+            "server_port": 443,
+            "uuid": "f251acbd-62e5-399f-9be9-e0082d2d078f",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/f251acbd-62e5-399f-9be9-e0082d2d078f",
+                "headers": {
+                    "Host": "maple-lantern-1c60-production.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "maple-lantern-1c60-production.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-152.55.176.106-78aebe8b1d1342e544598bae82df00ce",
+            "server": "69.46.46.102",
+            "server_port": 443,
+            "uuid": "f7d88bef-44f5-92be-6f8e-8a28cfcfe4ea",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/f7d88bef-44f5-92be-6f8e-8a28cfcfe4ea",
+                "headers": {
+                    "Host": "silent-current-12ef-production.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "silent-current-12ef-production.up.railway.app"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-179.61.138.124-1c046e0fedf0fcd782151ff7a614bdeb",
+            "server": "freesocks.work",
+            "server_port": 2052,
+            "uuid": "078154d5-f211-4d1c-b9d3-15636eb477b6",
+            "transport": {
+                "type": "ws",
+                "path": "/@BlueKnight_net--@BlueKnight_net",
+                "headers": {
+                    "Host": "uwu.blueknightnet.qzz.io"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+            "server": "201.24.49.237",
+            "server_port": 2200,
+            "uuid": "af412668-578c-4296-bc8c-8fac6a8d9003",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.237"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
