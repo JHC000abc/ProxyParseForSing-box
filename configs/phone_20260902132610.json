@@ -1,0 +1,320 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Nuremberg-116.203.61.71-7abc7b5c5d031d0ef9dd92a4e801124e",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Frankfurt am Main-74.220.51.162-4e6f7c07a05d2461c7f3cdb9b1f51ab7",
+                "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+                "Singapore-5.180.78.35-45eecc2a2f6c636efd750d572997b12e",
+                "Frankfurt am Main-64.188.98.171-d301dc7cc60e24e14af75d88b3ab0de3",
+                "London-138.16.57.241-2cf8ba65f4e0a78da655f6b28e01063d",
+                "Amsterdam-72.56.116.57-26e55e3e8cf68ab799a1bb9421da4f7d",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Tashkent-157.22.133.130-ac5bdebf3f00e0dc0ea2222ef7b46969",
+                "Helsinki-65.109.209.17-cda5a237ef6a5823873eeca1da4cd789",
+                "Amsterdam-5.129.214.249-0ea43e31ff877a7335f039db3190fddf",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Nuremberg-116.203.61.71-7abc7b5c5d031d0ef9dd92a4e801124e",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Frankfurt am Main-74.220.51.162-4e6f7c07a05d2461c7f3cdb9b1f51ab7",
+                "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+                "Singapore-5.180.78.35-45eecc2a2f6c636efd750d572997b12e",
+                "Frankfurt am Main-64.188.98.171-d301dc7cc60e24e14af75d88b3ab0de3",
+                "London-138.16.57.241-2cf8ba65f4e0a78da655f6b28e01063d",
+                "Amsterdam-72.56.116.57-26e55e3e8cf68ab799a1bb9421da4f7d",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Tashkent-157.22.133.130-ac5bdebf3f00e0dc0ea2222ef7b46969",
+                "Helsinki-65.109.209.17-cda5a237ef6a5823873eeca1da4cd789",
+                "Amsterdam-5.129.214.249-0ea43e31ff877a7335f039db3190fddf",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Nuremberg-116.203.61.71-7abc7b5c5d031d0ef9dd92a4e801124e",
+                "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+                "Frankfurt am Main-74.220.51.162-4e6f7c07a05d2461c7f3cdb9b1f51ab7",
+                "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+                "Singapore-5.180.78.35-45eecc2a2f6c636efd750d572997b12e",
+                "Frankfurt am Main-64.188.98.171-d301dc7cc60e24e14af75d88b3ab0de3",
+                "London-138.16.57.241-2cf8ba65f4e0a78da655f6b28e01063d",
+                "Amsterdam-72.56.116.57-26e55e3e8cf68ab799a1bb9421da4f7d",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Tashkent-157.22.133.130-ac5bdebf3f00e0dc0ea2222ef7b46969",
+                "Helsinki-65.109.209.17-cda5a237ef6a5823873eeca1da4cd789",
+                "Amsterdam-5.129.214.249-0ea43e31ff877a7335f039db3190fddf",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Nuremberg-116.203.61.71-7abc7b5c5d031d0ef9dd92a4e801124e",
+            "server": "rah.vip1111.ir",
+            "server_port": 8443,
+            "uuid": "08ab1155-2630-48b5-8a3c-4a44096eb0c1",
+            "transport": {
+                "type": "ws",
+                "path": "/ai-articles/465992-kids-feel-ai-own-words-featured/",
+                "headers": {
+                    "Host": "panel.vip1111.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "panel.vip1111.ir"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Warsaw-2.26.148.207-671c312f6423d7a845373be156a180e7",
+            "server": "2.26.148.207",
+            "server_port": 443,
+            "password": "146e49e3-c86d-4607-b5ac-acc1997f025e",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "yula.ultimagamest.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-74.220.51.162-4e6f7c07a05d2461c7f3cdb9b1f51ab7",
+            "server": "216.24.57.15",
+            "server_port": 443,
+            "uuid": "2ee0d2aa-867e-a77e-9538-2edfc0b242aa",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/2ee0d2aa-867e-a77e-9538-2edfc0b242aafp=firefox",
+                "headers": {
+                    "Host": "four04-rd37.onrender.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "four04-rd37.onrender.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Atlanta-193.202.11.110-1bf8c0809b22df601581940cdbe7aee4",
+            "server": "92.118.112.132",
+            "server_port": 1935,
+            "password": "usa_2_hysteria2_fastlane_7xd97qbds:ZO9NsnzCMk5WDLYrLMFJi8V2Dg3HRSpv",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "us3.h.fastlanehosting.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-5.180.78.35-45eecc2a2f6c636efd750d572997b12e",
+            "server": "sg1.xiaoliyu.cyou",
+            "server_port": 1933,
+            "password": "19f72087-4591-4d72-930b-2697078ec2be",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sg1.xiaoliyu.cyou"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-64.188.98.171-d301dc7cc60e24e14af75d88b3ab0de3",
+            "server": "91.196.32.163",
+            "server_port": 443,
+            "password": "mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "germany3.h2corp.local"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "London-138.16.57.241-2cf8ba65f4e0a78da655f6b28e01063d",
+            "server": "138.124.0.168",
+            "server_port": 8080,
+            "password": "h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hopp-legend-se.roxa.org"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-72.56.116.57-26e55e3e8cf68ab799a1bb9421da4f7d",
+            "server": "bz9.wba-pn.ru",
+            "server_port": 2053,
+            "uuid": "9a47a8ff-8cdd-4a35-b765-fbad6d40e0a0",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "bz9.wba-pn.ru"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "bz9.wba-pn.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tashkent-157.22.133.130-ac5bdebf3f00e0dc0ea2222ef7b46969",
+            "server": "157.22.133.130",
+            "server_port": 2087,
+            "uuid": "e6d369db-22be-4f30-8685-455c717aaa8c",
+            "transport": {
+                "type": "ws",
+                "path": "/5021201ef53f",
+                "headers": {
+                    "Host": "157.22.133.130"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.209.17-cda5a237ef6a5823873eeca1da4cd789",
+            "server": "a2.arshia-nova.ir",
+            "server_port": 443,
+            "uuid": "86c2939c-4506-4028-cdc9-6fe073890e81",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "c12.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ssl.fastly.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-5.129.214.249-0ea43e31ff877a7335f039db3190fddf",
+            "server": "5.129.214.249",
+            "server_port": 8443,
+            "uuid": "a3f59a62-b4ad-4f02-bfce-ef68e63ab6f7",
+            "transport": {
+                "type": "ws",
+                "path": "/api/user",
+                "headers": {
+                    "Host": "5.129.214.249"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "nlxy.korgivps.ru"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a",
+            "server": "162.159.254.3",
+            "server_port": 443,
+            "uuid": "4e4f1f70-5e56-4a76-bb9d-db087f4690c4",
+            "transport": {
+                "type": "ws",
+                "path": "/tyxyws",
+                "headers": {
+                    "Host": "jp3.yohototo.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp3.yohototo.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
