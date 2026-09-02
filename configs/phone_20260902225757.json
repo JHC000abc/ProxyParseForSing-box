@@ -1,0 +1,152 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+                "New York City-185.44.66.162-f3edef752867be2538568d33bb331f5f",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+                "New York City-185.44.66.162-f3edef752867be2538568d33bb331f5f",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+                "New York City-185.44.66.162-f3edef752867be2538568d33bb331f5f",
+                "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Secaucus-31.169.125.12-f3c376063eaec613b2946ce49b075123",
+            "server": "us6.lunariai.ru",
+            "server_port": 443,
+            "uuid": "170e1be8-e51b-4a82-a779-3ad27b78607c",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "us6.lunariai.ru"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.44.66.162-f3edef752867be2538568d33bb331f5f",
+            "server": "104.21.41.228",
+            "server_port": 443,
+            "uuid": "2e05bfa9-697c-46e9-bfd3-06ecfb23e349",
+            "transport": {
+                "type": "ws",
+                "path": "/awsDCktnglce5OhBQMBK8JLBwh2V",
+                "headers": {
+                    "Host": "3-Api-geWAy-m14.Xgh.Ccwu.cC"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "3-aPi-gEWAy-m14.Xgh.ccWu.CC"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Kerkrade-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Helsinki-78.17.187.184-5ad34afedf6af9e7b4b13ca5af94052a",
+            "server": "fin14qr.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "fin14qr.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+            "server": "201.24.49.237",
+            "server_port": 2200,
+            "uuid": "af412668-578c-4296-bc8c-8fac6a8d9003",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.237"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
