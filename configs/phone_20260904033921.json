@@ -1,0 +1,167 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-162.249.126.2-2594108c098df6ac0c188b9ab704166a",
+                "Manassas-152.53.90.42-7a71af8411068c5b1c3685409d181f0d",
+                "Singapore-45.88.42.16-76b8ff286ef03ee273072daba207a71e",
+                "Frankfurt am Main-13.143.134.185-173f8df554a6e7eacdf6d9facfd0a0b5",
+                "Frankfurt am Main-171.22.31.148-ad207c7ab6d94a202ac3cb6290498e41",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-162.249.126.2-2594108c098df6ac0c188b9ab704166a",
+                "Manassas-152.53.90.42-7a71af8411068c5b1c3685409d181f0d",
+                "Singapore-45.88.42.16-76b8ff286ef03ee273072daba207a71e",
+                "Frankfurt am Main-13.143.134.185-173f8df554a6e7eacdf6d9facfd0a0b5",
+                "Frankfurt am Main-171.22.31.148-ad207c7ab6d94a202ac3cb6290498e41",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-162.249.126.2-2594108c098df6ac0c188b9ab704166a",
+                "Manassas-152.53.90.42-7a71af8411068c5b1c3685409d181f0d",
+                "Singapore-45.88.42.16-76b8ff286ef03ee273072daba207a71e",
+                "Frankfurt am Main-13.143.134.185-173f8df554a6e7eacdf6d9facfd0a0b5",
+                "Frankfurt am Main-171.22.31.148-ad207c7ab6d94a202ac3cb6290498e41",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-162.249.126.2-2594108c098df6ac0c188b9ab704166a",
+            "server": "162.249.126.2",
+            "server_port": 8443,
+            "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hopp-germany-new.ddnsguru.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Manassas-152.53.90.42-7a71af8411068c5b1c3685409d181f0d",
+            "server": "sa-4f0532c3edfd9a5d.sr-a6a4ed047785578b.r.vpvpn.club",
+            "server_port": 8443,
+            "uuid": "23578a2c-2493-41f0-89ef-d7d3a7b85252",
+            "transport": {
+                "type": "ws",
+                "path": "/USA1",
+                "headers": {
+                    "Host": "usa1.pad-service.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "usa1.pad-service.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-45.88.42.16-76b8ff286ef03ee273072daba207a71e",
+            "server": "msjp.mangshe.xyz",
+            "server_port": 20562,
+            "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-13.143.134.185-173f8df554a6e7eacdf6d9facfd0a0b5",
+            "server": "bwdf2fnt.xn--e1aatfr8bwa.online",
+            "server_port": 30000,
+            "password": "tnnls:b735eacd-3ca7-4019-b98c-3559918100e6",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "bwdf2fnt.xn--e1aatfr8bwa.online"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "b6d1f3888ab1d90dd11aac1dce427b81"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-171.22.31.148-ad207c7ab6d94a202ac3cb6290498e41",
+            "server": "de1.apexvpn.space",
+            "server_port": 443,
+            "password": "dffb4c3d-1e84-4938-8881-cad917e8efb2",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "de1.apexvpn.space"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
