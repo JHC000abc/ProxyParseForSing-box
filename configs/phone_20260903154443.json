@@ -1,0 +1,145 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tokyo-138.2.8.249-16047eec2c7ba06b8e9b5b77c7bd32ed",
+                "Tokyo-138.3.208.26-cc643dcdd4e98599b7e39e67fb0f7b6d",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Wyszków-94.183.209.43-5e3960e323754e261b5d47870fd4eef7",
+                "Tashkent-157.22.133.130-71ff021ff2788072e37e7ee182f5859c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tokyo-138.2.8.249-16047eec2c7ba06b8e9b5b77c7bd32ed",
+                "Tokyo-138.3.208.26-cc643dcdd4e98599b7e39e67fb0f7b6d",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Wyszków-94.183.209.43-5e3960e323754e261b5d47870fd4eef7",
+                "Tashkent-157.22.133.130-71ff021ff2788072e37e7ee182f5859c"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tokyo-138.2.8.249-16047eec2c7ba06b8e9b5b77c7bd32ed",
+                "Tokyo-138.3.208.26-cc643dcdd4e98599b7e39e67fb0f7b6d",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Wyszków-94.183.209.43-5e3960e323754e261b5d47870fd4eef7",
+                "Tashkent-157.22.133.130-71ff021ff2788072e37e7ee182f5859c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-138.2.8.249-16047eec2c7ba06b8e9b5b77c7bd32ed",
+            "server": "138.2.8.249",
+            "server_port": 50160,
+            "password": "4d6d97a82ddf959252e2ada36c3c3053",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-138.3.208.26-cc643dcdd4e98599b7e39e67fb0f7b6d",
+            "server": "138.3.208.26",
+            "server_port": 50160,
+            "password": "184cdec28da5a09450803c8debcd2cc9",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Wyszków-94.183.209.43-5e3960e323754e261b5d47870fd4eef7",
+            "server": "94.183.209.43",
+            "server_port": 443,
+            "uuid": "5e7ecc47-e424-4653-876e-c7515a2c82b4",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "94.183.209.43"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tashkent-157.22.133.130-71ff021ff2788072e37e7ee182f5859c",
+            "server": "157.22.133.130",
+            "server_port": 2087,
+            "uuid": "e6d369db-22be-4f30-8685-455c717aaa8c",
+            "transport": {
+                "type": "ws",
+                "path": "/5021201ef53f",
+                "headers": {
+                    "Host": "157.22.133.130"
+                }
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
