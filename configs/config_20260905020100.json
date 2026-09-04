@@ -1,0 +1,225 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Montréal-15.223.182.66-450f3f499af6ab13e165458a4482582b",
+                "Montréal-15.156.204.87-b4db4fb9f004842670b96821dee88d2f",
+                "Frankfurt am Main-130.61.46.211-19573907b3da720e49b04943cfc645ee",
+                "Cardiff-129.151.67.68-5ea96b821a227d9da0f8d577efec4133",
+                "Amsterdam-152.55.185.125-525d543dbe2da6327b660c8ee5ae07d1",
+                "Seattle-66.94.121.46-685ad56e65c79bffddca265242cecb77",
+                "Amsterdam-5.129.231.94-fcdf2fbaa20f8c08136c261668244327",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Montréal-15.223.182.66-450f3f499af6ab13e165458a4482582b",
+                "Montréal-15.156.204.87-b4db4fb9f004842670b96821dee88d2f",
+                "Frankfurt am Main-130.61.46.211-19573907b3da720e49b04943cfc645ee",
+                "Cardiff-129.151.67.68-5ea96b821a227d9da0f8d577efec4133",
+                "Amsterdam-152.55.185.125-525d543dbe2da6327b660c8ee5ae07d1",
+                "Seattle-66.94.121.46-685ad56e65c79bffddca265242cecb77",
+                "Amsterdam-5.129.231.94-fcdf2fbaa20f8c08136c261668244327",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-15.223.182.66-450f3f499af6ab13e165458a4482582b",
+            "server": "15.223.182.66",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-15.156.204.87-b4db4fb9f004842670b96821dee88d2f",
+            "server": "15.156.204.87",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-130.61.46.211-19573907b3da720e49b04943cfc645ee",
+            "server": "130.61.46.211",
+            "server_port": 59924,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "1n2jXlack06RUjGg0EB2ZyyorM76puOm/J6DIvNSxc8="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cardiff-129.151.67.68-5ea96b821a227d9da0f8d577efec4133",
+            "server": "129.151.67.68",
+            "server_port": 61312,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "L22F/8+N1b/5guHC1uTKLGAT4F0TvgUVWq3mvqEsIKk="
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.185.125-525d543dbe2da6327b660c8ee5ae07d1",
+            "server": "atila-production-a158.up.railway.app",
+            "server_port": 443,
+            "uuid": "24bbe33b-71be-13c4-b15b-118dd019d878",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/24bbe33b-71be-13c4-b15b-118dd019d878",
+                "headers": {
+                    "Host": "atila-production-a158.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "atila-production-a158.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Seattle-66.94.121.46-685ad56e65c79bffddca265242cecb77",
+            "server": "66.94.121.46",
+            "server_port": 443,
+            "password": "gf1:gfhysteria2024",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.broadcom.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-5.129.231.94-fcdf2fbaa20f8c08136c261668244327",
+            "server": "5.129.235.85",
+            "server_port": 443,
+            "password": "gf1:gfhysteria2024",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.linux.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c",
+            "server": "139.84.247.164",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "tfAcRikawhNoZAhu"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
