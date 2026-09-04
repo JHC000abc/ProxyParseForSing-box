@@ -1,0 +1,177 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-153.76.112.79-4f16875d709a8b7b6ac0edce51b69a78",
+                "Frankfurt am Main-206.81.19.97-1644159a75d168c84fc14ab54f852ed8",
+                "Ebara-202.182.115.129-1341c08a561f384fd0c1ed0fa3ebc9e9",
+                "Warsaw-45.192.12.93-43f9894067c3266940db69c4de72235b",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Wyszków-94.183.209.43-dfa358b5ac666a50cf0297adf8ccbf1c",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-153.76.112.79-4f16875d709a8b7b6ac0edce51b69a78",
+                "Frankfurt am Main-206.81.19.97-1644159a75d168c84fc14ab54f852ed8",
+                "Ebara-202.182.115.129-1341c08a561f384fd0c1ed0fa3ebc9e9",
+                "Warsaw-45.192.12.93-43f9894067c3266940db69c4de72235b",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Wyszków-94.183.209.43-dfa358b5ac666a50cf0297adf8ccbf1c",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-153.76.112.79-4f16875d709a8b7b6ac0edce51b69a78",
+                "Frankfurt am Main-206.81.19.97-1644159a75d168c84fc14ab54f852ed8",
+                "Ebara-202.182.115.129-1341c08a561f384fd0c1ed0fa3ebc9e9",
+                "Warsaw-45.192.12.93-43f9894067c3266940db69c4de72235b",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Wyszków-94.183.209.43-dfa358b5ac666a50cf0297adf8ccbf1c",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-153.76.112.79-4f16875d709a8b7b6ac0edce51b69a78",
+            "server": "route-1.s1n4-nexu.ir",
+            "server_port": 2083,
+            "uuid": "b487f9b9-904b-4d47-9a0b-f00b046fb7d1",
+            "transport": {
+                "type": "http",
+                "path": "",
+                "headers": {
+                    "Host": "route-1.s1n4-nexu.ir"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-206.81.19.97-1644159a75d168c84fc14ab54f852ed8",
+            "server": "206.81.19.97",
+            "server_port": 440,
+            "uuid": "59906cb2-a61b-4cf3-b77b-5762ef61d2b0",
+            "transport": {
+                "type": "http",
+                "path": "",
+                "headers": {
+                    "Host": "206.81.19.97"
+                }
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Ebara-202.182.115.129-1341c08a561f384fd0c1ed0fa3ebc9e9",
+            "server": "209.248.32.117",
+            "server_port": 28102,
+            "password": "HOrViv",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ctldl.windowsupdate.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Warsaw-45.192.12.93-43f9894067c3266940db69c4de72235b",
+            "server": "go2.wwwinternetvideo.click",
+            "server_port": 443,
+            "password": "YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "admin.wwwinternetvideo.click"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Wyszków-94.183.209.43-dfa358b5ac666a50cf0297adf8ccbf1c",
+            "server": "94.183.209.43",
+            "server_port": 443,
+            "uuid": "5e7ecc47-e424-4653-876e-c7515a2c82b4",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "94.183.209.43"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
