@@ -1,0 +1,233 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Helsinki-65.109.205.152-af8412e1b2af98fed02a97eae88a646c",
+                "Saint Petersburg-77.222.53.158-9025514a08db00f3d30b98731cfcea23",
+                "Singapore-45.88.42.130-8ff8c0dc56074d3796b76cb4be20e5e5",
+                "Frankfurt am Main-162.249.126.2-bfe42548d714518e6a73af66b52d6901",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Bukhara-189.74.97.47-209d6c3581f35ee1b0e468af18f6df66",
+                "Wyszków-94.183.209.43-c52303240c4a2e6a4b43e700180cdf9d",
+                "Warsaw-151.243.182.249-0c1c95bcf51f40ad738d58b7704acea6",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Helsinki-65.109.205.152-af8412e1b2af98fed02a97eae88a646c",
+                "Saint Petersburg-77.222.53.158-9025514a08db00f3d30b98731cfcea23",
+                "Singapore-45.88.42.130-8ff8c0dc56074d3796b76cb4be20e5e5",
+                "Frankfurt am Main-162.249.126.2-bfe42548d714518e6a73af66b52d6901",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Bukhara-189.74.97.47-209d6c3581f35ee1b0e468af18f6df66",
+                "Wyszków-94.183.209.43-c52303240c4a2e6a4b43e700180cdf9d",
+                "Warsaw-151.243.182.249-0c1c95bcf51f40ad738d58b7704acea6",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Helsinki-65.109.205.152-af8412e1b2af98fed02a97eae88a646c",
+                "Saint Petersburg-77.222.53.158-9025514a08db00f3d30b98731cfcea23",
+                "Singapore-45.88.42.130-8ff8c0dc56074d3796b76cb4be20e5e5",
+                "Frankfurt am Main-162.249.126.2-bfe42548d714518e6a73af66b52d6901",
+                "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+                "Bukhara-189.74.97.47-209d6c3581f35ee1b0e468af18f6df66",
+                "Wyszków-94.183.209.43-c52303240c4a2e6a4b43e700180cdf9d",
+                "Warsaw-151.243.182.249-0c1c95bcf51f40ad738d58b7704acea6",
+                "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Helsinki-65.109.205.152-af8412e1b2af98fed02a97eae88a646c",
+            "server": "104.24.244.0",
+            "server_port": 2087,
+            "uuid": "5469e67c-987a-4bb8-8b75-b984c3cd4570",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "shopkharid.dearhossein-taktaz.ir"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "shopkharid.dearhossein-taktaz.ir"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saint Petersburg-77.222.53.158-9025514a08db00f3d30b98731cfcea23",
+            "server": "77.222.53.158",
+            "server_port": 2200,
+            "uuid": "6bd3e20b-4be0-41df-a1e0-5c147cc8fbfc",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "rzd.ru"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-45.88.42.130-8ff8c0dc56074d3796b76cb4be20e5e5",
+            "server": "msjp.mangshe.xyz",
+            "server_port": 20562,
+            "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-162.249.126.2-bfe42548d714518e6a73af66b52d6901",
+            "server": "162.249.126.6",
+            "server_port": 8443,
+            "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hopp-germany-new.ddnsguru.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-aca4ff688747e96fe2a91dbbfb047833",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Bukhara-189.74.97.47-209d6c3581f35ee1b0e468af18f6df66",
+            "server": "189.74.97.47",
+            "server_port": 2087,
+            "uuid": "894fe9f0-b998-49c0-8003-a5007de921e1",
+            "transport": {
+                "type": "ws",
+                "path": "/755276b33b6f",
+                "headers": {
+                    "Host": "189.74.97.47"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Wyszków-94.183.209.43-c52303240c4a2e6a4b43e700180cdf9d",
+            "server": "94.183.209.43",
+            "server_port": 443,
+            "uuid": "5e7ecc47-e424-4653-876e-c7515a2c82b4",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "94.183.209.43"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-151.243.182.249-0c1c95bcf51f40ad738d58b7704acea6",
+            "server": "pl5.lckdwn.ru",
+            "server_port": 443,
+            "uuid": "98673856-cd6f-4aa0-b2c9-d2ec90c0f47b",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "pl5.lckdwn.ru"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Moscow-201.24.49.237-2df84b49df2ce4e7e1adc8fdd7b3ee19",
+            "server": "201.24.49.237",
+            "server_port": 2200,
+            "uuid": "af412668-578c-4296-bc8c-8fac6a8d9003",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "201.24.49.237"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
