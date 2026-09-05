@@ -1,0 +1,255 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Montréal-3.99.178.14-c707ddf175ad0109d565d6670f3033ff",
+                "Paris-35.181.166.40-6c539b8a6cb5f3957585f7a2366fd720",
+                "Dublin-3.250.40.89-5cb6dfa3087355be6d29f5d17dbea8f0",
+                "Singapore-45.88.42.130-a208fd9e7e719ed6a8f125c67aeb07e8",
+                "Kampong Loyang-134.185.94.128-8e7a0f5a7308b10358a7d4e4fc643d57",
+                "San Jose-45.143.128.79-94a938a71dbcfe7b2526b5f490a2cb11",
+                "Amsterdam-152.55.185.107-79b99fcd807334eea8d23ce2079686e7",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Warsaw-151.243.182.249-caecd303fb077c5882d99ef17ff07dde",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Montréal-3.99.178.14-c707ddf175ad0109d565d6670f3033ff",
+                "Paris-35.181.166.40-6c539b8a6cb5f3957585f7a2366fd720",
+                "Dublin-3.250.40.89-5cb6dfa3087355be6d29f5d17dbea8f0",
+                "Singapore-45.88.42.130-a208fd9e7e719ed6a8f125c67aeb07e8",
+                "Kampong Loyang-134.185.94.128-8e7a0f5a7308b10358a7d4e4fc643d57",
+                "San Jose-45.143.128.79-94a938a71dbcfe7b2526b5f490a2cb11",
+                "Amsterdam-152.55.185.107-79b99fcd807334eea8d23ce2079686e7",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Warsaw-151.243.182.249-caecd303fb077c5882d99ef17ff07dde",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-3.99.178.14-c707ddf175ad0109d565d6670f3033ff",
+            "server": "3.99.178.14",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.181.166.40-6c539b8a6cb5f3957585f7a2366fd720",
+            "server": "vpn-fr-002.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-fr-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dublin-3.250.40.89-5cb6dfa3087355be6d29f5d17dbea8f0",
+            "server": "3.250.40.89",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-45.88.42.130-a208fd9e7e719ed6a8f125c67aeb07e8",
+            "server": "msjp.mangshe.xyz",
+            "server_port": 20562,
+            "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Kampong Loyang-134.185.94.128-8e7a0f5a7308b10358a7d4e4fc643d57",
+            "server": "134.185.94.128",
+            "server_port": 56927,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "JtkbIj4+qk/NSxl76apJZvxcu/vuJj2t3RiQWcMTQ5A="
+        },
+        {
+            "type": "trojan",
+            "tag": "San Jose-45.143.128.79-94a938a71dbcfe7b2526b5f490a2cb11",
+            "server": "ggboy.ggboyz.online",
+            "server_port": 8444,
+            "password": "2EXii6JlhaDvgSiTsC",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ggboy.ggboyz.online"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.185.107-79b99fcd807334eea8d23ce2079686e7",
+            "server": "69.46.46.107",
+            "server_port": 443,
+            "uuid": "31d2e039-d9fa-e591-25e4-deb7ed6d4b91",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/31d2e039-d9fa-e591-25e4-deb7ed6d4b91",
+                "headers": {
+                    "Host": "silent-ember-4448-production.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "silent-ember-4448-production.up.railway.app"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Warsaw-151.243.182.249-caecd303fb077c5882d99ef17ff07dde",
+            "server": "pl5.lckdwn.ru",
+            "server_port": 443,
+            "uuid": "98673856-cd6f-4aa0-b2c9-d2ec90c0f47b",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "pl5.lckdwn.ru"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c",
+            "server": "139.84.247.164",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "tfAcRikawhNoZAhu"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+            "server": "64.176.73.160",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "VJtsgllDDJfNmaTe"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
