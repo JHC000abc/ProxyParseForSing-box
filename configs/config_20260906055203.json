@@ -1,0 +1,307 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Montréal-3.99.178.14-c707ddf175ad0109d565d6670f3033ff",
+                "Paris-35.181.169.140-6c539b8a6cb5f3957585f7a2366fd720",
+                "Dublin-3.250.40.89-5cb6dfa3087355be6d29f5d17dbea8f0",
+                "Dublin-52.214.208.36-6559506bbb375a4f24a04ce8a5edf86e",
+                "Singapore-45.88.42.130-a208fd9e7e719ed6a8f125c67aeb07e8",
+                "Los Angeles-23.236.64.4-e2a58436676eba87c9ba43df2eefef87",
+                "Singapore-89.187.163.216-914d9b1b18b0b391036c35b6f49a3ee6",
+                "Amsterdam-152.55.185.100-f95cab0574745714e06fa1b32f14d9a8",
+                "Dublin-54.229.177.209-92747307cd9f1e98edc73e0d484b5143",
+                "London-35.179.119.76-008cc05703d131cea1eb0da44e9554be",
+                "Santa Clara-92.223.71.85-ea120bbe3bd7bee842a35c5a77295fe8",
+                "London-35.178.200.252-8588ad0af34fc6bcab71903ed487438e",
+                "Dublin-52.210.185.41-67c76469abd9e6bebbb5081efdaa9ccf",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Montréal-3.99.178.14-c707ddf175ad0109d565d6670f3033ff",
+                "Paris-35.181.169.140-6c539b8a6cb5f3957585f7a2366fd720",
+                "Dublin-3.250.40.89-5cb6dfa3087355be6d29f5d17dbea8f0",
+                "Dublin-52.214.208.36-6559506bbb375a4f24a04ce8a5edf86e",
+                "Singapore-45.88.42.130-a208fd9e7e719ed6a8f125c67aeb07e8",
+                "Los Angeles-23.236.64.4-e2a58436676eba87c9ba43df2eefef87",
+                "Singapore-89.187.163.216-914d9b1b18b0b391036c35b6f49a3ee6",
+                "Amsterdam-152.55.185.100-f95cab0574745714e06fa1b32f14d9a8",
+                "Dublin-54.229.177.209-92747307cd9f1e98edc73e0d484b5143",
+                "London-35.179.119.76-008cc05703d131cea1eb0da44e9554be",
+                "Santa Clara-92.223.71.85-ea120bbe3bd7bee842a35c5a77295fe8",
+                "London-35.178.200.252-8588ad0af34fc6bcab71903ed487438e",
+                "Dublin-52.210.185.41-67c76469abd9e6bebbb5081efdaa9ccf",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-3.99.178.14-c707ddf175ad0109d565d6670f3033ff",
+            "server": "3.99.178.14",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.181.169.140-6c539b8a6cb5f3957585f7a2366fd720",
+            "server": "vpn-fr-002.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-fr-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dublin-3.250.40.89-5cb6dfa3087355be6d29f5d17dbea8f0",
+            "server": "3.250.40.89",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dublin-52.214.208.36-6559506bbb375a4f24a04ce8a5edf86e",
+            "server": "52.214.208.36",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-45.88.42.130-a208fd9e7e719ed6a8f125c67aeb07e8",
+            "server": "msjp.mangshe.xyz",
+            "server_port": 20562,
+            "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.microsoft.com"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Los Angeles-23.236.64.4-e2a58436676eba87c9ba43df2eefef87",
+            "server": "121.46.230.232",
+            "server_port": 65443,
+            "method": "aes-256-cfb",
+            "password": "7eadc6dbe2ae"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-89.187.163.216-914d9b1b18b0b391036c35b6f49a3ee6",
+            "server": "149.118.55.234",
+            "server_port": 443,
+            "uuid": "58f7687b-5209-4dcd-a11e-6e4eb2191378",
+            "transport": {
+                "type": "ws",
+                "path": "/xlordgrim/sg",
+                "headers": {
+                    "Host": "edge.xlordgrim.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.zoom.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Amsterdam-152.55.185.100-f95cab0574745714e06fa1b32f14d9a8",
+            "server": "sulgx-panel-production-63ee.up.railway.app",
+            "server_port": 443,
+            "uuid": "7364a180-9e8d-428b-8260-dbac516e80a7",
+            "transport": {
+                "type": "ws",
+                "path": "/ws/7364a180-9e8d-428b-8260-dbac516e80a7",
+                "headers": {
+                    "Host": "sulgx-panel-production-63ee.up.railway.app"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sulgx-panel-production-63ee.up.railway.app"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dublin-54.229.177.209-92747307cd9f1e98edc73e0d484b5143",
+            "server": "54.229.177.209",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-35.179.119.76-008cc05703d131cea1eb0da44e9554be",
+            "server": "35.179.119.76",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "vless",
+            "tag": "Santa Clara-92.223.71.85-ea120bbe3bd7bee842a35c5a77295fe8",
+            "server": "cos-cdn-g.alicdn.win",
+            "server_port": 443,
+            "uuid": "2d597e01-d00a-4af0-916f-44195e9b1cac",
+            "transport": {
+                "type": "ws",
+                "path": "/newlogin/login.do",
+                "headers": {
+                    "Host": "mms-static-origin-e.hzedu.men"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mms-statlc-61uzul-e.hzedu.men"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-35.178.200.252-8588ad0af34fc6bcab71903ed487438e",
+            "server": "35.178.200.252",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Dublin-52.210.185.41-67c76469abd9e6bebbb5081efdaa9ccf",
+            "server": "52.210.185.41",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+            "server": "64.176.73.160",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "VJtsgllDDJfNmaTe"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
