@@ -1,0 +1,270 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Montréal-3.96.202.83-b51d108449ceb06f44ef15d47d378175",
+                "Frankfurt am Main-130.61.44.247-12bbcb3f538e2ab99c1567150f7b2620",
+                "Frankfurt am Main-130.61.237.108-fa8ed822095ea792c207343ac553cc52",
+                "Cardiff-129.151.67.2-5ab8a0445b2c4255972272231aafec4d",
+                "Cardiff-134.65.60.243-4f0d49b9530985adba784448122a51ff",
+                "Cardiff-129.151.82.157-f1012c65d94f4c35d292546db6f874ec",
+                "Cardiff-129.151.69.35-81c84732da4bd4058bb28b085012bdf7",
+                "Cyberjaya-118.107.222.231-2098c9838d378a8b13476a3dc775b1ad",
+                "Leesburg-15.204.233.41-bae38431f88304b784a82f5e58482f2c",
+                "Sydney-3.107.192.55-3ab4d7745d415210f97e4e13a539d1b9",
+                "London-35.178.200.252-1206165a2e437a1c88df1b35815c63e1",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Vilnius-144.31.243.2-470f4be62a806fdef37201f1944e8885",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+                "Leesburg-15.204.246.111-8b10d9538d8b11cda83e17803ae41e49"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Montréal-3.96.202.83-b51d108449ceb06f44ef15d47d378175",
+                "Frankfurt am Main-130.61.44.247-12bbcb3f538e2ab99c1567150f7b2620",
+                "Frankfurt am Main-130.61.237.108-fa8ed822095ea792c207343ac553cc52",
+                "Cardiff-129.151.67.2-5ab8a0445b2c4255972272231aafec4d",
+                "Cardiff-134.65.60.243-4f0d49b9530985adba784448122a51ff",
+                "Cardiff-129.151.82.157-f1012c65d94f4c35d292546db6f874ec",
+                "Cardiff-129.151.69.35-81c84732da4bd4058bb28b085012bdf7",
+                "Cyberjaya-118.107.222.231-2098c9838d378a8b13476a3dc775b1ad",
+                "Leesburg-15.204.233.41-bae38431f88304b784a82f5e58482f2c",
+                "Sydney-3.107.192.55-3ab4d7745d415210f97e4e13a539d1b9",
+                "London-35.178.200.252-1206165a2e437a1c88df1b35815c63e1",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Vilnius-144.31.243.2-470f4be62a806fdef37201f1944e8885",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+                "Leesburg-15.204.246.111-8b10d9538d8b11cda83e17803ae41e49"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Montréal-3.96.202.83-b51d108449ceb06f44ef15d47d378175",
+            "server": "3.96.202.83",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-130.61.44.247-12bbcb3f538e2ab99c1567150f7b2620",
+            "server": "130.61.44.247",
+            "server_port": 59924,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "Ysvv0xxTrCg+FjlIar+M9OXA+rHCF4uKzNEYfIUpWV4="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-130.61.237.108-fa8ed822095ea792c207343ac553cc52",
+            "server": "130.61.237.108",
+            "server_port": 59924,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "e0sT7dql6hUZTTWLOtz89tI2+PxjtSCqzAhkwhVVz9U="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cardiff-129.151.67.2-5ab8a0445b2c4255972272231aafec4d",
+            "server": "129.151.67.2",
+            "server_port": 61312,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "3vT67+EiRIaupWjM/LZ8PtZ9r11vRs8eqF59FKRdvxk="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cardiff-134.65.60.243-4f0d49b9530985adba784448122a51ff",
+            "server": "134.65.60.243",
+            "server_port": 61312,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "ExPNDBZzUC/Jjs1+JpVlovzA+LE0RxQNHDfwGbceORs="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cardiff-129.151.82.157-f1012c65d94f4c35d292546db6f874ec",
+            "server": "129.151.82.157",
+            "server_port": 61312,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "nqqtdNNPXiHXGXPI0sIQSxMvdNgzlVwFVD51+xplcu0="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cardiff-129.151.69.35-81c84732da4bd4058bb28b085012bdf7",
+            "server": "129.151.69.35",
+            "server_port": 61312,
+            "method": "2022-blake3-chacha20-poly1305",
+            "password": "6YmXBs93ISiL6BQXFPWm5H5cNZCwyjlbbUXF3j4sS+o="
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Cyberjaya-118.107.222.231-2098c9838d378a8b13476a3dc775b1ad",
+            "server": "118.107.222.231",
+            "server_port": 65443,
+            "method": "aes-256-cfb",
+            "password": "7eadc6dbe2ae"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Leesburg-15.204.233.41-bae38431f88304b784a82f5e58482f2c",
+            "server": "15.204.233.41",
+            "server_port": 8882,
+            "method": "aes-256-gcm",
+            "password": "kDWvXYZoTBcGkC4"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Sydney-3.107.192.55-3ab4d7745d415210f97e4e13a539d1b9",
+            "server": "vpn-au-002.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vk.com"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "London-35.178.200.252-1206165a2e437a1c88df1b35815c63e1",
+            "server": "35.178.200.252",
+            "server_port": 443,
+            "method": "aes-256-cfb",
+            "password": "amazonskr05"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Vilnius-144.31.243.2-470f4be62a806fdef37201f1944e8885",
+            "server": "144.31.243.2",
+            "server_port": 16015,
+            "method": "chacha20-ietf-poly1305",
+            "password": "J1InuU6QRT5JOh1mQfkjU2"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+            "server": "64.176.73.160",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "VJtsgllDDJfNmaTe"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Leesburg-15.204.246.111-8b10d9538d8b11cda83e17803ae41e49",
+            "server": "15.204.246.111",
+            "server_port": 5498,
+            "method": "aes-256-gcm",
+            "password": "lGqs95QkFHo2NV"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
