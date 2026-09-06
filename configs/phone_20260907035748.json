@@ -1,0 +1,121 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Tung Chung-208.66.228.104-46ef4cd5bca82c472b762e84cd357c3e",
+                "Singapore-89.187.163.216-0ff58d251f1bbcbad911219ee5a77d9c",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Tung Chung-208.66.228.104-46ef4cd5bca82c472b762e84cd357c3e",
+                "Singapore-89.187.163.216-0ff58d251f1bbcbad911219ee5a77d9c",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Tung Chung-208.66.228.104-46ef4cd5bca82c472b762e84cd357c3e",
+                "Singapore-89.187.163.216-0ff58d251f1bbcbad911219ee5a77d9c",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Tung Chung-208.66.228.104-46ef4cd5bca82c472b762e84cd357c3e",
+            "server": "104.21.33.59",
+            "server_port": 443,
+            "uuid": "a36d383f-5ea0-4b5f-99ef-20e68cdbd32c",
+            "transport": {
+                "type": "ws",
+                "path": "/f004ff67-afbd-43c3-9db1-7b6a123e337d",
+                "headers": {
+                    "Host": "hk59.wxgqlfx.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hk59.wxgqlfx.top"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-89.187.163.216-0ff58d251f1bbcbad911219ee5a77d9c",
+            "server": "149.118.55.234",
+            "server_port": 443,
+            "uuid": "58f7687b-5209-4dcd-a11e-6e4eb2191378",
+            "transport": {
+                "type": "ws",
+                "path": "/xlordgrim/sg",
+                "headers": {
+                    "Host": "edge.xlordgrim.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.zoom.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
