@@ -1,0 +1,272 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-193.168.200.207-ad583b3b56f5ec81cf0782397cc19222",
+                "Saint Petersburg-77.222.53.218-6ddfa2d3d2eba36d3f04a49975ba77f7",
+                "Taichung-60.248.219.52-0e9852955f709efb987c0afc04d2bfae",
+                "New York City-185.116.236.153-415430baad3d285e20697fb4b70d5fb2",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Singapore-89.187.163.216-c11959d7d30be6304ae0155952c5207c",
+                "Frankfurt am Main-162.221.196.167-759bc161943e00acfb8e37c704d9a018",
+                "Tashkent-189.74.97.47-c9e0c0f38d3a981abfd6b1e77a461aed",
+                "Wyszków-94.183.209.43-84235a64dd017f2231effc60928790d7",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-193.168.200.207-ad583b3b56f5ec81cf0782397cc19222",
+                "Saint Petersburg-77.222.53.218-6ddfa2d3d2eba36d3f04a49975ba77f7",
+                "Taichung-60.248.219.52-0e9852955f709efb987c0afc04d2bfae",
+                "New York City-185.116.236.153-415430baad3d285e20697fb4b70d5fb2",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Singapore-89.187.163.216-c11959d7d30be6304ae0155952c5207c",
+                "Frankfurt am Main-162.221.196.167-759bc161943e00acfb8e37c704d9a018",
+                "Tashkent-189.74.97.47-c9e0c0f38d3a981abfd6b1e77a461aed",
+                "Wyszków-94.183.209.43-84235a64dd017f2231effc60928790d7",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-193.168.200.207-ad583b3b56f5ec81cf0782397cc19222",
+                "Saint Petersburg-77.222.53.218-6ddfa2d3d2eba36d3f04a49975ba77f7",
+                "Taichung-60.248.219.52-0e9852955f709efb987c0afc04d2bfae",
+                "New York City-185.116.236.153-415430baad3d285e20697fb4b70d5fb2",
+                "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+                "Singapore-89.187.163.216-c11959d7d30be6304ae0155952c5207c",
+                "Frankfurt am Main-162.221.196.167-759bc161943e00acfb8e37c704d9a018",
+                "Tashkent-189.74.97.47-c9e0c0f38d3a981abfd6b1e77a461aed",
+                "Wyszków-94.183.209.43-84235a64dd017f2231effc60928790d7",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vmess",
+            "tag": "Frankfurt am Main-193.168.200.207-ad583b3b56f5ec81cf0782397cc19222",
+            "server": "193.168.200.207",
+            "server_port": 55136,
+            "uuid": "fe0f6ae2-85e4-4815-9206-4209bc118e94",
+            "tls": {
+                "enabled": false
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/",
+                "headers": {
+                    "Host": "pull.free.video.10010.com"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Saint Petersburg-77.222.53.218-6ddfa2d3d2eba36d3f04a49975ba77f7",
+            "server": "77.222.53.218",
+            "server_port": 2200,
+            "uuid": "1cb011db-0211-4120-8984-13d8510a612b",
+            "transport": {
+                "type": "ws",
+                "path": "/v1",
+                "headers": {
+                    "Host": "77.222.53.218"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Taichung-60.248.219.52-0e9852955f709efb987c0afc04d2bfae",
+            "server": "59.125.69.19",
+            "server_port": 443,
+            "uuid": "f1d247db-d7ce-4eb8-9c0d-7b10603cd0b4",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-185.116.236.153-415430baad3d285e20697fb4b70d5fb2",
+            "server": "104.21.53.114",
+            "server_port": 443,
+            "uuid": "7e26fd8f-d75a-473d-84ba-9f4e3f47d086",
+            "transport": {
+                "type": "ws",
+                "path": "/8qMLgNapWf6SBxo8fhQlVPYO",
+                "headers": {
+                    "Host": "4-m20.20260721-b3fa-439e-b14e-6e2ee3f22b8c.ccwu.cc"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "4-m20.20260721-b3fa-439e-b14e-6e2ee3f22b8c.ccwu.cc"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Heerlen-2.27.249.79-7eadad078c65cb47f7a11ff225f2932a",
+            "server": "nl1.sferavpn.pro",
+            "server_port": 443,
+            "password": "cd74c0a406664a5bc0bac098220a2468",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "nl1.sferavpn.pro"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "44f1c1e2f8b99e792ceed574627a1eb0"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-89.187.163.216-c11959d7d30be6304ae0155952c5207c",
+            "server": "149.118.55.234",
+            "server_port": 443,
+            "uuid": "58f7687b-5209-4dcd-a11e-6e4eb2191378",
+            "transport": {
+                "type": "ws",
+                "path": "/xlordgrim/sg",
+                "headers": {
+                    "Host": "edge.xlordgrim.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.zoom.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-162.221.196.167-759bc161943e00acfb8e37c704d9a018",
+            "server": "82.24.203.37",
+            "server_port": 2087,
+            "uuid": "44573770-963a-41f5-a080-3cc11e4957a2",
+            "transport": {
+                "type": "ws",
+                "path": "/5c62e3c616d8",
+                "headers": {
+                    "Host": "82.24.203.37"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tashkent-189.74.97.47-c9e0c0f38d3a981abfd6b1e77a461aed",
+            "server": "189.74.97.47",
+            "server_port": 2087,
+            "uuid": "894fe9f0-b998-49c0-8003-a5007de921e1",
+            "transport": {
+                "type": "ws",
+                "path": "/755276b33b6f",
+                "headers": {
+                    "Host": "189.74.97.47"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Wyszków-94.183.209.43-84235a64dd017f2231effc60928790d7",
+            "server": "94.183.209.43",
+            "server_port": 443,
+            "uuid": "5e7ecc47-e424-4653-876e-c7515a2c82b4",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "94.183.209.43"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-158.101.158.101-2603299b8334b225ae41a9964ac2184a",
+            "server": "162.159.254.3",
+            "server_port": 443,
+            "uuid": "4e4f1f70-5e56-4a76-bb9d-db087f4690c4",
+            "transport": {
+                "type": "ws",
+                "path": "/tyxyws",
+                "headers": {
+                    "Host": "jp3.yohototo.top"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp3.yohototo.top"
+            }
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
