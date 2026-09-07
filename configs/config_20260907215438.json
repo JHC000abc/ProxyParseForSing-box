@@ -1,0 +1,338 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Paris-57.130.60.199-bb470c6225caee3b4b53824de7540a43",
+                "Chicago-88.216.73.74-6a786ca062f6aa284babe701b0a65547",
+                "Seoul-121.78.137.24-b4fc0c4f816ba62848514de0accaedd4",
+                "Dulles Town Center-20.102.47.201-1a27f066a52a2e744048391eff1f9de3",
+                "San Jose-40.65.61.149-d556e635c9e396aa538ed6eca48494a3",
+                "Dulles Town Center-20.102.47.201-a2e14efb316b0d3cc018a97abf929493",
+                "Dulles Town Center-20.102.47.201-e9ae3409e6b117525660d4d0533854f5",
+                "Dulles Town Center-20.102.47.201-2f169af0a53924a61ae31e38b67bd53e",
+                "Dulles Town Center-20.102.47.201-6be063b46c147fd6d3b18d000edbd370",
+                "Dulles Town Center-20.102.47.201-d651d2ab7a83ff6d2afb5771f53e9c63",
+                "Singapore-89.187.163.216-e9b7748012d189d5b0f11a75b0d88bb5",
+                "Frankfurt am Main-57.129.83.103-bd521e6dd96c90b0db83015bd15aeb88",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c",
+                "Vilnius-144.31.243.2-470f4be62a806fdef37201f1944e8885",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+                "New York City-198.98.53.130-e30022fc2d117f1e77c042d324848dd9"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Paris-57.130.60.199-bb470c6225caee3b4b53824de7540a43",
+                "Chicago-88.216.73.74-6a786ca062f6aa284babe701b0a65547",
+                "Seoul-121.78.137.24-b4fc0c4f816ba62848514de0accaedd4",
+                "Dulles Town Center-20.102.47.201-1a27f066a52a2e744048391eff1f9de3",
+                "San Jose-40.65.61.149-d556e635c9e396aa538ed6eca48494a3",
+                "Dulles Town Center-20.102.47.201-a2e14efb316b0d3cc018a97abf929493",
+                "Dulles Town Center-20.102.47.201-e9ae3409e6b117525660d4d0533854f5",
+                "Dulles Town Center-20.102.47.201-2f169af0a53924a61ae31e38b67bd53e",
+                "Dulles Town Center-20.102.47.201-6be063b46c147fd6d3b18d000edbd370",
+                "Dulles Town Center-20.102.47.201-d651d2ab7a83ff6d2afb5771f53e9c63",
+                "Singapore-89.187.163.216-e9b7748012d189d5b0f11a75b0d88bb5",
+                "Frankfurt am Main-57.129.83.103-bd521e6dd96c90b0db83015bd15aeb88",
+                "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+                "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c",
+                "Vilnius-144.31.243.2-470f4be62a806fdef37201f1944e8885",
+                "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+                "New York City-198.98.53.130-e30022fc2d117f1e77c042d324848dd9"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "vless",
+            "tag": "Paris-57.130.60.199-bb470c6225caee3b4b53824de7540a43",
+            "server": "172.67.217.230",
+            "server_port": 443,
+            "uuid": "365747d7-9c6e-4ecd-8bbb-a9a7d5f71c3f",
+            "transport": {
+                "type": "ws",
+                "path": "/balad",
+                "headers": {
+                    "Host": "ant-todo.info"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ant-todo.info"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Chicago-88.216.73.74-6a786ca062f6aa284babe701b0a65547",
+            "server": "88.216.73.74",
+            "server_port": 443,
+            "uuid": "493024a4-2da7-4ff9-9bc7-fdd5543141d2",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "88.216.73.74"
+                }
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Seoul-121.78.137.24-b4fc0c4f816ba62848514de0accaedd4",
+            "server": "121.46.230.138",
+            "server_port": 65443,
+            "method": "aes-256-cfb",
+            "password": "7eadc6dbe2ae"
+        },
+        {
+            "type": "vless",
+            "tag": "Dulles Town Center-20.102.47.201-1a27f066a52a2e744048391eff1f9de3",
+            "server": "cf.090227.xyz",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fangbinxingnmsl.fuckingnigga.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "San Jose-40.65.61.149-d556e635c9e396aa538ed6eca48494a3",
+            "server": "cloudflare-dns.com",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fangbinxingnmsl.fuckingnigga.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dulles Town Center-20.102.47.201-a2e14efb316b0d3cc018a97abf929493",
+            "server": "developers.cloudflare.com",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fangbinxingnmsl.fuckingnigga.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dulles Town Center-20.102.47.201-e9ae3409e6b117525660d4d0533854f5",
+            "server": "openai.com",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fangbinxingnmsl.fuckingnigga.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dulles Town Center-20.102.47.201-2f169af0a53924a61ae31e38b67bd53e",
+            "server": "www.whatismyip.net",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fangbinxingnmsl.fuckingnigga.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dulles Town Center-20.102.47.201-6be063b46c147fd6d3b18d000edbd370",
+            "server": "www.udemy.com",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fangbinxingnmsl.fuckingnigga.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Dulles Town Center-20.102.47.201-d651d2ab7a83ff6d2afb5771f53e9c63",
+            "server": "www.csgo.net",
+            "server_port": 2095,
+            "uuid": "86c50e3a-5b87-49dd-bd20-03c7f2735e40",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "fangbinxingnmsl.fuckingnigga.eu.cc"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-89.187.163.216-e9b7748012d189d5b0f11a75b0d88bb5",
+            "server": "149.118.55.234",
+            "server_port": 443,
+            "uuid": "58f7687b-5209-4dcd-a11e-6e4eb2191378",
+            "transport": {
+                "type": "ws",
+                "path": "/xlordgrim/sg",
+                "headers": {
+                    "Host": "edge.xlordgrim.com"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.zoom.com"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Frankfurt am Main-57.129.83.103-bd521e6dd96c90b0db83015bd15aeb88",
+            "server": "51.195.126.38",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "2YdE4lFOid5a"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-150.230.252.217-6dca958c30bfe8d817cfae258b258074",
+            "server": "150-230-252-217.liao.kdns.fr",
+            "server_port": 50160,
+            "password": "9cfc9458e48c028ec03ff86ebc71c744",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "150-230-252-217.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Benoni-139.84.247.164-a8dbcc48527ab5fdd60e07086951be4c",
+            "server": "139.84.247.164",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "tfAcRikawhNoZAhu"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Vilnius-144.31.243.2-470f4be62a806fdef37201f1944e8885",
+            "server": "144.31.243.2",
+            "server_port": 16015,
+            "method": "chacha20-ietf-poly1305",
+            "password": "J1InuU6QRT5JOh1mQfkjU2"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "Warsaw-64.176.73.160-5d218bd744b3535da8582844fd110e2b",
+            "server": "64.176.73.160",
+            "server_port": 8388,
+            "method": "chacha20-ietf-poly1305",
+            "password": "VJtsgllDDJfNmaTe"
+        },
+        {
+            "type": "shadowsocks",
+            "tag": "New York City-198.98.53.130-e30022fc2d117f1e77c042d324848dd9",
+            "server": "198.98.53.130",
+            "server_port": 443,
+            "method": "chacha20-ietf-poly1305",
+            "password": "eDfN7SODQceIOmIAbtJJtK"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geosite": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "geoip": "cn",
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "dns_domestic",
+                "address": "223.5.5.5",
+                "address_strategy": "ipv4_only"
+            },
+            {
+                "tag": "dns_foreign",
+                "address": "8.8.8.8",
+                "address_strategy": "prefer_ipv4"
+            }
+        ],
+        "rules": [
+            {
+                "geosite": "cn",
+                "server": "dns_domestic"
+            },
+            {
+                "outbound": "any",
+                "server": "dns_foreign"
+            }
+        ]
+    }
+}
