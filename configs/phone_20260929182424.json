@@ -1,0 +1,526 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-162.249.127.130-9fa2f709ceaa0d9f0c78ab58fa3e2bb6",
+                "Frankfurt am Main-51.68.164.221-c0d9c5e8c1e3fadb3f4768a6a9b9cd7c",
+                "Frankfurt am Main-162.249.127.130-2c858800201972f7d317d4d19e4a2359",
+                "Ebara-45.32.10.7-73a40a162a9ff6dd7e4efc7f7511f8f0",
+                "Tokyo-116.80.60.114-4847e93490f4805e9844273ac9c6fe2f",
+                "Bucharest-85.204.107.162-38e7c76d51232b5fae20a294333b21c0",
+                "Los Angeles-192.236.151.43-575eb53caaad76365141591205ef2e02",
+                "Zürich-82.38.64.229-d441cc0a50d51296c919ba0faaa8a160",
+                "Frankfurt am Main-91.196.32.163-3a2229ce44e868759f8c55277081c70f",
+                "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+                "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+                "Amsterdam-72.56.92.120-081d747b08fb3dc99d74a68d9f07350e",
+                "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+                "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+                "Bucharest-85.204.107.162-e01998f03cc46f507c1a8387cab3cc0e",
+                "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+                "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+                "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+                "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+                "Paris-35.180.23.143-8bdb92b24a8f84a8922ead59ed27a6fd",
+                "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+                "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+                "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+                "Frankfurt am Main-162.249.127.130-cca3c7d4e6f9b15dd163e4f764dd87cb",
+                "Singapore-146.190.105.228-cc5ea20d770646500f78945899b0de1d",
+                "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+                "Los Angeles-45.149.172.74-3877c7b7067693c9f3c54ade47dc4269",
+                "London-186.190.211.67-2f541cb384fb800e165f1821847bf233"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-162.249.127.130-9fa2f709ceaa0d9f0c78ab58fa3e2bb6",
+                "Frankfurt am Main-51.68.164.221-c0d9c5e8c1e3fadb3f4768a6a9b9cd7c",
+                "Frankfurt am Main-162.249.127.130-2c858800201972f7d317d4d19e4a2359",
+                "Ebara-45.32.10.7-73a40a162a9ff6dd7e4efc7f7511f8f0",
+                "Tokyo-116.80.60.114-4847e93490f4805e9844273ac9c6fe2f",
+                "Bucharest-85.204.107.162-38e7c76d51232b5fae20a294333b21c0",
+                "Los Angeles-192.236.151.43-575eb53caaad76365141591205ef2e02",
+                "Zürich-82.38.64.229-d441cc0a50d51296c919ba0faaa8a160",
+                "Frankfurt am Main-91.196.32.163-3a2229ce44e868759f8c55277081c70f",
+                "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+                "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+                "Amsterdam-72.56.92.120-081d747b08fb3dc99d74a68d9f07350e",
+                "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+                "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+                "Bucharest-85.204.107.162-e01998f03cc46f507c1a8387cab3cc0e",
+                "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+                "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+                "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+                "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+                "Paris-35.180.23.143-8bdb92b24a8f84a8922ead59ed27a6fd",
+                "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+                "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+                "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+                "Frankfurt am Main-162.249.127.130-cca3c7d4e6f9b15dd163e4f764dd87cb",
+                "Singapore-146.190.105.228-cc5ea20d770646500f78945899b0de1d",
+                "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+                "Los Angeles-45.149.172.74-3877c7b7067693c9f3c54ade47dc4269",
+                "London-186.190.211.67-2f541cb384fb800e165f1821847bf233"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-162.249.127.130-9fa2f709ceaa0d9f0c78ab58fa3e2bb6",
+                "Frankfurt am Main-51.68.164.221-c0d9c5e8c1e3fadb3f4768a6a9b9cd7c",
+                "Frankfurt am Main-162.249.127.130-2c858800201972f7d317d4d19e4a2359",
+                "Ebara-45.32.10.7-73a40a162a9ff6dd7e4efc7f7511f8f0",
+                "Tokyo-116.80.60.114-4847e93490f4805e9844273ac9c6fe2f",
+                "Bucharest-85.204.107.162-38e7c76d51232b5fae20a294333b21c0",
+                "Los Angeles-192.236.151.43-575eb53caaad76365141591205ef2e02",
+                "Zürich-82.38.64.229-d441cc0a50d51296c919ba0faaa8a160",
+                "Frankfurt am Main-91.196.32.163-3a2229ce44e868759f8c55277081c70f",
+                "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+                "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+                "Amsterdam-72.56.92.120-081d747b08fb3dc99d74a68d9f07350e",
+                "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+                "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+                "Bucharest-85.204.107.162-e01998f03cc46f507c1a8387cab3cc0e",
+                "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+                "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+                "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+                "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+                "Paris-35.180.23.143-8bdb92b24a8f84a8922ead59ed27a6fd",
+                "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+                "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+                "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+                "Frankfurt am Main-162.249.127.130-cca3c7d4e6f9b15dd163e4f764dd87cb",
+                "Singapore-146.190.105.228-cc5ea20d770646500f78945899b0de1d",
+                "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+                "Los Angeles-45.149.172.74-3877c7b7067693c9f3c54ade47dc4269",
+                "London-186.190.211.67-2f541cb384fb800e165f1821847bf233"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-162.249.127.130-9fa2f709ceaa0d9f0c78ab58fa3e2bb6",
+            "server": "162.249.127.136",
+            "server_port": 8443,
+            "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hop-germany-september.dynuddns.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Frankfurt am Main-51.68.164.221-c0d9c5e8c1e3fadb3f4768a6a9b9cd7c",
+            "server": "maxfieldbox-nayab.org",
+            "server_port": 443,
+            "uuid": "bcf89786-1b01-47dc-9a36-a7db03626e53",
+            "transport": {
+                "type": "ws",
+                "path": "/tigerjoon",
+                "headers": {
+                    "Host": "ewylr.smartorbitbox-bekhabdg.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ewylr.smartorbitbox-bekhabdg.site"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-162.249.127.130-2c858800201972f7d317d4d19e4a2359",
+            "server": "162.249.127.135",
+            "server_port": 8443,
+            "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hop-germany-september.dynuddns.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Ebara-45.32.10.7-73a40a162a9ff6dd7e4efc7f7511f8f0",
+            "server": "vp3.yysyy.online",
+            "server_port": 443,
+            "password": "96ab5cd282733fd4c312a61f972f330a",
+            "tls": {
+                "enabled": true,
+                "insecure": true
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Tokyo-116.80.60.114-4847e93490f4805e9844273ac9c6fe2f",
+            "server": "www.wto.org",
+            "server_port": 8443,
+            "uuid": "0250424c-ae75-4b6b-890f-3fe26fae36c3",
+            "transport": {
+                "type": "ws",
+                "path": "/static/media/video-chunk.f4v",
+                "headers": {
+                    "Host": "jp.520785.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "jp.520785.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Bucharest-85.204.107.162-38e7c76d51232b5fae20a294333b21c0",
+            "server": "85.204.107.179",
+            "server_port": 8443,
+            "password": "Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hopp-romania-new.roxa.org"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Los Angeles-192.236.151.43-575eb53caaad76365141591205ef2e02",
+            "server": "192.236.151.43",
+            "server_port": 443,
+            "password": "OnHLrkVqZVtZyulTwC4bHrIbW7GyUDttKVNGEYVR12Y=",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "192.236.151.43"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Zürich-82.38.64.229-d441cc0a50d51296c919ba0faaa8a160",
+            "server": "82.38.64.235",
+            "server_port": 8443,
+            "password": "we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hopp-swizland-new.mysynology.net"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-91.196.32.163-3a2229ce44e868759f8c55277081c70f",
+            "server": "91.196.32.163",
+            "server_port": 443,
+            "password": "mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "91.196.32.163"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+            "server": "163.192.14.135",
+            "server_port": 50160,
+            "password": "099830134df5ac3a04a4b21d39b8c395",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "css.rbxcdn.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+            "server": "72.56.102.31",
+            "server_port": 443,
+            "password": "BWAFlp8g53",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "72.56.102.31"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-72.56.92.120-081d747b08fb3dc99d74a68d9f07350e",
+            "server": "72.56.92.120",
+            "server_port": 443,
+            "password": "CnVfXXvMzh",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "72.56.92.120"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+            "server": "109.206.241.10",
+            "server_port": 449,
+            "password": "oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "109.206.241.10"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+            "server": "60.248.219.78",
+            "server_port": 443,
+            "uuid": "c1c04450-bf71-4049-ad0c-9cf6d94d9f1f",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Bucharest-85.204.107.162-e01998f03cc46f507c1a8387cab3cc0e",
+            "server": "85.204.107.186",
+            "server_port": 8443,
+            "password": "Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "hopp-romania-new.roxa.org"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+            "server": "43.173.90.202",
+            "server_port": 443,
+            "password": "sg-trojan-2026",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sg-proxy.local"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+            "server": "162.35.96.21",
+            "server_port": 8081,
+            "uuid": "54ee5e59-55a3-4599-83ff-0c67b3f411b2",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-test",
+                "headers": {
+                    "Host": "162.35.96.21"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+            "server": "152.67.200.82",
+            "server_port": 50160,
+            "password": "3d7634af8cb2c6cb4bac1c0efad8b43d",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "google.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+            "server": "152.69.231.175",
+            "server_port": 50160,
+            "password": "1beb216e3f60aea9555dae60d219a5ca",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "152-69-231-175.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.180.23.143-8bdb92b24a8f84a8922ead59ed27a6fd",
+            "server": "vpn-fr-002.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "127.0.0.1"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+            "server": "open.w2m.ink",
+            "server_port": 443,
+            "password": "my_super_password_123",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "open.w2m.ink"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+            "server": "198.46.215.223",
+            "server_port": 4443,
+            "password": "31329f25",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "proxy.bingtao.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+            "server": "35.181.166.40",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-fr-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-162.249.127.130-cca3c7d4e6f9b15dd163e4f764dd87cb",
+            "server": "162.249.127.130",
+            "server_port": 8443,
+            "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "hop-germany-september.dynuddns.com"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-146.190.105.228-cc5ea20d770646500f78945899b0de1d",
+            "server": "170.114.52.22",
+            "server_port": 443,
+            "uuid": "38415950-f815-4ca8-94d0-6cbf22be7566",
+            "transport": {
+                "type": "ws",
+                "path": "/cs",
+                "headers": {
+                    "Host": "asia.csmasterofficial.store"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "asia.csmasterofficial.store"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+            "server": "162.35.104.144",
+            "server_port": 8081,
+            "uuid": "54ee5e59-55a3-4599-83ff-0c67b3f411b2",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-test",
+                "headers": {
+                    "Host": "162.35.104.144"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Los Angeles-45.149.172.74-3877c7b7067693c9f3c54ade47dc4269",
+            "server": "103.31.4.10",
+            "server_port": 443,
+            "uuid": "77dc177b-79d9-49ac-92e1-2f1011faa5e3",
+            "transport": {
+                "type": "ws",
+                "path": "/api/v2/b8ee4ba356df307c/stream",
+                "headers": {
+                    "Host": "f871a986.69lover.site"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "f871a986.69lover.site"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "London-186.190.211.67-2f541cb384fb800e165f1821847bf233",
+            "server": "pahobac.org",
+            "server_port": 443,
+            "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/linkvws",
+                "headers": {
+                    "Host": "pahobac.org"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
