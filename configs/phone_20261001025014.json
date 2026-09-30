@@ -1,0 +1,546 @@
+{
+    "inbounds": [
+        {
+            "type": "mixed",
+            "tag": "mixed-in",
+            "listen": "::",
+            "listen_port": 1080,
+            "sniff": true
+        }
+    ],
+    "outbounds": [
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        },
+        {
+            "type": "block",
+            "tag": "block-out"
+        },
+        {
+            "type": "selector",
+            "tag": "PROXY",
+            "outbounds": [
+                "AUTO-US",
+                "direct-out",
+                "block-out",
+                "Frankfurt am Main-63.186.227.164-061c02ddecb78d1f87c8bcd7b890731b",
+                "Moscow-46.17.41.2-bbc84a81748836c13c4ce8955a22c9dc",
+                "Seattle-166.1.43.25-d3aa71be7590b68085ffd5e6e00af23c",
+                "Tokyo-140.238.55.84-c2cbf4e861d718b96dcaa19cf6bd1990",
+                "Singapore-5.223.41.93-48c829e2009c45b40caa2d1fd79d78b3",
+                "Singapore-52.77.211.55-11be4b70b3c668c67bb5aac6fca3b1bf",
+                "San Jose-13.52.217.32-46448390fc1108067cadc14dc0bf95bb",
+                "Frankfurt am Main-64.188.98.254-3a2229ce44e868759f8c55277081c70f",
+                "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+                "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+                "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+                "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+                "Sydney-152.67.115.203-9a5ca5d8d644745e699ccc0e33a6c794",
+                "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+                "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+                "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+                "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+                "Kuala Lumpur-45.195.76.127-837996a9bcf346a617eb4ce9e4e7ca06",
+                "Paris-35.181.166.40-8bdb92b24a8f84a8922ead59ed27a6fd",
+                "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+                "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+                "Kuala Lumpur-45.194.27.124-78b5aca61edba7464ade8c454b11e339",
+                "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+                "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+                "Kuala Lumpur-45.195.69.230-109e87df4d16d5767df913ef1676fbb1",
+                "Kuala Lumpur-45.195.69.43-aea90b2073d315df8177834b9bd53259",
+                "Kuala Lumpur-23.27.200.37-d9b138f60547d0ea154ff5293e7360ad",
+                "Kuala Lumpur-136.0.254.60-1d191130d0f152d38b99a7cb2ada6374",
+                "Amsterdam-139.64.166.25-2f541cb384fb800e165f1821847bf233"
+            ],
+            "default": "AUTO-US"
+        },
+        {
+            "type": "selector",
+            "tag": "SELECT-US",
+            "outbounds": [
+                "Frankfurt am Main-63.186.227.164-061c02ddecb78d1f87c8bcd7b890731b",
+                "Moscow-46.17.41.2-bbc84a81748836c13c4ce8955a22c9dc",
+                "Seattle-166.1.43.25-d3aa71be7590b68085ffd5e6e00af23c",
+                "Tokyo-140.238.55.84-c2cbf4e861d718b96dcaa19cf6bd1990",
+                "Singapore-5.223.41.93-48c829e2009c45b40caa2d1fd79d78b3",
+                "Singapore-52.77.211.55-11be4b70b3c668c67bb5aac6fca3b1bf",
+                "San Jose-13.52.217.32-46448390fc1108067cadc14dc0bf95bb",
+                "Frankfurt am Main-64.188.98.254-3a2229ce44e868759f8c55277081c70f",
+                "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+                "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+                "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+                "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+                "Sydney-152.67.115.203-9a5ca5d8d644745e699ccc0e33a6c794",
+                "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+                "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+                "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+                "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+                "Kuala Lumpur-45.195.76.127-837996a9bcf346a617eb4ce9e4e7ca06",
+                "Paris-35.181.166.40-8bdb92b24a8f84a8922ead59ed27a6fd",
+                "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+                "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+                "Kuala Lumpur-45.194.27.124-78b5aca61edba7464ade8c454b11e339",
+                "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+                "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+                "Kuala Lumpur-45.195.69.230-109e87df4d16d5767df913ef1676fbb1",
+                "Kuala Lumpur-45.195.69.43-aea90b2073d315df8177834b9bd53259",
+                "Kuala Lumpur-23.27.200.37-d9b138f60547d0ea154ff5293e7360ad",
+                "Kuala Lumpur-136.0.254.60-1d191130d0f152d38b99a7cb2ada6374",
+                "Amsterdam-139.64.166.25-2f541cb384fb800e165f1821847bf233"
+            ]
+        },
+        {
+            "type": "urltest",
+            "tag": "AUTO-US",
+            "outbounds": [
+                "Frankfurt am Main-63.186.227.164-061c02ddecb78d1f87c8bcd7b890731b",
+                "Moscow-46.17.41.2-bbc84a81748836c13c4ce8955a22c9dc",
+                "Seattle-166.1.43.25-d3aa71be7590b68085ffd5e6e00af23c",
+                "Tokyo-140.238.55.84-c2cbf4e861d718b96dcaa19cf6bd1990",
+                "Singapore-5.223.41.93-48c829e2009c45b40caa2d1fd79d78b3",
+                "Singapore-52.77.211.55-11be4b70b3c668c67bb5aac6fca3b1bf",
+                "San Jose-13.52.217.32-46448390fc1108067cadc14dc0bf95bb",
+                "Frankfurt am Main-64.188.98.254-3a2229ce44e868759f8c55277081c70f",
+                "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+                "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+                "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+                "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+                "Sydney-152.67.115.203-9a5ca5d8d644745e699ccc0e33a6c794",
+                "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+                "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+                "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+                "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+                "Kuala Lumpur-45.195.76.127-837996a9bcf346a617eb4ce9e4e7ca06",
+                "Paris-35.181.166.40-8bdb92b24a8f84a8922ead59ed27a6fd",
+                "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+                "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+                "Kuala Lumpur-45.194.27.124-78b5aca61edba7464ade8c454b11e339",
+                "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+                "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+                "Kuala Lumpur-45.195.69.230-109e87df4d16d5767df913ef1676fbb1",
+                "Kuala Lumpur-45.195.69.43-aea90b2073d315df8177834b9bd53259",
+                "Kuala Lumpur-23.27.200.37-d9b138f60547d0ea154ff5293e7360ad",
+                "Kuala Lumpur-136.0.254.60-1d191130d0f152d38b99a7cb2ada6374",
+                "Amsterdam-139.64.166.25-2f541cb384fb800e165f1821847bf233"
+            ],
+            "url": "https://maps.googleapis.com/maps/api/mapsjs/gen_204?csp_test=true",
+            "interval": "10m"
+        },
+        {
+            "type": "trojan",
+            "tag": "Frankfurt am Main-63.186.227.164-061c02ddecb78d1f87c8bcd7b890731b",
+            "server": "alive-flea.rooster465.autos",
+            "server_port": 443,
+            "password": "UX82473651",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "alive-flea.rooster465.autos"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Moscow-46.17.41.2-bbc84a81748836c13c4ce8955a22c9dc",
+            "server": "els.mangshe.xyz",
+            "server_port": 2060,
+            "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "els.mangshe.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Seattle-166.1.43.25-d3aa71be7590b68085ffd5e6e00af23c",
+            "server": "mg.mangshe.xyz",
+            "server_port": 2060,
+            "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "mg.mangshe.xyz"
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Tokyo-140.238.55.84-c2cbf4e861d718b96dcaa19cf6bd1990",
+            "server": "cdn.sfacg.uk",
+            "server_port": 2083,
+            "uuid": "ac251237-576f-40c8-a543-554960c958b1",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/or3",
+                "headers": {
+                    "Host": "or3.sfacg.uk"
+                }
+            },
+            "security": "auto"
+        },
+        {
+            "type": "vless",
+            "tag": "Singapore-5.223.41.93-48c829e2009c45b40caa2d1fd79d78b3",
+            "server": "5.223.41.93",
+            "server_port": 80,
+            "uuid": "f2eada1b-fdec-48c6-8638-18ade32993d4",
+            "transport": {
+                "type": "ws",
+                "path": "",
+                "headers": {
+                    "Host": "5.223.41.93"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Singapore-52.77.211.55-11be4b70b3c668c67bb5aac6fca3b1bf",
+            "server": "sg4.dexlos.com",
+            "server_port": 20654,
+            "password": "8A9905B7-801B-41AF-BFC9-2034212770F6",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "sg4.dexlos.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "xK9mN2pLq5vR8wB3"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "San Jose-13.52.217.32-46448390fc1108067cadc14dc0bf95bb",
+            "server": "us4.dexlos.com",
+            "server_port": 20688,
+            "password": "8A9905B7-801B-41AF-BFC9-2034212770F6",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "us4.dexlos.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "xK9mN2pLq5vR8wB3"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Frankfurt am Main-64.188.98.254-3a2229ce44e868759f8c55277081c70f",
+            "server": "91.196.32.163",
+            "server_port": 443,
+            "password": "mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "91.196.32.163"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "San Jose-163.192.14.135-0707895083a95e7088ff01f454cab4a6",
+            "server": "163.192.14.135",
+            "server_port": 50160,
+            "password": "099830134df5ac3a04a4b21d39b8c395",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "css.rbxcdn.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Amsterdam-72.56.102.31-d0e1b14f2ca4ce69e3b835d037731372",
+            "server": "72.56.102.31",
+            "server_port": 443,
+            "password": "BWAFlp8g53",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "72.56.102.31"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Tallinn-109.206.241.10-badec809f4976ed984b00386e803a587",
+            "server": "109.206.241.10",
+            "server_port": 449,
+            "password": "oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "109.206.241.10"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Taichung-60.248.219.52-6a735491cc59ca571b0e9c2f5c6fe65a",
+            "server": "60.248.219.78",
+            "server_port": 443,
+            "uuid": "c1c04450-bf71-4049-ad0c-9cf6d94d9f1f",
+            "transport": {
+                "type": "ws",
+                "path": "/81574b6b-c9d7-44a0-b83d-dad56e8cb530",
+                "headers": {
+                    "Host": "ty986gfazs.cainiaohub.xyz"
+                }
+            },
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "ty986gfazs.cainiaohub.xyz"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Sydney-152.67.115.203-9a5ca5d8d644745e699ccc0e33a6c794",
+            "server": "152.67.115.203",
+            "server_port": 443,
+            "password": "633bc3be486b646190661ac2387c150a",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "www.bing.com"
+            },
+            "obfs": {
+                "type": "salamander",
+                "password": "850a3fb1cd33a28f12d837578ae1a2e7"
+            }
+        },
+        {
+            "type": "trojan",
+            "tag": "Santa Clara-43.173.90.202-a4b28db6b13bbae06c68f8a04b9cbd63",
+            "server": "43.173.90.202",
+            "server_port": 443,
+            "password": "sg-trojan-2026",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "sg-proxy.local"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-162.35.96.21-ba0faa295afcc072b49ca5d74731b5b8",
+            "server": "162.35.96.21",
+            "server_port": 8081,
+            "uuid": "54ee5e59-55a3-4599-83ff-0c67b3f411b2",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-test",
+                "headers": {
+                    "Host": "162.35.96.21"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-152.67.200.82-6ccacda8a07110be22067860fe4bdc8e",
+            "server": "152.67.200.82",
+            "server_port": 50160,
+            "password": "3d7634af8cb2c6cb4bac1c0efad8b43d",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "google.com"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Chuncheon-152.69.231.175-db6c2628ba3e6830739b0d4c91bb9653",
+            "server": "152.69.231.175",
+            "server_port": 50160,
+            "password": "1beb216e3f60aea9555dae60d219a5ca",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "152-69-231-175.liao.kdns.fr"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kuala Lumpur-45.195.76.127-837996a9bcf346a617eb4ce9e4e7ca06",
+            "server": "platform113.golnamakcert.top",
+            "server_port": 80,
+            "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
+            "transport": {
+                "type": "ws",
+                "path": "/platform113",
+                "headers": {
+                    "Host": "platform113.halalkhor.info"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.181.166.40-8bdb92b24a8f84a8922ead59ed27a6fd",
+            "server": "vpn-fr-002.fastervpn.world",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "127.0.0.1"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Tokyo-132.226.14.77-33c1b08b5ee214f2d71f90579b6bab20",
+            "server": "open.w2m.ink",
+            "server_port": 443,
+            "password": "my_super_password_123",
+            "tls": {
+                "enabled": true,
+                "insecure": false,
+                "server_name": "open.w2m.ink"
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Elk Grove Village-198.46.215.223-145a7f23f3f0fc37aed86c7fe957c1bf",
+            "server": "198.46.215.223",
+            "server_port": 4443,
+            "password": "31329f25",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "proxy.bingtao.xyz"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kuala Lumpur-45.194.27.124-78b5aca61edba7464ade8c454b11e339",
+            "server": "platform101.golnamakcert.top",
+            "server_port": 80,
+            "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
+            "transport": {
+                "type": "ws",
+                "path": "/platform101",
+                "headers": {
+                    "Host": "platform101.halalkhor.info"
+                }
+            }
+        },
+        {
+            "type": "hysteria2",
+            "tag": "Paris-35.181.166.40-615805d4175397e3431b767c20d3106f",
+            "server": "35.181.166.40",
+            "server_port": 443,
+            "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+            "tls": {
+                "enabled": true,
+                "insecure": true,
+                "server_name": "vpn-fr-002.fastervpn.world"
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "New York City-162.35.104.144-2709d8e4a0aae3536d01071c923d7b3c",
+            "server": "162.35.104.144",
+            "server_port": 8081,
+            "uuid": "54ee5e59-55a3-4599-83ff-0c67b3f411b2",
+            "transport": {
+                "type": "ws",
+                "path": "/vless-test",
+                "headers": {
+                    "Host": "162.35.104.144"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kuala Lumpur-45.195.69.230-109e87df4d16d5767df913ef1676fbb1",
+            "server": "platform103.golnamakcert.top",
+            "server_port": 80,
+            "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
+            "transport": {
+                "type": "ws",
+                "path": "/platform103",
+                "headers": {
+                    "Host": "platform103.halalkhor.info"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kuala Lumpur-45.195.69.43-aea90b2073d315df8177834b9bd53259",
+            "server": "platform107.golnamakcert.top",
+            "server_port": 80,
+            "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
+            "transport": {
+                "type": "ws",
+                "path": "/platform107",
+                "headers": {
+                    "Host": "platform107.halalkhor.info"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kuala Lumpur-23.27.200.37-d9b138f60547d0ea154ff5293e7360ad",
+            "server": "platform108.golnamakcert.top",
+            "server_port": 80,
+            "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
+            "transport": {
+                "type": "ws",
+                "path": "/platform108",
+                "headers": {
+                    "Host": "platform108.halalkhor.info"
+                }
+            }
+        },
+        {
+            "type": "vless",
+            "tag": "Kuala Lumpur-136.0.254.60-1d191130d0f152d38b99a7cb2ada6374",
+            "server": "platform118.golnamakcert.top",
+            "server_port": 80,
+            "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4",
+            "transport": {
+                "type": "ws",
+                "path": "/platform118",
+                "headers": {
+                    "Host": "platform118.halalkhor.info"
+                }
+            }
+        },
+        {
+            "type": "vmess",
+            "tag": "Amsterdam-139.64.166.25-2f541cb384fb800e165f1821847bf233",
+            "server": "pahobac.org",
+            "server_port": 443,
+            "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581",
+            "tls": {
+                "enabled": true
+            },
+            "transport": {
+                "type": "ws",
+                "path": "/linkvws",
+                "headers": {
+                    "Host": "pahobac.org"
+                }
+            },
+            "security": "auto"
+        }
+    ],
+    "route": {
+        "rules": [
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "inbound": [
+                    "mixed-in"
+                ],
+                "outbound": "PROXY"
+            }
+        ]
+    }
+}
