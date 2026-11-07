@@ -13,7 +13,7 @@ import subprocess
 import json
 import aiohttp
 from urllib.parse import quote
-
+from settings.setting import SPEED_LIMIT
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
 # from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoorV2
 from parse_nodes.parse_node_sing_books import ParseNodeSingBooks
@@ -85,7 +85,7 @@ async def test_nodes_via_singbox_api(nodes_to_test, singbox_path="./sing-box"):
             # Tag 中包含 Emoji 和特殊字符，必须进行 URL Encode
             safe_tag = quote(tag, safe='')
             safe_url = quote(test_url, safe='')
-            url = f"{api_base}/proxies/{safe_tag}/delay?timeout=5000&url={safe_url}"
+            url = f"{api_base}/proxies/{safe_tag}/delay?timeout={SPEED_LIMIT}&url={safe_url}"
             tasks.append(test_single_node_api(session, url, node))
 
         results = await asyncio.gather(*tasks, return_exceptions=True)

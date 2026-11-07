@@ -9,7 +9,7 @@ if not (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')):
     # 代理
     PROXIES_ASYNC = f"http://{PROXY_HOST}:{PROXY_PORT}"
     # 最大延迟(单位ms, 测速结果大于此值的不做保留)
-    SPEED_LIMIT = 5000
+    SPEED_LIMIT = 10000
 
     NEWTWORK_RETRY_TIMES = 3
 else:
