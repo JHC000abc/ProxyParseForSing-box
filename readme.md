@@ -154,8 +154,12 @@ uv run main.py
 ```bash
     ./plugins/gen_latest_CDN
 ```
+## 13. 打包最新的百度bos url工具
+```bash
+     pyarmor gen -r --pack FC tools/tool_gen_tmp_bos.py && mv dist/tool_gen_tmp_bos plugins/tool_gen_tmp_bos && rm -rf dist/ .pyarmor/ tool_gen_tmp_bos.spec
+```
 
-## 13. 直接处理sing-box 配置文件(打包)
+## 14. 直接处理sing-box 配置文件(打包)
 ```bash
      pyarmor gen -r --pack FC local.py && cp dist/local ./ && rm -rf dist/ .pyarmor/ local.spec
 ```
@@ -266,3 +270,7 @@ uv run main.py
 
 2026.01.07
 1. 防止Github Actions 清理任务,最变更新点
+
+2026.11.07
+1. 增加clash订阅转换支持
+2. 更换更准确的sing-box原生测速方案 测速后节点可用性更加准确

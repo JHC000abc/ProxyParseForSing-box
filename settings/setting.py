@@ -32,6 +32,8 @@ TELEGRAM_TOOLS_FILE = "plugins/telegram"
 TRANS_PHONE_TOOLS_FILE = "plugins/trans_phone"
 # limestart 上传工具路径
 LIMESTART_TOOLS_FILE = "plugins/limestart"
+# BOS 上传工具路径 (只支持txt,png)
+BOS_UPLOAD_TOOLS_FILE = "plugins/tool_gen_tmp_bos"
 
 # 排除区域
 FORBIDDEN_AREA_FILE = "files/forbidden_areas.list"
