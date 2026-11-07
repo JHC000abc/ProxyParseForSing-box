@@ -1,7 +1,7 @@
 import sys
 
 
-# 判断程序是否以可知性文件形式运行
+# 判断程序是否以可执行文件形式运行
 if not (getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')):
     # print("本地代理")
     PROXY_HOST = "172.17.0.1"
