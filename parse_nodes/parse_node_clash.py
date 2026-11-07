@@ -169,7 +169,7 @@ class ParseNodeClash(Base):
         """
         try:
             for url in self.search_url:
-                print("url:", url)
+                # print("url:", url)
                 try:
                     search_html = await self.net.fetch_url_get(url=url, headers=self.headers, proxy=False)
                 except Exception as e:

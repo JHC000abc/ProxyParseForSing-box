@@ -15,7 +15,7 @@ import aiohttp
 from urllib.parse import quote
 
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
-from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoorV2
+# from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoorV2
 from parse_nodes.parse_node_sing_books import ParseNodeSingBooks
 from parse_nodes.parse_node_clash import ParseNodeClash
 from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE, \
@@ -126,8 +126,8 @@ async def main():
     p1 = ParseNodeSnakem982()
     lis1 = await p1.process()
 
-    p2 = ParseNodesharkDoorV2()
-    lis2 = await p2.process()
+    # p2 = ParseNodesharkDoorV2()
+    # lis2 = await p2.process()
 
     p3 = ParseNodeSingBooks()
     lis3 = await p3.process()

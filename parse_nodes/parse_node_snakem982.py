@@ -27,11 +27,11 @@ class ParseNodeSnakem982(Base):
                 "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
                 "proxy": True
             },
-            {
-
-                "url": "https://a.nodeshare.xyz/uploads/2025/7/20250720.txt",
-                "proxy": True
-            },
+            # {
+            #
+            #     "url": "https://a.nodeshare.xyz/uploads/2025/7/20250720.txt",
+            #     "proxy": True
+            # },
             {
                 "url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/base64.txt",
                 "proxy": True
@@ -49,45 +49,45 @@ class ParseNodeSnakem982(Base):
                 "url": "https://raw.githubusercontent.com/crackbest/V2ray-Config/refs/heads/main/config.txt",
                 "proxy": True
             },
-            {
-                "url": "https://github.com/kismetpro/NodeSuber/raw/refs/heads/main/out/All_Configs_Sub.txt",
-                "proxy": True
-            },
-            {
-                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/blues.txt",
-                "proxy": True,
-                "secret": True
-            },
+            # {
+            #     "url": "https://github.com/kismetpro/NodeSuber/raw/refs/heads/main/out/All_Configs_Sub.txt",
+            #     "proxy": True
+            # },
+            # {
+            #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/blues.txt",
+            #     "proxy": True,
+            #     "secret": True
+            # },
             {
                 "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/clashmeta.txt",
                 "proxy": True,
                 "secret": True
             },
-            {
-                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/ndnode.txt",
-                "proxy": True,
-                "secret": True
-            },
-            {
-                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/nodefree.txt",
-                "proxy": True,
-                "secret": True
-            },
-            {
-                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/v2rayshare.txt",
-                "proxy": True,
-                "secret": True
-            },
-            {
-                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/wenode.txt",
-                "proxy": True,
-                "secret": True
-            },
-            {
-                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/yudou66.txt",
-                "proxy": True,
-                "secret": True
-            }
+            # {
+            #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/ndnode.txt",
+            #     "proxy": True,
+            #     "secret": True
+            # },
+            # {
+            #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/nodefree.txt",
+            #     "proxy": True,
+            #     "secret": True
+            # },
+            # {
+            #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/v2rayshare.txt",
+            #     "proxy": True,
+            #     "secret": True
+            # },
+            # {
+            #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/wenode.txt",
+            #     "proxy": True,
+            #     "secret": True
+            # },
+            # {
+            #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/yudou66.txt",
+            #     "proxy": True,
+            #     "secret": True
+            # }
 
         ]
 
