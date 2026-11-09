@@ -35,40 +35,10 @@ jobs:
       - name: RUN AND PUSH NODES
         shell: bash
         run: |
-          mkdir -p configs
-          
-          echo "🔍 开始检查并清理非东八区时间标识的文件..."
-          # 遍历 configs 目录下的 json 文件
-          for file in configs/*.json; do
-            [ -e "$file" ] || continue
-            filename=$(basename "$file")
-            
-            # 提取文件名中的 14 位时间戳 (如 20261107203246)
-            file_ts=$(echo "$filename" | grep -oE '[0-9]{14}')
-            
-            if [ -n "$file_ts" ]; then
-              # 将 14 位数字格式化为标准时间格式 (2026-11-07 20:32:46) 以便 date 命令识别
-              fmt_ts=$(echo "$file_ts" | sed -E 's/(.{4})(.{2})(.{2})(.{2})(.{2})(.{2})/\1-\2-\3 \4:\5:\6/')
-              
-              # 将文件名时间转为 Unix 时间戳 (受 TZ=Asia/Shanghai 影响，会将其视为东八区时间)
-              file_epoch=$(date -d "$fmt_ts" +%s 2>/dev/null)
-              # 获取文件在文件系统中的真实修改时间 (Unix 时间戳，绝对时间)
-              actual_epoch=$(stat -c %Y "$file")
-              
-              if [ -n "$file_epoch" ] && [ -n "$actual_epoch" ]; then
-                diff=$(( actual_epoch - file_epoch ))
-                # 取绝对值
-                if [ $diff -lt 0 ]; then diff=$(( -diff )); fi
-                
-                # 如果相差超过 60 秒 (例如 UTC 生成的文件会相差 8 小时 = 28800 秒)，则判定为非东八区文件并删除
-                if [ $diff -gt 60 ]; then
-                  echo "🗑️ 删除非东八区文件: $filename (时间差: ${diff}s)"
-                  rm -f "$file"
-                fi
-              fi
-            fi
+          if [ -d configs ]; then
+            rm -rf configs
           done
-          
+          mkdir -p configs
           echo "🚀 开始执行主程序..."
           ./main
 
