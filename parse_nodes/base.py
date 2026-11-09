@@ -240,7 +240,7 @@ class Base(ABC):
         if node_nums <= 0:
             return
         filename = file.split(os.sep)[-1]
-        url = f"https://cdn.jsdmirror.net/gh/JHC000abc/ProxyParseForSing-box@main/configs/{filename}"
+        url = f"https://cdn.jsdmirror.com/gh/JHC000abc/ProxyParseForSing-box@main/configs/{filename}"
         print("url", url)
         cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
         cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
