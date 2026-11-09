@@ -25,6 +25,7 @@ class ParseNodesharkDoor(Base):
     def __init__(self):
         super().__init__()
         self.search_url = f"https://github.com/sharkDoor/vpn-free-nodes/tree/master/node-list/{UtilsTimes.get_format_utc_8('%Y-%m')}"
+        self.search_url = f"https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/clashmeta.txt"
 
     async def parse_search(self, html):
         """

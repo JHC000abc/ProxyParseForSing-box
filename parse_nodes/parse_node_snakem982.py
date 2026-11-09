@@ -23,32 +23,32 @@ class ParseNodeSnakem982(Base):
     def __init__(self):
         super().__init__()
         self.infos = [
-            {
-                "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
-                "proxy": True
-            },
+            # {
+            #     "url": "https://raw.githubusercontent.com/snakem982/proxypool/main/source/v2ray-2.txt",
+            #     "proxy": True
+            # },
             # {
             #
             #     "url": "https://a.nodeshare.xyz/uploads/2025/7/20250720.txt",
             #     "proxy": True
             # },
-            {
-                "url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/base64.txt",
-                "proxy": True
-            },
-            {
-                "url": "https://raw.githubusercontent.com/AliDev-ir/FreeVPN/main/pcvpn",
-                "proxy": True
-            },
+            # {
+            #     "url": "https://raw.githubusercontent.com/shaoyouvip/free/refs/heads/main/base64.txt",
+            #     "proxy": True
+            # },
+            # {
+            #     "url": "https://raw.githubusercontent.com/AliDev-ir/FreeVPN/main/pcvpn",
+            #     "proxy": True
+            # },
 
             # {
             #     "url": "https://raw.githubusercontent.com/penhandev/AutoAiVPN/refs/heads/main/allConfigs.txt",
             #     "proxy": True
             # },
-            {
-                "url": "https://raw.githubusercontent.com/crackbest/V2ray-Config/refs/heads/main/config.txt",
-                "proxy": True
-            },
+            # {
+            #     "url": "https://raw.githubusercontent.com/crackbest/V2ray-Config/refs/heads/main/config.txt",
+            #     "proxy": True
+            # },
             # {
             #     "url": "https://github.com/kismetpro/NodeSuber/raw/refs/heads/main/out/All_Configs_Sub.txt",
             #     "proxy": True
@@ -58,11 +58,11 @@ class ParseNodeSnakem982(Base):
             #     "proxy": True,
             #     "secret": True
             # },
-            {
-                "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/clashmeta.txt",
-                "proxy": True,
-                "secret": True
-            },
+            # {
+            #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/clashmeta.txt",
+            #     "proxy": True,
+            #     "secret": True
+            # },
             # {
             #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/ndnode.txt",
             #     "proxy": True,
@@ -87,6 +87,10 @@ class ParseNodeSnakem982(Base):
             #     "url": "https://github.com/Barabama/FreeNodes/blob/main/nodes/yudou66.txt",
             #     "proxy": True,
             #     "secret": True
+            # }
+            # {
+            #     "url":"https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/clashmeta.txt",
+            #     "proxy":True
             # }
 
         ]
@@ -193,8 +197,8 @@ class ParseNodeSnakem982(Base):
         git_hub_pages_urls = {
             "https://github.com/Barabama/FreeNodes/overview-files/main": self.parse_node_Barabama,
             "https://github.com/vpnmianfei/vpnmianfei.github.io/overview-files/main": self.parse_node_vpnmianfei,
-            # "https://github.com/free-proxy-nodes/free-nodes": self.parse_node_free_proxy_nodes,
-            # "https://github.com/barry-far/V2ray-Config/overview-files/main": self.parse_node_barry_far
+            "https://github.com/free-proxy-nodes/free-nodes": self.parse_node_free_proxy_nodes,
+            "https://github.com/barry-far/V2ray-Config/overview-files/main": self.parse_node_barry_far
         }
         for url, func in git_hub_pages_urls.items():
             data = await self.get_data_from_github(url)

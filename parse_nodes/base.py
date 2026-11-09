@@ -244,17 +244,17 @@ class Base(ABC):
         print("url", url)
         cmd2 = f"{TELEGRAM_TOOLS_FILE} -m '本次成功解析延迟小于{SPEED_LIMIT}ms的节点数量:{node_nums}' '{url}' "
         cmd4 = f"{TRANS_PHONE_TOOLS_FILE} -i {file}"
-        # cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
-        cmd6 = f"{BOS_UPLOAD_TOOLS_FILE} {url}"
+        cmd5 = f"{LIMESTART_TOOLS_FILE} -i {url}"
+        # cmd6 = f"{BOS_UPLOAD_TOOLS_FILE} {url}"
         async for msg, proc in self.cmd.run_cmd_async(cmd2):
             print("msg2", msg)
         async for msg, proc in self.cmd.run_cmd_async(cmd4):
             print("msg4", msg)
-        # async for msg, proc in self.cmd.run_cmd_async(cmd5):
-        #     print("cmd5", msg)
+        async for msg, proc in self.cmd.run_cmd_async(cmd5):
+            print("cmd5", msg)
 
-        async for msg, proc in self.cmd.run_cmd_async(cmd6):
-            print("cmd6", msg)
+        # async for msg, proc in self.cmd.run_cmd_async(cmd6):
+        #     print("cmd6", msg)
 
         # cmd = f"{UPLOAD_TOOLS_FILE} -i {file}"
         # async for msg, proc in self.cmd.run_cmd_async(cmd):

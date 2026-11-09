@@ -23,7 +23,15 @@ class ParseNodeClash(Base):
     def __init__(self):
         super().__init__()
         self.search_url = [
-            "https://sub.danhu.dpdns.org/paste/TG@FProxies261024fhU8Dbp/clash"
+            "https://sub.danhu.dpdns.org/paste/TG@FProxies261024fhU8Dbp/clash",
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/clashmeta.yaml"
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/nodev2ray.yaml"
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/freeclashnode.yaml"
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/oneclash.yaml",
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/fxrj.yaml",
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/clashstair.yaml",
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/datiya.yaml",
+            "https://raw.githubusercontent.com/Barabama/FreeNodes/refs/heads/main/nodes/cfmem.yaml",
         ]
 
     def convert_clash_to_singbox(self, clash_node):

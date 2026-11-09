@@ -1,10 +1,10 @@
-# !/usr/bin/python3
+#!/usr/bin/python3
 # -*- coding:utf-8 -*-
 """
 @author: JHC000abc@gmail.com
 @file: main.py
-@time: 2025/8/17 15:37 
-@desc: 
+@time: 2025/8/17 15:37
+@desc:
 """
 import os
 import asyncio
@@ -15,11 +15,13 @@ import aiohttp
 from urllib.parse import quote
 from settings.setting import SPEED_LIMIT
 from parse_nodes.parse_node_snakem982 import ParseNodeSnakem982
-# from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoorV2
+from parse_nodes.parse_node_clashmeta import ParseNodeclashmeta
+from parse_nodes.parse_node_sharkDoor import ParseNodesharkDoorV2
 from parse_nodes.parse_node_sing_books import ParseNodeSingBooks
 from parse_nodes.parse_node_clash import ParseNodeClash
 from settings.setting import FORBIDDEN_AREA_FILE, FORBIDDEN_PROXY_FILE, MAX_CONCURRENCY, FORBIDDEN_SERVER_RE_FILE, \
     TIMEOUT, TEST_LISTEN_PORT
+# os.environ["ALL_PROXY"] = "http://172.17.0.1:10808"
 
 
 async def filter(file):
@@ -37,20 +39,55 @@ async def filter(file):
     return tag_map
 
 
-async def test_nodes_via_singbox_api(nodes_to_test, singbox_path="./sing-box"):
+async def test_nodes_via_singbox_api(nodes_to_test, singbox_path="./plugins/sing-box"):
     """
-    核心测速逻辑：利用 Sing-box 的 Clash API 进行高精度并发测速
+    核心测速逻辑 + 详细日志
     """
-    # 过滤掉不需要测速的内置节点
     proxy_nodes = [n for n in nodes_to_test if n.get("type") not in ["direct", "block", "dns", "selector", "urltest"]]
 
     if not proxy_nodes:
+        print("❌ 过滤后没有任何可测速的代理节点")
         return []
 
-    # 1. 生成专门用于测速的临时配置
+    print(f"📊 准备测速节点数量: {len(proxy_nodes)}")
+
+    # ========== 强制修正数字类型 + Reality 补全 uTLS ==========
+    def fix_types(node: dict) -> dict:
+        # 数字字段强制转 int
+        int_fields = ["server_port", "alter_id", "alterId", "port"]
+        for field in int_fields:
+            if field in node:
+                try:
+                    node[field] = int(node[field])
+                except (ValueError, TypeError):
+                    node[field] = 0
+
+        if "alterId" in node:
+            node["alter_id"] = int(node.pop("alterId") or 0)
+
+        # Reality 必须开启 uTLS
+        tls = node.get("tls")
+        if isinstance(tls, dict):
+            reality = tls.get("reality")
+            if isinstance(reality, dict) and reality.get("enabled"):
+                if "utls" not in tls or not isinstance(tls["utls"], dict):
+                    tls["utls"] = {
+                        "enabled": True,
+                        "fingerprint": "chrome"
+                    }
+                else:
+                    tls["utls"]["enabled"] = True
+                    if not tls["utls"].get("fingerprint"):
+                        tls["utls"]["fingerprint"] = "chrome"
+
+        return node
+
+    proxy_nodes = [fix_types(n.copy()) for n in proxy_nodes]
+    # ========================================================
+
     test_config = {
-        "log": {"level": "error"},  # 关闭日志干扰
-        "inbounds": [],  # 不需要入站，只测出站
+        "log": {"level": "error"},
+        "inbounds": [],
         "outbounds": proxy_nodes,
         "experimental": {
             "clash_api": {
@@ -62,27 +99,56 @@ async def test_nodes_via_singbox_api(nodes_to_test, singbox_path="./sing-box"):
 
     test_config_path = "test_speed_config.json"
     with open(test_config_path, "w", encoding="utf-8") as f:
-        json.dump(test_config, f, ensure_ascii=False)
+        json.dump(test_config, f, ensure_ascii=False, indent=2)
 
-    print("⚙️ 启动 sing-box 核心进行 API 测速...")
+    print(f"📄 临时配置已写入: {test_config_path}")
+
+    # 启动 sing-box
+    print(f"⚙️ 启动 sing-box: {singbox_path}")
     process = subprocess.Popen(
         [singbox_path, "run", "-c", test_config_path],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
     )
 
-    # 等待 API 端口就绪
-    await asyncio.sleep(2)
-
+    # 等待并检查 API 是否就绪
     api_base = "http://127.0.0.1:9090"
-    test_url = "https://www.gstatic.com/generate_204"
+    ready = False
+    for i in range(15):
+        await asyncio.sleep(1)
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(f"{api_base}/version", timeout=2) as resp:
+                    if resp.status == 200:
+                        version = await resp.json()
+                        print(f"✅ Sing-box API 已就绪 (version: {version.get('version', 'unknown')})")
+                        ready = True
+                        break
+        except Exception:
+            print(f"⏳ 等待 API 就绪... ({i+1}/15)")
 
-    # 2. 并发请求 API 获取真实延迟
+    if not ready:
+        stdout, stderr = process.communicate(timeout=3)
+        print("❌ Sing-box 未能正常启动，错误信息：")
+        if stdout:
+            print("STDOUT:\n", stdout)
+        if stderr:
+            print("STDERR:\n", stderr)
+        process.terminate()
+        if os.path.exists(test_config_path):
+            os.remove(test_config_path)
+        return []
+
+    test_url = "https://www.gstatic.com/generate_204"
+    print(f"🚀 开始并发测速，测试地址: {test_url}")
+    print("-" * 80)
+
+    # 并发测速
     async with aiohttp.ClientSession() as session:
         tasks = []
         for node in proxy_nodes:
-            tag = node["tag"]
-            # Tag 中包含 Emoji 和特殊字符，必须进行 URL Encode
+            tag = node.get("tag", "")
             safe_tag = quote(tag, safe='')
             safe_url = quote(test_url, safe='')
             url = f"{api_base}/proxies/{safe_tag}/delay?timeout={SPEED_LIMIT}&url={safe_url}"
@@ -90,52 +156,88 @@ async def test_nodes_via_singbox_api(nodes_to_test, singbox_path="./sing-box"):
 
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
-    # 3. 测速完成，关闭 sing-box 进程并清理临时文件
+    # 关闭进程
     process.terminate()
-    process.wait()
+    try:
+        process.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        process.kill()
+
     if os.path.exists(test_config_path):
         os.remove(test_config_path)
 
-    # 4. 整理有效结果
+    # 统计结果
     valid_nodes = []
+    fail_count = 0
+    error_count = 0
+
     for result in results:
-        if isinstance(result, tuple):
-            node_info, delay = result
+        if isinstance(result, Exception):
+            error_count += 1
+            print(f"💥 任务异常: {result}")
+            continue
+
+        if isinstance(result, tuple) and len(result) == 4:
+            node_info, delay, status, msg = result
             if delay is not None:
                 valid_nodes.append((node_info, delay))
-                print(f"✅ 协议: {node_info['type']:<10} | 延迟: {delay:<4} ms | 节点: {node_info['tag']}")
+                print(f"✅ {node_info['type']:<12} | {delay:>4} ms | {node_info['tag']}")
+            else:
+                fail_count += 1
+                if fail_count <= 30:
+                    print(f"❌ {node_info['type']:<12} | 失败 | status={status} | {msg} | {node_info['tag']}")
+        else:
+            error_count += 1
+            print(f"💥 返回格式异常: {result}")
 
+    print("-" * 80)
+    print(f"📈 测速统计: 成功 {len(valid_nodes)} 个 | 失败 {fail_count} 个 | 异常 {error_count} 个")
     return valid_nodes
 
 
 async def test_single_node_api(session, url, node_info):
+    """
+    返回: (node_info, delay, status_code, message)
+    """
     try:
-        async with session.get(url) as response:
-            if response.status == 200:
+        timeout = aiohttp.ClientTimeout(total=SPEED_LIMIT / 1000 + 3)
+        async with session.get(url, timeout=timeout) as response:
+            status = response.status
+            if status == 200:
                 data = await response.json()
-                if "delay" in data:
-                    return node_info, data["delay"]
-            return node_info, None
-    except Exception:
-        return node_info, None
+                delay = data.get("delay")
+                if delay is not None and delay > 0:
+                    return node_info, delay, status, "ok"
+                else:
+                    return node_info, None, status, f"无 delay 字段: {data}"
+            else:
+                text = await response.text()
+                return node_info, None, status, text[:120]
+    except asyncio.TimeoutError:
+        return node_info, None, 0, "请求超时"
+    except Exception as e:
+        return node_info, None, 0, str(e)
 
 
 async def main():
-    lis1, lis2, lis3, lis4 = [], [], [], []
+    lis1, lis2, lis3, lis4, lis5 = [], [], [], [], []
 
-    p1 = ParseNodeSnakem982()
-    lis1 = await p1.process()
+    # p1 = ParseNodeSnakem982()
+    # lis1 = await p1.process()
 
     # p2 = ParseNodesharkDoorV2()
     # lis2 = await p2.process()
 
-    p3 = ParseNodeSingBooks()
-    lis3 = await p3.process()
+    # p3 = ParseNodeSingBooks()
+    # lis3 = await p3.process()
 
     p4 = ParseNodeClash()
     lis4 = await p4.process()
 
-    all_nodes = lis1 + lis2 + lis3 + lis4
+    # p5 = ParseNodeclashmeta()
+    # lis5 = await p5.process()
+
+    all_nodes = lis1 + lis2 + lis3 + lis4 + lis5
 
     un_used_tag_map = await filter(FORBIDDEN_PROXY_FILE)
 
@@ -164,6 +266,7 @@ async def main():
 
     # 3. 调用 API 测速
     valid_results = await test_nodes_via_singbox_api(unique_nodes, singbox_path="./plugins/sing-box")
+    print("valid_results 数量:", len(valid_results) if valid_results else 0)
 
     if not valid_results:
         print("❌ 未获取到任何有效节点。")

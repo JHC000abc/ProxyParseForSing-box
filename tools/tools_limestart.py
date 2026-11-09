@@ -205,8 +205,8 @@ async def main():
 
     :return:
     """
-    password = "Fbb33879"
-    user_name = "JHC000abc@gmail.com"
+    password = ""
+    user_name = ""
     li = Limestart(password, user_name)
     login_info = li.login()
     username = login_info["username"]
