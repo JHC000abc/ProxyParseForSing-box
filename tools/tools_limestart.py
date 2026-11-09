@@ -11,6 +11,71 @@ import asyncio
 import json
 import argparse
 from utils.utils_network import UtilsNetwork
+import requests
+import base64
+import hashlib
+import time
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_v1_5
+
+PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCxKxfpmroVBhtUjwoLK64188R7
+Bsh+sCZTdH+zeu8OLR6tg/FHn7vIc0urqQ/lv8+gvmgbZ549BV80iOpXj/2vgpaj
+vvkKJN6qgU0LLaoCEmZeJA79caY5Cym/qAS5VHRhzX4aHNinZtiwPUfaJwpW+4U2
+h3xPsg5Wpd0CJDAtQwIDAQAB
+-----END PUBLIC KEY-----"""
+
+
+class Limestart:
+    """
+
+    """
+
+    def __init__(self, password, user_name="jhc000abc@gmail.com"):
+        self.user_name = user_name
+        self.password = password
+
+    def generate_encrypted(self) -> str:
+        """
+
+        :return:
+        """
+        # 1. MD5（32 位小写）
+        md5_hash = hashlib.md5(self.password.encode("utf-8")).hexdigest()
+
+        # 2. 当前毫秒时间戳
+        timestamp = str(int(time.time() * 1000))
+
+        # 3. 拼接
+        payload = md5_hash + timestamp
+
+        # 4. RSA PKCS#1 v1.5 加密
+        rsa_key = RSA.import_key(PUBLIC_KEY_PEM)
+        cipher = PKCS1_v1_5.new(rsa_key)
+        encrypted_bytes = cipher.encrypt(payload.encode("utf-8"))
+
+        # 5. Base64
+        return base64.b64encode(encrypted_bytes).decode("utf-8")
+
+    def login(self):
+        """
+
+        :param encrypted:
+        :return:
+        """
+        body = {
+            "encrypted": self.generate_encrypted(),
+            "referrer": "https://www.limestart.cn/",
+            "user": f"{self.user_name}"
+        }
+        headers = {
+            "origin": "https://account.retiehe.com",
+            "referer": "https://account.retiehe.com/",
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+        }
+        url = 'https://api.retiehe.com/backend/account-v2/session'
+        response = requests.post(url, headers=headers, json=body)
+        return response.json()
 
 
 class ToolsLimeStart:
@@ -18,7 +83,7 @@ class ToolsLimeStart:
 
     """
 
-    def __init__(self, token="e5164acb0d8247586829931c25aa75867958b6176ab2bd605b405d00a8006127", user_name="jhc000abct1ljk9ip"):
+    def __init__(self, token, user_name):
         self.net = UtilsNetwork()
         self.url = "https://api.limestart.cn/backend/note-v3"
         self.headers = {
@@ -140,21 +205,28 @@ async def main():
 
     :return:
     """
-    # 上传记录工具
-    t = ToolsLimeStart()
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-i', "--input", dest='input', help='input', required=True, nargs='+')
-    args = parser.parse_args()
-    urls = args.input
-    for url in urls:
-        await t.recode_url(url)
+    password = "Fbb33879"
+    user_name = "JHC000abc@gmail.com"
+    li = Limestart(password, user_name)
+    login_info = li.login()
+    username = login_info["username"]
+    token = login_info["token"]
+    # # 上传记录工具
+    # t = ToolsLimeStart(token=token, user_name=username)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('-i', "--input", dest='input', help='input', required=True, nargs='+')
+    # args = parser.parse_args()
+    # urls = args.input
+    # print("urls",urls)
+    # for url in urls:
+    #     await t.recode_url(url)
 
     # 获取最新记录工具
-    # t = ToolsLimeStart()
-    # await t.get_url()
+    t = ToolsLimeStart(token=token, user_name=username)
+    await t.get_url()
 
-    # 删除记录工具
-    # t = ToolsLimeStart()
+    # # 删除记录工具
+    # t = ToolsLimeStart(token=token, user_name=username)
     # await t.clear()
 
 

@@ -135,7 +135,7 @@ uv run main.py
     pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/get_latest_url && rm -rf dist/ .pyarmor/ tools_limestart.spec
 ```
 
-## 9. 打包 limestart 清理工具 获取最新url
+## 9. 打包 limestart 清理工具
 
 ```bash
     pyarmor gen -r --pack FC tools/tools_limestart.py && mv dist/tools_limestart plugins/clear_old_url && rm -rf dist/ .pyarmor/ tools_limestart.spec
